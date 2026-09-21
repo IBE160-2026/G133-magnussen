@@ -34,7 +34,7 @@ For these students, success means spending less time on repetitive preparation a
 
 ## Success Criteria
 
-The MVP will be successful if a student can upload a supported PDF and produce at least one useful summary, flashcard set, quiz, or key-concept overview in a straightforward session. Generated resources should be recognisably based on the uploaded material and include source references or excerpts that allow the student to check important claims.
+The MVP will be successful if a student can upload a supported PDF and generate summaries, flashcards, quiz questions, and key concepts in a straightforward workflow. The generated resources should be recognisably based on the uploaded material and include source references or excerpts that allow the student to check important claims.
 
 User feedback should indicate that the application saves time during study preparation and that users understand how to verify the generated content. Evaluation will focus on whether the workflow is understandable, whether the resources are relevant and usable, and whether the verification feature improves students' confidence compared with using ungrounded AI output.
 
