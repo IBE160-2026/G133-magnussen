@@ -7,6 +7,8 @@
 | **Tilbakemelding fra** | Faglærer i IBE160 (utarbeidet med KI-støtte) |
 | **Dato** | 2026-10-06 |
 
+Repoet har flere briefer. Den andre har fått egen tilbakemelding i [`.docs/planning-artifacts/briefs/brief-AI-Study-Buddy-2026-09-19/tilbakemelding-product-brief.md`](.docs/planning-artifacts/briefs/brief-AI-Study-Buddy-2026-09-19/tilbakemelding-product-brief.md).
+
 ## Samlet vurdering
 
 - **Godt utgangspunkt med justeringer.** Gruppen kan gå videre og innarbeide punktene under.
