@@ -10,29 +10,38 @@ The MVP is deliberately limited to a realistic individual three-month student pr
 
 ## The Problem
 
-Physiotherapy students need to learn the muscles covered in their course material, including their Norwegian and Latin names, locations, and functions. With so many muscles and terms to learn, it can be challenging to remember the correct names and connect each muscle to its location and role in the body.
+Physiotherapy students need to learn the muscles covered in their anatomy course material, including their Norwegian and Latin names, locations, and functions. Before an anatomy exam, students may have many lecture slides and a large amount of course material to study. Remembering all the names, locations, and functions can be challenging, especially when they need to learn so much information in a limited amount of time.
 
-Students may use different AI tools, such as Claude and ChatGPT, to create flashcards and quiz questions for revision. However, these tools may leave out muscles covered in their course material, use different terminology, or provide answers without showing where the information comes from. This makes it harder for students to trust the generated study materials and means they must spend extra time checking the answers against their course material.
+To save time, students may use AI tools such as ChatGPT or Claude to create flashcards and quiz questions. However, these tools may include information from sources outside the course material, use different terminology, or leave out important topics. If students trust the generated content without checking the sources, they may spend time learning information that is not part of their syllabus while missing information they are expected to know.
 
-AI Study Buddy addresses this problem by generating summaries, flashcards, quiz questions, and key concepts based only on the student's own course material. This helps physiotherapy students practise the Norwegian and Latin names of muscles and learn their locations and functions using the information in their course material. Each flashcard and quiz question should include a page reference and a short excerpt from the course material, allowing students to verify the information against the original material.
+This can make exam preparation less effective. Students may believe they are well prepared because they have practised many AI-generated questions, but the questions may not cover the material they will be tested on. They therefore risk being less prepared for the exam than they think.
 
 ## The Solution
 
-AI Study Buddy provides a focused workspace for learning from a student's own uploaded course material. After uploading a text-based PDF, the student can request a summary, a set of flashcards, quiz questions, or an overview of key concepts. The goal is to make the first draft of these learning resources fast to create while keeping the student in control of how they use and assess the result.
+AI Study Buddy helps students prepare for exams by allowing them to upload their own course material and generate summaries, flashcards, quiz questions, and key concepts, all in one app. For physiotherapy students, this can make it easier to practise the Norwegian and Latin names of muscles, their locations, and their functions.
 
-Each generated item should be connected to relevant excerpts or locations in the uploaded material wherever practical. A student can therefore compare a summary point, flashcard answer, or quiz question with the underlying source before relying on it. The product supports learning rather than presenting AI output as unquestionable fact: the original course material remains the reference point.
+The app uses only the course material uploaded by the student to generate these learning resources. Flashcards and quiz questions should include page references and short excerpts from the uploaded material, so students can quickly check where the information comes from without having to search through the entire document. If the uploaded course material does not contain the information needed to answer a question, the app should make this clear rather than add information from outside sources.
+
+By bringing all four learning resources together in one place and connecting them to the student's own course material, AI Study Buddy aims to help students study more efficiently and reduce the risk of practising information that is not part of their syllabus.
 
 ## What Makes This Different
 
-The distinguishing feature of AI Study Buddy is not simply that it generates study aids. It is built around source-grounded learning. General AI chat tools can generate explanations from a prompt, but AI Study Buddy starts with the student's selected course material and makes the relationship between generated content and that material visible.
+Existing tools such as NotebookLM and Quizlet already help students study and create learning resources using course material. AI Study Buddy aims to provide a focused study experience where students can access four types of learning resources in one place: summaries, flashcards, quiz questions, and key concepts.
 
-This approach encourages verification as part of the study process. Students can use AI for speed and structure while retaining a clear path back to the source. The product is intentionally narrow: it focuses on a small number of high-value learning resources and a transparent workflow, rather than competing with broad AI assistants or full educational platforms.
+Students upload their own course material and generate all four resources in the same app. The app is designed to use only the uploaded material, rather than introduce information from outside the uploaded course material. Flashcards and quiz questions should include page references and short excerpts from the course material, making it easier for students to verify the information without searching through the entire document manually.
 
-## Who This Serves
+For physiotherapy students, this can make it easier to practise the Norwegian and Latin names of muscles, their locations, and their functions. By combining all four learning resources with clear references to the student's own course material, AI Study Buddy aims to make exam preparation more focused, consistent, and easier to verify.
 
-The primary users are higher-education students who work with text-heavy course material and want a more efficient way to prepare for classes, assignments, or examinations. They may be studying independently, managing several courses at once, or looking for support in converting dense readings into material they can review and test themselves on.
+## Who This Serves 
 
-For these students, success means spending less time on repetitive preparation and more time understanding, recalling, and evaluating course concepts. They need generated resources that are clear, relevant to their own syllabus, and easy to verify. The application is not intended to replace lecturers, course platforms, or academic judgement; it is a personal study companion.
+AI Study Buddy is designed for students who want to study more effectively using their own course material. The primary target user is a physiotherapy student preparing for an anatomy exam.
+
+The student has many lecture slides and documents to study and needs to understand and remember the Norwegian and Latin names of muscles, their locations, and their functions. Reading through all the material repeatedly can be time-consuming, and creating study resources manually takes additional effort. The student also needs to know which topics they understand well and which ones require more practice.
+
+AI Study Buddy helps by turning the student's own course material into summaries, flashcards, quiz questions, and key concepts. Summaries help the student review the main ideas, flashcards support memorisation, quiz questions allow the student to test their understanding, and key concepts highlight important information. Page references and short excerpts in flashcards and quiz questions also help the student check the original material and verify that the information comes from their course content.
+
+Although the primary example is a physiotherapy student studying anatomy, AI Study Buddy can support students in other fields who want to understand, practise, and review their own course material throughout the learning process.
+
 
 ## Success Criteria
 
