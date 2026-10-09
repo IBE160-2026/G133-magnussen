@@ -2,11 +2,13 @@
 
 ## Executive Summary
 
-AI Study Buddy is a web application that helps higher-education students turn their own course material into practical study resources. A student uploads text-based PDFs, such as lecture slides, course notes, or readings, and uses generative AI to create summaries, flashcards, quiz questions, and key concepts. The application is designed to support active learning without separating generated content from the material on which it is based.
+AI Study Buddy is a web application designed to help students learn more effectively from their own course material. Students upload text-based PDFs, such as lecture slides, course notes, or readings, and use generative AI to create four types of learning resources: summaries, flashcards, quiz questions, and key concepts. The aim is to help students understand, practise, and review their course material through one straightforward study workflow.
 
-The project addresses a central challenge in the use of generative AI for education: AI output can be useful, but students need a simple way to check whether it accurately reflects their course material. AI Study Buddy therefore prioritises traceability and verification. Its research question is: “How can generative artificial intelligence be used to transform students' own course material into useful and verifiable learning resources?”
+The project addresses a key challenge in using generative AI for education: AI-generated content can be useful, but students need a simple way to check whether it accurately reflects their course material. AI Study Buddy therefore focuses on source traceability and verification. Flashcards and quiz questions should include page references and short excerpts so students can check the information against the original document. If information cannot be verified against the uploaded material, the application should clearly indicate this.
 
-The MVP is deliberately limited to a realistic individual three-month student project. It will demonstrate a focused learning workflow—from upload to generated resources to source checking—rather than attempting to become a complete learning-management system.
+The primary example user is a physiotherapy student preparing for an anatomy exam who needs to learn the Norwegian and Latin names of muscles, their locations, and their functions. However, the application is intended to support students across different fields of study. The MVP is limited to individual use, text-based PDFs, and a simple web interface, making it realistic to develop and test within a three-month individual student project.
+
+The research question is: “How can generative artificial intelligence be used to transform students' own course material into useful and verifiable learning resources?”
 
 ## The Problem
 
@@ -18,19 +20,19 @@ This can make exam preparation less effective. Students may believe they are wel
 
 ## The Solution
 
-AI Study Buddy helps students prepare for exams by allowing them to upload their own course material and generate summaries, flashcards, quiz questions, and key concepts, all in one app. For physiotherapy students, this can make it easier to practise the Norwegian and Latin names of muscles, their locations, and their functions.
+AI Study Buddy helps students prepare for exams by allowing them to upload their own course material and generate four types of learning resources: summaries, flashcards, quiz questions, and key concepts.
 
-The app uses only the course material uploaded by the student to generate these learning resources. Flashcards and quiz questions should include page references and short excerpts from the uploaded material, so students can quickly check where the information comes from without having to search through the entire document. If the uploaded course material does not contain the information needed to answer a question, the app should make this clear rather than add information from outside sources.
+The app is designed to generate content based on the uploaded material. Flashcards and quiz questions should include page references and short excerpts, allowing students to check the information against the original document. If the app cannot find sufficient support for an answer in the uploaded material, it should flag the answer as unverified.
 
-By bringing all four learning resources together in one place and connecting them to the student's own course material, AI Study Buddy aims to help students study more efficiently and reduce the risk of practising information that is not part of their syllabus.
+The primary example is a physiotherapy student preparing for an anatomy exam, but the app can be used by students across different fields of study. By bringing these learning resources together and making their sources easier to check, AI Study Buddy aims to make exam preparation more efficient and reliable.
 
 ## What Makes This Different
 
-Existing tools such as NotebookLM and Quizlet already help students study and create learning resources using course material. AI Study Buddy aims to provide a focused study experience where students can access four types of learning resources in one place: summaries, flashcards, quiz questions, and key concepts.
+Existing tools such as NotebookLM and Quizlet already help students create learning resources from course material. AI Study Buddy aims to offer a focused study workflow by bringing summaries, flashcards, quiz questions, and key concepts together in one application.
 
-Students upload their own course material and generate all four resources in the same app. The app is designed to use only the uploaded material, rather than introduce information from outside the uploaded course material. Flashcards and quiz questions should include page references and short excerpts from the course material, making it easier for students to verify the information without searching through the entire document manually.
+A key focus is making generated content easier to verify. Flashcards and quiz questions should include page references and short excerpts from the uploaded material, allowing students to check the information against the original source.
 
-For physiotherapy students, this can make it easier to practise the Norwegian and Latin names of muscles, their locations, and their functions. By combining all four learning resources with clear references to the student's own course material, AI Study Buddy aims to make exam preparation more focused, consistent, and easier to verify.
+Rather than guaranteeing that AI-generated content is always correct, AI Study Buddy aims to make studying more transparent and help students identify information that needs further checking.
 
 ## Who This Serves 
 
@@ -42,21 +44,30 @@ AI Study Buddy helps by turning the student's own course material into summaries
 
 Although the primary example is a physiotherapy student studying anatomy, AI Study Buddy can support students in other fields who want to understand, practise, and review their own course material throughout the learning process.
 
-
 ## Success Criteria
 
-The MVP will be successful if a student can upload a supported PDF and generate summaries, flashcards, quiz questions, and key concepts in a straightforward workflow. The generated resources should be recognisably based on the uploaded material and include source references or excerpts that allow the student to check important claims.
+The MVP will be considered successful if it meets the following criteria:
 
-User feedback should indicate that the application saves time during study preparation and that users understand how to verify the generated content. Evaluation will focus on whether the workflow is understandable, whether the resources are relevant and usable, and whether the verification feature improves students' confidence compared with using ungrounded AI output.
+Four resource types: A student can upload a supported PDF and generate summaries, flashcards, quiz questions, and key concepts.
+
+Source verification: Flashcards and quiz questions include page numbers and short excerpts that can be checked against the uploaded PDF.
+
+Unsupported information: The app flags answers that cannot be sufficiently supported by the uploaded material.
+
+Error handling: If the app cannot extract text from an uploaded PDF, it displays a clear error message.
+
+Usable workflow: A student can upload a supported PDF, generate all four resource types, and view the results without blocking errors.
+
+These criteria will be tested using two or three sample PDFs. The generated resources, source references, and error handling will be checked and documented for each PDF. A small amount of user feedback may also be collected to identify usability issues.
 
 ## Scope
 
-The first version includes upload and handling of text-based PDFs; generation of summaries, flashcards, quiz questions, and key concepts; and a clear way to view the source material connected to generated content. It should support an individual student's use of their own documents through a simple web interface.
+The first version includes uploading and processing text-based PDFs, generating summaries, flashcards, quiz questions, and key concepts, and providing page references and short excerpts that allow students to check generated content against the original course material. It should support individual students using their own documents through a simple web interface.
 
-The MVP excludes scanned-document processing, collaborative study groups, institution-wide course integrations, native mobile applications, advanced personalisation, grading, and broad content libraries. It also does not aim to guarantee academic correctness beyond enabling students to inspect the source material. These boundaries keep the project achievable within three months and preserve focus on the research question.
+The MVP excludes scanned-document processing, collaborative study groups, institution-wide course integrations, native mobile applications, advanced personalisation, grading, and broad content libraries. It does not guarantee academic correctness, but aims to make generated content easier to verify by allowing students to inspect the source material. These boundaries keep the project achievable within three months and maintain focus on the research question.
 
 ## Vision
 
-Over the next two to three years, AI Study Buddy could become a trusted personal learning workspace in which students organise course material, create revision resources, and develop more reflective study habits. As the product matures, it could support a wider range of materials, richer review experiences, and learning insights that help students identify what to revisit.
+Over the next two to three years, AI Study Buddy could become a trusted personal learning workspace where students organise their course material, create study resources, and develop effective study habits. As the product develops, it could support a wider range of learning materials, more advanced revision tools, and features that help students identify topics they need to review.
 
-Its long-term value should remain grounded in transparency. Rather than encouraging passive consumption of AI-generated answers, AI Study Buddy should make it easier for students to learn from their own sources, question generated output, and build confidence in what they understand.
+Its long-term value should remain grounded in transparency. Rather than encouraging students to passively rely on AI-generated answers, AI Study Buddy should help them learn from their own course material, question generated content, and better understand what they know and what they still need to practise.
