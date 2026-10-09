@@ -10,9 +10,11 @@ The MVP is deliberately limited to a realistic individual three-month student pr
 
 ## The Problem
 
-Higher-education students often receive substantial amounts of reading material, slides, and notes in different formats. Turning this material into useful revision aids takes time: students must identify the important concepts, write concise summaries, formulate questions, and create flashcards. During busy teaching periods and before examinations, this preparation can compete directly with time needed to understand and practise the material.
+Physiotherapy students need to learn the muscles covered in their course material, including their Norwegian and Latin names, locations, and functions. With so many muscles and terms to learn, it can be challenging to remember the correct names and connect each muscle to its location and role in the body.
 
-Students may already use general-purpose AI tools to speed up this work, but these tools can produce answers that are vague, incomplete, or unsupported by the course content. When generated study aids cannot easily be checked against the original source, students must either trust them blindly or spend additional time verifying them manually. This reduces confidence in the material and can lead to studying incorrect or irrelevant information.
+Students may use different AI tools, such as Claude and ChatGPT, to create flashcards and quiz questions for revision. However, these tools may leave out muscles covered in their course material, use different terminology, or provide answers without showing where the information comes from. This makes it harder for students to trust the generated study materials and means they must spend extra time checking the answers against their course material.
+
+AI Study Buddy addresses this problem by generating summaries, flashcards, quiz questions, and key concepts based only on the student's own course material. This helps physiotherapy students practise the Norwegian and Latin names of muscles and learn their locations and functions using the information in their course material. Each flashcard and quiz question should include a page reference and a short excerpt from the course material, allowing students to verify the information against the original material.
 
 ## The Solution
 
