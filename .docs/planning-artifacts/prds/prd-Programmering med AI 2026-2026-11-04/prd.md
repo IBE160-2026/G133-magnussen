@@ -48,6 +48,7 @@ The MVP is designed for individual use, with one student using one text-based PD
 ## 3. Key Terms
 
 - **Supported PDF** — A text-based PDF no larger than 20 MB and no longer than 50 pages.
+- **Usable page text** — At least 20 non-whitespace characters extracted from a PDF page. A page below this threshold is listed as having insufficient extracted text.
 - **Study session** — The period in which a student uploads one PDF and creates or reviews study resources. A session ends when the student selects “Avslutt studieøkt” or closes the browser tab. If the student refreshes or reopens the app, a new session starts, and the PDF and generated resources are not restored. The student must upload the PDF again.
 - **Study resource** — A summary, flashcard, quiz question, or key concept generated from the uploaded PDF.
 - **Source reference** — Source information shown with a generated study resource: the PDF viewer page number(s) and a short source excerpt for every resource type. Printed page numbers are not used.
@@ -72,19 +73,25 @@ The student must upload one Supported PDF to start a Study session. Uploading an
 - One uploaded PDF is the source for the resource types created during that Study session.
 - Before a Supported PDF has been uploaded and successfully processed, the app does not allow the student to generate summaries, flashcards, quiz questions, or key concepts, and explains that a PDF is required.
 
-#### FR-2: Use the document text for generation
+#### FR-2: Enforce PDF file limits
 
-The app uses the text in the uploaded PDF to create the study resource selected by the student.
+The app accepts only PDF files no larger than 20 MB and no longer than 50 pages.
 
 **Consequences (testable):**
 
-- The app generates study resources only if it extracts readable text from every PDF page that contains selectable text. If it fails to extract readable text from any such page, it tells the student and does not generate study resources.
-- If a PDF is over 20 MB or has more than 50 pages, the app explains that it exceeds the supported limits and does not generate any study resources from that file.
-- Before implementation, the project confirms that the selected language-model provider can process PDFs up to 50 pages and 20 MB. If it cannot, the Supported PDF limits are revised in the PRD.
+- If a PDF is over 20 MB or has more than 50 pages, the app explains which supported limit was exceeded and does not process the file or generate study resources from it.
 
-#### FR-3: Explain extraction failure
+#### FR-3: Extract text and report pages with insufficient text
 
-If the app cannot extract usable text from a PDF, it shows an error and stops processing the document. It does not generate any study resources.
+The app extracts text from each PDF page. A page with fewer than 20 non-whitespace characters of extracted text is listed to the student by PDF viewer page number before generation. The student can either continue using text from pages that meet the threshold or cancel processing. Text from pages below the threshold is excluded from generation. The app does not generate resources until the student chooses to continue. If no page has usable text, or an unrecoverable processing error prevents the app from determining page-level text availability, the app shows a clear error and does not generate resources.
+
+**Consequences (testable):**
+
+- A page with 20 or more non-whitespace extracted characters is treated as having usable text; a page with fewer than 20 is listed as having insufficient extracted text.
+- For a PDF containing both usable-text pages and pages with insufficient extracted text, the app lists all page numbers below the threshold and offers the student the choice to continue with the extracted text or cancel.
+- If the student continues, generated resources use the extracted text and the student has been told which pages were not represented by usable extracted text.
+- If the student cancels, or no page has usable text, the app does not generate resources.
+- If an unrecoverable processing error prevents page-level text availability from being determined, the app shows a clear Norwegian error and does not generate resources.
 
 ### 4.2 Creating Study Resources
 
@@ -204,7 +211,7 @@ A test passes when the app meets all specified outcomes for that test. Any unmet
 
 - **SM-1 — End-to-end study workflow:** As part of the MVP evaluation, the project team tests the app with the sample PDFs described above. For each PDF, they check that a student can upload it, have its text processed, generate all four resource types, and review the results without a blocking error. They check that the interface and generated content are in Norwegian and that relevant Latin anatomical terms are retained. They also check that selecting “Avslutt studieøkt,” closing the browser tab, refreshing, or reopening the app does not restore the PDF or generated resources, and that the student must upload the PDF again to start a new session. This is a project evaluation test, not something students need to do each time they use the app. This test checks whether the app meets FR-1 through FR-13 and the language requirement in Section 5.
 - **SM-2 — Source-reference inspection:** Check that every generated study item shows its PDF viewer page number(s) and a short source excerpt. Verify that each excerpt appears in the extracted text on its cited page, including a test item whose excerpt has been changed to text that does not appear on that page. Record matches, mismatches, and missing references, and check that items with missing or unverifiable source information are marked “Ubekreftet.” This test checks whether the app meets FR-5 through FR-8 and FR-10.
-- **SM-3 — PDF processing and file-limit errors:** Test one PDF from which no readable text can be extracted and one with selectable text on multiple pages where the app fails to extract readable text from at least one page. Also test otherwise valid text-based PDFs: one larger than 20 MB but no longer than 50 pages, and one longer than 50 pages but no larger than 20 MB. In each case, check that the app displays a clear error and generates no study resources. This test checks whether the app meets FR-2 and FR-3.
+- **SM-3 — PDF file limits and text availability:** Test a PDF larger than 20 MB and a PDF longer than 50 pages; in each case, verify that the app identifies the exceeded limit and does not process or generate resources. Test a PDF with pages both above and below the 20-character threshold, including an image-only page; verify that every page below the threshold is listed, its text is excluded from generation, and the student can either continue using text from pages above the threshold or cancel. Verify that no resources are generated before the student chooses to continue, and that the app blocks generation when no page has usable text or an unrecoverable processing error prevents page-level text availability from being determined. This test checks whether the app meets FR-2 and FR-3.
 - **SM-4 — Quiz interaction:** Verify that each quiz question has three answer options, the student submits the whole quiz, results mark correct answers in green and label them “Riktig” with a check mark, and mark incorrect student responses in red and label them “Feil” with an X. Also verify that results provide a brief explanation grounded in the PDF and, for a quiz with at least two questions, the app ensures a retake presents the questions in a different order from the immediately preceding attempt. This test checks whether the app meets FR-8.
 - **SM-5 — Generation failures, demo mode, and limits:** Use malformed mock responses, provider-unavailable responses, and timeouts to verify the app shows a Norwegian error and displays no partial resource. Follow the README without an API key to verify demo mode lets a student review all four resource types from the sample PDF and makes no provider requests. In live mode, verify the app allows at most eight Generation requests per Study session, counts failed requests, and makes no provider call after the limit is reached. This test checks whether the app meets FR-11 through FR-13.
 
@@ -217,8 +224,8 @@ A small amount of student feedback may also be collected to identify usability i
 
 ## 9. Open Questions
 
-No unresolved user-facing product questions remain. Before implementation, the project must select the provider and model, record the estimated cost of a full eight-request session using a Supported PDF, set the project spending ceiling, and confirm that the selected provider supports the defined PDF limits and review its data-retention practices. The public demo PDF must be cleared for redistribution and included with the documented demo setup.
+No unresolved user-facing product questions remain. Before implementation, the project must select the provider and model, record the estimated cost of a full eight-request session using a Supported PDF, set the project spending ceiling, and confirm that the selected PDF-text extraction and AI providers can handle the supported limits of 20 MB and 50 pages. If either provider cannot handle those limits, the Supported PDF limits must be revised before implementation. The project must also review provider data-retention practices. The public demo PDF must be cleared for redistribution and included with the documented demo setup.
 
 ## 10. Assumptions Index
 
-- **[ASSUMPTION] FR-2:** The app can identify when a PDF exceeds either supported limit and can report that clearly. The selected provider's ability to process PDFs within the 50-page and 20 MB limits will be confirmed during architecture.
+- **[ASSUMPTION] FR-2:** The app can identify when a PDF exceeds either supported limit and can report that clearly.
