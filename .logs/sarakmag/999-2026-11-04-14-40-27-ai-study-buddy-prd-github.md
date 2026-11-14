@@ -67,3 +67,20 @@ Opprettet `.docs/planning-artifacts/ux-designs/ux-AI-Study-Buddy-2026-11-14/scre
 ### Åpne punkter
 - Avklar om laptop eller mobil er hovedflate, og velg visuell stil før hi-fi-utforming.
 - Gjenta provider-test og gjennomfør appens grense-/uttrekksflyt som beskrevet i issues.md.
+
+## 2026-11-14 kl. 18:58 — sarakmag
+
+### Oppgave
+Gjør skjermskissen om til en klikkbar prototype med mock-svar, slik at studentflyten og feilsituasjonene kan gjennomgås uten Gemini-integrasjon.
+
+### Plan
+- Lag en selvstendig HTML-prototype i UX-mappen med lokale scenarioer og responsiv visning.
+- Koble sammen opplastingseksempel, tekstsidevalg, ressursgenerering, kildevisning, feil og avslutning av økten.
+- Koble prototypen fra skjermskissen og oppdater sesjonsloggen.
+
+### Resultat
+Opprettet `prototype.html` som en frittstående klikkbar skisse. Den simulerer demo-, pilot- og feiltilstander, de fire ressursformene, kildehenvisninger, PDF-sidevisning, forespørselsteller og øktavslutning. Prototypen bruker kun lokalt eksempelinnhold og viser tydelig at kildekontroll og PDF-visning er simulert; den sender ingen forespørsler til Gemini. `screen-sketch.md` lenker nå til prototypen.
+
+### Åpne punkter
+- Avklar om laptop eller mobil er hovedflate, og velg visuell stil før hi-fi-utforming.
+- Gjenta provider-test og gjennomfør appens grense-/uttrekksflyt som beskrevet i issues.md.
