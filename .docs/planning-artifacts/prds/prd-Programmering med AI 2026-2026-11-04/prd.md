@@ -15,11 +15,11 @@ The MVP is a three-month individual student project. Requirements focus on obser
 
 ## 1. Vision
 
-AI Study Buddy helps students create study resources from one supported, text-based course PDF in a single study session. Students can create summaries, flashcards, quiz questions, and key concepts from the same uploaded PDF during that session.
+AI Study Buddy helps students create Study resources from one supported, text-based course PDF in a single Study session. Students can create summaries, flashcards, quiz questions, and key concepts from the same uploaded PDF during that session.
 
 The product makes source checking part of the study flow by displaying and checking the source information required for each resource type (see FR-5–FR-8 and FR-10). These references help students inspect the course material; they do not guarantee that generated content is academically correct or complete.
 
-The product operates in a landscape where existing tools already create study resources from uploaded material. Gemini Notebook provides source citations alongside generated answers and study activities; Quizlet offers study resources generated from uploaded notes and files. AI Study Buddy's product focus is a simple, single-PDF study session that brings four resource types together and makes page-level references visible across generated resources. This is a focused workflow, not a claim that source-grounded generation is unique. [Gemini Notebook source citations](https://support.google.com/gemininotebook/answer/16179559); [Quizlet AI study tools](https://quizlet.com/features/ai-study-tools).
+The product operates in a landscape where existing tools already create Study resources from uploaded material. Gemini Notebook provides source citations alongside generated answers and study activities; Quizlet offers Study resources generated from uploaded notes and files. AI Study Buddy's product focus is a simple, single-PDF Study session that brings four resource types together and makes page-level references visible across generated resources. This is a focused workflow, not a claim that source-grounded generation is unique. [Gemini Notebook source citations](https://support.google.com/gemininotebook/answer/16179559); [Quizlet AI study tools](https://quizlet.com/features/ai-study-tools).
 
 ## 2. Target User
 
@@ -32,7 +32,7 @@ The MVP is designed for individual use, with one student using one text-based PD
 - Review the main ideas in course material without rereading the whole PDF repeatedly.
 - Practise recalling anatomy terms and related information.
 - Test understanding with quiz questions before seeing the answer.
-- Check generated study resources against the uploaded course material using page references and short source excerpts, and open the cited PDF page beside the resource.
+- Check generated Study resources against the uploaded course material using page references and short source excerpts, and open the cited PDF page beside the resource.
 
 ### 2.2 How a Student Uses the App
 
@@ -41,9 +41,9 @@ The MVP is designed for individual use, with one student using one text-based PD
   - **Before using the app:** The student opens the AI Study Buddy web app and has a text-based PDF available.
   - **Path:**
     - The student uploads one supported PDF. After it is processed, they can create one or more of the four resource types from it: summaries, flashcards, quiz questions, and key concepts. The details of each resource type are specified in FR-5–FR-8.
-  - **Practice with study resources:** The student reviews and practises with the generated resources, as specified in FR-5–FR-8.
-  - When the student selects a source page number, the app displays that PDF page beside the study resource so the student can inspect the excerpt in context.
-  - **End the study session:** The student ends the session by selecting “Avslutt studieøkt” or closing the browser tab. The PDF and generated resources are not saved. If the student refreshes or reopens the app, a new session starts and the student must upload the PDF again.
+  - **Practice with Study resources:** The student reviews and practises with the generated resources, as specified in FR-5–FR-8.
+  - When the student selects a PDF viewer page number in a Source reference, the app displays that page beside the Study resource so the student can inspect the excerpt in context.
+  - **End the Study session:** The student ends the session by selecting “Avslutt studieøkt” or closing the browser tab. The PDF and generated Study resources are not saved. If the student refreshes or reopens the app, a new session starts and the student must upload the PDF again.
   - **If PDF text cannot be extracted:** The app shows a clear error instead of proceeding as if the document had been processed.
 
 ## 3. Key Terms
@@ -51,37 +51,42 @@ The MVP is designed for individual use, with one student using one text-based PD
 - **Supported PDF** — A text-based PDF no larger than 20 MB and no longer than 50 pages.
 - **Usable page text** — At least 20 non-whitespace characters extracted from a PDF page. A page below this threshold is listed as having insufficient extracted text.
 - **PDF viewer page** — A page displayed in the app's PDF viewer and numbered from the first page of the PDF. Printed page numbers are not used.
-- **Study session** — The period in which a student uploads one PDF and creates or reviews study resources. A session ends when the student selects “Avslutt studieøkt” or closes the browser tab. If the student refreshes or reopens the app, a new session starts, and the PDF and generated resources are not restored. The student must upload the PDF again.
+- **Topic** — A subject grouping identified in the uploaded PDF and used to organize summaries and key concepts.
+- **Summary point** — One concise statement in a Topic-level Summary.
+- **Quiz** — One generated set of up to 10 quiz questions that the student submits as a whole.
+- **Quiz retake** — A repeat of the same Quiz, with the same questions and answer options, cleared responses, and a different question order from the immediately preceding attempt.
+- **Study session** — The period in which a student uploads one PDF and creates or reviews Study resources. A session ends when the student selects “Avslutt studieøkt” or closes the browser tab. If the student refreshes or reopens the app, a new session starts, and the PDF and generated resources are not restored. The student must upload the PDF again.
 - **Study resource** — A summary, flashcard, quiz question, or key concept generated from the uploaded PDF.
-- **Source reference** — Source information shown with a generated study resource: selectable PDF viewer page number(s) and a short source excerpt for every resource type.
-- **Unverified item** — A generated study item that is missing required source information, or whose source excerpt cannot be found in the extracted text on the cited PDF viewer page. The app displays the Norwegian label “Ubekreftet.”
+- **Source reference** — Source information shown with a generated Study resource: selectable PDF viewer page number(s) and a short source excerpt for every resource type.
+- **Unverified item** — A generated Study resource that is missing required source information, or whose source excerpt cannot be found in the extracted text on the cited PDF viewer page. The app displays the Norwegian label “Ubekreftet.”
 - **Generation request** — One student action that asks the app to generate one resource type (a summary, key-concept list, flashcard set, or quiz) from the uploaded PDF. All provider calls needed to complete that action count as one request for the session limit.
 
 ## 4. What the App Does
 
 ### 4.1 PDF Upload and Text Availability
 
-**Description:** The student uploads one Supported PDF for the Study session. The app prepares the document's text so the student can use it to create study resources.
+**Description:** The student uploads one Supported PDF for the Study session. The app prepares the document's text so the student can use it to create Study resources.
 
 **Functional Requirements:**
 
-#### FR-1: Upload one PDF per study session
+#### FR-1: Upload one PDF per Study session
 
-The student must upload one Supported PDF to start a Study session. Uploading and successfully processing that PDF is a prerequisite for generating any study resource.
+The student must upload one Supported PDF to start a Study session. Only one PDF can be used during that Study session; the student cannot add another PDF or replace the uploaded PDF. To use a different PDF, the student ends the current Study session and starts a new one. Uploading and successfully processing the PDF is a prerequisite for generating any Study resource.
 
 **Consequences (testable):**
 
 - A supported text-based PDF can be selected and uploaded.
 - One uploaded PDF is the source for the resource types created during that Study session.
+- After one PDF has been uploaded, the app does not offer an option to add or replace it during the current Study session.
 - Before a Supported PDF has been uploaded and successfully processed, the app does not allow the student to generate summaries, flashcards, quiz questions, or key concepts, and explains that a PDF is required.
 
 #### FR-2: Enforce PDF file limits
 
-The app accepts only PDF files no larger than 20 MB and no longer than 50 pages.
+The app accepts only PDF files no larger than 20 MB and no longer than 50 pages. [ASSUMPTION: The app can determine file size and page count before processing.]
 
 **Consequences (testable):**
 
-- If a PDF is over 20 MB or has more than 50 pages, the app explains which supported limit was exceeded and does not process the file or generate study resources from it.
+- If a PDF is over 20 MB or has more than 50 pages, the app explains which supported limit was exceeded and does not process the file or generate Study resources from it.
 
 #### FR-3: Extract text and report pages with insufficient text
 
@@ -97,7 +102,7 @@ The app extracts text from each PDF page. A page with fewer than 20 non-whitespa
 
 ### 4.2 Creating Study Resources
 
-**Description:** During one Study session, the student can create different study resources based on the uploaded PDF and review them in the app.
+**Description:** During one Study session, the student can create different Study resources based on the uploaded PDF and review them in the app.
 
 **Functional Requirements:**
 
@@ -107,57 +112,37 @@ After a Supported PDF has been uploaded and successfully processed, the student 
 
 #### FR-5: Generate summaries
 
-The app organizes the uploaded PDF by topic and generates a summary of the main ideas for each topic. Each point in a topic-level summary shows the source page number(s) and a short excerpt from the PDF that supports the point. A summary point missing either source detail is marked “Ubekreftet.”
+The app organizes the uploaded PDF by Topic and generates a summary of the main ideas for each Topic. Each Summary point shows its Source reference. A Summary point with a missing or unverified Source reference is marked “Ubekreftet.”
 
 #### FR-6: Generate key concepts
 
-For each topic in the uploaded PDF, the app generates a list of key concepts. Each key concept shows its source page number(s) and a short excerpt from the PDF that explains the concept. A key concept missing either source detail is marked “Ubekreftet.”
+For each Topic in the uploaded PDF, the app generates a list of key concepts. Each key concept shows its Source reference. A key concept with a missing or unverified Source reference is marked “Ubekreftet.”
 
 #### FR-7: Practise with flashcards
 
-The app generates up to 10 flashcards per request, depending on how much relevant information the PDF contains. It may generate fewer when the source material does not support more. The app presents a flashcard question first. The student can reveal the answer. The answer view shows source page number(s) and a short excerpt from the source text. If either source detail is missing, the flashcard is marked “Ubekreftet.”
+The app generates up to 10 flashcards per Generation request, depending on how much relevant information the PDF contains. It may generate fewer when the source material does not support more. The app presents a flashcard question first. The student can reveal the answer. The answer view shows the Source reference. If the Source reference is missing or unverified, the flashcard is marked “Ubekreftet.”
 
 #### FR-8: Answer quiz questions
 
-Each quiz contains up to 10 questions, depending on how much relevant information the PDF contains. The app may generate fewer when the source material does not support more. Each question has three answer options and one correct answer. The student completes and submits the whole quiz before seeing the results. After submission, the app marks correct answers in green with a check mark and the label “Riktig,” and the student's incorrect responses in red with an X and the label “Feil.” It provides a brief explanation grounded in the PDF for each answer. It shows source page number(s) and a short excerpt from the source text. If either source detail is missing, the quiz item is marked “Ubekreftet.” For quizzes with at least two questions, the app ensures that each retake presents the questions in a different order from the immediately preceding attempt.
+Each Quiz contains up to 10 questions, depending on how much relevant information the PDF contains. The app may generate fewer when the source material does not support more. Each question has three answer options and one correct answer. The student completes and submits the whole Quiz before seeing the results. After submission, the app marks correct answers in green with a check mark and the label “Riktig,” and the student's incorrect responses in red with an X and the label “Feil.” It provides a brief explanation grounded in the PDF for each answer and shows the Source reference. If the Source reference is missing or unverified, the Quiz item is marked “Ubekreftet.” A Quiz retake repeats the same questions and answer options, clears the student's previous responses, and presents the questions in a different order from the immediately preceding attempt. This ordering requirement applies to Quizzes with at least two questions.
 
-#### FR-11: Handle generation failures
+### 4.3 What Happens When the Study session Ends
 
-If a generation request fails, times out, or returns a response the app cannot parse into the expected resource format, the app shows a clear error message in Norwegian and does not display or retain a partial resource. The student can continue using resources that were generated successfully earlier in the Study session.
+#### FR-9: Keep generated Study resources session-scoped
 
-**Consequences (testable):**
-
-- When a mock provider response is malformed, the app shows the Norwegian error message and displays no partial resource.
-- When the provider is unavailable or a request times out, the app shows the Norwegian error message and displays no partial resource.
-
-#### FR-12: Run a keyless demo mode
-
-The app can be started in a documented demo mode without an AI provider API key. Demo mode includes a sample PDF cleared for public redistribution and stored responses that let a student complete and review all four resource types without calling a paid AI provider. Source excerpts in stored responses satisfy FR-10 against the sample PDF.
-
-**Consequences (testable):**
-
-- A person following the README can start demo mode without an API key or paid account.
-- In demo mode, the sample PDF can be processed and stored responses for summaries, key concepts, flashcards, and quiz questions can be reviewed.
-- Demo mode makes no AI provider requests and incurs no provider usage charges.
-
-
-### 4.3 What Happens When the Study Session Ends
-
-#### FR-9: Keep generated resources session-scoped
-
-The student can use multiple resource types created from the same PDF during the current Study session. The student can end the session by selecting “Avslutt studieøkt” or by closing the browser tab. The app does not retain the PDF or generated resources for later sessions. Refreshing or reopening the app starts a new session, and the student must upload the PDF again.
+The student can use multiple resource types created from the same PDF during the current Study session. The student can end the session by selecting “Avslutt studieøkt” or by closing the browser tab. The app does not retain the PDF or generated Study resources for later sessions. Refreshing or reopening the app starts a new session, and the student must upload the PDF again.
 
 ### 4.4 Source References and Checking
 
-Source references help students find and check information in the uploaded PDF. The app checks whether each source excerpt appears in the extracted text on its cited PDF viewer page. This check confirms that the excerpt appears on the page; it does not guarantee that generated study resources are academically correct or cover the whole course.
+Source references help students find and check information in the uploaded PDF. The app checks whether each source excerpt appears in the extracted text on its cited PDF viewer page. This check confirms that the excerpt appears on the page; it does not guarantee that generated Study resources are academically correct or cover the whole course.
 
 #### FR-10: Verify source excerpts
 
-For each generated study item, the app checks whether its source excerpt appears in the extracted text on the cited PDF viewer page. The check allows for differences in whitespace and line breaks. If the excerpt is missing from that page, the page cannot be checked, or required source information is missing, the item is marked “Ubekreftet.” This check confirms that the excerpt appears on the page; it does not confirm that the generated content is academically correct.
+For each generated Study resource, the app checks whether its source excerpt appears in the extracted text on the cited PDF viewer page. The check allows for differences in whitespace and line breaks. If the excerpt is missing from that page, the page cannot be checked, or required source information is missing, the Study resource is marked “Ubekreftet.” This check confirms that the excerpt appears on the page; it does not confirm that the generated content is academically correct.
 
-#### FR-14: Open a cited PDF page beside the resource
+#### FR-11: Open a cited PDF page beside the Study resource
 
-When the student selects a PDF viewer page number in a source reference, the app displays that page in a PDF viewer beside the current study resource. The student can select any cited page number, and the study resource remains visible while the viewer changes pages.
+When the student selects a PDF viewer page number in a Source reference, the app displays that page in a PDF viewer beside the current Study resource. The student can select any cited page number, and the Study resource remains visible while the viewer changes pages.
 
 **Consequences (testable):**
 
@@ -167,9 +152,30 @@ When the student selects a PDF viewer page number in a source reference, the app
 
 ### 4.5 Generation Limits and Cost
 
-#### FR-13: Limit live generation requests per Study session
+#### FR-12: Limit live generation requests per Study session
 
 In live mode, the student can make no more than eight Generation requests during one Study session. The app shows how many requests remain from the start of the session. Each request counts toward the limit when the student starts it, including requests that fail or time out. When the limit is reached, the app shows a clear Norwegian message and does not call the provider. Demo mode uses stored responses and does not use provider requests or incur provider usage charges.
+
+### 4.6 Generation Reliability and Demo Mode
+
+#### FR-13: Handle generation failures
+
+If a Generation request fails, times out, or returns a response the app cannot parse into the expected Study resource format, the app shows a clear error message in Norwegian and does not display or retain a partial Study resource. The student can continue using Study resources that were generated successfully earlier in the Study session.
+
+**Consequences (testable):**
+
+- When a mock provider response is malformed, the app shows the Norwegian error message and displays no partial Study resource.
+- When the provider is unavailable or a request times out, the app shows the Norwegian error message and displays no partial Study resource.
+
+#### FR-14: Run a keyless demo mode
+
+The app can be started in a documented demo mode without an AI provider API key. Demo mode includes a sample PDF cleared for public redistribution and stored responses that let a student complete and review all four resource types without calling a paid AI provider. Source excerpts in stored responses satisfy FR-10 against the sample PDF.
+
+**Consequences (testable):**
+
+- A person following the README can start demo mode without an API key or paid account.
+- In demo mode, the sample PDF can be processed and stored responses for summaries, key concepts, flashcards, and quiz questions can be reviewed.
+- Demo mode makes no AI provider requests and incurs no provider usage charges.
 
 ## 5. General Requirements
 
@@ -203,8 +209,8 @@ The MVP does not include:
 - Quiz questions with three answer options, submitted as a whole quiz, with correct answers marked green and labeled “Riktig” with a check mark, incorrect student responses marked red and labeled “Feil” with an X, and brief explanations grounded in the PDF after submission.
 - Retaking a quiz with at least two questions, with the app ensuring that the questions appear in a different order from the immediately preceding attempt.
 - Source information, source-excerpt verification, and “Ubekreftet” labels, as specified in FR-5–FR-8 and FR-10.
-- Opening a cited PDF page beside its study resource, as specified in FR-14.
-- Clear generation-failure behavior, keyless demo mode, and a limit of eight live Generation requests per Study session, as specified in FR-11–FR-13.
+- Opening a cited PDF page beside its Study resource, as specified in FR-11.
+- Clear generation-failure behavior, keyless demo mode, and a limit of eight live Generation requests per Study session, as specified in FR-12–FR-14.
 - Clear PDF text-extraction and file-limit errors.
 - Individual use through a simple web interface.
 
@@ -223,17 +229,17 @@ A test passes when the app meets all specified outcomes for that test. Any unmet
 ### Primary Metrics
 
 - **SM-1 — End-to-end study workflow:** As part of the MVP evaluation, the project team tests the app with the sample PDFs described above. For each PDF, they check that a student can upload it, have its text processed, generate all four resource types, and review the results without a blocking error. They check that the interface and generated content are in Norwegian and that relevant Latin anatomical terms are retained. They also check that selecting “Avslutt studieøkt,” closing the browser tab, refreshing, or reopening the app does not restore the PDF or generated resources, and that the student must upload the PDF again to start a new session. This is a project evaluation test, not something students need to do each time they use the app. This test checks whether the app meets FR-1 through FR-14 and the language requirement in Section 5.
-- **SM-2 — Source-reference inspection:** For each of the two or three supported sample PDFs, randomly select 20 generated study items across the four resource types. Verify that at least 18 of 20 items (90%) have a source excerpt that appears in the extracted text on the cited page. Any sampled item whose required source information is missing or whose excerpt does not appear on the cited page must be marked “Ubekreftet.” Include a test item with an excerpt changed to text that does not appear on its cited page. Select cited page numbers in the app and verify that each opens the correct PDF page beside the current resource. Record the number of matching and mismatching references and the number correctly marked “Ubekreftet.” This test checks whether the app meets FR-5 through FR-8, FR-10, and FR-14.
+- **SM-2 — Source-reference inspection:** For each of the two or three supported sample PDFs, randomly select 20 generated Study resources across the four resource types. Verify that at least 18 of 20 items (90%) have a Source reference excerpt that appears in the extracted text on the cited page. Any sampled item whose required source information is missing or whose excerpt does not appear on the cited page must be marked “Ubekreftet.” Include a test item with an excerpt changed to text that does not appear on its cited page. Select cited page numbers in the app and verify that each opens the correct PDF page beside the current Study resource. Record the number of matching and mismatching references and the number correctly marked “Ubekreftet.” This test checks whether the app meets FR-5 through FR-8, FR-10, and FR-11.
 - **SM-3 — PDF file limits and text availability:** Test a PDF larger than 20 MB and a PDF longer than 50 pages; in each case, verify that the app identifies the exceeded limit and does not process or generate resources. Test a PDF with pages both above and below the 20-character threshold, including an image-only page; verify that every page below the threshold is listed, its text is excluded from generation, and the student can either continue using text from pages above the threshold or cancel. Verify that no resources are generated before the student chooses to continue, and that the app blocks generation when no page has usable text or an unrecoverable processing error prevents page-level text availability from being determined. This test checks whether the app meets FR-2 and FR-3.
-- **SM-4 — Quiz interaction:** Verify that each quiz question has three answer options, the student submits the whole quiz, results mark correct answers in green and label them “Riktig” with a check mark, and mark incorrect student responses in red and label them “Feil” with an X. Also verify that results provide a brief explanation grounded in the PDF and, for a quiz with at least two questions, the app ensures a retake presents the questions in a different order from the immediately preceding attempt. This test checks whether the app meets FR-8.
-- **SM-5 — Generation failures, demo mode, and limits:** Use malformed mock responses, provider-unavailable responses, and timeouts to verify the app shows a Norwegian error and displays no partial resource. Follow the README without an API key to verify demo mode lets a student review all four resource types from the sample PDF and makes no provider requests. In live mode, verify the app allows at most eight Generation requests per Study session, counts failed requests, and makes no provider call after the limit is reached. This test checks whether the app meets FR-11 through FR-13.
+- **SM-4 — Quiz interaction:** Verify that each Quiz question has three answer options, the student submits the whole Quiz, results mark correct answers in green and label them “Riktig” with a check mark, and mark incorrect student responses in red and label them “Feil” with an X. Also verify that results provide a brief explanation grounded in the PDF and, for a Quiz with at least two questions, a Quiz retake repeats the same questions and answer options, clears previous responses, and presents the questions in a different order from the immediately preceding attempt. This test checks whether the app meets FR-8.
+- **SM-5 — Generation failures, demo mode, and limits:** Use malformed mock responses, provider-unavailable responses, and timeouts to verify the app shows a Norwegian error and displays no partial Study resource. Follow the README without an API key to verify demo mode lets a student review all four resource types from the sample PDF and makes no provider requests. In live mode, verify the app allows at most eight Generation requests per Study session, counts failed requests, and makes no provider call after the limit is reached. This test checks whether the app meets FR-12 through FR-14.
 
 ### Counter-metrics
 
 - **SM-C1 — Verified-output share guardrail:** The verified-reference share is the number of sampled items whose excerpt appears on the cited page divided by the total sampled items. Across the same sample PDFs, record the number of generated items and the verified-reference share for each evaluated run. The first run establishes the baseline; compare each subsequent run with the previous accepted run. An increase in generated items is not considered an improvement if the verified-reference share decreases, and the share must remain at or above 90%. An item with missing or unverifiable required source information counts as unverified and must be marked “Ubekreftet.”
 - **SM-C2 — Generation safety guardrail:** The app is not considered successful if a failed or malformed generation displays a partial resource, if demo mode requires an API key or makes provider calls, or if live mode exceeds the eight-request session limit or configured spending ceiling.
 
-A small amount of student feedback may also be collected to identify usability issues. Manual source checks show whether generated study resources match the PDF. They do not show whether the resources cover everything the student is expected to know for the course.
+A small amount of student feedback may also be collected to identify usability issues. Manual source checks show whether generated Study resources match the PDF. They do not show whether the resources cover everything the student is expected to know for the course.
 
 ## 9. Open Questions
 
@@ -241,4 +247,4 @@ No unresolved user-facing product questions remain. Before implementation, the p
 
 ## 10. Assumptions Index
 
-- **[ASSUMPTION] FR-2:** The app can identify when a PDF exceeds either supported limit and can report that clearly.
+- **[ASSUMPTION] FR-2:** The app can determine file size and page count before processing so it can identify and report when a PDF exceeds either supported limit.
