@@ -52,6 +52,7 @@ The MVP is designed for individual use, with one student using one text-based PD
 - **Study resource** — A summary, flashcard, quiz question, or key concept generated from the uploaded PDF.
 - **Source reference** — Source information shown with a generated study resource: the PDF viewer page number(s) and a short source excerpt for every resource type. Printed page numbers are not used.
 - **Unverified item** — A generated study item that is missing required source information, or whose source excerpt cannot be found in the extracted text on the cited PDF viewer page. The app displays the Norwegian label “Ubekreftet.”
+- **Generation request** — One student action that asks the app to generate one resource type (a summary, key-concept list, flashcard set, or quiz) from the uploaded PDF. All provider calls needed to complete that action count as one request for the session limit.
 
 ## 4. What the App Does
 
@@ -111,6 +112,25 @@ The app generates up to 10 flashcards per request, depending on how much relevan
 
 Each quiz contains up to 10 questions, depending on how much relevant information the PDF contains. The app may generate fewer when the source material does not support more. Each question has three answer options and one correct answer. The student completes and submits the whole quiz before seeing the results. After submission, the app marks correct answers in green with a check mark and the label “Riktig,” and the student's incorrect responses in red with an X and the label “Feil.” It provides a brief explanation grounded in the PDF for each answer. It shows source page number(s) and a short excerpt from the source text. If either source detail is missing, the quiz item is marked “Ubekreftet.” For quizzes with at least two questions, the app ensures that each retake presents the questions in a different order from the immediately preceding attempt.
 
+#### FR-11: Handle generation failures
+
+If a generation request fails, times out, or returns a response the app cannot parse into the expected resource format, the app shows a clear error message in Norwegian and does not display or retain a partial resource. The student can continue using resources that were generated successfully earlier in the Study session.
+
+**Consequences (testable):**
+
+- When a mock provider response is malformed, the app shows the Norwegian error message and displays no partial resource.
+- When the provider is unavailable or a request times out, the app shows the Norwegian error message and displays no partial resource.
+
+#### FR-12: Run a keyless demo mode
+
+The app can be started in a documented demo mode without an AI provider API key. Demo mode includes a sample PDF cleared for public redistribution and stored responses that let a student complete and review all four resource types without calling a paid AI provider. Source excerpts in stored responses satisfy FR-10 against the sample PDF.
+
+**Consequences (testable):**
+
+- A person following the README can start demo mode without an API key or paid account.
+- In demo mode, the sample PDF can be processed and stored responses for summaries, key concepts, flashcards, and quiz questions can be reviewed.
+- Demo mode makes no AI provider requests and incurs no provider usage charges.
+
 
 ### 4.3 What Happens When the Study Session Ends
 
@@ -126,10 +146,17 @@ Source references help students find and check information in the uploaded PDF. 
 
 For each generated study item, the app checks whether its source excerpt appears in the extracted text on the cited PDF viewer page. The check allows for differences in whitespace and line breaks. If the excerpt is missing from that page, the page cannot be checked, or required source information is missing, the item is marked “Ubekreftet.” This check confirms that the excerpt appears on the page; it does not confirm that the generated content is academically correct.
 
+### 4.5 Generation Limits and Cost
+
+#### FR-13: Limit live generation requests per Study session
+
+In live mode, the student can make no more than eight Generation requests during one Study session. The app shows how many requests remain from the start of the session. Each request counts toward the limit when the student starts it, including requests that fail or time out. When the limit is reached, the app shows a clear Norwegian message and does not call the provider. Demo mode uses stored responses and does not use provider requests or incur provider usage charges.
+
 ## 5. General Requirements
 
-- Details about source information, error messages, PDF upload requirements, and study-session behavior are specified in FR-1–FR-10.
+- Details about source information, generation failures, demo mode, generation limits, PDF upload requirements, and study-session behavior are specified in FR-1–FR-13.
 - **Uploaded data:** During architecture, review how the selected provider processes and retains uploaded PDFs and generated content. The app's session-only behavior does not by itself guarantee immediate deletion by the provider.
+- **AI provider costs:** Students are not charged for using the MVP; the project team bears live-provider costs. The live mode is limited to eight Generation requests per Study session. Before implementation, the project records the selected provider and model's estimated cost for a full session using the supported PDF limit, and sets a project spending ceiling. The app must not make a provider request that would exceed the configured ceiling and explains in Norwegian when generation is unavailable because the limit has been reached.
 - **Language:** All student-facing text in the app, including navigation, buttons, instructions, error messages, questions, answers, summaries, and explanations, is in Norwegian. Relevant Latin anatomical terms are retained. When a question asks for a term in Latin, the answer gives the term in Latin; the surrounding text remains in Norwegian.
 - **Project limits:** The MVP is an individual-use web application for one text-based PDF at a time, with a three-month project horizon.
 - **Limits of generated content:** The app does not guarantee academic correctness or complete coverage of the course material.
@@ -157,6 +184,7 @@ The MVP does not include:
 - Quiz questions with three answer options, submitted as a whole quiz, with correct answers marked green and labeled “Riktig” with a check mark, incorrect student responses marked red and labeled “Feil” with an X, and brief explanations grounded in the PDF after submission.
 - Retaking a quiz with at least two questions, with the app ensuring that the questions appear in a different order from the immediately preceding attempt.
 - Source information, source-excerpt verification, and “Ubekreftet” labels, as specified in FR-5–FR-8 and FR-10.
+- Clear generation-failure behavior, keyless demo mode, and a limit of eight live Generation requests per Study session, as specified in FR-11–FR-13.
 - Clear PDF text-extraction and file-limit errors.
 - Individual use through a simple web interface.
 
@@ -174,20 +202,22 @@ A test passes when the app meets all specified outcomes for that test. Any unmet
 
 ### Primary Metrics
 
-- **SM-1 — End-to-end study workflow:** As part of the MVP evaluation, the project team tests the app with the sample PDFs described above. For each PDF, they check that a student can upload it, have its text processed, generate all four resource types, and review the results without a blocking error. They check that the interface and generated content are in Norwegian and that relevant Latin anatomical terms are retained. They also check that selecting “Avslutt studieøkt,” closing the browser tab, refreshing, or reopening the app does not restore the PDF or generated resources, and that the student must upload the PDF again to start a new session. This is a project evaluation test, not something students need to do each time they use the app. This test checks whether the app meets FR-1 through FR-10 and the language requirement in Section 5.
+- **SM-1 — End-to-end study workflow:** As part of the MVP evaluation, the project team tests the app with the sample PDFs described above. For each PDF, they check that a student can upload it, have its text processed, generate all four resource types, and review the results without a blocking error. They check that the interface and generated content are in Norwegian and that relevant Latin anatomical terms are retained. They also check that selecting “Avslutt studieøkt,” closing the browser tab, refreshing, or reopening the app does not restore the PDF or generated resources, and that the student must upload the PDF again to start a new session. This is a project evaluation test, not something students need to do each time they use the app. This test checks whether the app meets FR-1 through FR-13 and the language requirement in Section 5.
 - **SM-2 — Source-reference inspection:** Check that every generated study item shows its PDF viewer page number(s) and a short source excerpt. Verify that each excerpt appears in the extracted text on its cited page, including a test item whose excerpt has been changed to text that does not appear on that page. Record matches, mismatches, and missing references, and check that items with missing or unverifiable source information are marked “Ubekreftet.” This test checks whether the app meets FR-5 through FR-8 and FR-10.
 - **SM-3 — PDF processing and file-limit errors:** Test one PDF from which no readable text can be extracted and one with selectable text on multiple pages where the app fails to extract readable text from at least one page. Also test otherwise valid text-based PDFs: one larger than 20 MB but no longer than 50 pages, and one longer than 50 pages but no larger than 20 MB. In each case, check that the app displays a clear error and generates no study resources. This test checks whether the app meets FR-2 and FR-3.
 - **SM-4 — Quiz interaction:** Verify that each quiz question has three answer options, the student submits the whole quiz, results mark correct answers in green and label them “Riktig” with a check mark, and mark incorrect student responses in red and label them “Feil” with an X. Also verify that results provide a brief explanation grounded in the PDF and, for a quiz with at least two questions, the app ensures a retake presents the questions in a different order from the immediately preceding attempt. This test checks whether the app meets FR-8.
+- **SM-5 — Generation failures, demo mode, and limits:** Use malformed mock responses, provider-unavailable responses, and timeouts to verify the app shows a Norwegian error and displays no partial resource. Follow the README without an API key to verify demo mode lets a student review all four resource types from the sample PDF and makes no provider requests. In live mode, verify the app allows at most eight Generation requests per Study session, counts failed requests, and makes no provider call after the limit is reached. This test checks whether the app meets FR-11 through FR-13.
 
 ### Counter-metric
 
 - The app is not considered successful if it fails to mark a study resource “Ubekreftet” when required source information is missing or its excerpt cannot be found on the cited page.
+- The app is not considered successful if a failed or malformed generation displays a partial resource, if demo mode requires an API key or makes provider calls, or if live mode exceeds the eight-request session limit or configured spending ceiling.
 
 A small amount of student feedback may also be collected to identify usability issues. Manual source checks show whether generated study resources match the PDF. They do not show whether the resources cover everything the student is expected to know for the course.
 
 ## 9. Open Questions
 
-No unresolved user-facing product questions remain. Architecture must still confirm that the selected provider supports the defined PDF limits and review its data-retention practices.
+No unresolved user-facing product questions remain. Before implementation, the project must select the provider and model, record the estimated cost of a full eight-request session using a Supported PDF, set the project spending ceiling, and confirm that the selected provider supports the defined PDF limits and review its data-retention practices. The public demo PDF must be cleared for redistribution and included with the documented demo setup.
 
 ## 10. Assumptions Index
 
