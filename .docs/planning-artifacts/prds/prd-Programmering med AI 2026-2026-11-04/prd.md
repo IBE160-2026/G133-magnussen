@@ -32,7 +32,7 @@ The MVP is designed for individual use, with one student using one text-based PD
 - Review the main ideas in course material without rereading the whole PDF repeatedly.
 - Practise recalling anatomy terms and related information.
 - Test understanding with quiz questions before seeing the answer.
-- Check generated study resources against the uploaded course material using page references and short source excerpts.
+- Check generated study resources against the uploaded course material using page references and short source excerpts, and open the cited PDF page beside the resource.
 
 ### 2.2 How a Student Uses the App
 
@@ -42,6 +42,7 @@ The MVP is designed for individual use, with one student using one text-based PD
   - **Path:**
     - The student uploads one supported PDF. After it is processed, they can create one or more of the four resource types from it: summaries, flashcards, quiz questions, and key concepts. The details of each resource type are specified in FR-5–FR-8.
   - **Practice with study resources:** The student reviews and practises with the generated resources, as specified in FR-5–FR-8.
+  - When the student selects a source page number, the app displays that PDF page beside the study resource so the student can inspect the excerpt in context.
   - **End the study session:** The student ends the session by selecting “Avslutt studieøkt” or closing the browser tab. The PDF and generated resources are not saved. If the student refreshes or reopens the app, a new session starts and the student must upload the PDF again.
   - **If PDF text cannot be extracted:** The app shows a clear error instead of proceeding as if the document had been processed.
 
@@ -49,9 +50,10 @@ The MVP is designed for individual use, with one student using one text-based PD
 
 - **Supported PDF** — A text-based PDF no larger than 20 MB and no longer than 50 pages.
 - **Usable page text** — At least 20 non-whitespace characters extracted from a PDF page. A page below this threshold is listed as having insufficient extracted text.
+- **PDF viewer page** — A page displayed in the app's PDF viewer and numbered from the first page of the PDF. Printed page numbers are not used.
 - **Study session** — The period in which a student uploads one PDF and creates or reviews study resources. A session ends when the student selects “Avslutt studieøkt” or closes the browser tab. If the student refreshes or reopens the app, a new session starts, and the PDF and generated resources are not restored. The student must upload the PDF again.
 - **Study resource** — A summary, flashcard, quiz question, or key concept generated from the uploaded PDF.
-- **Source reference** — Source information shown with a generated study resource: the PDF viewer page number(s) and a short source excerpt for every resource type. Printed page numbers are not used.
+- **Source reference** — Source information shown with a generated study resource: selectable PDF viewer page number(s) and a short source excerpt for every resource type.
 - **Unverified item** — A generated study item that is missing required source information, or whose source excerpt cannot be found in the extracted text on the cited PDF viewer page. The app displays the Norwegian label “Ubekreftet.”
 - **Generation request** — One student action that asks the app to generate one resource type (a summary, key-concept list, flashcard set, or quiz) from the uploaded PDF. All provider calls needed to complete that action count as one request for the session limit.
 
@@ -153,6 +155,16 @@ Source references help students find and check information in the uploaded PDF. 
 
 For each generated study item, the app checks whether its source excerpt appears in the extracted text on the cited PDF viewer page. The check allows for differences in whitespace and line breaks. If the excerpt is missing from that page, the page cannot be checked, or required source information is missing, the item is marked “Ubekreftet.” This check confirms that the excerpt appears on the page; it does not confirm that the generated content is academically correct.
 
+#### FR-14: Open a cited PDF page beside the resource
+
+When the student selects a PDF viewer page number in a source reference, the app displays that page in a PDF viewer beside the current study resource. The student can select any cited page number, and the study resource remains visible while the viewer changes pages.
+
+**Consequences (testable):**
+
+- Selecting a cited page number opens the corresponding page of the uploaded PDF in the viewer.
+- The displayed page uses PDF viewer numbering, starting at page 1, regardless of printed page labels.
+- When the student selects a different cited page number, the viewer displays that page while keeping the current resource visible.
+
 ### 4.5 Generation Limits and Cost
 
 #### FR-13: Limit live generation requests per Study session
@@ -161,7 +173,7 @@ In live mode, the student can make no more than eight Generation requests during
 
 ## 5. General Requirements
 
-- Details about source information, generation failures, demo mode, generation limits, PDF upload requirements, and study-session behavior are specified in FR-1–FR-13.
+- Details about source information and viewing cited PDF pages, generation failures, demo mode, generation limits, PDF upload requirements, and study-session behavior are specified in FR-1–FR-14.
 - **Uploaded data:** During architecture, review how the selected provider processes and retains uploaded PDFs and generated content. The app's session-only behavior does not by itself guarantee immediate deletion by the provider.
 - **AI provider costs:** Students are not charged for using the MVP; the project team bears live-provider costs. The live mode is limited to eight Generation requests per Study session. Before implementation, the project records the selected provider and model's estimated cost for a full session using the supported PDF limit, and sets a project spending ceiling. The app must not make a provider request that would exceed the configured ceiling and explains in Norwegian when generation is unavailable because the limit has been reached.
 - **Language:** All student-facing text in the app, including navigation, buttons, instructions, error messages, questions, answers, summaries, and explanations, is in Norwegian. Relevant Latin anatomical terms are retained. When a question asks for a term in Latin, the answer gives the term in Latin; the surrounding text remains in Norwegian.
@@ -191,6 +203,7 @@ The MVP does not include:
 - Quiz questions with three answer options, submitted as a whole quiz, with correct answers marked green and labeled “Riktig” with a check mark, incorrect student responses marked red and labeled “Feil” with an X, and brief explanations grounded in the PDF after submission.
 - Retaking a quiz with at least two questions, with the app ensuring that the questions appear in a different order from the immediately preceding attempt.
 - Source information, source-excerpt verification, and “Ubekreftet” labels, as specified in FR-5–FR-8 and FR-10.
+- Opening a cited PDF page beside its study resource, as specified in FR-14.
 - Clear generation-failure behavior, keyless demo mode, and a limit of eight live Generation requests per Study session, as specified in FR-11–FR-13.
 - Clear PDF text-extraction and file-limit errors.
 - Individual use through a simple web interface.
@@ -209,8 +222,8 @@ A test passes when the app meets all specified outcomes for that test. Any unmet
 
 ### Primary Metrics
 
-- **SM-1 — End-to-end study workflow:** As part of the MVP evaluation, the project team tests the app with the sample PDFs described above. For each PDF, they check that a student can upload it, have its text processed, generate all four resource types, and review the results without a blocking error. They check that the interface and generated content are in Norwegian and that relevant Latin anatomical terms are retained. They also check that selecting “Avslutt studieøkt,” closing the browser tab, refreshing, or reopening the app does not restore the PDF or generated resources, and that the student must upload the PDF again to start a new session. This is a project evaluation test, not something students need to do each time they use the app. This test checks whether the app meets FR-1 through FR-13 and the language requirement in Section 5.
-- **SM-2 — Source-reference inspection:** For each of the two or three supported sample PDFs, randomly select 20 generated study items across the four resource types. Verify that at least 18 of 20 items (90%) have a source excerpt that appears in the extracted text on the cited page. Any sampled item whose required source information is missing or whose excerpt does not appear on the cited page must be marked “Ubekreftet.” Include a test item with an excerpt changed to text that does not appear on its cited page. Record the number of matching and mismatching references and the number correctly marked “Ubekreftet.” This test checks whether the app meets FR-5 through FR-8 and FR-10.
+- **SM-1 — End-to-end study workflow:** As part of the MVP evaluation, the project team tests the app with the sample PDFs described above. For each PDF, they check that a student can upload it, have its text processed, generate all four resource types, and review the results without a blocking error. They check that the interface and generated content are in Norwegian and that relevant Latin anatomical terms are retained. They also check that selecting “Avslutt studieøkt,” closing the browser tab, refreshing, or reopening the app does not restore the PDF or generated resources, and that the student must upload the PDF again to start a new session. This is a project evaluation test, not something students need to do each time they use the app. This test checks whether the app meets FR-1 through FR-14 and the language requirement in Section 5.
+- **SM-2 — Source-reference inspection:** For each of the two or three supported sample PDFs, randomly select 20 generated study items across the four resource types. Verify that at least 18 of 20 items (90%) have a source excerpt that appears in the extracted text on the cited page. Any sampled item whose required source information is missing or whose excerpt does not appear on the cited page must be marked “Ubekreftet.” Include a test item with an excerpt changed to text that does not appear on its cited page. Select cited page numbers in the app and verify that each opens the correct PDF page beside the current resource. Record the number of matching and mismatching references and the number correctly marked “Ubekreftet.” This test checks whether the app meets FR-5 through FR-8, FR-10, and FR-14.
 - **SM-3 — PDF file limits and text availability:** Test a PDF larger than 20 MB and a PDF longer than 50 pages; in each case, verify that the app identifies the exceeded limit and does not process or generate resources. Test a PDF with pages both above and below the 20-character threshold, including an image-only page; verify that every page below the threshold is listed, its text is excluded from generation, and the student can either continue using text from pages above the threshold or cancel. Verify that no resources are generated before the student chooses to continue, and that the app blocks generation when no page has usable text or an unrecoverable processing error prevents page-level text availability from being determined. This test checks whether the app meets FR-2 and FR-3.
 - **SM-4 — Quiz interaction:** Verify that each quiz question has three answer options, the student submits the whole quiz, results mark correct answers in green and label them “Riktig” with a check mark, and mark incorrect student responses in red and label them “Feil” with an X. Also verify that results provide a brief explanation grounded in the PDF and, for a quiz with at least two questions, the app ensures a retake presents the questions in a different order from the immediately preceding attempt. This test checks whether the app meets FR-8.
 - **SM-5 — Generation failures, demo mode, and limits:** Use malformed mock responses, provider-unavailable responses, and timeouts to verify the app shows a Norwegian error and displays no partial resource. Follow the README without an API key to verify demo mode lets a student review all four resource types from the sample PDF and makes no provider requests. In live mode, verify the app allows at most eight Generation requests per Study session, counts failed requests, and makes no provider call after the limit is reached. This test checks whether the app meets FR-11 through FR-13.
