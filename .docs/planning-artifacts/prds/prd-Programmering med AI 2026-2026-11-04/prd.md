@@ -243,7 +243,7 @@ A small amount of student feedback may also be collected to identify usability i
 
 ## 9. Open Questions
 
-No unresolved user-facing product questions remain. Before implementation, the project must select the provider and model, record the estimated cost of a full eight-request session using a Supported PDF, set the project spending ceiling, and confirm that the selected PDF-text extraction and AI providers can handle the supported limits of 20 MB and 50 pages. If either provider cannot handle those limits, the Supported PDF limits must be revised before implementation. The project must also review provider data-retention practices. The public demo PDF must be cleared for redistribution and included with the documented demo setup.
+The user-facing behavior for source verification, generation failures, PDF page viewing, and keyless demo mode is specified in FR-1–FR-14. Before UX, architecture, and epics are finalized, the project must confirm that the selected PDF-text extraction and AI providers can handle the supported limits of 20 MB and 50 pages. If either provider cannot handle those limits, the Supported PDF limits must be revised. Before implementation, the project must select the provider and model, record the estimated cost of a full eight-request session using a Supported PDF, set the project spending ceiling, and review provider data-retention practices. The public demo PDF must be cleared for redistribution and included with the documented demo setup.
 
 ## 10. Assumptions Index
 
