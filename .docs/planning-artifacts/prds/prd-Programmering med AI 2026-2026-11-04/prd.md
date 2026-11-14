@@ -48,7 +48,7 @@ The MVP is designed for individual use, with one student using one text-based PD
 
 ## 3. Key Terms
 
-- **Supported PDF** — A text-based PDF no larger than 20 MB and no longer than 50 pages.
+- **Supported PDF** — A text-based PDF no larger than 20 MB (20,000,000 bytes, using decimal megabytes) and no longer than 50 pages.
 - **Usable page text** — At least 20 non-whitespace characters extracted from a PDF page. A page below this threshold is listed as having insufficient extracted text.
 - **PDF viewer page** — A page displayed in the app's PDF viewer and numbered from the first page of the PDF. Printed page numbers are not used.
 - **Topic** — A subject grouping identified in the uploaded PDF and used to organize summaries and key concepts.
