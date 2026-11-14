@@ -2,7 +2,7 @@
 title: AI Study Buddy PRD
 status: final
 created: 2026-11-04
-updated: 2026-11-09
+updated: 2026-11-14
 ---
 
 # PRD: AI Study Buddy
@@ -17,7 +17,7 @@ The MVP is a three-month individual student project. Requirements focus on obser
 
 AI Study Buddy helps students create study resources from one supported, text-based course PDF in a single study session. Students can create summaries, flashcards, quiz questions, and key concepts from the same uploaded PDF during that session.
 
-The product makes source checking part of the study flow by displaying the source information required for each resource type (see FR-5–FR-8). These references help students inspect the course material; they do not guarantee that generated content is academically correct or complete.
+The product makes source checking part of the study flow by displaying and checking the source information required for each resource type (see FR-5–FR-8 and FR-10). These references help students inspect the course material; they do not guarantee that generated content is academically correct or complete.
 
 The product operates in a landscape where existing tools already create study resources from uploaded material. Gemini Notebook provides source citations alongside generated answers and study activities; Quizlet offers study resources generated from uploaded notes and files. AI Study Buddy's product focus is a simple, single-PDF study session that brings four resource types together and makes page-level references visible across generated resources. This is a focused workflow, not a claim that source-grounded generation is unique. [Gemini Notebook source citations](https://support.google.com/gemininotebook/answer/16179559); [Quizlet AI study tools](https://quizlet.com/features/ai-study-tools).
 
@@ -32,7 +32,7 @@ The MVP is designed for individual use, with one student using one text-based PD
 - Review the main ideas in course material without rereading the whole PDF repeatedly.
 - Practise recalling anatomy terms and related information.
 - Test understanding with quiz questions before seeing the answer.
-- Check generated study resources against the uploaded course material using page references and, where available, short source excerpts.
+- Check generated study resources against the uploaded course material using page references and short source excerpts.
 
 ### 2.2 How a Student Uses the App
 
@@ -50,8 +50,8 @@ The MVP is designed for individual use, with one student using one text-based PD
 - **Supported PDF** — A text-based PDF no larger than 20 MB and no longer than 50 pages.
 - **Study session** — The period in which a student uploads one PDF and creates or reviews study resources. A session ends when the student selects “Avslutt studieøkt” or closes the browser tab. If the student refreshes or reopens the app, a new session starts, and the PDF and generated resources are not restored. The student must upload the PDF again.
 - **Study resource** — A summary, flashcard, quiz question, or key concept generated from the uploaded PDF.
-- **Source reference** — Source information shown with a generated study resource: the PDF viewer page number(s) for every resource type when available, and a short source excerpt for flashcards, quiz questions, and key concepts. Printed page numbers are not used.
-- **Unverified item** — A summary point without a source page number, or another generated study item missing required source information. The app displays the Norwegian label “Ubekreftet.”
+- **Source reference** — Source information shown with a generated study resource: the PDF viewer page number(s) and a short source excerpt for every resource type. Printed page numbers are not used.
+- **Unverified item** — A generated study item that is missing required source information, or whose source excerpt cannot be found in the extracted text on the cited PDF viewer page. The app displays the Norwegian label “Ubekreftet.”
 
 ## 4. What the App Does
 
@@ -97,19 +97,19 @@ After a Supported PDF has been uploaded and successfully processed, the student 
 
 #### FR-5: Generate summaries
 
-The app organizes the uploaded PDF by topic and generates a summary of the main ideas for each topic. Each point in a topic-level summary shows the source page number(s) for the information. A summary point without a source page number is marked “Ubekreftet.”
+The app organizes the uploaded PDF by topic and generates a summary of the main ideas for each topic. Each point in a topic-level summary shows the source page number(s) and a short excerpt from the PDF that supports the point. A summary point missing either source detail is marked “Ubekreftet.”
 
 #### FR-6: Generate key concepts
 
-For each topic in the uploaded PDF, the app generates a list of key concepts. Each key concept shows its source page number(s) and a short excerpt from the PDF that explains the concept. A key concept missing either its source page number(s) or source excerpt is marked “Ubekreftet.”
+For each topic in the uploaded PDF, the app generates a list of key concepts. Each key concept shows its source page number(s) and a short excerpt from the PDF that explains the concept. A key concept missing either source detail is marked “Ubekreftet.”
 
 #### FR-7: Practise with flashcards
 
-The app generates up to 10 flashcards per request, depending on how much relevant information the PDF contains. It may generate fewer when the source material does not support more. The app presents a flashcard question first. The student can reveal the answer. The answer view shows source page number(s) when available and a short excerpt from the source text. If either source detail is missing, the flashcard is marked “Ubekreftet.”
+The app generates up to 10 flashcards per request, depending on how much relevant information the PDF contains. It may generate fewer when the source material does not support more. The app presents a flashcard question first. The student can reveal the answer. The answer view shows source page number(s) and a short excerpt from the source text. If either source detail is missing, the flashcard is marked “Ubekreftet.”
 
 #### FR-8: Answer quiz questions
 
-Each quiz contains up to 10 questions, depending on how much relevant information the PDF contains. The app may generate fewer when the source material does not support more. Each question has three answer options and one correct answer. The student completes and submits the whole quiz before seeing the results. After submission, the app marks correct answers in green with a check mark and the label “Riktig,” and the student's incorrect responses in red with an X and the label “Feil.” It provides a brief explanation grounded in the PDF for each answer. It shows source page number(s) when available and a short excerpt from the source text. If either source detail is missing, the quiz item is marked “Ubekreftet.” For quizzes with at least two questions, the app ensures that each retake presents the questions in a different order from the immediately preceding attempt.
+Each quiz contains up to 10 questions, depending on how much relevant information the PDF contains. The app may generate fewer when the source material does not support more. Each question has three answer options and one correct answer. The student completes and submits the whole quiz before seeing the results. After submission, the app marks correct answers in green with a check mark and the label “Riktig,” and the student's incorrect responses in red with an X and the label “Feil.” It provides a brief explanation grounded in the PDF for each answer. It shows source page number(s) and a short excerpt from the source text. If either source detail is missing, the quiz item is marked “Ubekreftet.” For quizzes with at least two questions, the app ensures that each retake presents the questions in a different order from the immediately preceding attempt.
 
 
 ### 4.3 What Happens When the Study Session Ends
@@ -120,11 +120,15 @@ The student can use multiple resource types created from the same PDF during the
 
 ### 4.4 Source References and Checking
 
-Source references help students find and check information in the uploaded PDF. They do not guarantee that generated study resources are correct or cover the whole course.
+Source references help students find and check information in the uploaded PDF. The app checks whether each source excerpt appears in the extracted text on its cited PDF viewer page. This check confirms that the excerpt appears on the page; it does not guarantee that generated study resources are academically correct or cover the whole course.
+
+#### FR-10: Verify source excerpts
+
+For each generated study item, the app checks whether its source excerpt appears in the extracted text on the cited PDF viewer page. The check allows for differences in whitespace and line breaks. If the excerpt is missing from that page, the page cannot be checked, or required source information is missing, the item is marked “Ubekreftet.” This check confirms that the excerpt appears on the page; it does not confirm that the generated content is academically correct.
 
 ## 5. General Requirements
 
-- Details about source information, error messages, PDF upload requirements, and study-session behavior are specified in FR-1–FR-9.
+- Details about source information, error messages, PDF upload requirements, and study-session behavior are specified in FR-1–FR-10.
 - **Uploaded data:** During architecture, review how the selected provider processes and retains uploaded PDFs and generated content. The app's session-only behavior does not by itself guarantee immediate deletion by the provider.
 - **Language:** All student-facing text in the app, including navigation, buttons, instructions, error messages, questions, answers, summaries, and explanations, is in Norwegian. Relevant Latin anatomical terms are retained. When a question asks for a term in Latin, the answer gives the term in Latin; the surrounding text remains in Norwegian.
 - **Project limits:** The MVP is an individual-use web application for one text-based PDF at a time, with a three-month project horizon.
@@ -152,7 +156,7 @@ The MVP does not include:
 - Flashcards with a question-first, reveal-answer interaction.
 - Quiz questions with three answer options, submitted as a whole quiz, with correct answers marked green and labeled “Riktig” with a check mark, incorrect student responses marked red and labeled “Feil” with an X, and brief explanations grounded in the PDF after submission.
 - Retaking a quiz with at least two questions, with the app ensuring that the questions appear in a different order from the immediately preceding attempt.
-- Source information and “Ubekreftet” labels, as specified in FR-5–FR-8.
+- Source information, source-excerpt verification, and “Ubekreftet” labels, as specified in FR-5–FR-8 and FR-10.
 - Clear PDF text-extraction and file-limit errors.
 - Individual use through a simple web interface.
 
@@ -170,14 +174,14 @@ A test passes when the app meets all specified outcomes for that test. Any unmet
 
 ### Primary Metrics
 
-- **SM-1 — End-to-end study workflow:** As part of the MVP evaluation, the project team tests the app with the sample PDFs described above. For each PDF, they check that a student can upload it, have its text processed, generate all four resource types, and review the results without a blocking error. They check that the interface and generated content are in Norwegian and that relevant Latin anatomical terms are retained. They also check that selecting “Avslutt studieøkt,” closing the browser tab, refreshing, or reopening the app does not restore the PDF or generated resources, and that the student must upload the PDF again to start a new session. This is a project evaluation test, not something students need to do each time they use the app. This test checks whether the app meets FR-1 through FR-9 and the language requirement in Section 5.
-- **SM-2 — Source-reference inspection:** Manually check that each summary point shows the PDF page number(s) where its information was found. Check that the cited pages and excerpts for flashcards, quiz questions, and key concepts support the information shown. Record matches, mismatches, and missing references, and check that items missing required source information are marked “Ubekreftet.” This test checks whether the app meets FR-5 through FR-8.
+- **SM-1 — End-to-end study workflow:** As part of the MVP evaluation, the project team tests the app with the sample PDFs described above. For each PDF, they check that a student can upload it, have its text processed, generate all four resource types, and review the results without a blocking error. They check that the interface and generated content are in Norwegian and that relevant Latin anatomical terms are retained. They also check that selecting “Avslutt studieøkt,” closing the browser tab, refreshing, or reopening the app does not restore the PDF or generated resources, and that the student must upload the PDF again to start a new session. This is a project evaluation test, not something students need to do each time they use the app. This test checks whether the app meets FR-1 through FR-10 and the language requirement in Section 5.
+- **SM-2 — Source-reference inspection:** Check that every generated study item shows its PDF viewer page number(s) and a short source excerpt. Verify that each excerpt appears in the extracted text on its cited page, including a test item whose excerpt has been changed to text that does not appear on that page. Record matches, mismatches, and missing references, and check that items with missing or unverifiable source information are marked “Ubekreftet.” This test checks whether the app meets FR-5 through FR-8 and FR-10.
 - **SM-3 — PDF processing and file-limit errors:** Test one PDF from which no readable text can be extracted and one with selectable text on multiple pages where the app fails to extract readable text from at least one page. Also test otherwise valid text-based PDFs: one larger than 20 MB but no longer than 50 pages, and one longer than 50 pages but no larger than 20 MB. In each case, check that the app displays a clear error and generates no study resources. This test checks whether the app meets FR-2 and FR-3.
 - **SM-4 — Quiz interaction:** Verify that each quiz question has three answer options, the student submits the whole quiz, results mark correct answers in green and label them “Riktig” with a check mark, and mark incorrect student responses in red and label them “Feil” with an X. Also verify that results provide a brief explanation grounded in the PDF and, for a quiz with at least two questions, the app ensures a retake presents the questions in a different order from the immediately preceding attempt. This test checks whether the app meets FR-8.
 
 ### Counter-metric
 
-- The app is not considered successful if it fails to mark a study resource “Ubekreftet” when it is missing source information required for its resource type.
+- The app is not considered successful if it fails to mark a study resource “Ubekreftet” when required source information is missing or its excerpt cannot be found on the cited page.
 
 A small amount of student feedback may also be collected to identify usability issues. Manual source checks show whether generated study resources match the PDF. They do not show whether the resources cover everything the student is expected to know for the course.
 
