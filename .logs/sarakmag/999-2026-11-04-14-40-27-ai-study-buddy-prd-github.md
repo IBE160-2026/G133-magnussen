@@ -50,3 +50,20 @@ PRD-statusen ble endret fra `draft` til `final`, og `updated` satt til 2026-11-0
 ### Åpne punkter
 - Bekreft i arkitekturarbeidet at valgt språkmodell kan håndtere PDF-er på opptil 50 sider og 20 MB. Juster grensene før implementering hvis den ikke kan det.
 - Undersøk hvor lenge valgt språkmodell-leverandør lagrer opplastede PDF-er og generert innhold.
+
+## 2026-11-14 kl. 17:37 — sarakmag
+
+### Oppgave
+Lag en lavoppløst skjermskisse for AI Study Buddy med norsk grensesnitt, basert på PRD-en. Skissen skal dekke opplasting, tekstuttrekk, ressursvalg, genereringsfeil og kildekontroll.
+
+### Plan
+- Gå gjennom PRD, prosjektets UX-ferdighet og tidligere sesjonslogg.
+- Lag en brukerflyt og tekstbaserte skjermrammer uten å finne på en visuell profil.
+- Registrer beslutningene som fortsatt må tas før hi-fi-utforming.
+
+### Resultat
+Opprettet `.docs/planning-artifacts/ux-designs/ux-AI-Study-Buddy-2026-11-14/screen-sketch.md` med fem skjermtilstander, Mermaid-flyt, responsive kildevisning, forslag til norsk feilmikrotekst og grenser for demo, kildeverifisering og studieøkt. Skissen viser at mock-svar brukes i utvikling, mens demo-modus bruker lagrede eksempler. `git diff --check` var uten funn for sporede endringer.
+
+### Åpne punkter
+- Avklar om laptop eller mobil er hovedflate, og velg visuell stil før hi-fi-utforming.
+- Gjenta provider-test og gjennomfør appens grense-/uttrekksflyt som beskrevet i issues.md.
