@@ -1,0 +1,171 @@
+[
+  {
+    "title": "Hvilken muskeltype styres normalt av viljen?",
+    "text": "Viljestyrt muskulatur som kan overføre kraft til knoklene via sener.",
+    "options": [
+      "Glatt muskulatur",
+      "Skjelettmuskulatur",
+      "Hjertemuskulatur"
+    ],
+    "answer": 1,
+    "pages": [
+      1
+    ]
+  },
+  {
+    "title": "Hva heter bindevevet rundt en bunt av muskelfibre?",
+    "text": "Bindevev som omslutter bunter av muskelfibre.",
+    "options": [
+      "Endomysium",
+      "Epimusium",
+      "Perimusium"
+    ],
+    "answer": 2,
+    "pages": [
+      2
+    ]
+  },
+  {
+    "title": "Hvilke to proteiner kobles sammen i tverrbroene under en muskelsammentrekning?",
+    "text": "Koblinger mellom myosin og aktin under en muskelsammentrekning.",
+    "options": [
+      "Aktin og myosin",
+      "Kollagen og elastin",
+      "Hemoglobin og myoglobin"
+    ],
+    "answer": 0,
+    "pages": [
+      3
+    ]
+  },
+  {
+    "title": "Hvordan orienteres et fysiologisk tverrsnitt i forhold til muskelfibrene?",
+    "text": "Tverrsnitt målt vinkelrett på muskelfibrenes lengdeakse. Et større fysiologisk tverrsnitt gir grunnlag for større kraft.",
+    "options": [
+      "Parallelt med fibrene",
+      "Vinkelrett på fibrenes lengdeakse",
+      "Skrått langs fibrene"
+    ],
+    "answer": 1,
+    "pages": [
+      4
+    ]
+  },
+  {
+    "title": "Hvilken type muskelarbeid gjør du når du holder en vekt helt stille?",
+    "text": "Muskelen utvikler spenning uten synlig bevegelse, som når du holder en vekt stille.",
+    "options": [
+      "Konsentrisk",
+      "Eksentrisk",
+      "Isometrisk"
+    ],
+    "answer": 2,
+    "pages": [
+      5
+    ]
+  },
+  {
+    "title": "Hvilken fibertype har langsom kontraksjon og høy utholdenhet?",
+    "text": "Langsom kontraksjon og høy utholdenhet.",
+    "options": [
+      "Type I",
+      "Type IIa",
+      "Type IIx"
+    ],
+    "answer": 0,
+    "pages": [
+      6
+    ]
+  },
+  {
+    "title": "Hva kalles festepunktet på knokkelen som vanligvis beveger seg ved sammentrekning?",
+    "text": "I den vanlige anatomiske beskrivelsen er festet på knokkelen som beveger seg under sammentrekningen.",
+    "options": [
+      "Utspring",
+      "Feste",
+      "Muskelbuk"
+    ],
+    "answer": 1,
+    "pages": [
+      8
+    ]
+  },
+  {
+    "title": "Hva kalles hovedbevegeren i en bevegelse?",
+    "text": "Muskelen som fungerer som hovedbeveger i en bestemt bevegelse.",
+    "options": [
+      "Synergist",
+      "Antagonist",
+      "Agonist"
+    ],
+    "answer": 2,
+    "pages": [
+      9
+    ]
+  },
+  {
+    "title": "Hvilke tre opplysninger beskriver hvor en muskel fester seg og hva den gjør?",
+    "text": "Tre opplysninger som brukes til å beskrive musklene i pensum, organisert etter kroppsregion.",
+    "options": [
+      "Utspring, feste og funksjon",
+      "Tykkelse, fibertype og lengde",
+      "Kraft, blodforsyning og temperatur"
+    ],
+    "answer": 0,
+    "pages": [
+      10
+    ]
+  },
+  {
+    "title": "Hvilken av disse musklene bidrar til å bøye albuen?",
+    "text": "Når albuen bøyes, bidrar blant annet biceps brachii, brachialis og brachioradialis.",
+    "options": [
+      "Gluteus medius",
+      "Brachialis",
+      "Soleus"
+    ],
+    "answer": 1,
+    "pages": [
+      11
+    ]
+  },
+  {
+    "title": "Hvilken ankelbevegelse skjer når du løfter hælen for å stå på tå?",
+    "text": "Bevegelsen når du peker foten nedover, som når du står på tå. Gastrocnemius og soleus bidrar.",
+    "options": [
+      "Dorsalfleksjon",
+      "Inversjon",
+      "Plantarfleksjon"
+    ],
+    "answer": 2,
+    "pages": [
+      12
+    ]
+  },
+  {
+    "title": "Hva er hovedrollen til stabiliserende muskulatur?",
+    "text": "Stabiliserende muskulatur bidrar til å holde leddet stabilt under belastning eller bevegelse.",
+    "options": [
+      "Leddstabilitet",
+      "Øke leddutslaget",
+      "Starte alle bevegelser"
+    ],
+    "answer": 0,
+    "pages": [
+      13
+    ]
+  },
+  {
+    "title": "Hva er hovedoppgaven til postural muskulatur?",
+    "text": "Muskulatur som bidrar til å opprettholde kroppsstillingen.",
+    "options": [
+      "Å bøye albuen",
+      "Å bidra til å opprettholde kroppsstillingen",
+      "Å strekke ankelen"
+    ],
+    "answer": 1,
+    "pages": [
+      14
+    ]
+  }
+]

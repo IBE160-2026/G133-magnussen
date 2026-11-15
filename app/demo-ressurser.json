@@ -1,0 +1,125 @@
+{
+  "summary": [
+    {
+      "title": "Albuefleksjon",
+      "text": "Når albuen bøyes, blir vinkelen i leddet mindre. Biceps brachii, brachialis og brachioradialis bidrar til bevegelsen.",
+      "pages": [
+        1
+      ]
+    },
+    {
+      "title": "Biceps brachii",
+      "text": "Biceps brachii krysser skulderen og albuen. Den bidrar til albuefleksjon og til å dreie underarmen slik at håndflaten vender fremover.",
+      "pages": [
+        2
+      ]
+    },
+    {
+      "title": "Albueekstensjon",
+      "text": "Triceps brachii strekker albuen. Agonist og antagonist beskriver musklenes roller i den aktuelle bevegelsen og kan bytte når bevegelsesretningen endres.",
+      "pages": [
+        3
+      ]
+    }
+  ],
+  "concepts": [
+    {
+      "title": "Albuefleksjon",
+      "text": "Bevegelsen som gjør vinkelen i albueleddet mindre.",
+      "pages": [
+        1
+      ]
+    },
+    {
+      "title": "Supinasjon",
+      "text": "Rotasjon av underarmen slik at håndflaten vender fremover i anatomisk utgangsstilling.",
+      "pages": [
+        2
+      ]
+    },
+    {
+      "title": "Antagonist",
+      "text": "En muskel som virker motsatt av agonisten i den aktuelle bevegelsen.",
+      "pages": [
+        3
+      ]
+    }
+  ],
+  "flashcards": [
+    {
+      "title": "Hva skjer med vinkelen i albueleddet ved fleksjon?",
+      "text": "Vinkelen blir mindre.",
+      "pages": [
+        1
+      ]
+    },
+    {
+      "title": "Hva heter rotasjonen som vender håndflaten fremover i anatomisk utgangsstilling?",
+      "text": "Supinasjon.",
+      "pages": [
+        2
+      ]
+    },
+    {
+      "title": "Hvilken muskel strekker albuen?",
+      "text": "Triceps brachii.",
+      "pages": [
+        3
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "title": "Hvilken muskel bidrar til albuefleksjon?",
+      "text": "Brachialis bøyer albueleddet.",
+      "pages": [
+        1
+      ],
+      "options": [
+        "Brachialis",
+        "Soleus",
+        "Gluteus maximus"
+      ],
+      "answer": 0
+    },
+    {
+      "title": "Hva heter bevegelsen som dreier håndflaten fremover i anatomisk utgangsstilling?",
+      "text": "Ved supinasjon dreies underarmen slik at håndflaten vender fremover.",
+      "pages": [
+        2
+      ],
+      "options": [
+        "Pronasjon",
+        "Supinasjon",
+        "Ekstensjon"
+      ],
+      "answer": 1
+    },
+    {
+      "title": "Hvilken muskel strekker albuen?",
+      "text": "Triceps brachii ligger på baksiden av overarmen og strekker albueleddet.",
+      "pages": [
+        3
+      ],
+      "options": [
+        "Brachioradialis",
+        "Brachialis",
+        "Triceps brachii"
+      ],
+      "answer": 2
+    },
+    {
+      "title": "Hva kalles en muskel som virker motsatt av hovedbevegeren?",
+      "text": "Antagonisten har motsatt virkning av agonisten i den aktuelle bevegelsen.",
+      "pages": [
+        3
+      ],
+      "options": [
+        "Antagonist",
+        "Synergist",
+        "Agonist"
+      ],
+      "answer": 0
+    }
+  ]
+}
