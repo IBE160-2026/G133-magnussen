@@ -23,7 +23,7 @@
   .quiz-tag{font-weight:750}
   .quiz-feedback{margin:.55rem 0;font-weight:750}
   .excerpt{white-space:pre-wrap;overflow-wrap:anywhere}.group{padding:.5rem .75rem;background:#eaf2fd;margin:.5rem 0;border-radius:.4rem}
-  iframe{width:100%;height:65vh;border:1px solid #cad9ed}
+  .pdf-page{display:block;width:100%;height:auto;border:1px solid #cad9ed;margin-top:.6rem}
   [hidden]{display:none!important}
   @media(max-width:48rem){.layout{grid-template-columns:1fr}}
 </style>
@@ -44,12 +44,15 @@
   </section>
   <div class="layout" id="result" hidden>
     <section><h2>Tekstgrunnlag</h2><p id="counts"></p><p id="summary-status"></p><nav id="resources" aria-label="Studieressurser" hidden><button type="button" id="show-summary">Sammendrag</button> <button type="button" id="show-concepts">Nøkkelbegreper</button> <button type="button" id="show-flashcards">Flashcards</button> <button type="button" id="show-quiz">Quiz</button></nav><section id="summary" aria-labelledby="summary-title" hidden><h3 id="summary-title" tabindex="-1">Faglig sammendrag</h3><div id="summary-items"></div></section><h3>Gå til PDF-side</h3><nav id="sidevalg" class="sidevalg" aria-label="Velg PDF-side"></nav><details id="raw-text"><summary>Vis råtekst fra PDF-en</summary><div id="pages"></div></details></section>
-    <aside><h2 id="viewer-title" tabindex="-1">PDF-visning</h2><p id="selected">Velg en side.</p><a id="open" target="_blank" rel="noopener" hidden>Åpne i ny fane</a><iframe id="pdf" title="Valgt PDF-side" hidden></iframe></aside>
+    <aside><h2 id="viewer-title" tabindex="-1">PDF-visning</h2><p id="selected" role="status">Velg en side.</p><a id="open" target="_blank" rel="noopener" hidden>Åpne hele PDF-en i ny fane</a><img id="pdf" class="pdf-page" alt="" hidden></aside>
   </div>
 </main>
 <script type="module">
   const $ = id => document.getElementById(id);
   let pdfUrl;
+  let pdfFile;
+  let pageRequest;
+  let pageUrl;
   let pending;
   let currentSummary = null;
   let currentConcepts = null;
@@ -65,6 +68,8 @@
     pending = null;
     if (pdfUrl) URL.revokeObjectURL(pdfUrl);
     pdfUrl = null;
+    pdfFile = null;
+    clearPage();
     $('pdf').removeAttribute('src');
     $('pdf').hidden = $('open').hidden = $('result').hidden = $('reset').hidden = true;
     $('selected').textContent = 'Velg en side.';
@@ -82,13 +87,37 @@
     revealed = false;
     $('resources').hidden = true;
   }
-  function showPage(number) {
-    const url = pdfUrl + '#page=' + number;
-    $('pdf').src = $('open').href = url;
-    $('pdf').hidden = $('open').hidden = false;
-    $('selected').textContent = 'Side ' + number;
-    if (matchMedia('(max-width:48rem)').matches) $('viewer-title').focus();
+  function clearPage() {
+    pageRequest?.abort();
+    pageRequest = null;
+    if (pageUrl) URL.revokeObjectURL(pageUrl);
+    pageUrl = null;
+    $('pdf').removeAttribute('src');
+    $('pdf').hidden = true;
   }
+  async function showPage(number) {
+    clearPage();
+    const request = new AbortController();
+    pageRequest = request;
+    $('open').href = pdfUrl + '#page=' + number;
+    $('open').hidden = false;
+    $('selected').textContent = 'Henter side ' + number + ' …';
+    if (matchMedia('(max-width:48rem)').matches) $('viewer-title').focus();
+    try {
+      const response = await fetch('/pdf-page/' + number, {method: 'POST', body: pdfFile, signal: request.signal});
+      if (!response.ok) throw Error('Siden kunne ikke vises.');
+      const image = await response.blob();
+      if (request !== pageRequest) return;
+      pageUrl = URL.createObjectURL(image);
+      $('pdf').src = pageUrl;
+      $('pdf').alt = 'Side ' + number + ' i PDF-en';
+      $('pdf').hidden = false;
+      $('selected').textContent = 'Side ' + number;
+    } catch {
+      if (request === pageRequest) $('selected').textContent = 'Kunne ikke vise side ' + number + '. Du kan åpne hele PDF-en i en ny fane.';
+    }
+  }
+
   function appendSources(article, item) {
     const sources = item.sources || item.pages.map(page => ({ page }));
     for (const { page: number, excerpt, verified } of sources) {
@@ -352,6 +381,7 @@
       const result = await response.json();
       if (request !== pending) return;
       if (!response.ok) throw Error(result.error);
+      pdfFile = file;
       pdfUrl = URL.createObjectURL(file);
       showPages(result.pages, result.summary, result.concepts, result.flashcards, result.quiz, result.summaryStatus);
       $('status').textContent = file.name + ' er klar.';
