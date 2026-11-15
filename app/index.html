@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="nb">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Study Buddy</title>
+<style>
+  *{box-sizing:border-box}body{margin:0;background:#eaf2fd;color:#192e50;font:1rem/1.5 system-ui}
+  header{background:#fff;border-bottom:1px solid #cad9ed;padding:1rem max(1rem,calc((100% - 70rem)/2));font-weight:750;white-space:nowrap}
+  main{max-width:72rem;margin:auto;padding:1rem}
+  section,aside{background:#fcfdff;border:1px solid #cad9ed;border-radius:.75rem;padding:clamp(1rem,3vw,2rem)}
+  h1,h2{line-height:1.15;margin:0 0 .75rem}p{margin:.5rem 0 1rem}
+  label{display:block;font-weight:700;margin-bottom:.5rem}
+  button,a{font:inherit}button{background:#234d91;color:#fff;border:0;border-radius:.4rem;padding:.55rem .8rem;margin:.2rem 0;cursor:pointer}a{color:#234d91}
+  :focus-visible{outline:3px solid #2759a8;outline-offset:3px}
+  .layout{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:1rem;align-items:start}
+  .sidevalg{display:flex;flex-wrap:wrap;gap:.4rem;margin:.75rem 0 1rem}
+  #summary{margin:1rem 0;padding:1rem}
+  .page{border-top:1px solid #cad9ed;padding:.65rem 0}
+  .quiz-option{display:flex;align-items:baseline;gap:.55rem;padding:.5rem .7rem;border:1px solid transparent;border-radius:.4rem;font-weight:500}
+  .quiz-option input{margin:0}
+  .quiz-correct{background:#e7f4eb;color:#155332;border-color:#8fba9c}
+  .quiz-wrong{background:#fff0ef;color:#862d2b;border-color:#d4a29e}
+  .quiz-tag{font-weight:750}
+  .quiz-feedback{margin:.55rem 0;font-weight:750}
+  .excerpt{white-space:pre-wrap;overflow-wrap:anywhere}.group{padding:.5rem .75rem;background:#eaf2fd;margin:.5rem 0;border-radius:.4rem}
+  iframe{width:100%;height:65vh;border:1px solid #cad9ed}
+  [hidden]{display:none!important}
+  @media(max-width:48rem){.layout{grid-template-columns:1fr}}
+</style>
+<header>AI Study Buddy</header>
+<main>
+  <section>
+    <h1>Les en kurs-PDF</h1>
+    <form id="upload">
+    <label for="file">Velg PDF</label>
+    <input id="file" type="file" accept=".pdf,application/pdf">
+    <label><input id="ai-summary" type="checkbox"> Lag studieressurser med Gemini</label>
+    <p>Når valget er på, sendes uttrekkbar tekst fra nye PDF-er til Gemini. Selve PDF-filen behandles lokalt.</p>
+    <button type="submit">Les PDF</button>
+    </form>
+    <p>Én PDF, opptil 20 MB og 50 sider. Filen behandles på denne maskinen.</p>
+    <p id="status" role="status"></p>
+    <button id="reset" hidden>Avslutt økten</button>
+  </section>
+  <div class="layout" id="result" hidden>
+    <section><h2>Tekstgrunnlag</h2><p id="counts"></p><p id="summary-status"></p><nav id="resources" aria-label="Studieressurser" hidden><button type="button" id="show-summary">Sammendrag</button> <button type="button" id="show-concepts">Nøkkelbegreper</button> <button type="button" id="show-flashcards">Flashcards</button> <button type="button" id="show-quiz">Quiz</button></nav><section id="summary" aria-labelledby="summary-title" hidden><h3 id="summary-title" tabindex="-1">Faglig sammendrag</h3><div id="summary-items"></div></section><h3>Gå til PDF-side</h3><nav id="sidevalg" class="sidevalg" aria-label="Velg PDF-side"></nav><details id="raw-text"><summary>Vis råtekst fra PDF-en</summary><div id="pages"></div></details></section>
+    <aside><h2 id="viewer-title" tabindex="-1">PDF-visning</h2><p id="selected">Velg en side.</p><a id="open" target="_blank" rel="noopener" hidden>Åpne i ny fane</a><iframe id="pdf" title="Valgt PDF-side" hidden></iframe></aside>
+  </div>
+</main>
+<script type="module">
+  const $ = id => document.getElementById(id);
+  let pdfUrl;
+  let pending;
+  let currentSummary = null;
+  let currentConcepts = null;
+  let currentFlashcards = null;
+  let quizRounds = [];
+  let quizRound = 0;
+  let quizAnswers = [];
+  let quizSubmitted = false;
+  let cardIndex = 0;
+  let revealed = false;
+  function reset() {
+    pending?.abort();
+    pending = null;
+    if (pdfUrl) URL.revokeObjectURL(pdfUrl);
+    pdfUrl = null;
+    $('pdf').removeAttribute('src');
+    $('pdf').hidden = $('open').hidden = $('result').hidden = $('reset').hidden = true;
+    $('selected').textContent = 'Velg en side.';
+    $('status').textContent = '';
+    $('pages').replaceChildren();
+    $('summary-items').replaceChildren();
+    $('summary').hidden = true;
+    $('raw-text').open = false;
+    currentSummary = currentConcepts = currentFlashcards = null;
+    quizRounds = [];
+    quizRound = 0;
+    quizAnswers = [];
+    quizSubmitted = false;
+    cardIndex = 0;
+    revealed = false;
+    $('resources').hidden = true;
+  }
+  function showPage(number) {
+    const url = pdfUrl + '#page=' + number;
+    $('pdf').src = $('open').href = url;
+    $('pdf').hidden = $('open').hidden = false;
+    $('selected').textContent = 'Side ' + number;
+    if (matchMedia('(max-width:48rem)').matches) $('viewer-title').focus();
+  }
+  function appendSources(article, item) {
+    const sources = item.sources || item.pages.map(page => ({ page }));
+    for (const { page: number, excerpt, verified } of sources) {
+      const source = document.createElement('button');
+      source.type = 'button';
+      source.textContent = 'Åpne kilde · Side ' + number;
+      source.addEventListener('click', () => showPage(number));
+      if (excerpt) {
+        const quote = document.createElement('p');
+        quote.textContent = (verified ? 'Kildeutdrag: ' : 'Ubekreftet kildeutdrag: ') + excerpt;
+        article.append(quote);
+      }
+      article.append(source);
+    }
+  }
+  function selectResource(title) {
+    $('summary-title').textContent = title;
+    $('show-summary').setAttribute('aria-pressed', String(title === 'Faglig sammendrag'));
+    $('show-concepts').setAttribute('aria-pressed', String(title === 'Nøkkelbegreper'));
+    $('show-flashcards').setAttribute('aria-pressed', String(title === 'Flashcards'));
+    $('show-quiz').setAttribute('aria-pressed', String(title === 'Quiz'));
+    $('summary').hidden = false;
+  }
+  function showFlashcards() {
+    if (!currentFlashcards?.length) return;
+    selectResource('Flashcards');
+    const container = $('summary-items');
+    const card = currentFlashcards[cardIndex];
+    const progress = document.createElement('p');
+    progress.textContent = 'Kort ' + (cardIndex + 1) + ' av ' + currentFlashcards.length;
+    const question = document.createElement('h4');
+    question.textContent = card.title;
+    question.tabIndex = -1;
+    container.replaceChildren(progress, question);
+    const reveal = document.createElement('button');
+    reveal.textContent = revealed ? 'Skjul svar' : 'Vis svar';
+    reveal.addEventListener('click', () => { revealed = !revealed; showFlashcards(); });
+    container.append(reveal);
+    if (revealed) {
+      const answer = document.createElement('p');
+      answer.textContent = card.text;
+      answer.tabIndex = -1;
+      container.append(answer);
+      appendSources(container, card);
+      answer.focus();
+    } else {
+      question.focus();
+    }
+    for (const [label, step] of [['Forrige kort', -1], ['Neste kort', 1]]) {
+      const button = document.createElement('button');
+      button.textContent = label;
+      const next = cardIndex + step;
+      button.disabled = next < 0 || next >= currentFlashcards.length;
+      button.addEventListener('click', () => { cardIndex = next; revealed = false; showFlashcards(); });
+      container.append(document.createTextNode(' '), button);
+    }
+  }
+  function shuffleRound(questions) {
+    const shuffled = [...questions];
+    for (let index = shuffled.length - 1; index > 0; index--) {
+      const other = Math.floor(Math.random() * (index + 1));
+      [shuffled[index], shuffled[other]] = [shuffled[other], shuffled[index]];
+    }
+    if (shuffled.length > 1 && shuffled.every((question, index) => question === questions[index])) {
+      shuffled.push(shuffled.shift());
+    }
+    return shuffled;
+  }
+  function showQuiz() {
+    const currentQuiz = quizRounds[quizRound];
+    selectResource('Quiz');
+    const container = $('summary-items');
+    if (!currentQuiz?.length) {
+      const notice = document.createElement('p');
+      notice.textContent = 'Ingen quizspørsmål ble laget for denne økten. For en ny PDF, huk av Gemini og trykk Les PDF igjen for å prøve på nytt.';
+      container.replaceChildren(notice);
+      $('summary-title').focus();
+      return;
+    }
+    const result = document.createElement('p');
+    const score = currentQuiz.filter((question, index) => quizAnswers[index] === question.answer).length;
+    const answered = currentQuiz.filter((_, index) => quizAnswers[index] !== undefined).length;
+    result.textContent = quizSubmitted
+      ? score + ' av ' + currentQuiz.length + ' riktige · ' + (answered - score) + ' feil · ' + (currentQuiz.length - answered) + ' ubesvarte'
+      : currentQuiz.length + ' spørsmål';
+    result.tabIndex = -1;
+    const round = document.createElement('p');
+    round.textContent = 'Runde ' + (quizRound + 1) + ' av ' + quizRounds.length;
+    container.replaceChildren(round, result);
+    currentQuiz.forEach((question, index) => {
+      const field = document.createElement('fieldset');
+      const legend = document.createElement('legend');
+      field.className = 'page';
+      legend.textContent = (index + 1) + '. ' + question.title;
+      field.append(legend);
+      question.options.forEach((option, value) => {
+        const label = document.createElement('label');
+        const input = document.createElement('input');
+        input.type = 'radio';
+        input.name = 'quiz-' + index;
+        const selected = quizAnswers[index] === value;
+        const correct = question.answer === value;
+        input.checked = selected;
+        input.disabled = quizSubmitted;
+        label.className = 'quiz-option';
+        if (quizSubmitted && correct) label.classList.add('quiz-correct');
+        if (quizSubmitted && selected && !correct) label.classList.add('quiz-wrong');
+        input.addEventListener('change', () => { quizAnswers[index] = value; });
+        label.append(input, document.createTextNode(option));
+        if (quizSubmitted && (correct || selected)) {
+          const tag = document.createElement('span');
+          tag.className = 'quiz-tag';
+          tag.textContent = correct
+            ? (selected ? 'Ditt svar · Riktig' : 'Riktig svar')
+            : 'Ditt svar · Feil';
+          label.append(tag);
+        }
+        field.append(label);
+      });
+      if (quizSubmitted) {
+        const feedback = document.createElement('p');
+        feedback.className = 'quiz-feedback';
+        feedback.textContent = quizAnswers[index] === undefined ? 'Ubesvart'
+          : quizAnswers[index] === question.answer ? 'Riktig' : 'Feil';
+        const explanation = document.createElement('p');
+        explanation.textContent = question.text;
+        field.append(feedback, explanation);
+        appendSources(field, question);
+      }
+      container.append(field);
+    });
+    const mastered = quizSubmitted && score === currentQuiz.length;
+    const hasNextRound = quizRound + 1 < quizRounds.length;
+    const action = document.createElement('button');
+    if (mastered) {
+      const message = document.createElement('p');
+      message.textContent = hasNextRound ? 'Full pott! Neste runde har nye spørsmål.' : 'Full pott! Du har fullført alle rundene.';
+      container.append(message);
+    }
+    action.textContent = !quizSubmitted ? 'Lever quiz'
+      : !mastered ? 'Prøv på nytt i ny rekkefølge'
+      : hasNextRound ? 'Start neste quiz' : 'Start quizen fra begynnelsen';
+    action.addEventListener('click', () => {
+      if (quizSubmitted) {
+        if (mastered) {
+          quizRound = hasNextRound ? quizRound + 1 : 0;
+        } else {
+          quizRounds[quizRound] = shuffleRound(currentQuiz);
+        }
+        quizAnswers = [];
+      }
+      quizSubmitted = !quizSubmitted;
+      showQuiz();
+    });
+    container.append(action);
+    result.focus();
+  }
+  $('show-quiz').addEventListener('click', showQuiz);
+  $('show-flashcards').addEventListener('click', showFlashcards);
+  function showResource(items, title) {
+    if (!items?.length) return;
+    selectResource(title);
+    const container = $('summary-items');
+    container.replaceChildren();
+    for (const item of items) {
+      const article = document.createElement('article');
+      const heading = document.createElement('h4');
+      const text = document.createElement('p');
+      article.className = 'page';
+      heading.textContent = item.title;
+      text.textContent = item.text;
+      article.append(heading, text);
+      appendSources(article, item);
+      container.append(article);
+    }
+    $('summary').hidden = false;
+    $('summary-title').focus();
+  }
+  $('show-summary').addEventListener('click', () => showResource(currentSummary, 'Faglig sammendrag'));
+  $('show-concepts').addEventListener('click', () => showResource(currentConcepts, 'Nøkkelbegreper'));
+  function showPages(pages, summary, concepts, flashcards, quiz, summaryStatus) {
+    currentSummary = summary;
+    currentConcepts = concepts;
+    currentFlashcards = flashcards;
+    const questions = quiz || [];
+    const roundSize = questions.length > 1 ? Math.ceil(questions.length / 2) : questions.length;
+    quizRounds = questions.length > 1
+      ? [questions.slice(0, roundSize), questions.slice(roundSize)]
+      : questions.length ? [questions] : [];
+    quizRound = 0;
+    $('show-quiz').hidden = false;
+    $('resources').hidden = false;
+    $('show-flashcards').hidden = !flashcards;
+    $('show-summary').hidden = !summary;
+    $('show-concepts').hidden = !concepts;
+    const usable = pages.filter(page => page.usable).length;
+    const skipped = pages.filter(page => !page.usable).map(page => page.number);
+    $('counts').textContent = usable + ' av ' + pages.length + ' sider har nok tekst.' +
+      (skipped.length ? ' Lite uttrekkbar tekst på side ' + skipped.join(', ') + '.' : '');
+    for (const page of pages) {
+      const block = document.createElement('div');
+      const button = document.createElement('button');
+      block.className = 'page';
+      button.textContent = 'Vis side ' + page.number;
+      button.addEventListener('click', () => showPage(page.number));
+      block.append(button);
+      if (page.groups) {
+        for (const group of page.groups) {
+          const box = document.createElement('div');
+          const title = document.createElement('strong');
+          const text = document.createElement('div');
+          box.className = 'group';
+          title.textContent = group.heading;
+          text.textContent = group.lines.join(' · ');
+          box.append(title, text);
+          block.append(box);
+        }
+      } else if (page.usable) {
+        const excerpt = document.createElement('p');
+        excerpt.className = 'excerpt';
+        excerpt.textContent = page.text.slice(0, 240) + (page.text.length > 240 ? ' …' : '');
+        block.append(excerpt);
+      }
+      $('pages').append(block);
+    }
+    $('summary-status').textContent = summaryStatus || '';
+    const navigation = $('sidevalg');
+    navigation.replaceChildren();
+    for (const page of pages) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.textContent = 'Side ' + page.number;
+      button.addEventListener('click', () => showPage(page.number));
+      navigation.append(button);
+    }
+    $('result').hidden = false;
+    if (summary) showResource(summary, 'Faglig sammendrag');
+    else if (concepts) showResource(concepts, 'Nøkkelbegreper');
+    else $('counts').scrollIntoView({block:'nearest'});
+  }
+  $('reset').addEventListener('click', () => { reset(); $('file').value = ''; $('file').focus(); });
+  $('upload').addEventListener('submit', async event => {
+    event.preventDefault();
+    const file = $('file').files[0];
+    if (!file) {
+      $('status').textContent = 'Velg en PDF først.';
+      return;
+    }
+    reset();
+    if (!/\.pdf$/i.test(file.name) || !file.size || file.size > 20000000) {
+      $('status').textContent = 'Velg én PDF på maks 20 MB.';
+      return;
+    }
+    const request = new AbortController();
+    pending = request;
+    const useAi = $('ai-summary').checked;
+    $('status').textContent = useAi ? 'Leser PDF-en og forbereder sammendrag …' : 'Leser PDF-en …';
+    $('reset').hidden = false;
+    try {
+      const response = await fetch('/pdf', { method:'POST', body:file, headers: useAi ? { 'x-study-summary': 'gemini' } : {}, signal:request.signal });
+      const result = await response.json();
+      if (request !== pending) return;
+      if (!response.ok) throw Error(result.error);
+      pdfUrl = URL.createObjectURL(file);
+      showPages(result.pages, result.summary, result.concepts, result.flashcards, result.quiz, result.summaryStatus);
+      $('status').textContent = file.name + ' er klar.';
+    } catch (error) {
+      if (request === pending) {
+        $('status').textContent = error instanceof TypeError ? 'Fikk ikke kontakt med den lokale appen. Last inn siden på nytt og prøv igjen.' : error.message;
+        $('reset').hidden = true;
+      }
+    }
+  });
+</script>
+</html>

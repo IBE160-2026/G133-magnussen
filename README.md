@@ -7,3 +7,7 @@ Repoet inneholder gruppens applikasjon og dokumentasjon av utvikling, testing og
 ## Medlemmer
 
 - Sara K. Magnussen
+
+## AI Study Buddy
+
+Se [oppstart og testflyt](app/README.md) for den kjørbare macOS-versjonen.
