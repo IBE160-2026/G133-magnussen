@@ -21,7 +21,7 @@ const demoHash = createHash('sha256').update(demoPdf).digest('hex');
 const maxBytes = 20_000_000;
 const port = Number(process.env.PORT || 4173);
 
-async function extract(request) {
+async function withLocalPdf(request, operation) {
   const chunks = [];
   let bytes = 0;
   for await (const chunk of request) {
@@ -35,8 +35,17 @@ async function extract(request) {
   try {
     const path = join(dir, 'source.pdf');
     await writeFile(path, pdf);
-    const script = name => fileURLToPath(new URL(name, import.meta.url));
-    const options = { timeout: 25000, maxBuffer: 8 * 1024 * 1024 };
+    return await operation(path, pdf, dir);
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+}
+
+const script = name => fileURLToPath(new URL(name, import.meta.url));
+const options = { timeout: 25000, maxBuffer: 8 * 1024 * 1024 };
+
+async function extract(request) {
+  return withLocalPdf(request, async (path, pdf) => {
     const { stdout } = await run('osascript', ['-l', 'JavaScript', script('./les-pdf.js'), path], options);
     const pages = JSON.parse(stdout);
     if (pages[12]?.text.includes('Muskelkarakteristika I') && pages[13]?.text.includes('Muskelkarakteristika II')) {
@@ -56,9 +65,15 @@ async function extract(request) {
       console.error('Sammendrag feilet:', error.cause?.code || error.name);
       return { pages, summaryStatus: 'KI-sammendraget kunne ikke lages. Du kan fortsatt åpne PDF-sidene eller prøve på nytt.' };
     }
-  } finally {
-    await rm(dir, { recursive: true, force: true });
-  }
+  });
+}
+
+async function renderPage(request, number) {
+  return withLocalPdf(request, async (path, _, dir) => {
+    const output = join(dir, 'page.png');
+    await run('osascript', ['-l', 'JavaScript', script('./render-pdf-side.js'), path, number, output], options);
+    return readFile(output);
+  });
 }
 
 createServer(async (req, res) => {
@@ -66,7 +81,8 @@ createServer(async (req, res) => {
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' }).end(await readFile(appUrl));
     return;
   }
-  if (req.method !== 'POST' || req.url !== '/pdf') {
+  const page = req.url?.match(/^\/pdf-page\/([1-9]|[1-4][0-9]|50)$/)?.[1];
+  if (req.method !== 'POST' || (req.url !== '/pdf' && !page)) {
     res.writeHead(404).end();
     return;
   }
@@ -75,6 +91,11 @@ createServer(async (req, res) => {
     return;
   }
   try {
+    if (page) {
+      const image = await renderPage(req, page);
+      res.writeHead(200, { 'Content-Type': 'image/png', 'Cache-Control': 'no-store' }).end(image);
+      return;
+    }
     const result = await extract(req);
     res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' }).end(JSON.stringify(result));
   } catch (error) {
