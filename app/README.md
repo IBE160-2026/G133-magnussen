@@ -35,3 +35,5 @@ Kryss av for **Lag studieressurser med Gemini** før du trykker **Les PDF**. PDF
 - Med den opprinnelige, lokale `Muskler.pdf` ble 13 av 15 sider brukt. Sidene 7 og 15 manglet uttrekkbar tekst. Side 13 beholdt de mobiliserende og stabiliserende musklene i separate grupper. Forelesnings-PDF-en følger ikke med repoet.
 - Etter utprøving ble råtekst flyttet bak et eget valg og sammendraget satt først. Flashcards og quiz fikk selvstendige fagspørsmål. Quizfasiten viser riktig, feil og ubesvart med tekst og farge.
 - Denne versjonen bruker en lokal Node-server og macOS PDFKit. Det avviker fra den planlagte Next.js/PDF.js-arkitekturen og begrenser kjøring til macOS.
+
+Se [testloggen](TESTLOGG.md) for den manuelle testen av den sammenslåtte versjonen.
