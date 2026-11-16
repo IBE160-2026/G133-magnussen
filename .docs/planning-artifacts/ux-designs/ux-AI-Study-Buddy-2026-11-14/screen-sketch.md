@@ -8,7 +8,7 @@
 
 **UX-dokumenter:** [DESIGN.md](DESIGN.md) beskriver den visuelle retningen; [EXPERIENCE.md](EXPERIENCE.md) beskriver oppførsel, tilstander og tilgjengelighet. Begge er utkast til gjennomgang.
 
-Skissen beskriver oppførsel og hierarki. Den tidligere klikkbare prototypen bruker et første, rolig og moderne visuelt utkast og er kun arbeidsmateriale. De fire retningene i [concepts/](concepts/README.md) utforsker bredere uttrykk; ingen retning er valgt eller godkjent. Paletten og komponentstilen i DESIGN.md er fortsatt et utkast. Test-mocks brukes i utvikling for å simulere vellykkede og ugyldige KI-svar; studenten ser vanlige resultater eller norske feilmeldinger. Demo-modus bruker lagrede eksempelresultater uten API-nøkkel.
+Skissen beskriver oppførsel og hierarki. Den tidligere klikkbare prototypen bruker et første, rolig og moderne visuelt utkast og er kun arbeidsmateriale. De fire retningene i [concepts/](concepts/README.md) utforsker bredere uttrykk. På tidspunktet for denne skissen var ingen retning valgt eller godkjent. Paletten og komponentstilen i DESIGN.md er fortsatt et utkast. Test-mocks brukes i utvikling for å simulere vellykkede og ugyldige KI-svar; studenten ser vanlige resultater eller norske feilmeldinger. Demo-modus bruker lagrede eksempelresultater uten API-nøkkel.
 
 ## Brukerflyt
 
