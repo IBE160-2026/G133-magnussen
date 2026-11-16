@@ -13,7 +13,7 @@ Vi valgte **Side ved side**, en av de fire lyseblå variantene i den senere Kild
 | Øve på fagstoffet | Flashcards viser svaret og kilden etter **Vis svar**. Quiz viser fasit og kilder etter levering. |
 | Forstå quizresultatet | Fasiten bruker både tekst og farge for å vise riktige, feil og ubesvarte spørsmål. Omforsøk stokker spørsmålene. Full pott i første runde åpner et nytt sett. |
 
-Ved innleveringstesten åpnet nettleseren først hele PDF-en fra en sidelenke. Etter rettelsen bekreftet brukeren at kildepanelet viste bare side 3. Testloggen for commit `b870e9f` dekker også flashcards og quiz. Oppsettet for smale skjermer er implementert i CSS. Full mobil- og tilgjengelighetstesting er ikke dokumentert i testloggen.
+Ved innleveringstesten åpnet nettleseren først hele PDF-en fra en sidelenke. Etter rettelsen bekreftet brukeren at kildepanelet viste bare side 3. Testloggen for commit `b870e9f` dekker også flashcards og quiz. Oppsettet for smale skjermer er implementert i CSS. Den avgrensede testen av smal visning og tastatur er dokumentert nedenfor.
 
 ## Skjermbredde og tastatur
 
@@ -29,6 +29,6 @@ For å dokumentere nettlesertesten med den medfølgende demo-PDF-en:
 
 ![Sammendrag om albuefleksjon til venstre og side 1 fra demo-PDF-en til høyre](skjermbilder/sammendrag-bred.png)
 
-Smal visning og tastaturtesten gjenstår.
+**Smal visning:** Brukerens skjermbilde viser PDF-panelet under sammendraget og en synlig fokusramme rundt «PDF-visning». Appen meldte at side 2 ikke kunne vises. Ved oppfølging svarte ikke den lokale serveren. Etter omstart returnerte serveren et bilde av side 2. Etter omstart bekreftet brukeren at side 2 åpnet seg med tastaturet i smal visning.
 
 [Appkode](../../../../app/index.html) · [Testlogg](../../../../app/TESTLOGG.md) · [Rettelse av kildevisningen](https://github.com/IBE160-2026/G133-magnussen/pull/2)
