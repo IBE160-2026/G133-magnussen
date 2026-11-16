@@ -11,3 +11,8 @@ Repoet inneholder gruppens applikasjon og dokumentasjon av utvikling, testing og
 ## AI Study Buddy
 
 Se [oppstart og testflyt](app/README.md) for den kjørbare macOS-versjonen.
+
+## Forarbeid
+
+- [Brainstorming og MVP-avgrensning](.docs/planning-artifacts/forarbeid/brainstorming.md)
+- [Research og teknisk utprøving](.docs/planning-artifacts/forarbeid/research.md)
