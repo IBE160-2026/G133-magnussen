@@ -2,7 +2,7 @@
 title: AI Study Buddy PRD
 status: final
 created: 2026-11-04
-updated: 2026-11-14
+updated: 2026-11-16
 ---
 
 # PRD: AI Study Buddy
