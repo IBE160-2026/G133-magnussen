@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Study Buddy — klikkbar prototype</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #20302e;
+      --muted: #52625f;
+      --line: #d5e0dc;
+      --surface: #ffffff;
+      --surface-muted: #eaf2ef;
+      --canvas: #f4f7f5;
+      --brand: #1e6359;
+      --brand-hover: #174f48;
+      --brand-soft: #e8f3ef;
+      --focus: #164f47;
+      --notice: #fff8e6;
+      --notice-line: #805b14;
+      --error: #7f2e32;
+      --error-bg: #fff1f0;
+      --success: #245b3f;
+      --success-bg: #e9f5ec;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: var(--canvas); line-height: 1.5; }
+    button, select { font: inherit; }
+    button {
+      color: var(--ink); background: var(--surface); border: 1px solid #68717e;
+      border-radius: 8px; padding: .7rem 1rem; cursor: pointer; min-height: 44px;
+    }
+    button:hover { background: var(--surface-muted); border-color: var(--brand); }
+    button:focus-visible, select:focus-visible, a:focus-visible {
+      outline: 3px solid var(--focus); outline-offset: 2px;
+    }
+    button.primary { color: #fff; background: var(--brand); border-color: var(--brand); }
+    button.primary:hover { color: #fff; background: var(--brand-hover); }
+    button.subtle { border-color: transparent; text-decoration: underline; }
+    button:disabled { opacity: .55; cursor: not-allowed; }
+    .topbar { background: var(--surface); border-bottom: 1px solid var(--line); }
+    .top-inner, main { width: min(1120px, calc(100% - 2rem)); margin: 0 auto; }
+    .top-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .8rem 0; }
+    .brand { font-weight: 750; font-size: 1.1rem; color: var(--brand-hover); }
+    .session-meta { display: flex; flex-wrap: wrap; align-items: center; gap: .7rem; color: var(--muted); font-size: .95rem; }
+    main { padding: 1.25rem 0 3rem; }
+    .prototype-note { background: var(--notice); border: 1px solid var(--notice-line); border-radius: 10px; padding: .8rem 1rem; margin: 0 0 1.25rem; }
+    .prototype-note strong { display: block; }
+    .prototype-controls { display: flex; flex-wrap: wrap; align-items: end; gap: .75rem 1rem; margin-top: .75rem; }
+    label { display: grid; gap: .25rem; font-weight: 600; }
+    select { min-height: 42px; padding: .45rem .6rem; border: 1px solid #68717e; border-radius: 7px; background: #fff; color: var(--ink); }
+    .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: clamp(1rem, 3vw, 2rem); }
+    h1 { font-size: clamp(1.55rem, 3vw, 2.2rem); line-height: 1.15; margin: 0 0 .55rem; }
+    h2 { font-size: 1.35rem; line-height: 1.2; margin: 0 0 .7rem; }
+    h3 { font-size: 1.08rem; margin: 0 0 .45rem; }
+    p { margin: .4rem 0 .8rem; }
+    .muted { color: var(--muted); }
+    .actions { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 1.1rem; }
+    .dropzone { border: 2px dashed #67837a; border-radius: 14px; padding: 2rem 1rem; text-align: center; margin: 1.2rem 0; background: #f8fbf9; }
+    .cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; margin: 1rem 0; }
+    .resource-choice { min-height: 90px; text-align: left; }
+    .resource-choice:hover { background: var(--brand-soft); border-color: var(--brand); }
+    .resource-choice strong { display: block; font-size: 1.05rem; }
+    .resource-choice span { color: var(--muted); }
+    .page-list { display: flex; flex-wrap: wrap; gap: .45rem; padding: 0; list-style: none; }
+    .page-pill { border: 1px solid var(--line); border-radius: 20px; padding: .25rem .7rem; background: #f9fafb; }
+    .resource-layout { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(300px, .85fr); gap: 1rem; align-items: start; }
+    .resource-list { padding-left: 1.2rem; }
+    .resource-list li { margin: .8rem 0 1rem; }
+    .source { border-left: 3px solid var(--brand); padding: .35rem 0 .35rem .75rem; margin-top: .5rem; color: var(--ink); background: linear-gradient(90deg, var(--brand-soft), transparent 75%); }
+    .source button { min-height: 36px; padding: .35rem .65rem; margin-top: .35rem; }
+    .badge { display: inline-block; padding: .15rem .55rem; border-radius: 99px; font-weight: 700; font-size: .88rem; }
+    .badge.ok { color: var(--success); background: var(--success-bg); }
+    .badge.unverified { color: #704400; background: #fff2d6; }
+    .viewer { position: sticky; top: 1rem; min-height: 290px; }
+    .viewer-page { background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 1.2rem; min-height: 210px; margin-top: .7rem; }
+    .viewer-page-number { font-weight: 700; border-bottom: 1px solid var(--line); padding-bottom: .45rem; margin-bottom: .7rem; }
+    .flashcard { border: 1px solid var(--line); border-radius: 10px; min-height: 140px; padding: 1.25rem; background: #fafbfc; }
+    .quiz-question { padding: 1rem 0; border-bottom: 1px solid var(--line); }
+    .quiz-question label { display: flex; align-items: start; font-weight: 400; margin: .5rem 0; }
+    .quiz-question input { margin: .3rem .5rem 0 0; }
+    .notice { border: 1px solid var(--line); padding: .75rem 1rem; border-radius: 8px; margin: .8rem 0; }
+    .notice.error { color: var(--error); background: var(--error-bg); border-color: #d5a3a0; }
+    .notice.success { color: var(--success); background: var(--success-bg); border-color: #9fc2a6; }
+    .resource-history { margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+    .resource-history button { margin: .25rem .35rem .25rem 0; }
+    .screen[hidden] { display: none; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
+    @media (max-width: 760px) {
+      .top-inner { align-items: start; flex-direction: column; }
+      .resource-layout { grid-template-columns: 1fr; }
+      .viewer { position: static; }
+      .cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="top-inner">
+      <div class="brand">AI Study Buddy <span class="muted">· Prototype</span></div>
+      <div class="session-meta" id="sessionMeta" aria-live="polite">Ingen aktiv studieøkt</div>
+    </div>
+  </header>
+  <main>
+    <aside class="prototype-note" aria-label="Informasjon om prototypen">
+      <strong>Prototypekontroller — ikke en del av studentgrensesnittet</strong>
+      Her kan du velge eksempeltilstand. Alle svar og kildekontroller er lokale mock-data; ingen PDF lastes opp og ingen KI-tjeneste kontaktes.
+      <div class="prototype-controls">
+        <label for="scenario">PDF-scenario
+          <select id="scenario">
+            <option value="demo">Demo-PDF · 3 lesbare sider</option>
+            <option value="pilot">50-siders prøve · 4 sider under tekstgrensen</option>
+            <option value="clean">PDF · alle sider lesbare</option>
+            <option value="empty">PDF · ingen lesbare sider</option>
+          </select>
+        </label>
+        <label for="mockMode">Mock-svar
+          <select id="mockMode">
+            <option value="success">Normalt svar · kilde bekreftet</option>
+            <option value="unverified">Normalt svar · utdrag mangler på siden</option>
+            <option value="malformed">Ugyldig svarformat</option>
+            <option value="unavailable">Leverandør utilgjengelig</option>
+          </select>
+        </label>
+      </div>
+    </aside>
+
+    <section id="uploadScreen" class="screen panel" aria-labelledby="uploadTitle">
+      <h1 id="uploadTitle">Gjør kurs-PDF-en om til øvingsmateriell</h1>
+      <p class="muted">Lag sammendrag, flashcards, quiz og nøkkelbegreper fra én PDF i en studieøkt.</p>
+      <div class="dropzone">
+        <strong>Slipp PDF-filen her</strong>
+        <p>eller velg et eksempel for å utforske prototypen</p>
+        <p class="muted">Støtter PDF opptil 20 MB og 50 sider.</p>
+      </div>
+      <div id="uploadNotice" aria-live="polite"></div>
+      <div class="actions">
+        <button id="startButton" class="primary">Start studieøkt</button>
+      </div>
+    </section>
+
+    <section id="pageReviewScreen" class="screen panel" hidden aria-labelledby="pageReviewTitle">
+      <h1 id="pageReviewTitle">Vi fant sider med lite lesbar tekst</h1>
+      <p id="pageReviewDescription"></p>
+      <ul id="unreadablePages" class="page-list"></ul>
+      <div class="actions">
+        <button id="continueButton" class="primary"></button>
+        <button id="cancelButton">Avbryt</button>
+      </div>
+    </section>
+
+    <section id="chooserScreen" class="screen panel" hidden aria-labelledby="chooserTitle">
+      <h1 id="chooserTitle">Hva vil du øve på?</h1>
+      <p id="documentSummary" class="muted"></p>
+      <div id="limitNotice" aria-live="polite"></div>
+      <div class="cards">
+        <button class="resource-choice" data-resource="summary"><strong>Sammendrag</strong><span>Hovedpunkter gruppert etter tema</span></button>
+        <button class="resource-choice" data-resource="concepts"><strong>Nøkkelbegreper</strong><span>Viktige ord og forklaringer</span></button>
+        <button class="resource-choice" data-resource="flashcards"><strong>Flashcards</strong><span>Prøv å huske før du viser svaret</span></button>
+        <button class="resource-choice" data-resource="quiz"><strong>Quiz</strong><span>Svar på spørsmål før du ser resultatet</span></button>
+      </div>
+      <div class="resource-history">
+        <h2>Ressurser fra denne studieøkten</h2>
+        <div id="historyList" class="muted">Ingen ennå.</div>
+      </div>
+      <div class="actions"><button id="endButton" class="subtle">Avslutt studieøkt</button></div>
+    </section>
+
+    <section id="loadingScreen" class="screen panel" hidden aria-labelledby="loadingTitle" aria-live="polite">
+      <h1 id="loadingTitle">Lager ressurs …</h1>
+      <p id="loadingDescription">Vi bruker den opplastede PDF-en. Dette kan ta litt tid.</p>
+    </section>
+
+    <section id="errorScreen" class="screen panel" hidden aria-labelledby="errorTitle">
+      <h1 id="errorTitle">Vi kunne ikke lage ressursen</h1>
+      <div class="notice error" id="errorMessage" role="alert"></div>
+      <div class="actions">
+        <button id="retryButton" class="primary">Prøv igjen</button>
+        <button id="backButton">Tilbake til ressurser</button>
+      </div>
+    </section>
+
+    <section id="resultScreen" class="screen panel" hidden aria-labelledby="resultTitle">
+      <div class="resource-layout">
+        <article>
+          <p><button id="resultsBack" class="subtle">← Alle ressurser</button></p>
+          <h1 id="resultTitle">Sammendrag</h1>
+          <div id="verificationNotice" aria-live="polite"></div>
+          <div id="resultContent"></div>
+          <div id="quizActions" class="actions" hidden>
+            <button id="submitQuiz" class="primary">Lever quiz</button>
+            <button id="retakeQuiz" hidden>Ta quizen på nytt</button>
+          </div>
+          <div id="flashcardActions" class="actions" hidden>
+            <button id="revealAnswer" class="primary">Vis svar</button>
+            <button id="nextFlashcard" hidden>Neste flashcard</button>
+          </div>
+        </article>
+        <aside class="viewer panel" aria-labelledby="viewerTitle">
+          <h2 id="viewerTitle">PDF-visning</h2>
+          <p id="viewerStatus" class="muted">Velg et sidetall i en kilde.</p>
+          <div class="viewer-page" id="viewerPage" aria-live="polite">
+            <div class="viewer-page-number">Ingen side valgt</div>
+            <p>PDF-siden åpnes her mens ressursen forblir synlig.</p>
+          </div>
+          <p class="muted">Prototypeinnhold — siden er ikke hentet fra en faktisk PDF.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <div id="liveMessage" class="sr-only" aria-live="polite"></div>
+
+  <script>
+    (() => {
+      const $ = (selector) => document.querySelector(selector);
+      const screens = ['uploadScreen', 'pageReviewScreen', 'chooserScreen', 'loadingScreen', 'errorScreen', 'resultScreen'];
+      const titles = { summary: 'Sammendrag', concepts: 'Nøkkelbegreper', flashcards: 'Flashcards', quiz: 'Quiz' };
+      const state = { active: false, scenario: 'demo', mode: 'success', pages: 3, usable: 3, remaining: 8, resources: {}, currentType: 'summary', previousError: null, flashcardIndex: 0, answerRevealed: false, quizSubmitted: false, quizOrder: [0, 1, 2] };
+      const demoAnswers = {
+        summary: [
+          { text: 'Skjelettmuskulatur består av muskelfibre som samarbeider om å skape bevegelse.', page: 3, excerpt: 'Mock-utdrag om muskelfibre og bevegelse.' },
+          { text: 'Muskler virker sammen med skjelettet når kroppen beveger seg.', page: 4, excerpt: 'Mock-utdrag om muskler og skjelett.' }
+        ],
+        concepts: [
+          { text: 'Muskelfiber — en muskelcelle som bidrar til muskelens sammentrekning.', page: 3, excerpt: 'Mock-utdrag om muskelfibre.' },
+          { text: 'Sene — bindevev som fester muskel til knokkel.', page: 4, excerpt: 'Mock-utdrag om muskler og skjelett.' }
+        ],
+        flashcards: [
+          { question: 'Hva forbinder vanligvis en muskel med en knokkel?', answer: 'En sene.', page: 4, excerpt: 'Mock-utdrag om muskler og skjelett.' },
+          { question: 'Hva er en muskelfiber?', answer: 'En muskelcelle.', page: 3, excerpt: 'Mock-utdrag om muskelfibre.' }
+        ],
+        quiz: [
+          { question: 'Hva forbinder vanligvis en muskel med en knokkel?', options: ['Sene', 'Brusk', 'Hud'], answer: 0, explanation: 'Dette er et prototypeeksempel.', page: 4, excerpt: 'Mock-utdrag om muskler og skjelett.' },
+          { question: 'Hva beskriver best en muskelfiber?', options: ['En muskelcelle', 'En knokkel', 'Et ledd'], answer: 0, explanation: 'Dette er et prototypeeksempel.', page: 3, excerpt: 'Mock-utdrag om muskelfibre.' },
+          { question: 'Hva bidrar skjelettmuskulatur til?', options: ['Bevegelse', 'Syn', 'Hørsel'], answer: 0, explanation: 'Dette er et prototypeeksempel.', page: 3, excerpt: 'Mock-utdrag om bevegelse.' }
+        ]
+      };
+
+      function show(id) {
+        screens.forEach((screenId) => { $('#' + screenId).hidden = screenId !== id; });
+        const heading = $('#' + id)?.querySelector('h1');
+        if (heading) heading.focus?.();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      function announce(message) { $('#liveMessage').textContent = message; }
+      function updateMeta() {
+        $('#sessionMeta').textContent = state.active ? `Studieøkt · ${state.remaining} KI-forespørsler igjen · Mock-modus` : 'Ingen aktiv studieøkt';
+      }
+      function updateDocumentSummary() {
+        const name = state.scenario === 'demo' ? 'demo-anatomi-ai-study-buddy.pdf' : 'anatomipilot.pdf';
+        $('#documentSummary').textContent = `${name} · ${state.usable} av ${state.pages} sider med i grunnlaget`;
+      }
+      function beginSession() {
+        state.scenario = $('#scenario').value;
+        state.mode = $('#mockMode').value;
+        state.remaining = 8;
+        state.resources = {};
+        state.active = true;
+        state.flashcardIndex = 0;
+        state.quizSubmitted = false;
+        state.quizOrder = [0, 1, 2];
+        $('#uploadNotice').innerHTML = '';
+        if (state.scenario === 'empty') {
+          state.active = false;
+          $('#uploadNotice').innerHTML = '<div class="notice error" role="alert">Ingen sider har nok uttrekkbar tekst. Velg en annen PDF for å fortsette.</div>';
+          announce('PDF-en har ingen brukbare sider.');
+          updateMeta();
+          return;
+        }
+        if (state.scenario === 'pilot') {
+          state.pages = 50; state.usable = 46;
+          $('#pageReviewDescription').textContent = 'Disse sidene har færre enn 20 ikke-whitespace-tegn og tas ikke med hvis du fortsetter.';
+          $('#unreadablePages').innerHTML = [1, 2, 7, 9].map((page) => `<li class="page-pill">Side ${page}</li>`).join('');
+          $('#continueButton').textContent = 'Fortsett med 46 sider';
+          updateMeta();
+          show('pageReviewScreen');
+        } else {
+          state.pages = state.scenario === 'clean' ? 12 : 3;
+          state.usable = state.pages;
+          updateMeta(); updateDocumentSummary(); show('chooserScreen');
+        }
+      }
+      function openChooser() { updateDocumentSummary(); updateHistory(); updateMeta(); show('chooserScreen'); }
+      function updateHistory() {
+        const entries = Object.keys(state.resources);
+        $('#historyList').innerHTML = entries.length ? entries.map((type) => `<button data-open-resource="${type}">${titles[type]}</button>`).join('') : '<span class="muted">Ingen ennå.</span>';
+        document.querySelectorAll('[data-open-resource]').forEach((button) => button.addEventListener('click', () => renderResource(button.dataset.openResource)));
+      }
+      function generate(type) {
+        if (state.remaining <= 0) {
+          $('#limitNotice').innerHTML = '<div class="notice error" role="alert">Du har brukt alle åtte KI-forespørslene i denne studieøkten.</div>';
+          announce('Grensen på åtte forespørsler er nådd.'); return;
+        }
+        state.currentType = type;
+        state.mode = $('#mockMode').value;
+        state.previousError = type;
+        state.remaining -= 1;
+        updateMeta();
+        $('#loadingTitle').textContent = `Lager ${titles[type].toLowerCase()} …`;
+        show('loadingScreen');
+        window.setTimeout(() => {
+          if (state.mode === 'malformed' || state.mode === 'unavailable') {
+            $('#errorMessage').textContent = state.mode === 'malformed'
+              ? 'Svaret kunne ikke tolkes. Ingen delvis ressurs ble lagret.'
+              : 'Tjenesten er midlertidig utilgjengelig. Ingen delvis ressurs ble lagret.';
+            show('errorScreen'); announce('Genereringen feilet. Ingen ressurs ble lagret.');
+            return;
+          }
+          state.resources[type] = structuredClone(demoAnswers[type]);
+          state.quizSubmitted = false; state.flashcardIndex = 0; state.quizOrder = [0, 1, 2];
+          renderResource(type);
+        }, 500);
+      }
+      function sourceBlock(item, unverified) {
+        const badge = unverified ? '<span class="badge unverified">Ubekreftet</span>' : '<span class="badge ok">Kildeutdrag bekreftet (mock)</span>';
+        return `<div class="source"><div>${badge}</div><div>«${item.excerpt}»</div><button type="button" data-page="${item.page}">Side ${item.page}</button></div>`;
+      }
+      function renderResource(type) {
+        state.currentType = type;
+        $('#resultTitle').textContent = titles[type];
+        $('#verificationNotice').innerHTML = state.mode === 'unverified'
+          ? '<div class="notice">Mock-kontrollen finner ikke kildeutdraget på den oppgitte siden.</div>'
+          : '<div class="notice success">Kildekontroll er simulert i prototypen. Ingen ekte PDF-tekst er kontrollert.</div>';
+        const items = state.resources[type] || structuredClone(demoAnswers[type]);
+        const invalid = state.mode === 'unverified';
+        $('#quizActions').hidden = type !== 'quiz';
+        $('#flashcardActions').hidden = type !== 'flashcards';
+        $('#submitQuiz').hidden = state.quizSubmitted;
+        $('#retakeQuiz').hidden = !state.quizSubmitted;
+        $('#revealAnswer').hidden = state.answerRevealed;
+        $('#nextFlashcard').hidden = !state.answerRevealed;
+        $('#viewerStatus').textContent = 'Velg et sidetall i en kilde.';
+        $('#viewerPage').innerHTML = '<div class="viewer-page-number">Ingen side valgt</div><p>PDF-siden åpnes her mens ressursen forblir synlig.</p>';
+        if (type === 'summary' || type === 'concepts') {
+          $('#resultContent').innerHTML = `<h2>${type === 'summary' ? 'Muskelvev' : 'Viktige begreper'}</h2><ul class="resource-list">${items.map((item) => `<li><strong>${item.text}</strong>${sourceBlock(item, invalid)}</li>`).join('')}</ul>`;
+        } else if (type === 'flashcards') {
+          const card = items[state.flashcardIndex % items.length];
+          $('#resultContent').innerHTML = `<div class="flashcard"><p class="muted">Kort ${state.flashcardIndex + 1} av ${items.length}</p><h2>${state.answerRevealed ? 'Svar' : 'Spørsmål'}</h2><p>${state.answerRevealed ? card.answer : card.question}</p>${state.answerRevealed ? sourceBlock(card, invalid) : ''}</div>`;
+        } else {
+          const ordered = state.quizOrder.map((index) => ({ ...items[index], originalIndex: index }));
+          $('#resultContent').innerHTML = ordered.map((item, orderIndex) => `<fieldset class="quiz-question" ${state.quizSubmitted ? 'disabled' : ''}><legend><strong>${orderIndex + 1}. ${item.question}</strong></legend>${item.options.map((option, optionIndex) => {
+            const selected = state[`quiz-${item.originalIndex}`] === optionIndex;
+            const answerClass = state.quizSubmitted && optionIndex === item.answer ? 'notice success' : '';
+            const wrongClass = state.quizSubmitted && selected && optionIndex !== item.answer ? 'notice error' : '';
+            return `<label class="${answerClass || wrongClass}"><input type="radio" name="q${item.originalIndex}" value="${optionIndex}" ${selected ? 'checked' : ''} ${state.quizSubmitted ? 'disabled' : ''}> ${option}</label>`;
+          }).join('')}${state.quizSubmitted ? `<p>${item.explanation}</p>${sourceBlock(item, invalid)}` : ''}</fieldset>`).join('');
+          $('#resultContent').querySelectorAll('input[type=radio]').forEach((input) => input.addEventListener('change', () => { state[`quiz-${input.name.slice(1)}`] = Number(input.value); }));
+        }
+        $('#resultContent').querySelectorAll('[data-page]').forEach((button) => button.addEventListener('click', () => openPage(Number(button.dataset.page))));
+        updateHistory(); updateMeta(); show('resultScreen');
+      }
+      function openPage(page) {
+        $('#viewerStatus').textContent = `PDF-side ${page} er valgt.`;
+        $('#viewerPage').innerHTML = `<div class="viewer-page-number">PDF-side ${page}</div><p>Mock-visning for side ${page}. I appen ville den opplastede PDF-siden vises her.</p><p class="muted">Innholdet i denne prototypen er eksempeltekst, ikke et kontrollert utdrag.</p>`;
+        announce(`PDF-side ${page} valgt.`);
+      }
+      $('#startButton').addEventListener('click', beginSession);
+      $('#continueButton').addEventListener('click', () => openChooser());
+      $('#cancelButton').addEventListener('click', () => { state.active = false; updateMeta(); show('uploadScreen'); });
+      document.querySelectorAll('[data-resource]').forEach((button) => button.addEventListener('click', () => generate(button.dataset.resource)));
+      $('#backButton').addEventListener('click', openChooser);
+      $('#retryButton').addEventListener('click', () => generate(state.previousError));
+      $('#resultsBack').addEventListener('click', openChooser);
+      $('#endButton').addEventListener('click', () => { Object.keys(state).forEach((key) => { if (key.startsWith('quiz-')) delete state[key]; }); state.active = false; state.resources = {}; state.remaining = 8; updateMeta(); show('uploadScreen'); });
+      $('#revealAnswer').addEventListener('click', () => { state.answerRevealed = true; renderResource('flashcards'); });
+      $('#nextFlashcard').addEventListener('click', () => { state.flashcardIndex += 1; state.answerRevealed = false; renderResource('flashcards'); });
+      $('#submitQuiz').addEventListener('click', () => { state.quizSubmitted = true; renderResource('quiz'); });
+      $('#retakeQuiz').addEventListener('click', () => {
+        state.quizSubmitted = false;
+        state.quizOrder = [...state.quizOrder.slice(1), state.quizOrder[0]];
+        [0, 1, 2].forEach((index) => delete state[`quiz-${index}`]);
+        renderResource('quiz');
+      });
+      $('#mockMode').addEventListener('change', (event) => { state.mode = event.target.value; });
+      updateMeta();
+    })();
+  </script>
+</body>
+</html>
