@@ -31,4 +31,10 @@ For å dokumentere nettlesertesten med den medfølgende demo-PDF-en:
 
 **Smal visning:** Brukerens skjermbilde viser PDF-panelet under sammendraget og en synlig fokusramme rundt «PDF-visning». Appen meldte at side 2 ikke kunne vises. Ved oppfølging svarte ikke den lokale serveren. Etter omstart returnerte serveren et bilde av side 2. Etter omstart bekreftet brukeren at side 2 åpnet seg med tastaturet i smal visning.
 
+Skjermbildene er tatt i samme smale vindu. Det første viser sammendraget med kildeknappen. Det andre viser side 2 åpen i PDF-panelet lenger ned på samme side.
+
+![Smal visning av sammendraget med kildeknapp](skjermbilder/sammendrag-smal-1.png)
+
+![Side 2 i PDF-panelet i smal visning](skjermbilder/sammendrag-smal-2.png)
+
 [Appkode](../../../../app/index.html) · [Testlogg](../../../../app/TESTLOGG.md) · [Rettelse av kildevisningen](https://github.com/IBE160-2026/G133-magnussen/pull/2)
