@@ -14,5 +14,6 @@ Se [oppstart og testflyt](app/README.md) for den kjørbare macOS-versjonen.
 
 ## Forarbeid
 
-- [Brainstorming og MVP-avgrensning](.docs/planning-artifacts/forarbeid/brainstorming.md)
+- [Tidlig idégrunnlag og MVP-avgrensning](.docs/planning-artifacts/forarbeid/brainstorming.md)
 - [Research og teknisk utprøving](.docs/planning-artifacts/forarbeid/research.md)
+- [Utviklingsiterasjoner](.docs/planning-artifacts/forarbeid/iterasjoner.md)
