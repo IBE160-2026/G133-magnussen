@@ -15,4 +15,20 @@ Vi valgte **Side ved side**, en av de fire lyseblå variantene i den senere Kild
 
 Ved innleveringstesten åpnet nettleseren først hele PDF-en fra en sidelenke. Etter rettelsen bekreftet brukeren at kildepanelet viste bare side 3. Testloggen for commit `b870e9f` dekker også flashcards og quiz. Oppsettet for smale skjermer er implementert i CSS. Full mobil- og tilgjengelighetstesting er ikke dokumentert i testloggen.
 
+## Skjermbredde og tastatur
+
+Kodegjennomgangen bekrefter to kolonner som standard og én kolonne ved vindusbredde opptil 48 rem. Kildeknappene er vanlige HTML-knapper med synlig fokusmarkering. På smal skjerm flyttes fokus til overskriften «PDF-visning» når kilden åpnes.
+
+For å dokumentere nettlesertesten med den medfølgende demo-PDF-en:
+
+1. Åpne **Sammendrag → Åpne kilde · Side 1** i et bredt vindu. Ta et skjermbilde med sammendraget og PDF-siden synlige samtidig.
+2. Gjenta i et smalt vindu, for eksempel 390 piksler bredt. Sjekk at PDF-panelet ligger under studieressursene, og ta et skjermbilde som viser rekkefølgen.
+3. Bruk `Tab` til en kildeknapp. Sjekk at fokusmarkeringen er synlig, trykk `Enter` og kontroller at riktig PDF-side åpnes.
+
+**Bred visning, 16. november 2026:** Brukerens skjermbilde viser «Albuefleksjon» i sammendraget til venstre og side 1 fra demo-PDF-en til høyre. Begge var synlige samtidig.
+
+![Sammendrag om albuefleksjon til venstre og side 1 fra demo-PDF-en til høyre](skjermbilder/sammendrag-bred.png)
+
+Smal visning og tastaturtesten gjenstår.
+
 [Appkode](../../../../app/index.html) · [Testlogg](../../../../app/TESTLOGG.md) · [Rettelse av kildevisningen](https://github.com/IBE160-2026/G133-magnussen/pull/2)

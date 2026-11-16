@@ -7,4 +7,4 @@ Start med [designvalget «Side ved side»](designvalg.md). Der står hvorfor den
 | Brukerflyt og skjermtilstander | [UX-beskrivelse](EXPERIENCE.md) og [skjermskisse](screen-sketch.md) |
 | Visuell utforsking | [Fire tidlige SVG-konsepter](concepts/README.md), [fem konsepter med bredere variasjon](concepts/fem-designkonsepter.svg) og [fire lyseblå varianter](concepts/kildespor-fire-bla-varianter.svg) |
 | Visuell retning og prototype | [Tidlig designbeskrivelse](DESIGN.md), [tidlig HTML-prototype](prototype.html) og [valgt retning](designvalg.md) |
-| Implementering og test | [Appens grensesnitt](../../../../app/index.html), [testlogg](../../../../app/TESTLOGG.md) og [utviklingsiterasjoner](../../forarbeid/iterasjoner.md) |
+| Implementering og test | [Skjermbilde av bred visning](skjermbilder/sammendrag-bred.png), [appens grensesnitt](../../../../app/index.html), [testlogg](../../../../app/TESTLOGG.md) og [utviklingsiterasjoner](../../forarbeid/iterasjoner.md) |
