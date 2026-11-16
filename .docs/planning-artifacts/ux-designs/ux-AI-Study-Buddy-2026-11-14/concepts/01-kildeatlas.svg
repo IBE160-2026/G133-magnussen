@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1260" viewBox="0 0 1800 1260">
+  <title>Kildeatlas — seks skjermkonsepter for AI Study Buddy</title>
+  <desc>Følg hvert læringspunkt tilbake til margen og originalteksten. Alle eksempeldata er syntetiske og brukes kun til konseptskisser.</desc>
+  <rect width="1800" height="1260" fill="#F3EBDD"/>
+  <text x="70" y="92" fill="#252820" font-size="38" font-weight="750" font-family="Georgia, Iowan Old Style, serif">Kildeatlas</text>
+  <text x="71" y="126" fill="#9F3D32" font-size="12" font-weight="750" font-family="None">KILDEKONTROLL SOM EN DEL AV LESINGEN</text>
+  <text x="71" y="163" fill="#252820" font-size="18" font-weight="600" font-family="Georgia, Iowan Old Style, serif">Følg hvert læringspunkt tilbake til margen og originalteksten.</text>
+  <text x="71" y="192" fill="#596054" font-size="12" font-weight="450" font-family="None">Risiko: Kan bli bokaktig hvis typografien får ta mer plass enn studieoppgaven.</text>
+  <text x="71" y="225" fill="#596054" font-size="11" font-weight="600" font-family="None">Laptop først  ·  6 skjermer  ·  Mobil: én kolonne, innhold før PDF-visning</text>
+  <rect x="1320" y="70" width="410" height="154" rx="5" fill="#FFFCF5" stroke="#D9CCB8" stroke-width="1"/>
+  <text x="1341" y="97" fill="#9F3D32" font-size="10" font-weight="750" font-family="None">KILDESTATUS</text>
+  <rect x="1341" y="110" width="157" height="23" rx="11" fill="#E8DED0"/>
+  <text x="1351" y="126" fill="#3C6651" font-size="10" font-weight="650" font-family="None">Kildeutdrag bekreftet</text>
+  <rect x="1508" y="110" width="102" height="23" rx="11" fill="#FFFCF5" stroke="#9F3D32" stroke-width="1"/>
+  <text x="1518" y="126" fill="#9F3D32" font-size="10" font-weight="650" font-family="None">Ubekreftet</text>
+  <text x="1341" y="157" fill="#252820" font-size="10" font-weight="550" font-family="None">Sidetall åpner riktig PDF-side ved siden av ressursen.</text>
+  <text x="1341" y="180" fill="#596054" font-size="9" font-weight="500" font-family="None">Demodata, ikke hentet fra en faktisk kurs-PDF.</text>
+  <text x="1341" y="205" fill="#596054" font-size="9" font-weight="600" font-family="None">Konseptretning · ikke ferdig applikasjon</text>
+  <text x="70" y="261" fill="#252820" font-size="14" font-weight="750" font-family="Georgia, Iowan Old Style, serif">Start / studieøkt</text>
+  <rect x="70" y="277" width="540" height="320" rx="5" fill="#FFFCF5" stroke="#D9CCB8" stroke-width="1.2"/>
+  <rect x="70" y="277" width="540" height="29" rx="5" fill="#F3EBDD"/>
+  <rect x="70" y="294" width="540" height="12" rx="0" fill="#F3EBDD"/>
+  <circle cx="85" cy="291" r="3" fill="#3C6651"/>
+  <circle cx="98" cy="291" r="3" fill="#D7B96F"/>
+  <circle cx="111" cy="291" r="3" fill="#9F3D32"/>
+  <text x="142" y="295" fill="#252820" font-size="9" font-weight="700" font-family="Georgia, Iowan Old Style, serif">AI Study Buddy</text>
+  <text x="482" y="295" fill="#596054" font-size="7" font-weight="650" font-family="None">DEMOMODUS · SYNTHETISK</text>
+  <rect x="70" y="306" width="77" height="274" rx="0" fill="#F3EBDD" stroke="#D9CCB8" stroke-width="1"/>
+  <circle cx="91" cy="329" r="10" fill="#9F3D32"/>
+  <text x="108" y="333" fill="#252820" font-size="11" font-weight="750" font-family="None">ASB</text>
+  <rect x="78" y="351" width="61" height="27" rx="5" fill="#E8DED0"/>
+  <rect x="78" y="351" width="3" height="27" rx="0" fill="#9F3D32"/>
+  <circle cx="90" cy="364" r="3" fill="#9F3D32"/>
+  <text x="99" y="367" fill="#252820" font-size="9" font-weight="600" font-family="None">Økt</text>
+  <circle cx="90" cy="397" r="3" fill="#596054"/>
+  <text x="99" y="400" fill="#596054" font-size="9" font-weight="600" font-family="None">PDF</text>
+  <circle cx="90" cy="430" r="3" fill="#596054"/>
+  <text x="99" y="433" fill="#596054" font-size="9" font-weight="600" font-family="None">Samm.</text>
+  <circle cx="90" cy="463" r="3" fill="#596054"/>
+  <text x="99" y="466" fill="#596054" font-size="9" font-weight="600" font-family="None">Begrep</text>
+  <circle cx="90" cy="496" r="3" fill="#596054"/>
+  <text x="99" y="499" fill="#596054" font-size="9" font-weight="600" font-family="None">Kort</text>
+  <circle cx="90" cy="529" r="3" fill="#596054"/>
+  <text x="99" y="532" fill="#596054" font-size="9" font-weight="600" font-family="None">Quiz</text>
+  <line x1="80" y1="564" x2="137" y2="564" stroke="#D9CCB8" stroke-width="1"/>
+  <text x="161" y="338" fill="#252820" font-size="16" font-weight="720" font-family="Georgia, Iowan Old Style, serif">Klar for økta, Nora?</text>
+  <text x="161" y="356" fill="#596054" font-size="10" font-weight="450" font-family="Georgia, Iowan Old Style, serif">Gjør kursstoffet om til noe du kan øve på.</text>
+  <line x1="161" y1="367" x2="593" y2="367" stroke="#D9CCB8" stroke-width="1"/>
+  <text x="161" y="395" fill="#252820" font-size="15" font-weight="700" font-family="Georgia, Iowan Old Style, serif">Ditt kursstoff, klart for øving.</text>
+  <text x="161" y="414" fill="#596054" font-size="10" font-weight="400" font-family="None">Lag ressurser fra én PDF og sjekk dem mot kilden.</text>
+  <line x1="165" y1="431" x2="165" y2="542" stroke="#9F3D32" stroke-width="2"/>
+  <text x="179" y="450" fill="#9F3D32" font-size="9" font-weight="700" font-family="None">STUDIEØKT</text>
+  <text x="179" y="473" fill="#252820" font-size="12" font-weight="650" font-family="None">Ingen PDF i denne økta</text>
+  <text x="179" y="494" fill="#596054" font-size="9" font-weight="400" font-family="None">Sammendrag · Begreper · Kort · Quiz</text>
+  <rect x="179" y="513" width="155" height="30" rx="4" fill="#9F3D32"/>
+  <text x="192" y="533" fill="#FFFFFF" font-size="10" font-weight="700" font-family="None">Start ny studieøkt</text>
+  <text x="351" y="532" fill="#9F3D32" font-size="10" font-weight="650" font-family="None">Prøv demomodus</text>
+  <line x1="588" y1="373" x2="588" y2="579" stroke="#9F3D32" stroke-width="1"/>
+  <circle cx="588" cy="476" r="3" fill="#9F3D32"/>
+  <text x="630" y="261" fill="#252820" font-size="14" font-weight="750" font-family="Georgia, Iowan Old Style, serif">Opplasting</text>
+  <rect x="630" y="277" width="540" height="320" rx="5" fill="#FFFCF5" stroke="#D9CCB8" stroke-width="1.2"/>
+  <rect x="630" y="277" width="540" height="29" rx="5" fill="#F3EBDD"/>
+  <rect x="630" y="294" width="540" height="12" rx="0" fill="#F3EBDD"/>
+  <circle cx="645" cy="291" r="3" fill="#3C6651"/>
+  <circle cx="658" cy="291" r="3" fill="#D7B96F"/>
+  <circle cx="671" cy="291" r="3" fill="#9F3D32"/>
+  <text x="702" y="295" fill="#252820" font-size="9" font-weight="700" font-family="Georgia, Iowan Old Style, serif">AI Study Buddy</text>
+  <text x="1042" y="295" fill="#596054" font-size="7" font-weight="650" font-family="None">DEMOMODUS · SYNTHETISK</text>
+  <rect x="630" y="306" width="77" height="274" rx="0" fill="#F3EBDD" stroke="#D9CCB8" stroke-width="1"/>
+  <circle cx="651" cy="329" r="10" fill="#9F3D32"/>
+  <text x="668" y="333" fill="#252820" font-size="11" font-weight="750" font-family="None">ASB</text>
+  <circle cx="650" cy="364" r="3" fill="#596054"/>
+  <text x="659" y="367" fill="#596054" font-size="9" font-weight="600" font-family="None">Økt</text>
+  <rect x="638" y="384" width="61" height="27" rx="5" fill="#E8DED0"/>
+  <rect x="638" y="384" width="3" height="27" rx="0" fill="#9F3D32"/>
+  <circle cx="650" cy="397" r="3" fill="#9F3D32"/>
+  <text x="659" y="400" fill="#252820" font-size="9" font-weight="600" font-family="None">PDF</text>
+  <circle cx="650" cy="430" r="3" fill="#596054"/>
+  <text x="659" y="433" fill="#596054" font-size="9" font-weight="600" font-family="None">Samm.</text>
+  <circle cx="650" cy="463" r="3" fill="#596054"/>
+  <text x="659" y="466" fill="#596054" font-size="9" font-weight="600" font-family="None">Begrep</text>
+  <circle cx="650" cy="496" r="3" fill="#596054"/>
+  <text x="659" y="499" fill="#596054" font-size="9" font-weight="600" font-family="None">Kort</text>
+  <circle cx="650" cy="529" r="3" fill="#596054"/>
+  <text x="659" y="532" fill="#596054" font-size="9" font-weight="600" font-family="None">Quiz</text>
+  <line x1="640" y1="564" x2="697" y2="564" stroke="#D9CCB8" stroke-width="1"/>
+  <text x="721" y="338" fill="#252820" font-size="16" font-weight="720" font-family="Georgia, Iowan Old Style, serif">Legg til kurs-PDF</text>
+  <text x="721" y="356" fill="#596054" font-size="10" font-weight="450" font-family="Georgia, Iowan Old Style, serif">PDF · maks 20 MB · maks 50 sider</text>
+  <line x1="721" y1="367" x2="1153" y2="367" stroke="#D9CCB8" stroke-width="1"/>
+  <rect x="721" y="379" width="432" height="82" rx="5" fill="#FFFCF5" stroke="#D9CCB8" stroke-width="1"/>
+  <rect x="736" y="396" width="32" height="25" rx="5" fill="#E8DED0" stroke="#9F3D32" stroke-width="1"/>
+  <line x1="741" y1="403" x2="763" y2="403" stroke="#9F3D32" stroke-width="1"/>
+  <line x1="741" y1="409" x2="759" y2="409" stroke="#9F3D32" stroke-width="1"/>
+  <text x="782" y="407" fill="#252820" font-size="11" font-weight="650" font-family="None">Dra PDF hit, eller velg fil</text>
+  <text x="782" y="426" fill="#596054" font-size="9" font-weight="400" font-family="None">PDF · maks. 20 MB · maks. 50 sider</text>
+  <rect x="782" y="436" width="91" height="18" rx="8" fill="#E8DED0"/>
+  <text x="790" y="449" fill="#9F3D32" font-size="8" font-weight="700" font-family="None">Velg PDF</text>
+  <text x="721" y="483" fill="#252820" font-size="9" font-weight="650" font-family="None">ANATOMI_LECTURE.pdf</text>
+  <text x="1062" y="483" fill="#596054" font-size="9" font-weight="400" font-family="None">50 sider · 8,2 MB</text>
+  <rect x="721" y="494" width="432" height="51" rx="5" fill="#E8DED0"/>
+  <text x="733" y="513" fill="#252820" font-size="10" font-weight="700" font-family="None">46 sider har lesbar tekst</text>
+  <text x="733" y="528" fill="#596054" font-size="8" font-weight="400" font-family="None">Lite tekst på side 1, 2, 7 og 9. De sidene utelates.</text>
+  <rect x="721" y="557" width="146" height="27" rx="5" fill="#9F3D32"/>
+  <text x="732" y="575" fill="#FFFFFF" font-size="9" font-weight="700" font-family="None">Fortsett med 46 sider</text>
+  <text x="879" y="575" fill="#596054" font-size="9" font-weight="650" font-family="None">Avbryt</text>
+  <line x1="1148" y1="373" x2="1148" y2="579" stroke="#9F3D32" stroke-width="1"/>
+  <circle cx="1148" cy="476" r="3" fill="#9F3D32"/>
+  <text x="1190" y="261" fill="#252820" font-size="14" font-weight="750" font-family="Georgia, Iowan Old Style, serif">Sammendrag</text>
+  <rect x="1190" y="277" width="540" height="320" rx="5" fill="#FFFCF5" stroke="#D9CCB8" stroke-width="1.2"/>
+  <rect x="1190" y="277" width="540" height="29" rx="5" fill="#F3EBDD"/>
+  <rect x="1190" y="294" width="540" height="12" rx="0" fill="#F3EBDD"/>
+  <circle cx="1205" cy="291" r="3" fill="#3C6651"/>
+  <circle cx="1218" cy="291" r="3" fill="#D7B96F"/>
+  <circle cx="1231" cy="291" r="3" fill="#9F3D32"/>
+  <text x="1262" y="295" fill="#252820" font-size="9" font-weight="700" font-family="Georgia, Iowan Old Style, serif">AI Study Buddy</text>
+  <text x="1602" y="295" fill="#596054" font-size="7" font-weight="650" font-family="None">DEMOMODUS · SYNTHETISK</text>
+  <rect x="1190" y="306" width="77" height="274" rx="0" fill="#F3EBDD" stroke="#D9CCB8" stroke-width="1"/>
+  <circle cx="1211" cy="329" r="10" fill="#9F3D32"/>
+  <text x="1228" y="333" fill="#252820" font-size="11" font-weight="750" font-family="None">ASB</text>
+  <circle cx="1210" cy="364" r="3" fill="#596054"/>
+  <text x="1219" y="367" fill="#596054" font-size="9" font-weight="600" font-family="None">Økt</text>
+  <circle cx="1210" cy="397" r="3" fill="#596054"/>
+  <text x="1219" y="400" fill="#596054" font-size="9" font-weight="600" font-family="None">PDF</text>
+  <rect x="1198" y="417" width="61" height="27" rx="5" fill="#E8DED0"/>
+  <rect x="1198" y="417" width="3" height="27" rx="0" fill="#9F3D32"/>
+  <circle cx="1210" cy="430" r="3" fill="#9F3D32"/>
+  <text x="1219" y="433" fill="#252820" font-size="9" font-weight="600" font-family="None">Samm.</text>
+  <circle cx="1210" cy="463" r="3" fill="#596054"/>
+  <text x="1219" y="466" fill="#596054" font-size="9" font-weight="600" font-family="None">Begrep</text>
+  <circle cx="1210" cy="496" r="3" fill="#596054"/>
+  <text x="1219" y="499" fill="#596054" font-size="9" font-weight="600" font-family="None">Kort</text>
+  <circle cx="1210" cy="529" r="3" fill="#596054"/>
+  <text x="1219" y="532" fill="#596054" font-size="9" font-weight="600" font-family="None">Quiz</text>
+  <line x1="1200" y1="564" x2="1257" y2="564" stroke="#D9CCB8" stroke-width="1"/>
+  <text x="1281" y="338" fill="#252820" font-size="16" font-weight="720" font-family="Georgia, Iowan Old Style, serif">Sammendrag · Muskelarbeid</text>
+  <text x="1281" y="356" fill="#596054" font-size="10" font-weight="450" font-family="Georgia, Iowan Old Style, serif">46 av 50 sider representert</text>
+  <line x1="1281" y1="367" x2="1713" y2="367" stroke="#D9CCB8" stroke-width="1"/>
+  <text x="1281" y="385" fill="#252820" font-size="11" font-weight="700" font-family="Georgia, Iowan Old Style, serif">Muskelarbeid i overekstremiteten</text>
+  <text x="1281" y="404" fill="#252820" font-size="9" font-weight="400" font-family="None">Muskler i overarmen bidrar til bevegelse i albuen.</text>
+  <text x="1290" y="428" fill="#252820" font-size="9" font-weight="400" font-family="None">•  Biceps brachii bøyer albuen.</text>
+  <text x="1290" y="446" fill="#252820" font-size="9" font-weight="400" font-family="None">•  Triceps brachii strekker albuen.</text>
+  <rect x="1281" y="461" width="64" height="23" rx="11" fill="#E8DED0"/>
+  <text x="1291" y="477" fill="#9F3D32" font-size="10" font-weight="650" font-family="None">Side 12</text>
+  <text x="1347" y="477" fill="#3C6651" font-size="8" font-weight="650" font-family="None">Kildeutdrag bekreftet</text>
+  <rect x="1281" y="491" width="242.55999999999997" height="67" rx="5" fill="#E8DED0"/>
+  <text x="1291" y="508" fill="#9F3D32" font-size="8" font-weight="700" font-family="None">DEMOUTDRAG · SIDE 12</text>
+  <text x="1291" y="525" fill="#252820" font-size="9" font-weight="400" font-family="None">«Eksempelutdrag fra PDF om</text>
+  <text x="1291" y="538" fill="#252820" font-size="9" font-weight="400" font-family="None">musklenes funksjon …»</text>
+  <rect x="1531.56" y="380" width="181.44000000000003" height="203" rx="5" fill="#FFFCF5" stroke="#D9CCB8" stroke-width="1"/>
+  <text x="1541.56" y="398" fill="#596054" font-size="8" font-weight="700" font-family="None">PDF · SIDE 12</text>
+  <rect x="1541.56" y="411" width="161.44000000000003" height="4" rx="1" fill="#D9CCB8"/>
+  <rect x="1541.56" y="424" width="151.44000000000003" height="4" rx="1" fill="#D9CCB8"/>
+  <rect x="1541.56" y="437" width="159.44000000000003" height="4" rx="1" fill="#D9CCB8"/>
+  <rect x="1541.56" y="450" width="139.44000000000003" height="4" rx="1" fill="#D9CCB8"/>
+  <rect x="1539.56" y="462" width="165.44000000000003" height="37" rx="2" fill="#E8DED0"/>
+  <text x="1545.56" y="477" fill="#9F3D32" font-size="8" font-weight="650" font-family="None">Valgt kildeutdrag</text>
+  <text x="1545.56" y="490" fill="#252820" font-size="8" font-weight="400" font-family="None">Biceps bøyer albuen …</text>
+  <text x="1541.56" y="518" fill="#596054" font-size="8" font-weight="600" font-family="None">Side 12 av 50</text>
+  <line x1="1708" y1="373" x2="1708" y2="579" stroke="#9F3D32" stroke-width="1"/>
+  <circle cx="1708" cy="476" r="3" fill="#9F3D32"/>
+  <text x="70" y="648" fill="#252820" font-size="14" font-weight="750" font-family="Georgia, Iowan Old Style, serif">Nøkkelbegreper</text>
+  <rect x="70" y="664" width="540" height="320" rx="5" fill="#FFFCF5" stroke="#D9CCB8" stroke-width="1.2"/>
+  <rect x="70" y="664" width="540" height="29" rx="5" fill="#F3EBDD"/>
+  <rect x="70" y="681" width="540" height="12" rx="0" fill="#F3EBDD"/>
+  <circle cx="85" cy="678" r="3" fill="#3C6651"/>
+  <circle cx="98" cy="678" r="3" fill="#D7B96F"/>
+  <circle cx="111" cy="678" r="3" fill="#9F3D32"/>
+  <text x="142" y="682" fill="#252820" font-size="9" font-weight="700" font-family="Georgia, Iowan Old Style, serif">AI Study Buddy</text>
+  <text x="482" y="682" fill="#596054" font-size="7" font-weight="650" font-family="None">DEMOMODUS · SYNTHETISK</text>
+  <rect x="70" y="693" width="77" height="274" rx="0" fill="#F3EBDD" stroke="#D9CCB8" stroke-width="1"/>
+  <circle cx="91" cy="716" r="10" fill="#9F3D32"/>
+  <text x="108" y="720" fill="#252820" font-size="11" font-weight="750" font-family="None">ASB</text>
+  <circle cx="90" cy="751" r="3" fill="#596054"/>
+  <text x="99" y="754" fill="#596054" font-size="9" font-weight="600" font-family="None">Økt</text>
+  <circle cx="90" cy="784" r="3" fill="#596054"/>
+  <text x="99" y="787" fill="#596054" font-size="9" font-weight="600" font-family="None">PDF</text>
+  <circle cx="90" cy="817" r="3" fill="#596054"/>
+  <text x="99" y="820" fill="#596054" font-size="9" font-weight="600" font-family="None">Samm.</text>
+  <rect x="78" y="837" width="61" height="27" rx="5" fill="#E8DED0"/>
+  <rect x="78" y="837" width="3" height="27" rx="0" fill="#9F3D32"/>
+  <circle cx="90" cy="850" r="3" fill="#9F3D32"/>
+  <text x="99" y="853" fill="#252820" font-size="9" font-weight="600" font-family="None">Begrep</text>
+  <circle cx="90" cy="883" r="3" fill="#596054"/>
+  <text x="99" y="886" fill="#596054" font-size="9" font-weight="600" font-family="None">Kort</text>
+  <circle cx="90" cy="916" r="3" fill="#596054"/>
+  <text x="99" y="919" fill="#596054" font-size="9" font-weight="600" font-family="None">Quiz</text>
+  <line x1="80" y1="951" x2="137" y2="951" stroke="#D9CCB8" stroke-width="1"/>
+  <text x="161" y="725" fill="#252820" font-size="16" font-weight="720" font-family="Georgia, Iowan Old Style, serif">Nøkkelbegreper</text>
+  <text x="161" y="743" fill="#596054" font-size="10" font-weight="450" font-family="Georgia, Iowan Old Style, serif">Muskelgrupper · 8 begreper</text>
+  <line x1="161" y1="754" x2="593" y2="754" stroke="#D9CCB8" stroke-width="1"/>
+  <rect x="161" y="769" width="3" height="42" rx="1" fill="#9F3D32"/>
+  <text x="178" y="781" fill="#252820" font-size="11" font-weight="720" font-family="Georgia, Iowan Old Style, serif">M. biceps brachii</text>
+  <text x="178" y="798" fill="#596054" font-size="9" font-weight="400" font-family="None">Bøyer albuen og supinerer underarmen.</text>
+  <text x="178" y="813" fill="#3C6651" font-size="8" font-weight="650" font-family="None">Side 12 · bekreftet</text>
+  <line x1="178" y1="820" x2="593" y2="820" stroke="#D9CCB8" stroke-width="1"/>
+  <rect x="161" y="827" width="3" height="42" rx="1" fill="#9F3D32"/>
+  <text x="178" y="839" fill="#252820" font-size="11" font-weight="720" font-family="Georgia, Iowan Old Style, serif">M. triceps brachii</text>
+  <text x="178" y="856" fill="#596054" font-size="9" font-weight="400" font-family="None">Strekker albuen.</text>
+  <text x="178" y="871" fill="#3C6651" font-size="8" font-weight="650" font-family="None">Side 14 · bekreftet</text>
+  <line x1="178" y1="878" x2="593" y2="878" stroke="#D9CCB8" stroke-width="1"/>
+  <rect x="161" y="885" width="3" height="42" rx="1" fill="#3C6651"/>
+  <text x="178" y="897" fill="#252820" font-size="11" font-weight="720" font-family="Georgia, Iowan Old Style, serif">M. brachialis</text>
+  <text x="178" y="914" fill="#596054" font-size="9" font-weight="400" font-family="None">Bidrar til fleksjon i albuen.</text>
+  <text x="178" y="929" fill="#9F3D32" font-size="8" font-weight="650" font-family="None">Ubekreftet · sjekk kilden</text>
+  <rect x="161" y="947" width="111" height="22" rx="5" fill="#9F3D32"/>
+  <text x="171" y="962" fill="#FFFFFF" font-size="8" font-weight="700" font-family="None">Åpne PDF-side</text>
+  <line x1="588" y1="760" x2="588" y2="966" stroke="#9F3D32" stroke-width="1"/>
+  <circle cx="588" cy="863" r="3" fill="#9F3D32"/>
+  <text x="630" y="648" fill="#252820" font-size="14" font-weight="750" font-family="Georgia, Iowan Old Style, serif">Flashcards</text>
+  <rect x="630" y="664" width="540" height="320" rx="5" fill="#FFFCF5" stroke="#D9CCB8" stroke-width="1.2"/>
+  <rect x="630" y="664" width="540" height="29" rx="5" fill="#F3EBDD"/>
+  <rect x="630" y="681" width="540" height="12" rx="0" fill="#F3EBDD"/>
+  <circle cx="645" cy="678" r="3" fill="#3C6651"/>
+  <circle cx="658" cy="678" r="3" fill="#D7B96F"/>
+  <circle cx="671" cy="678" r="3" fill="#9F3D32"/>
+  <text x="702" y="682" fill="#252820" font-size="9" font-weight="700" font-family="Georgia, Iowan Old Style, serif">AI Study Buddy</text>
+  <text x="1042" y="682" fill="#596054" font-size="7" font-weight="650" font-family="None">DEMOMODUS · SYNTHETISK</text>
+  <rect x="630" y="693" width="77" height="274" rx="0" fill="#F3EBDD" stroke="#D9CCB8" stroke-width="1"/>
+  <circle cx="651" cy="716" r="10" fill="#9F3D32"/>
+  <text x="668" y="720" fill="#252820" font-size="11" font-weight="750" font-family="None">ASB</text>
+  <circle cx="650" cy="751" r="3" fill="#596054"/>
+  <text x="659" y="754" fill="#596054" font-size="9" font-weight="600" font-family="None">Økt</text>
+  <circle cx="650" cy="784" r="3" fill="#596054"/>
+  <text x="659" y="787" fill="#596054" font-size="9" font-weight="600" font-family="None">PDF</text>
+  <circle cx="650" cy="817" r="3" fill="#596054"/>
+  <text x="659" y="820" fill="#596054" font-size="9" font-weight="600" font-family="None">Samm.</text>
+  <circle cx="650" cy="850" r="3" fill="#596054"/>
+  <text x="659" y="853" fill="#596054" font-size="9" font-weight="600" font-family="None">Begrep</text>
+  <rect x="638" y="870" width="61" height="27" rx="5" fill="#E8DED0"/>
+  <rect x="638" y="870" width="3" height="27" rx="0" fill="#9F3D32"/>
+  <circle cx="650" cy="883" r="3" fill="#9F3D32"/>
+  <text x="659" y="886" fill="#252820" font-size="9" font-weight="600" font-family="None">Kort</text>
+  <circle cx="650" cy="916" r="3" fill="#596054"/>
+  <text x="659" y="919" fill="#596054" font-size="9" font-weight="600" font-family="None">Quiz</text>
+  <line x1="640" y1="951" x2="697" y2="951" stroke="#D9CCB8" stroke-width="1"/>
+  <text x="721" y="725" fill="#252820" font-size="16" font-weight="720" font-family="Georgia, Iowan Old Style, serif">Flashcards · 3 av 10</text>
+  <text x="721" y="743" fill="#596054" font-size="10" font-weight="450" font-family="Georgia, Iowan Old Style, serif">Svar før du snur kortet</text>
+  <line x1="721" y1="754" x2="1153" y2="754" stroke="#D9CCB8" stroke-width="1"/>
+  <text x="721" y="770" fill="#9F3D32" font-size="9" font-weight="700" font-family="None">Spørsmål</text>
+  <rect x="721" y="778" width="246.23999999999998" height="116" rx="5" fill="#FFFCF5" stroke="#D9CCB8" stroke-width="1"/>
+  <text x="735" y="804" fill="#596054" font-size="10" font-weight="600" font-family="None">Hvilken funksjon har</text>
+  <text x="735" y="826" fill="#252820" font-size="15" font-weight="720" font-family="Georgia, Iowan Old Style, serif">M. biceps brachii?</text>
+  <rect x="735" y="850" width="120" height="26" rx="5" fill="#9F3D32"/>
+  <text x="746" y="868" fill="#FFFFFF" font-size="9" font-weight="700" font-family="None">Vis spørsmål  →</text>
+  <rect x="984.52" y="778" width="168.48000000000002" height="192" rx="5" fill="#E8DED0"/>
+  <text x="995.52" y="799" fill="#9F3D32" font-size="8" font-weight="750" font-family="None">SVAR VIST</text>
+  <text x="995.52" y="819" fill="#252820" font-size="10" font-weight="700" font-family="None">Albuefleksjon</text>
+  <line x1="995.52" y1="828" x2="1143.0" y2="828" stroke="#D9CCB8" stroke-width="1"/>
+  <text x="995.52" y="846" fill="#9F3D32" font-size="8" font-weight="750" font-family="None">KILDE · SIDE 12</text>
+  <text x="995.52" y="863" fill="#252820" font-size="8" font-weight="400" font-family="None">«Eksempelutdrag fra</text>
+  <text x="995.52" y="875" fill="#252820" font-size="8" font-weight="400" font-family="None">PDF om muskelfunksjon …»</text>
+  <rect x="995.52" y="901" width="69.6" height="23" rx="11" fill="#FFFCF5"/>
+  <text x="1005.52" y="917" fill="#3C6651" font-size="10" font-weight="650" font-family="None">Bekreftet</text>
+  <text x="721" y="929" fill="#596054" font-size="8" font-weight="700" font-family="None">KORT 3 AV 10 · SVAR VIST</text>
+  <line x1="795" y1="926" x2="1153" y2="926" stroke="#D9CCB8" stroke-width="3"/>
+  <line x1="795" y1="926" x2="902.4" y2="926" stroke="#9F3D32" stroke-width="3"/>
+  <line x1="1148" y1="760" x2="1148" y2="966" stroke="#9F3D32" stroke-width="1"/>
+  <circle cx="1148" cy="863" r="3" fill="#9F3D32"/>
+  <text x="1190" y="648" fill="#252820" font-size="14" font-weight="750" font-family="Georgia, Iowan Old Style, serif">Quiz</text>
+  <rect x="1190" y="664" width="540" height="320" rx="5" fill="#FFFCF5" stroke="#D9CCB8" stroke-width="1.2"/>
+  <rect x="1190" y="664" width="540" height="29" rx="5" fill="#F3EBDD"/>
+  <rect x="1190" y="681" width="540" height="12" rx="0" fill="#F3EBDD"/>
+  <circle cx="1205" cy="678" r="3" fill="#3C6651"/>
+  <circle cx="1218" cy="678" r="3" fill="#D7B96F"/>
+  <circle cx="1231" cy="678" r="3" fill="#9F3D32"/>
+  <text x="1262" y="682" fill="#252820" font-size="9" font-weight="700" font-family="Georgia, Iowan Old Style, serif">AI Study Buddy</text>
+  <text x="1602" y="682" fill="#596054" font-size="7" font-weight="650" font-family="None">DEMOMODUS · SYNTHETISK</text>
+  <rect x="1190" y="693" width="77" height="274" rx="0" fill="#F3EBDD" stroke="#D9CCB8" stroke-width="1"/>
+  <circle cx="1211" cy="716" r="10" fill="#9F3D32"/>
+  <text x="1228" y="720" fill="#252820" font-size="11" font-weight="750" font-family="None">ASB</text>
+  <circle cx="1210" cy="751" r="3" fill="#596054"/>
+  <text x="1219" y="754" fill="#596054" font-size="9" font-weight="600" font-family="None">Økt</text>
+  <circle cx="1210" cy="784" r="3" fill="#596054"/>
+  <text x="1219" y="787" fill="#596054" font-size="9" font-weight="600" font-family="None">PDF</text>
+  <circle cx="1210" cy="817" r="3" fill="#596054"/>
+  <text x="1219" y="820" fill="#596054" font-size="9" font-weight="600" font-family="None">Samm.</text>
+  <circle cx="1210" cy="850" r="3" fill="#596054"/>
+  <text x="1219" y="853" fill="#596054" font-size="9" font-weight="600" font-family="None">Begrep</text>
+  <circle cx="1210" cy="883" r="3" fill="#596054"/>
+  <text x="1219" y="886" fill="#596054" font-size="9" font-weight="600" font-family="None">Kort</text>
+  <rect x="1198" y="903" width="61" height="27" rx="5" fill="#E8DED0"/>
+  <rect x="1198" y="903" width="3" height="27" rx="0" fill="#9F3D32"/>
+  <circle cx="1210" cy="916" r="3" fill="#9F3D32"/>
+  <text x="1219" y="919" fill="#252820" font-size="9" font-weight="600" font-family="None">Quiz</text>
+  <line x1="1200" y1="951" x2="1257" y2="951" stroke="#D9CCB8" stroke-width="1"/>
+  <text x="1281" y="725" fill="#252820" font-size="16" font-weight="720" font-family="Georgia, Iowan Old Style, serif">Quizresultat · 7 av 8 riktig</text>
+  <text x="1281" y="743" fill="#596054" font-size="10" font-weight="450" font-family="Georgia, Iowan Old Style, serif">Oppgave 3 · levert</text>
+  <line x1="1281" y1="754" x2="1713" y2="754" stroke="#D9CCB8" stroke-width="1"/>
+  <rect x="1281" y="763" width="64" height="23" rx="11" fill="#E8DED0"/>
+  <text x="1291" y="779" fill="#3C6651" font-size="10" font-weight="650" font-family="None">Levert</text>
+  <text x="1346" y="779" fill="#252820" font-size="10" font-weight="700" font-family="None">7 av 8 riktige</text>
+  <text x="1281" y="805" fill="#252820" font-size="11" font-weight="700" font-family="Georgia, Iowan Old Style, serif">Hva skjer når M. triceps brachii aktiveres?</text>
+  <rect x="1281" y="819" width="250.55999999999997" height="23" rx="5" fill="#E8DED0" stroke="#3C6651" stroke-width="1"/>
+  <circle cx="1293" cy="830.5" r="5" fill="#3C6651" stroke="#3C6651" stroke-width="1"/>
+  <text x="1305" y="834" fill="#252820" font-size="9" font-weight="650" font-family="None">Albuen strekkes</text>
+  <text x="1539.56" y="834" fill="#3C6651" font-size="8" font-weight="700" font-family="None">Riktig</text>
+  <rect x="1281" y="848" width="250.55999999999997" height="23" rx="5" fill="#FFFCF5" stroke="#D9CCB8" stroke-width="1"/>
+  <circle cx="1293" cy="859.5" r="5" fill="#FFFCF5" stroke="#D9CCB8" stroke-width="1"/>
+  <text x="1305" y="863" fill="#252820" font-size="9" font-weight="450" font-family="None">Albuen bøyes</text>
+  <rect x="1281" y="877" width="250.55999999999997" height="23" rx="5" fill="#FFFCF5" stroke="#D9CCB8" stroke-width="1"/>
+  <circle cx="1293" cy="888.5" r="5" fill="#FFFCF5" stroke="#D9CCB8" stroke-width="1"/>
+  <text x="1305" y="892" fill="#252820" font-size="9" font-weight="450" font-family="None">Håndleddet roteres</text>
+  <rect x="1574.76" y="818" width="138.24" height="152" rx="5" fill="#E8DED0"/>
+  <text x="1583.76" y="837" fill="#9F3D32" font-size="8" font-weight="750" font-family="None">FORKLARING</text>
+  <text x="1583.76" y="856" fill="#252820" font-size="8" font-weight="400" font-family="None">Triceps bidrar til</text>
+  <text x="1583.76" y="868" fill="#252820" font-size="8" font-weight="400" font-family="None">ekstensjon i albuen.</text>
+  <line x1="1583.76" y1="867" x2="1705.0" y2="867" stroke="#D9CCB8" stroke-width="1"/>
+  <text x="1583.76" y="886" fill="#9F3D32" font-size="8" font-weight="750" font-family="None">SIDE 18</text>
+  <text x="1583.76" y="902" fill="#252820" font-size="8" font-weight="650" font-family="None">Kildeutdrag</text>
+  <text x="1583.76" y="917" fill="#3C6651" font-size="8" font-weight="650" font-family="None">bekreftet</text>
+  <line x1="1708" y1="760" x2="1708" y2="966" stroke="#9F3D32" stroke-width="1"/>
+  <circle cx="1708" cy="863" r="3" fill="#9F3D32"/>
+  <line x1="70" y1="1040" x2="1730" y2="1040" stroke="#D9CCB8" stroke-width="1"/>
+  <text x="70" y="1072" fill="#252820" font-size="13" font-weight="650" font-family="Georgia, Iowan Old Style, serif">Signatur: kildehenvisningen står i margen og trekker en tynn forbindelse til utdraget.</text>
+  <text x="70" y="1101" fill="#596054" font-size="10" font-weight="450" font-family="None">Alle varianter beholder samme innhold og funksjoner. Uttrykk, navigasjonshierarki og plassering av kildebevis varierer.</text>
+  <text x="70" y="1185" fill="#9F3D32" font-size="9" font-weight="800" font-family="None">AI STUDY BUDDY</text>
+  <text x="1620" y="1185" fill="#596054" font-size="9" font-weight="700" font-family="None">KONSEPTSKISSE · SVG</text>
+</svg>

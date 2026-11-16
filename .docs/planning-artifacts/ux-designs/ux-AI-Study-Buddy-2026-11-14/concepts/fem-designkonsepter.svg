@@ -1,0 +1,1353 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2992" height="5500" viewBox="0 0 2992 5500" role="img" aria-labelledby="title"><title id="title">AI Study Buddy – fem designkonsepter, 50 skjermskisser</title>
+<rect x="0" y="0" width="2992" height="5500" rx="0" fill="#f1eee8" stroke="none"/>
+<text x="36" y="64" fill="#242627" font-family="Georgia" font-size="46" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="36" y="103" fill="#242627" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="400" text-anchor="start">Fem designkonsepter · 50 skjermskisser · samme eksempeløkt på tvers av konseptene</text>
+<g id="konsept-1" transform="translate(24 140)">
+<rect x="0" y="0" width="2944" height="1038" rx="14" fill="#e8f0ec" stroke="none"/>
+<text x="20" y="57" fill="#172d27" font-family="Georgia" font-size="39" font-weight="700" text-anchor="start">Atlas</text>
+<text x="260" y="55" fill="#405c52" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="400" text-anchor="start">Universitetsatlas · innholdsfortegnelse til venstre og kilden fast ved siden av</text>
+<g id="konsept-1-skjerm-1" transform="translate(20 86)"><title>Atlas – Opplasting</title>
+<text x="0" y="19" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Opplasting</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="8" fill="#fbfdf9" stroke="#405c52"/>
+<rect x="1" y="1" width="566" height="39" rx="8" fill="#155847" stroke="none"/>
+<text x="14" y="25" fill="#e8f0ec" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#e8f0ec" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Demo tilgjengelig</text>
+<text x="28" y="96" fill="#172d27" font-family="Georgia" font-size="29" font-weight="700" text-anchor="start">Last opp en PDF</text>
+<text x="28" y="127" fill="#405c52" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">Én tekstbasert PDF · maks 20 MB og 50 sider</text>
+<rect x="28" y="150" width="512" height="123" rx="8" fill="#d3e4d9" stroke="#155847"/>
+<path d="M47 186v-19h12l7 7v12z m12-19v7h7" fill="none" stroke="#245344" stroke-width="1.5"/>
+<text x="76" y="182" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="700" text-anchor="start">Dra PDF-en hit</text>
+<rect x="46" y="211" width="90" height="34" rx="8" fill="#155847" stroke="#155847"/>
+<text x="59" y="233" fill="#e8f0ec" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Velg PDF</text>
+<rect x="28" y="294" width="98" height="34" rx="8" fill="#fbfdf9" stroke="#155847"/>
+<text x="41" y="316" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Prøv demo</text>
+</g></g>
+<g id="konsept-1-skjerm-2" transform="translate(604 86)"><title>Atlas – Tekstsjekk</title>
+<text x="0" y="19" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Tekstsjekk</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="8" fill="#fbfdf9" stroke="#405c52"/>
+<rect x="1" y="1" width="566" height="39" rx="8" fill="#155847" stroke="none"/>
+<text x="14" y="25" fill="#e8f0ec" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#e8f0ec" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<text x="28" y="96" fill="#172d27" font-family="Georgia" font-size="29" font-weight="700" text-anchor="start">Sjekk sidene</text>
+<text x="28" y="129" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="start">Anatomi.pdf · 3 sider</text>
+<rect x="28" y="161" width="512" height="31" rx="8" fill="#e8f0ec" stroke="none"/>
+<text x="38" y="182" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Side 1</text>
+<text x="128" y="182" fill="#405c52" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">Klar</text>
+<rect x="28" y="200" width="512" height="31" rx="8" fill="#e8f0ec" stroke="none"/>
+<text x="38" y="221" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Side 2</text>
+<text x="128" y="221" fill="#405c52" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">Klar</text>
+<rect x="28" y="239" width="512" height="31" rx="8" fill="#d3e4d9" stroke="none"/>
+<text x="38" y="260" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Side 3</text>
+<text x="128" y="260" fill="#245344" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">Lite uttrekkbar tekst</text>
+<rect x="28" y="289" width="186" height="34" rx="8" fill="#155847" stroke="#155847"/>
+<text x="41" y="311" fill="#e8f0ec" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Fortsett med 2 sider</text>
+<text x="28" y="349" fill="#245344" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Velg en annen PDF</text>
+</g></g>
+<g id="konsept-1-skjerm-3" transform="translate(1188 86)"><title>Atlas – Studieøkt</title>
+<text x="0" y="19" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Studieøkt</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="8" fill="#fbfdf9" stroke="#405c52"/>
+<rect x="1" y="1" width="566" height="39" rx="8" fill="#155847" stroke="none"/>
+<text x="14" y="25" fill="#e8f0ec" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#e8f0ec" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<rect x="1" y="41" width="104" height="365" rx="0" fill="#e8f0ec" stroke="none"/>
+<rect x="8" y="51" width="89" height="28" rx="5" fill="#d3e4d9" stroke="none"/>
+<text x="14" y="69" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="start">Studieøkt</text>
+<text x="14" y="108" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Sammendrag</text>
+<text x="14" y="147" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Begreper</text>
+<text x="14" y="186" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Flashcards</text>
+<text x="14" y="225" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Quiz</text>
+<text x="121" y="96" fill="#172d27" font-family="Georgia" font-size="29" font-weight="700" text-anchor="start">Velg studieressurs</text>
+<text x="121" y="121" fill="#405c52" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">2 sider klare · 4 forespørsler igjen</text>
+<rect x="121" y="142" width="419" height="42" rx="8" fill="#d3e4d9" stroke="none"/>
+<text x="131" y="160" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="start">Sammendrag</text>
+<text x="131" y="178" fill="#405c52" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Les hovedpunktene</text>
+<rect x="121" y="190" width="419" height="42" rx="8" fill="#e8f0ec" stroke="none"/>
+<text x="131" y="208" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="start">Nøkkelbegreper</text>
+<text x="131" y="226" fill="#405c52" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Slå opp norske og latinske navn</text>
+<rect x="121" y="238" width="419" height="42" rx="8" fill="#e8f0ec" stroke="none"/>
+<text x="131" y="256" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="start">Flashcards</text>
+<text x="131" y="274" fill="#405c52" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Øv på å huske svaret</text>
+<rect x="121" y="286" width="419" height="42" rx="8" fill="#e8f0ec" stroke="none"/>
+<text x="131" y="304" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="start">Quiz</text>
+<text x="131" y="322" fill="#405c52" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Test deg selv med fasit</text>
+<text x="121" y="377" fill="#245344" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Avslutt økten</text>
+</g></g>
+<g id="konsept-1-skjerm-4" transform="translate(1772 86)"><title>Atlas – Sammendrag</title>
+<text x="0" y="19" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Sammendrag</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="8" fill="#fbfdf9" stroke="#405c52"/>
+<rect x="1" y="1" width="566" height="39" rx="8" fill="#155847" stroke="none"/>
+<text x="14" y="25" fill="#e8f0ec" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#e8f0ec" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<rect x="1" y="41" width="104" height="365" rx="0" fill="#e8f0ec" stroke="none"/>
+<text x="14" y="69" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Studieøkt</text>
+<rect x="8" y="90" width="89" height="28" rx="5" fill="#d3e4d9" stroke="none"/>
+<text x="14" y="108" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="start">Sammendrag</text>
+<text x="14" y="147" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Begreper</text>
+<text x="14" y="186" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Flashcards</text>
+<text x="14" y="225" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Quiz</text>
+<text x="121" y="96" fill="#172d27" font-family="Georgia" font-size="29" font-weight="700" text-anchor="start">Overarmens muskler</text>
+<rect x="386" y="118" width="163" height="260" rx="8" fill="#d3e4d9" stroke="none"/>
+<text x="398" y="143" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">PDF · Side 2 av 3</text>
+<rect x="396" y="159" width="143" height="203" rx="2" fill="#fffdf8" stroke="none"/>
+<text x="405" y="183" fill="#293447" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="start">Overarmens muskler</text>
+<path d="M406 205H524V205" fill="none" stroke="#818c9c"/>
+<path d="M406 218H510V218" fill="none" stroke="#818c9c"/>
+<path d="M406 231H496V231" fill="none" stroke="#818c9c"/>
+<rect x="402" y="237" width="131" height="14" rx="2" fill="#f3dd88" stroke="none"/>
+<path d="M406 244H524V244" fill="none" stroke="#818c9c"/>
+<path d="M406 257H510V257" fill="none" stroke="#818c9c"/>
+<path d="M406 270H496V270" fill="none" stroke="#818c9c"/>
+<path d="M406 283H524V283" fill="none" stroke="#818c9c"/>
+<path d="M406 296H510V296" fill="none" stroke="#818c9c"/>
+<text x="406" y="343" fill="#293447" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start">2</text>
+<text x="121" y="144" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Albuefleksjon</text>
+<text x="121" y="170" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="400" text-anchor="start">Biceps og brachialis bidrar</text>
+<text x="121" y="193" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="400" text-anchor="start">til å bøye albuen.</text>
+<rect x="121" y="212" width="255" height="79" rx="8" fill="#d3e4d9" stroke="none"/>
+<text x="131" y="231" fill="#245344" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="start">Kildeutdrag bekreftet</text>
+<text x="131" y="252" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start">«… flekterer albueleddet …»</text>
+<text x="131" y="274" fill="#245344" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Åpne side 2</text>
+<text x="121" y="322" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="700" text-anchor="start">Rotasjon av underarmen</text>
+<text x="121" y="346" fill="#405c52" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">Biceps bidrar ved supinasjon.</text>
+</g></g>
+<g id="konsept-1-skjerm-5" transform="translate(2356 86)"><title>Atlas – Nøkkelbegreper</title>
+<text x="0" y="19" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Nøkkelbegreper</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="8" fill="#fbfdf9" stroke="#405c52"/>
+<rect x="1" y="1" width="566" height="39" rx="8" fill="#155847" stroke="none"/>
+<text x="14" y="25" fill="#e8f0ec" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#e8f0ec" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<rect x="1" y="41" width="104" height="365" rx="0" fill="#e8f0ec" stroke="none"/>
+<text x="14" y="69" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Studieøkt</text>
+<text x="14" y="108" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Sammendrag</text>
+<rect x="8" y="129" width="89" height="28" rx="5" fill="#d3e4d9" stroke="none"/>
+<text x="14" y="147" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="start">Begreper</text>
+<text x="14" y="186" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Flashcards</text>
+<text x="14" y="225" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Quiz</text>
+<text x="121" y="96" fill="#172d27" font-family="Georgia" font-size="29" font-weight="700" text-anchor="start">Nøkkelbegreper</text>
+<rect x="386" y="118" width="163" height="260" rx="8" fill="#d3e4d9" stroke="none"/>
+<text x="398" y="143" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">PDF · Side 2 av 3</text>
+<rect x="396" y="159" width="143" height="203" rx="2" fill="#fffdf8" stroke="none"/>
+<text x="405" y="183" fill="#293447" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="start">Overarmens muskler</text>
+<path d="M406 205H524V205" fill="none" stroke="#818c9c"/>
+<path d="M406 218H510V218" fill="none" stroke="#818c9c"/>
+<path d="M406 231H496V231" fill="none" stroke="#818c9c"/>
+<rect x="402" y="237" width="131" height="14" rx="2" fill="#f3dd88" stroke="none"/>
+<path d="M406 244H524V244" fill="none" stroke="#818c9c"/>
+<path d="M406 257H510V257" fill="none" stroke="#818c9c"/>
+<path d="M406 270H496V270" fill="none" stroke="#818c9c"/>
+<path d="M406 283H524V283" fill="none" stroke="#818c9c"/>
+<path d="M406 296H510V296" fill="none" stroke="#818c9c"/>
+<text x="406" y="343" fill="#293447" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start">2</text>
+<text x="121" y="142" fill="#172d27" font-family="Georgia" font-size="17" font-weight="700" text-anchor="start">Biceps brachii</text>
+<text x="121" y="166" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">Tohodet overarmsmuskel.</text>
+<text x="121" y="189" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">Bidrar ved albuefleksjon.</text>
+<rect x="121" y="205" width="255" height="79" rx="8" fill="#d3e4d9" stroke="none"/>
+<text x="131" y="224" fill="#245344" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="start">Ubekreftet</text>
+<text x="131" y="245" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start">Utdraget finnes ikke på siden.</text>
+<text x="131" y="267" fill="#245344" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Åpne side 2</text>
+<text x="121" y="316" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="700" text-anchor="start">M. brachialis</text>
+<text x="121" y="340" fill="#405c52" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">Bøyer albuen.</text>
+</g></g>
+<g id="konsept-1-skjerm-6" transform="translate(20 552)"><title>Atlas – Flashcards</title>
+<text x="0" y="19" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Flashcards</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="8" fill="#fbfdf9" stroke="#405c52"/>
+<rect x="1" y="1" width="566" height="39" rx="8" fill="#155847" stroke="none"/>
+<text x="14" y="25" fill="#e8f0ec" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#e8f0ec" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<rect x="1" y="41" width="104" height="365" rx="0" fill="#e8f0ec" stroke="none"/>
+<text x="14" y="69" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Studieøkt</text>
+<text x="14" y="108" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Sammendrag</text>
+<text x="14" y="147" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Begreper</text>
+<rect x="8" y="168" width="89" height="28" rx="5" fill="#d3e4d9" stroke="none"/>
+<text x="14" y="186" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="start">Flashcards</text>
+<text x="14" y="225" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Quiz</text>
+<text x="121" y="96" fill="#172d27" font-family="Georgia" font-size="29" font-weight="700" text-anchor="start">Flashcards</text>
+<rect x="121" y="126" width="419" height="132" rx="8" fill="#d3e4d9" stroke="none"/>
+<text x="136" y="150" fill="#405c52" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="start">Kort 2 av 8</text>
+<text x="136" y="179" fill="#172d27" font-family="Georgia" font-size="19" font-weight="700" text-anchor="start">Hva gjør m. brachialis?</text>
+<text x="136" y="211" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="400" text-anchor="start">Bøyer albuen.</text>
+<text x="136" y="236" fill="#245344" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="start">Skjul svar</text>
+<rect x="121" y="268" width="419" height="79" rx="8" fill="#d3e4d9" stroke="none"/>
+<text x="131" y="287" fill="#245344" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="start">Kildeutdrag bekreftet</text>
+<text x="131" y="308" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start">«… flekterer albueleddet …»</text>
+<text x="131" y="330" fill="#245344" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Åpne side 2</text>
+<rect x="121" y="357" width="82" height="34" rx="8" fill="#fbfdf9" stroke="#155847"/>
+<text x="134" y="379" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Forrige</text>
+<rect x="223" y="357" width="106" height="34" rx="8" fill="#155847" stroke="#155847"/>
+<text x="236" y="379" fill="#e8f0ec" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Neste kort</text>
+</g></g>
+<g id="konsept-1-skjerm-7" transform="translate(604 552)"><title>Atlas – Quiz</title>
+<text x="0" y="19" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Quiz</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="8" fill="#fbfdf9" stroke="#405c52"/>
+<rect x="1" y="1" width="566" height="39" rx="8" fill="#155847" stroke="none"/>
+<text x="14" y="25" fill="#e8f0ec" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#e8f0ec" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<rect x="1" y="41" width="104" height="365" rx="0" fill="#e8f0ec" stroke="none"/>
+<text x="14" y="69" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Studieøkt</text>
+<text x="14" y="108" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Sammendrag</text>
+<text x="14" y="147" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Begreper</text>
+<text x="14" y="186" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Flashcards</text>
+<rect x="8" y="207" width="89" height="28" rx="5" fill="#d3e4d9" stroke="none"/>
+<text x="14" y="225" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="start">Quiz</text>
+<text x="121" y="96" fill="#172d27" font-family="Georgia" font-size="29" font-weight="700" text-anchor="start">Quiz om albuen</text>
+<text x="121" y="124" fill="#405c52" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Spørsmål 2 av 5</text>
+<rect x="121" y="134" width="419" height="4" rx="2" fill="#d3e4d9" stroke="none"/>
+<rect x="121" y="134" width="167.60000000000002" height="4" rx="2" fill="#155847" stroke="none"/>
+<text x="121" y="165" fill="#172d27" font-family="Georgia" font-size="18" font-weight="700" text-anchor="start">Hvilken muskel bøyer albuen?</text>
+<rect x="121" y="182" width="419" height="32" rx="8" fill="#e8f0ec" stroke="none"/>
+<circle cx="136" cy="198" r="5" fill="#fbfdf9" stroke="#245344"/>
+<text x="151" y="203" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">M. triceps brachii</text>
+<rect x="121" y="220" width="419" height="32" rx="8" fill="#d3e4d9" stroke="#155847"/>
+<circle cx="136" cy="236" r="5" fill="#155847" stroke="#245344"/>
+<text x="151" y="241" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">M. brachialis</text>
+<rect x="121" y="258" width="419" height="32" rx="8" fill="#e8f0ec" stroke="none"/>
+<circle cx="136" cy="274" r="5" fill="#fbfdf9" stroke="#245344"/>
+<text x="151" y="279" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">M. deltoideus</text>
+<rect x="121" y="306" width="138" height="34" rx="8" fill="#155847" stroke="#155847"/>
+<text x="134" y="328" fill="#e8f0ec" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Neste spørsmål</text>
+</g></g>
+<g id="konsept-1-skjerm-8" transform="translate(1188 552)"><title>Atlas – Quizresultat</title>
+<text x="0" y="19" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Quizresultat</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="8" fill="#fbfdf9" stroke="#405c52"/>
+<rect x="1" y="1" width="566" height="39" rx="8" fill="#155847" stroke="none"/>
+<text x="14" y="25" fill="#e8f0ec" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#e8f0ec" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<rect x="1" y="41" width="104" height="365" rx="0" fill="#e8f0ec" stroke="none"/>
+<text x="14" y="69" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Studieøkt</text>
+<text x="14" y="108" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Sammendrag</text>
+<text x="14" y="147" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Begreper</text>
+<text x="14" y="186" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Flashcards</text>
+<rect x="8" y="207" width="89" height="28" rx="5" fill="#d3e4d9" stroke="none"/>
+<text x="14" y="225" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="start">Quiz</text>
+<text x="121" y="96" fill="#172d27" font-family="Georgia" font-size="29" font-weight="700" text-anchor="start">Resultatet ditt</text>
+<text x="121" y="138" fill="#172d27" font-family="Georgia" font-size="25" font-weight="700" text-anchor="start">4 av 5 riktige</text>
+<text x="121" y="173" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">Spørsmål 2 · Riktig</text>
+<text x="121" y="198" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">M. brachialis bøyer albuen.</text>
+<text x="121" y="221" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">Du svarte: M. brachialis.</text>
+<rect x="121" y="241" width="270" height="79" rx="8" fill="#d3e4d9" stroke="none"/>
+<text x="131" y="260" fill="#245344" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="start">Kildeutdrag bekreftet</text>
+<text x="131" y="281" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start">«… flekterer albueleddet …»</text>
+<text x="131" y="303" fill="#245344" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Åpne side 2</text>
+<rect x="121" y="334" width="106" height="34" rx="8" fill="#155847" stroke="#155847"/>
+<text x="134" y="356" fill="#e8f0ec" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Prøv igjen</text>
+<rect x="234" y="334" width="162" height="34" rx="8" fill="#fbfdf9" stroke="#155847"/>
+<text x="247" y="356" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Tilbake til økten</text>
+</g></g>
+<g id="konsept-1-skjerm-9" transform="translate(1772 552)"><title>Atlas – Genereringsfeil</title>
+<text x="0" y="19" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Genereringsfeil</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="8" fill="#fbfdf9" stroke="#405c52"/>
+<rect x="1" y="1" width="566" height="39" rx="8" fill="#155847" stroke="none"/>
+<text x="14" y="25" fill="#e8f0ec" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#e8f0ec" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<text x="28" y="96" fill="#172d27" font-family="Georgia" font-size="29" font-weight="700" text-anchor="start">Kunne ikke lage kort</text>
+<rect x="28" y="125" width="512" height="91" rx="8" fill="#d3e4d9" stroke="none"/>
+<text x="40" y="150" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">Tjenesten svarte ikke i tide.</text>
+<text x="40" y="173" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">Du har 3 forespørsler igjen.</text>
+<rect x="28" y="233" width="106" height="34" rx="8" fill="#155847" stroke="#155847"/>
+<text x="41" y="255" fill="#e8f0ec" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Prøv igjen</text>
+<text x="28" y="302" fill="#405c52" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Allerede i økten</text>
+<rect x="28" y="317" width="146" height="34" rx="8" fill="#fbfdf9" stroke="#155847"/>
+<text x="41" y="339" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Åpne sammendrag</text>
+<text x="28" y="378" fill="#405c52" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start">Under generering: «Lager flashcards …»</text>
+</g></g>
+<g id="konsept-1-skjerm-10" transform="translate(2356 552)"><title>Atlas – Avslutt økten</title>
+<text x="0" y="19" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Avslutt økten</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="8" fill="#fbfdf9" stroke="#405c52"/>
+<rect x="1" y="1" width="566" height="39" rx="8" fill="#155847" stroke="none"/>
+<text x="14" y="25" fill="#e8f0ec" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#e8f0ec" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<text x="28" y="96" fill="#172d27" font-family="Georgia" font-size="29" font-weight="700" text-anchor="start">Avslutte studieøkten?</text>
+<text x="28" y="137" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="400" text-anchor="start">PDF-en og ressursene i denne økten</text>
+<text x="28" y="160" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="400" text-anchor="start">fjernes når du avslutter.</text>
+<rect x="28" y="208" width="138" height="34" rx="8" fill="#155847" stroke="#155847"/>
+<text x="41" y="230" fill="#e8f0ec" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Fortsett økten</text>
+<rect x="178" y="208" width="130" height="34" rx="8" fill="#fbfdf9" stroke="#155847"/>
+<text x="191" y="230" fill="#172d27" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Avslutt økten</text>
+<path d="M28 276H540V276" fill="none" stroke="#d3e4d9"/>
+<text x="28" y="307" fill="#405c52" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="start">Etter avslutning</text>
+<text x="28" y="335" fill="#172d27" font-family="Georgia" font-size="19" font-weight="700" text-anchor="start">Start en ny økt</text>
+<text x="28" y="363" fill="#405c52" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">Gå tilbake til opplasting eller prøv demoen.</text>
+</g></g>
+</g>
+<g id="konsept-2" transform="translate(24 1205)">
+<rect x="0" y="0" width="2944" height="1038" rx="14" fill="#f7eddb" stroke="none"/>
+<text x="20" y="57" fill="#38281e" font-family="Palatino" font-size="39" font-weight="700" text-anchor="start">Margnotater</text>
+<text x="260" y="55" fill="#665041" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="400" text-anchor="start">Studiehefte · sidetall og utdrag i margen, med plass til lange forklaringer</text>
+<g id="konsept-2-skjerm-1" transform="translate(20 86)"><title>Margnotater – Opplasting</title>
+<text x="0" y="19" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Opplasting</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="2" fill="#fff9ec" stroke="#665041"/>
+<rect x="1" y="1" width="566" height="39" rx="2" fill="#f0d9bd" stroke="none"/>
+<text x="14" y="25" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Demo tilgjengelig</text>
+<path d="M21 41H21V394" fill="none" stroke="#863622"/>
+<text x="40" y="96" fill="#38281e" font-family="Palatino" font-size="29" font-weight="700" text-anchor="start">Last opp en PDF</text>
+<text x="40" y="127" fill="#665041" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">Én tekstbasert PDF · maks 20 MB og 50 sider</text>
+<rect x="40" y="150" width="500" height="123" rx="2" fill="#f0d9bd" stroke="#863622"/>
+<path d="M59 186v-19h12l7 7v12z m12-19v7h7" fill="none" stroke="#713824" stroke-width="1.5"/>
+<text x="88" y="182" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="700" text-anchor="start">Dra PDF-en hit</text>
+<rect x="58" y="211" width="90" height="34" rx="2" fill="#863622" stroke="#863622"/>
+<text x="71" y="233" fill="#f7eddb" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Velg PDF</text>
+<rect x="40" y="294" width="98" height="34" rx="2" fill="#fff9ec" stroke="#863622"/>
+<text x="53" y="316" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Prøv demo</text>
+</g></g>
+<g id="konsept-2-skjerm-2" transform="translate(604 86)"><title>Margnotater – Tekstsjekk</title>
+<text x="0" y="19" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Tekstsjekk</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="2" fill="#fff9ec" stroke="#665041"/>
+<rect x="1" y="1" width="566" height="39" rx="2" fill="#f0d9bd" stroke="none"/>
+<text x="14" y="25" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<path d="M21 41H21V394" fill="none" stroke="#863622"/>
+<text x="40" y="96" fill="#38281e" font-family="Palatino" font-size="29" font-weight="700" text-anchor="start">Sjekk sidene</text>
+<text x="40" y="129" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="start">Anatomi.pdf · 3 sider</text>
+<rect x="40" y="161" width="500" height="31" rx="2" fill="#f7eddb" stroke="none"/>
+<text x="50" y="182" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Side 1</text>
+<text x="140" y="182" fill="#665041" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">Klar</text>
+<rect x="40" y="200" width="500" height="31" rx="2" fill="#f7eddb" stroke="none"/>
+<text x="50" y="221" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Side 2</text>
+<text x="140" y="221" fill="#665041" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">Klar</text>
+<rect x="40" y="239" width="500" height="31" rx="2" fill="#f0d9bd" stroke="none"/>
+<text x="50" y="260" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Side 3</text>
+<text x="140" y="260" fill="#713824" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">Lite uttrekkbar tekst</text>
+<rect x="40" y="289" width="186" height="34" rx="2" fill="#863622" stroke="#863622"/>
+<text x="53" y="311" fill="#f7eddb" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Fortsett med 2 sider</text>
+<text x="40" y="349" fill="#713824" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Velg en annen PDF</text>
+</g></g>
+<g id="konsept-2-skjerm-3" transform="translate(1188 86)"><title>Margnotater – Studieøkt</title>
+<text x="0" y="19" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Studieøkt</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="2" fill="#fff9ec" stroke="#665041"/>
+<rect x="1" y="1" width="566" height="39" rx="2" fill="#f0d9bd" stroke="none"/>
+<text x="14" y="25" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<path d="M21 41H21V394" fill="none" stroke="#863622"/>
+<text x="40" y="96" fill="#38281e" font-family="Palatino" font-size="29" font-weight="700" text-anchor="start">Velg studieressurs</text>
+<text x="40" y="121" fill="#665041" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">2 sider klare · 4 forespørsler igjen</text>
+<rect x="40" y="142" width="500" height="42" rx="2" fill="#f0d9bd" stroke="none"/>
+<text x="50" y="160" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="start">Sammendrag</text>
+<text x="50" y="178" fill="#665041" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Les hovedpunktene</text>
+<rect x="40" y="190" width="500" height="42" rx="2" fill="#f7eddb" stroke="none"/>
+<text x="50" y="208" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="start">Nøkkelbegreper</text>
+<text x="50" y="226" fill="#665041" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Slå opp norske og latinske navn</text>
+<rect x="40" y="238" width="500" height="42" rx="2" fill="#f7eddb" stroke="none"/>
+<text x="50" y="256" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="start">Flashcards</text>
+<text x="50" y="274" fill="#665041" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Øv på å huske svaret</text>
+<rect x="40" y="286" width="500" height="42" rx="2" fill="#f7eddb" stroke="none"/>
+<text x="50" y="304" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="start">Quiz</text>
+<text x="50" y="322" fill="#665041" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Test deg selv med fasit</text>
+<text x="40" y="377" fill="#713824" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Avslutt økten</text>
+</g></g>
+<g id="konsept-2-skjerm-4" transform="translate(1772 86)"><title>Margnotater – Sammendrag</title>
+<text x="0" y="19" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Sammendrag</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="2" fill="#fff9ec" stroke="#665041"/>
+<rect x="1" y="1" width="566" height="39" rx="2" fill="#f0d9bd" stroke="none"/>
+<text x="14" y="25" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<path d="M21 41H21V394" fill="none" stroke="#863622"/>
+<text x="40" y="96" fill="#38281e" font-family="Palatino" font-size="29" font-weight="700" text-anchor="start">Overarmens muskler</text>
+<rect x="320" y="118" width="229" height="260" rx="2" fill="#f0d9bd" stroke="none"/>
+<text x="332" y="143" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">PDF · Side 2 av 3</text>
+<rect x="330" y="159" width="209" height="203" rx="2" fill="#fffdf8" stroke="none"/>
+<text x="339" y="183" fill="#293447" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="start">Overarmens muskler</text>
+<path d="M340 205H524V205" fill="none" stroke="#818c9c"/>
+<path d="M340 218H510V218" fill="none" stroke="#818c9c"/>
+<path d="M340 231H496V231" fill="none" stroke="#818c9c"/>
+<rect x="336" y="237" width="197" height="14" rx="2" fill="#f3dd88" stroke="none"/>
+<path d="M340 244H524V244" fill="none" stroke="#818c9c"/>
+<path d="M340 257H510V257" fill="none" stroke="#818c9c"/>
+<path d="M340 270H496V270" fill="none" stroke="#818c9c"/>
+<path d="M340 283H524V283" fill="none" stroke="#818c9c"/>
+<path d="M340 296H510V296" fill="none" stroke="#818c9c"/>
+<text x="340" y="343" fill="#293447" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start">2</text>
+<text x="40" y="144" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Albuefleksjon</text>
+<text x="40" y="170" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="400" text-anchor="start">Biceps og brachialis bidrar</text>
+<text x="40" y="193" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="400" text-anchor="start">til å bøye albuen.</text>
+<rect x="40" y="212" width="272" height="79" rx="2" fill="#f0d9bd" stroke="none"/>
+<text x="50" y="231" fill="#713824" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="start">Kildeutdrag bekreftet</text>
+<text x="50" y="252" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start">«… flekterer albueleddet …»</text>
+<text x="50" y="274" fill="#713824" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Åpne side 2</text>
+<text x="40" y="322" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="700" text-anchor="start">Rotasjon av underarmen</text>
+<text x="40" y="346" fill="#665041" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">Biceps bidrar ved supinasjon.</text>
+</g></g>
+<g id="konsept-2-skjerm-5" transform="translate(2356 86)"><title>Margnotater – Nøkkelbegreper</title>
+<text x="0" y="19" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Nøkkelbegreper</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="2" fill="#fff9ec" stroke="#665041"/>
+<rect x="1" y="1" width="566" height="39" rx="2" fill="#f0d9bd" stroke="none"/>
+<text x="14" y="25" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<path d="M21 41H21V394" fill="none" stroke="#863622"/>
+<text x="40" y="96" fill="#38281e" font-family="Palatino" font-size="29" font-weight="700" text-anchor="start">Nøkkelbegreper</text>
+<rect x="320" y="118" width="229" height="260" rx="2" fill="#f0d9bd" stroke="none"/>
+<text x="332" y="143" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">PDF · Side 2 av 3</text>
+<rect x="330" y="159" width="209" height="203" rx="2" fill="#fffdf8" stroke="none"/>
+<text x="339" y="183" fill="#293447" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="start">Overarmens muskler</text>
+<path d="M340 205H524V205" fill="none" stroke="#818c9c"/>
+<path d="M340 218H510V218" fill="none" stroke="#818c9c"/>
+<path d="M340 231H496V231" fill="none" stroke="#818c9c"/>
+<rect x="336" y="237" width="197" height="14" rx="2" fill="#f3dd88" stroke="none"/>
+<path d="M340 244H524V244" fill="none" stroke="#818c9c"/>
+<path d="M340 257H510V257" fill="none" stroke="#818c9c"/>
+<path d="M340 270H496V270" fill="none" stroke="#818c9c"/>
+<path d="M340 283H524V283" fill="none" stroke="#818c9c"/>
+<path d="M340 296H510V296" fill="none" stroke="#818c9c"/>
+<text x="340" y="343" fill="#293447" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start">2</text>
+<text x="40" y="142" fill="#38281e" font-family="Palatino" font-size="17" font-weight="700" text-anchor="start">Biceps brachii</text>
+<text x="40" y="166" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">Tohodet overarmsmuskel.</text>
+<text x="40" y="189" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">Bidrar ved albuefleksjon.</text>
+<rect x="40" y="205" width="272" height="79" rx="2" fill="#f0d9bd" stroke="none"/>
+<text x="50" y="224" fill="#713824" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="start">Ubekreftet</text>
+<text x="50" y="245" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start">Utdraget finnes ikke på siden.</text>
+<text x="50" y="267" fill="#713824" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Åpne side 2</text>
+<text x="40" y="316" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="700" text-anchor="start">M. brachialis</text>
+<text x="40" y="340" fill="#665041" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">Bøyer albuen.</text>
+</g></g>
+<g id="konsept-2-skjerm-6" transform="translate(20 552)"><title>Margnotater – Flashcards</title>
+<text x="0" y="19" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Flashcards</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="2" fill="#fff9ec" stroke="#665041"/>
+<rect x="1" y="1" width="566" height="39" rx="2" fill="#f0d9bd" stroke="none"/>
+<text x="14" y="25" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<path d="M21 41H21V394" fill="none" stroke="#863622"/>
+<text x="40" y="96" fill="#38281e" font-family="Palatino" font-size="29" font-weight="700" text-anchor="start">Flashcards</text>
+<rect x="40" y="126" width="500" height="132" rx="2" fill="#f0d9bd" stroke="none"/>
+<text x="55" y="150" fill="#665041" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="start">Kort 2 av 8</text>
+<text x="55" y="179" fill="#38281e" font-family="Palatino" font-size="19" font-weight="700" text-anchor="start">Hva gjør m. brachialis?</text>
+<text x="55" y="211" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="400" text-anchor="start">Bøyer albuen.</text>
+<text x="55" y="236" fill="#713824" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="start">Skjul svar</text>
+<rect x="40" y="268" width="500" height="79" rx="2" fill="#f0d9bd" stroke="none"/>
+<text x="50" y="287" fill="#713824" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="start">Kildeutdrag bekreftet</text>
+<text x="50" y="308" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start">«… flekterer albueleddet …»</text>
+<text x="50" y="330" fill="#713824" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Åpne side 2</text>
+<rect x="40" y="357" width="82" height="34" rx="2" fill="#fff9ec" stroke="#863622"/>
+<text x="53" y="379" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Forrige</text>
+<rect x="142" y="357" width="106" height="34" rx="2" fill="#863622" stroke="#863622"/>
+<text x="155" y="379" fill="#f7eddb" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Neste kort</text>
+</g></g>
+<g id="konsept-2-skjerm-7" transform="translate(604 552)"><title>Margnotater – Quiz</title>
+<text x="0" y="19" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Quiz</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="2" fill="#fff9ec" stroke="#665041"/>
+<rect x="1" y="1" width="566" height="39" rx="2" fill="#f0d9bd" stroke="none"/>
+<text x="14" y="25" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<path d="M21 41H21V394" fill="none" stroke="#863622"/>
+<text x="40" y="96" fill="#38281e" font-family="Palatino" font-size="29" font-weight="700" text-anchor="start">Quiz om albuen</text>
+<rect x="384" y="129" width="156" height="148" rx="2" fill="#f0d9bd" stroke="none"/>
+<text x="396" y="153" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="start">Spørsmål i quizen</text>
+<rect x="395" y="165" width="23" height="24" rx="2" fill="#fff9ec" stroke="none"/>
+<text x="406" y="181" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">1</text>
+<rect x="422" y="165" width="23" height="24" rx="2" fill="#863622" stroke="none"/>
+<text x="433" y="181" fill="#f7eddb" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">2</text>
+<rect x="449" y="165" width="23" height="24" rx="2" fill="#fff9ec" stroke="none"/>
+<text x="460" y="181" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">3</text>
+<rect x="476" y="165" width="23" height="24" rx="2" fill="#fff9ec" stroke="none"/>
+<text x="487" y="181" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">4</text>
+<rect x="503" y="165" width="23" height="24" rx="2" fill="#fff9ec" stroke="none"/>
+<text x="514" y="181" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">5</text>
+<text x="396" y="220" fill="#665041" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start">1 av 5 besvart</text>
+<text x="40" y="124" fill="#665041" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Spørsmål 2 av 5</text>
+<rect x="40" y="134" width="328" height="4" rx="2" fill="#f0d9bd" stroke="none"/>
+<rect x="40" y="134" width="131.20000000000002" height="4" rx="2" fill="#863622" stroke="none"/>
+<text x="40" y="165" fill="#38281e" font-family="Palatino" font-size="18" font-weight="700" text-anchor="start">Hvilken muskel bøyer albuen?</text>
+<rect x="40" y="182" width="328" height="32" rx="2" fill="#f7eddb" stroke="none"/>
+<circle cx="55" cy="198" r="5" fill="#fff9ec" stroke="#713824"/>
+<text x="70" y="203" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">M. triceps brachii</text>
+<rect x="40" y="220" width="328" height="32" rx="2" fill="#f0d9bd" stroke="#863622"/>
+<circle cx="55" cy="236" r="5" fill="#863622" stroke="#713824"/>
+<text x="70" y="241" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">M. brachialis</text>
+<rect x="40" y="258" width="328" height="32" rx="2" fill="#f7eddb" stroke="none"/>
+<circle cx="55" cy="274" r="5" fill="#fff9ec" stroke="#713824"/>
+<text x="70" y="279" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">M. deltoideus</text>
+<rect x="40" y="306" width="138" height="34" rx="2" fill="#863622" stroke="#863622"/>
+<text x="53" y="328" fill="#f7eddb" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Neste spørsmål</text>
+</g></g>
+<g id="konsept-2-skjerm-8" transform="translate(1188 552)"><title>Margnotater – Quizresultat</title>
+<text x="0" y="19" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Quizresultat</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="2" fill="#fff9ec" stroke="#665041"/>
+<rect x="1" y="1" width="566" height="39" rx="2" fill="#f0d9bd" stroke="none"/>
+<text x="14" y="25" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<path d="M21 41H21V394" fill="none" stroke="#863622"/>
+<text x="40" y="96" fill="#38281e" font-family="Palatino" font-size="29" font-weight="700" text-anchor="start">Resultatet ditt</text>
+<text x="40" y="138" fill="#38281e" font-family="Palatino" font-size="25" font-weight="700" text-anchor="start">4 av 5 riktige</text>
+<text x="40" y="173" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">Spørsmål 2 · Riktig</text>
+<text x="40" y="198" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">M. brachialis bøyer albuen.</text>
+<text x="40" y="221" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">Du svarte: M. brachialis.</text>
+<rect x="40" y="241" width="270" height="79" rx="2" fill="#f0d9bd" stroke="none"/>
+<text x="50" y="260" fill="#713824" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="start">Kildeutdrag bekreftet</text>
+<text x="50" y="281" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start">«… flekterer albueleddet …»</text>
+<text x="50" y="303" fill="#713824" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Åpne side 2</text>
+<rect x="40" y="334" width="106" height="34" rx="2" fill="#863622" stroke="#863622"/>
+<text x="53" y="356" fill="#f7eddb" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Prøv igjen</text>
+<rect x="153" y="334" width="162" height="34" rx="2" fill="#fff9ec" stroke="#863622"/>
+<text x="166" y="356" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Tilbake til økten</text>
+</g></g>
+<g id="konsept-2-skjerm-9" transform="translate(1772 552)"><title>Margnotater – Genereringsfeil</title>
+<text x="0" y="19" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Genereringsfeil</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="2" fill="#fff9ec" stroke="#665041"/>
+<rect x="1" y="1" width="566" height="39" rx="2" fill="#f0d9bd" stroke="none"/>
+<text x="14" y="25" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<path d="M21 41H21V394" fill="none" stroke="#863622"/>
+<text x="40" y="96" fill="#38281e" font-family="Palatino" font-size="29" font-weight="700" text-anchor="start">Kunne ikke lage kort</text>
+<rect x="40" y="125" width="500" height="91" rx="2" fill="#f0d9bd" stroke="none"/>
+<text x="52" y="150" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">Tjenesten svarte ikke i tide.</text>
+<text x="52" y="173" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">Du har 3 forespørsler igjen.</text>
+<rect x="40" y="233" width="106" height="34" rx="2" fill="#863622" stroke="#863622"/>
+<text x="53" y="255" fill="#f7eddb" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Prøv igjen</text>
+<text x="40" y="302" fill="#665041" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Allerede i økten</text>
+<rect x="40" y="317" width="146" height="34" rx="2" fill="#fff9ec" stroke="#863622"/>
+<text x="53" y="339" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Åpne sammendrag</text>
+<text x="40" y="378" fill="#665041" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start">Under generering: «Lager flashcards …»</text>
+</g></g>
+<g id="konsept-2-skjerm-10" transform="translate(2356 552)"><title>Margnotater – Avslutt økten</title>
+<text x="0" y="19" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Avslutt økten</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="2" fill="#fff9ec" stroke="#665041"/>
+<rect x="1" y="1" width="566" height="39" rx="2" fill="#f0d9bd" stroke="none"/>
+<text x="14" y="25" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<path d="M21 41H21V394" fill="none" stroke="#863622"/>
+<text x="40" y="96" fill="#38281e" font-family="Palatino" font-size="29" font-weight="700" text-anchor="start">Avslutte studieøkten?</text>
+<text x="40" y="137" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="400" text-anchor="start">PDF-en og ressursene i denne økten</text>
+<text x="40" y="160" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="400" text-anchor="start">fjernes når du avslutter.</text>
+<rect x="40" y="208" width="138" height="34" rx="2" fill="#863622" stroke="#863622"/>
+<text x="53" y="230" fill="#f7eddb" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Fortsett økten</text>
+<rect x="190" y="208" width="130" height="34" rx="2" fill="#fff9ec" stroke="#863622"/>
+<text x="203" y="230" fill="#38281e" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Avslutt økten</text>
+<path d="M40 276H540V276" fill="none" stroke="#f0d9bd"/>
+<text x="40" y="307" fill="#665041" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="start">Etter avslutning</text>
+<text x="40" y="335" fill="#38281e" font-family="Palatino" font-size="19" font-weight="700" text-anchor="start">Start en ny økt</text>
+<text x="40" y="363" fill="#665041" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">Gå tilbake til opplasting eller prøv demoen.</text>
+</g></g>
+</g>
+<g id="konsept-3" transform="translate(24 2270)">
+<rect x="0" y="0" width="2944" height="1038" rx="14" fill="#161e31" stroke="none"/>
+<text x="20" y="57" fill="#f2f3fc" font-family="Helvetica Neue" font-size="39" font-weight="700" text-anchor="start">Kveldsøkt</text>
+<text x="260" y="55" fill="#c5cce0" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="400" text-anchor="start">Mørk lesevisning · én oppgave om gangen i et rolig, sentrert felt</text>
+<g id="konsept-3-skjerm-1" transform="translate(20 86)"><title>Kveldsøkt – Opplasting</title>
+<text x="0" y="19" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Opplasting</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="14" fill="#232e47" stroke="#c5cce0"/>
+<rect x="1" y="1" width="566" height="39" rx="14" fill="#394765" stroke="none"/>
+<text x="14" y="25" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Demo tilgjengelig</text>
+<text x="64" y="96" fill="#f2f3fc" font-family="Helvetica Neue" font-size="29" font-weight="700" text-anchor="start">Last opp en PDF</text>
+<text x="64" y="127" fill="#c5cce0" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">Én tekstbasert PDF · maks 20 MB og 50 sider</text>
+<rect x="64" y="150" width="476" height="123" rx="14" fill="#394765" stroke="#d5e083"/>
+<path d="M83 186v-19h12l7 7v12z m12-19v7h7" fill="none" stroke="#dce596" stroke-width="1.5"/>
+<text x="112" y="182" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="700" text-anchor="start">Dra PDF-en hit</text>
+<rect x="82" y="211" width="90" height="34" rx="14" fill="#d5e083" stroke="#d5e083"/>
+<text x="95" y="233" fill="#161e31" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Velg PDF</text>
+<rect x="64" y="294" width="98" height="34" rx="14" fill="#232e47" stroke="#d5e083"/>
+<text x="77" y="316" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Prøv demo</text>
+</g></g>
+<g id="konsept-3-skjerm-2" transform="translate(604 86)"><title>Kveldsøkt – Tekstsjekk</title>
+<text x="0" y="19" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Tekstsjekk</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="14" fill="#232e47" stroke="#c5cce0"/>
+<rect x="1" y="1" width="566" height="39" rx="14" fill="#394765" stroke="none"/>
+<text x="14" y="25" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<text x="64" y="96" fill="#f2f3fc" font-family="Helvetica Neue" font-size="29" font-weight="700" text-anchor="start">Sjekk sidene</text>
+<text x="64" y="129" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="start">Anatomi.pdf · 3 sider</text>
+<rect x="64" y="161" width="476" height="31" rx="14" fill="#161e31" stroke="none"/>
+<text x="74" y="182" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Side 1</text>
+<text x="164" y="182" fill="#c5cce0" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">Klar</text>
+<rect x="64" y="200" width="476" height="31" rx="14" fill="#161e31" stroke="none"/>
+<text x="74" y="221" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Side 2</text>
+<text x="164" y="221" fill="#c5cce0" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">Klar</text>
+<rect x="64" y="239" width="476" height="31" rx="14" fill="#394765" stroke="none"/>
+<text x="74" y="260" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Side 3</text>
+<text x="164" y="260" fill="#dce596" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">Lite uttrekkbar tekst</text>
+<rect x="64" y="289" width="186" height="34" rx="14" fill="#d5e083" stroke="#d5e083"/>
+<text x="77" y="311" fill="#161e31" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Fortsett med 2 sider</text>
+<text x="64" y="349" fill="#dce596" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Velg en annen PDF</text>
+</g></g>
+<g id="konsept-3-skjerm-3" transform="translate(1188 86)"><title>Kveldsøkt – Studieøkt</title>
+<text x="0" y="19" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Studieøkt</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="14" fill="#232e47" stroke="#c5cce0"/>
+<rect x="1" y="1" width="566" height="39" rx="14" fill="#394765" stroke="none"/>
+<text x="14" y="25" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<text x="64" y="96" fill="#f2f3fc" font-family="Helvetica Neue" font-size="29" font-weight="700" text-anchor="start">Velg studieressurs</text>
+<text x="64" y="121" fill="#c5cce0" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">2 sider klare · 4 forespørsler igjen</text>
+<rect x="64" y="142" width="231" height="68" rx="14" fill="#394765" stroke="none"/>
+<text x="74" y="160" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="start">Sammendrag</text>
+<text x="74" y="178" fill="#c5cce0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Les hovedpunktene</text>
+<rect x="306" y="142" width="231" height="68" rx="14" fill="#394765" stroke="none"/>
+<text x="316" y="160" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="start">Nøkkelbegreper</text>
+<text x="316" y="178" fill="#c5cce0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Slå opp norske og latinske navn</text>
+<rect x="64" y="221" width="231" height="68" rx="14" fill="#394765" stroke="none"/>
+<text x="74" y="239" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="start">Flashcards</text>
+<text x="74" y="257" fill="#c5cce0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Øv på å huske svaret</text>
+<rect x="306" y="221" width="231" height="68" rx="14" fill="#394765" stroke="none"/>
+<text x="316" y="239" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="start">Quiz</text>
+<text x="316" y="257" fill="#c5cce0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Test deg selv med fasit</text>
+<text x="64" y="377" fill="#dce596" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Avslutt økten</text>
+</g></g>
+<g id="konsept-3-skjerm-4" transform="translate(1772 86)"><title>Kveldsøkt – Sammendrag</title>
+<text x="0" y="19" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Sammendrag</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="14" fill="#232e47" stroke="#c5cce0"/>
+<rect x="1" y="1" width="566" height="39" rx="14" fill="#394765" stroke="none"/>
+<text x="14" y="25" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<text x="29" y="96" fill="#f2f3fc" font-family="Helvetica Neue" font-size="29" font-weight="700" text-anchor="start">Overarmens muskler</text>
+<rect x="333" y="118" width="216" height="260" rx="14" fill="#394765" stroke="none"/>
+<text x="345" y="143" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">PDF · Side 2 av 3</text>
+<rect x="343" y="159" width="196" height="203" rx="2" fill="#fffdf8" stroke="none"/>
+<text x="352" y="183" fill="#293447" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="start">Overarmens muskler</text>
+<path d="M353 205H524V205" fill="none" stroke="#818c9c"/>
+<path d="M353 218H510V218" fill="none" stroke="#818c9c"/>
+<path d="M353 231H496V231" fill="none" stroke="#818c9c"/>
+<rect x="349" y="237" width="184" height="14" rx="2" fill="#f3dd88" stroke="none"/>
+<path d="M353 244H524V244" fill="none" stroke="#818c9c"/>
+<path d="M353 257H510V257" fill="none" stroke="#818c9c"/>
+<path d="M353 270H496V270" fill="none" stroke="#818c9c"/>
+<path d="M353 283H524V283" fill="none" stroke="#818c9c"/>
+<path d="M353 296H510V296" fill="none" stroke="#818c9c"/>
+<text x="353" y="343" fill="#293447" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start">2</text>
+<text x="29" y="144" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Albuefleksjon</text>
+<text x="29" y="170" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="400" text-anchor="start">Biceps og brachialis bidrar</text>
+<text x="29" y="193" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="400" text-anchor="start">til å bøye albuen.</text>
+<rect x="29" y="212" width="294" height="79" rx="14" fill="#394765" stroke="none"/>
+<text x="39" y="231" fill="#dce596" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="start">Kildeutdrag bekreftet</text>
+<text x="39" y="252" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start">«… flekterer albueleddet …»</text>
+<text x="39" y="274" fill="#dce596" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Åpne side 2</text>
+<text x="29" y="322" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="700" text-anchor="start">Rotasjon av underarmen</text>
+<text x="29" y="346" fill="#c5cce0" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">Biceps bidrar ved supinasjon.</text>
+</g></g>
+<g id="konsept-3-skjerm-5" transform="translate(2356 86)"><title>Kveldsøkt – Nøkkelbegreper</title>
+<text x="0" y="19" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Nøkkelbegreper</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="14" fill="#232e47" stroke="#c5cce0"/>
+<rect x="1" y="1" width="566" height="39" rx="14" fill="#394765" stroke="none"/>
+<text x="14" y="25" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<text x="29" y="96" fill="#f2f3fc" font-family="Helvetica Neue" font-size="29" font-weight="700" text-anchor="start">Nøkkelbegreper</text>
+<rect x="333" y="118" width="216" height="260" rx="14" fill="#394765" stroke="none"/>
+<text x="345" y="143" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">PDF · Side 2 av 3</text>
+<rect x="343" y="159" width="196" height="203" rx="2" fill="#fffdf8" stroke="none"/>
+<text x="352" y="183" fill="#293447" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="start">Overarmens muskler</text>
+<path d="M353 205H524V205" fill="none" stroke="#818c9c"/>
+<path d="M353 218H510V218" fill="none" stroke="#818c9c"/>
+<path d="M353 231H496V231" fill="none" stroke="#818c9c"/>
+<rect x="349" y="237" width="184" height="14" rx="2" fill="#f3dd88" stroke="none"/>
+<path d="M353 244H524V244" fill="none" stroke="#818c9c"/>
+<path d="M353 257H510V257" fill="none" stroke="#818c9c"/>
+<path d="M353 270H496V270" fill="none" stroke="#818c9c"/>
+<path d="M353 283H524V283" fill="none" stroke="#818c9c"/>
+<path d="M353 296H510V296" fill="none" stroke="#818c9c"/>
+<text x="353" y="343" fill="#293447" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start">2</text>
+<text x="29" y="142" fill="#f2f3fc" font-family="Helvetica Neue" font-size="17" font-weight="700" text-anchor="start">Biceps brachii</text>
+<text x="29" y="166" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">Tohodet overarmsmuskel.</text>
+<text x="29" y="189" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">Bidrar ved albuefleksjon.</text>
+<rect x="29" y="205" width="294" height="79" rx="14" fill="#394765" stroke="none"/>
+<text x="39" y="224" fill="#dce596" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="start">Ubekreftet</text>
+<text x="39" y="245" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start">Utdraget finnes ikke på siden.</text>
+<text x="39" y="267" fill="#dce596" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Åpne side 2</text>
+<text x="29" y="316" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="700" text-anchor="start">M. brachialis</text>
+<text x="29" y="340" fill="#c5cce0" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">Bøyer albuen.</text>
+</g></g>
+<g id="konsept-3-skjerm-6" transform="translate(20 552)"><title>Kveldsøkt – Flashcards</title>
+<text x="0" y="19" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Flashcards</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="14" fill="#232e47" stroke="#c5cce0"/>
+<rect x="1" y="1" width="566" height="39" rx="14" fill="#394765" stroke="none"/>
+<text x="14" y="25" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<text x="64" y="96" fill="#f2f3fc" font-family="Helvetica Neue" font-size="29" font-weight="700" text-anchor="start">Flashcards</text>
+<rect x="64" y="126" width="476" height="132" rx="14" fill="#394765" stroke="none"/>
+<text x="79" y="150" fill="#c5cce0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="start">Kort 2 av 8</text>
+<text x="79" y="179" fill="#f2f3fc" font-family="Helvetica Neue" font-size="19" font-weight="700" text-anchor="start">Hva gjør m. brachialis?</text>
+<text x="79" y="211" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="400" text-anchor="start">Bøyer albuen.</text>
+<text x="79" y="236" fill="#dce596" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="start">Skjul svar</text>
+<rect x="64" y="268" width="476" height="79" rx="14" fill="#394765" stroke="none"/>
+<text x="74" y="287" fill="#dce596" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="start">Kildeutdrag bekreftet</text>
+<text x="74" y="308" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start">«… flekterer albueleddet …»</text>
+<text x="74" y="330" fill="#dce596" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Åpne side 2</text>
+<rect x="64" y="357" width="82" height="34" rx="14" fill="#232e47" stroke="#d5e083"/>
+<text x="77" y="379" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Forrige</text>
+<rect x="166" y="357" width="106" height="34" rx="14" fill="#d5e083" stroke="#d5e083"/>
+<text x="179" y="379" fill="#161e31" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Neste kort</text>
+</g></g>
+<g id="konsept-3-skjerm-7" transform="translate(604 552)"><title>Kveldsøkt – Quiz</title>
+<text x="0" y="19" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Quiz</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="14" fill="#232e47" stroke="#c5cce0"/>
+<rect x="1" y="1" width="566" height="39" rx="14" fill="#394765" stroke="none"/>
+<text x="14" y="25" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<text x="64" y="96" fill="#f2f3fc" font-family="Helvetica Neue" font-size="29" font-weight="700" text-anchor="start">Quiz om albuen</text>
+<text x="64" y="124" fill="#c5cce0" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Spørsmål 2 av 5</text>
+<rect x="64" y="134" width="476" height="4" rx="2" fill="#394765" stroke="none"/>
+<rect x="64" y="134" width="190.4" height="4" rx="2" fill="#d5e083" stroke="none"/>
+<text x="64" y="165" fill="#f2f3fc" font-family="Helvetica Neue" font-size="18" font-weight="700" text-anchor="start">Hvilken muskel bøyer albuen?</text>
+<rect x="64" y="182" width="476" height="32" rx="14" fill="#161e31" stroke="none"/>
+<circle cx="79" cy="198" r="5" fill="#232e47" stroke="#dce596"/>
+<text x="94" y="203" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">M. triceps brachii</text>
+<rect x="64" y="220" width="476" height="32" rx="14" fill="#394765" stroke="#d5e083"/>
+<circle cx="79" cy="236" r="5" fill="#d5e083" stroke="#dce596"/>
+<text x="94" y="241" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">M. brachialis</text>
+<rect x="64" y="258" width="476" height="32" rx="14" fill="#161e31" stroke="none"/>
+<circle cx="79" cy="274" r="5" fill="#232e47" stroke="#dce596"/>
+<text x="94" y="279" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">M. deltoideus</text>
+<rect x="64" y="306" width="138" height="34" rx="14" fill="#d5e083" stroke="#d5e083"/>
+<text x="77" y="328" fill="#161e31" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Neste spørsmål</text>
+</g></g>
+<g id="konsept-3-skjerm-8" transform="translate(1188 552)"><title>Kveldsøkt – Quizresultat</title>
+<text x="0" y="19" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Quizresultat</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="14" fill="#232e47" stroke="#c5cce0"/>
+<rect x="1" y="1" width="566" height="39" rx="14" fill="#394765" stroke="none"/>
+<text x="14" y="25" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<text x="64" y="96" fill="#f2f3fc" font-family="Helvetica Neue" font-size="29" font-weight="700" text-anchor="start">Resultatet ditt</text>
+<text x="64" y="138" fill="#f2f3fc" font-family="Helvetica Neue" font-size="25" font-weight="700" text-anchor="start">4 av 5 riktige</text>
+<text x="64" y="173" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">Spørsmål 2 · Riktig</text>
+<text x="64" y="198" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">M. brachialis bøyer albuen.</text>
+<text x="64" y="221" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">Du svarte: M. brachialis.</text>
+<rect x="64" y="241" width="270" height="79" rx="14" fill="#394765" stroke="none"/>
+<text x="74" y="260" fill="#dce596" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="start">Kildeutdrag bekreftet</text>
+<text x="74" y="281" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start">«… flekterer albueleddet …»</text>
+<text x="74" y="303" fill="#dce596" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Åpne side 2</text>
+<rect x="64" y="334" width="106" height="34" rx="14" fill="#d5e083" stroke="#d5e083"/>
+<text x="77" y="356" fill="#161e31" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Prøv igjen</text>
+<rect x="177" y="334" width="162" height="34" rx="14" fill="#232e47" stroke="#d5e083"/>
+<text x="190" y="356" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Tilbake til økten</text>
+</g></g>
+<g id="konsept-3-skjerm-9" transform="translate(1772 552)"><title>Kveldsøkt – Genereringsfeil</title>
+<text x="0" y="19" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Genereringsfeil</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="14" fill="#232e47" stroke="#c5cce0"/>
+<rect x="1" y="1" width="566" height="39" rx="14" fill="#394765" stroke="none"/>
+<text x="14" y="25" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<text x="64" y="96" fill="#f2f3fc" font-family="Helvetica Neue" font-size="29" font-weight="700" text-anchor="start">Kunne ikke lage kort</text>
+<rect x="64" y="125" width="476" height="91" rx="14" fill="#394765" stroke="none"/>
+<text x="76" y="150" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">Tjenesten svarte ikke i tide.</text>
+<text x="76" y="173" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">Du har 3 forespørsler igjen.</text>
+<rect x="64" y="233" width="106" height="34" rx="14" fill="#d5e083" stroke="#d5e083"/>
+<text x="77" y="255" fill="#161e31" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Prøv igjen</text>
+<text x="64" y="302" fill="#c5cce0" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Allerede i økten</text>
+<rect x="64" y="317" width="146" height="34" rx="14" fill="#232e47" stroke="#d5e083"/>
+<text x="77" y="339" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Åpne sammendrag</text>
+<text x="64" y="378" fill="#c5cce0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start">Under generering: «Lager flashcards …»</text>
+</g></g>
+<g id="konsept-3-skjerm-10" transform="translate(2356 552)"><title>Kveldsøkt – Avslutt økten</title>
+<text x="0" y="19" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Avslutt økten</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="14" fill="#232e47" stroke="#c5cce0"/>
+<rect x="1" y="1" width="566" height="39" rx="14" fill="#394765" stroke="none"/>
+<text x="14" y="25" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<text x="64" y="96" fill="#f2f3fc" font-family="Helvetica Neue" font-size="29" font-weight="700" text-anchor="start">Avslutte studieøkten?</text>
+<text x="64" y="137" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="400" text-anchor="start">PDF-en og ressursene i denne økten</text>
+<text x="64" y="160" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="400" text-anchor="start">fjernes når du avslutter.</text>
+<rect x="64" y="208" width="138" height="34" rx="14" fill="#d5e083" stroke="#d5e083"/>
+<text x="77" y="230" fill="#161e31" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Fortsett økten</text>
+<rect x="214" y="208" width="130" height="34" rx="14" fill="#232e47" stroke="#d5e083"/>
+<text x="227" y="230" fill="#f2f3fc" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Avslutt økten</text>
+<path d="M64 276H540V276" fill="none" stroke="#394765"/>
+<text x="64" y="307" fill="#c5cce0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="start">Etter avslutning</text>
+<text x="64" y="335" fill="#f2f3fc" font-family="Helvetica Neue" font-size="19" font-weight="700" text-anchor="start">Start en ny økt</text>
+<text x="64" y="363" fill="#c5cce0" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">Gå tilbake til opplasting eller prøv demoen.</text>
+</g></g>
+</g>
+<g id="konsept-4" transform="translate(24 3335)">
+<rect x="0" y="0" width="2944" height="1038" rx="14" fill="#fae5ec" stroke="none"/>
+<text x="20" y="57" fill="#38172c" font-family="Trebuchet MS" font-size="39" font-weight="700" text-anchor="start">Øvingsplan</text>
+<text x="260" y="55" fill="#673958" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="400" text-anchor="start">Fargekodet oppslag · store valg og tydelige steg gjennom økten</text>
+<g id="konsept-4-skjerm-1" transform="translate(20 86)"><title>Øvingsplan – Opplasting</title>
+<text x="0" y="19" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Opplasting</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="20" fill="#fff8fa" stroke="#673958"/>
+<rect x="1" y="1" width="566" height="39" rx="20" fill="#72224f" stroke="none"/>
+<text x="14" y="25" fill="#fae5ec" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#fae5ec" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Demo tilgjengelig</text>
+<text x="28" y="96" fill="#38172c" font-family="Trebuchet MS" font-size="29" font-weight="700" text-anchor="start">Last opp en PDF</text>
+<text x="28" y="127" fill="#673958" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">Én tekstbasert PDF · maks 20 MB og 50 sider</text>
+<rect x="28" y="150" width="512" height="123" rx="20" fill="#f2c9de" stroke="#72224f"/>
+<path d="M47 186v-19h12l7 7v12z m12-19v7h7" fill="none" stroke="#762852" stroke-width="1.5"/>
+<text x="76" y="182" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="700" text-anchor="start">Dra PDF-en hit</text>
+<rect x="46" y="211" width="90" height="34" rx="20" fill="#72224f" stroke="#72224f"/>
+<text x="59" y="233" fill="#fae5ec" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Velg PDF</text>
+<rect x="28" y="294" width="98" height="34" rx="20" fill="#fff8fa" stroke="#72224f"/>
+<text x="41" y="316" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Prøv demo</text>
+</g></g>
+<g id="konsept-4-skjerm-2" transform="translate(604 86)"><title>Øvingsplan – Tekstsjekk</title>
+<text x="0" y="19" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Tekstsjekk</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="20" fill="#fff8fa" stroke="#673958"/>
+<rect x="1" y="1" width="566" height="39" rx="20" fill="#72224f" stroke="none"/>
+<text x="14" y="25" fill="#fae5ec" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#fae5ec" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<text x="28" y="96" fill="#38172c" font-family="Trebuchet MS" font-size="29" font-weight="700" text-anchor="start">Sjekk sidene</text>
+<text x="28" y="129" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="start">Anatomi.pdf · 3 sider</text>
+<rect x="28" y="161" width="512" height="31" rx="20" fill="#fae5ec" stroke="none"/>
+<text x="38" y="182" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Side 1</text>
+<text x="128" y="182" fill="#673958" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">Klar</text>
+<rect x="28" y="200" width="512" height="31" rx="20" fill="#fae5ec" stroke="none"/>
+<text x="38" y="221" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Side 2</text>
+<text x="128" y="221" fill="#673958" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">Klar</text>
+<rect x="28" y="239" width="512" height="31" rx="20" fill="#f2c9de" stroke="none"/>
+<text x="38" y="260" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Side 3</text>
+<text x="128" y="260" fill="#762852" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">Lite uttrekkbar tekst</text>
+<rect x="28" y="289" width="186" height="34" rx="20" fill="#72224f" stroke="#72224f"/>
+<text x="41" y="311" fill="#fae5ec" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Fortsett med 2 sider</text>
+<text x="28" y="349" fill="#762852" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Velg en annen PDF</text>
+</g></g>
+<g id="konsept-4-skjerm-3" transform="translate(1188 86)"><title>Øvingsplan – Studieøkt</title>
+<text x="0" y="19" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Studieøkt</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="20" fill="#fff8fa" stroke="#673958"/>
+<rect x="1" y="1" width="566" height="39" rx="20" fill="#72224f" stroke="none"/>
+<text x="14" y="25" fill="#fae5ec" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#fae5ec" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<rect x="22" y="49" width="98" height="23" rx="11" fill="#72224f" stroke="none"/>
+<text x="71" y="65" fill="#fae5ec" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Økt</text>
+<rect x="128" y="49" width="98" height="23" rx="11" fill="#f2c9de" stroke="none"/>
+<text x="177" y="65" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Les</text>
+<rect x="234" y="49" width="98" height="23" rx="11" fill="#f2c9de" stroke="none"/>
+<text x="283" y="65" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Begreper</text>
+<rect x="340" y="49" width="98" height="23" rx="11" fill="#f2c9de" stroke="none"/>
+<text x="389" y="65" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Kort</text>
+<rect x="446" y="49" width="98" height="23" rx="11" fill="#f2c9de" stroke="none"/>
+<text x="495" y="65" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Quiz</text>
+<text x="28" y="110" fill="#38172c" font-family="Trebuchet MS" font-size="29" font-weight="700" text-anchor="start">Velg studieressurs</text>
+<text x="28" y="135" fill="#673958" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">2 sider klare · 4 forespørsler igjen</text>
+<rect x="28" y="156" width="249" height="68" rx="20" fill="#f2c9de" stroke="none"/>
+<text x="38" y="174" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="start">Sammendrag</text>
+<text x="38" y="192" fill="#673958" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Les hovedpunktene</text>
+<rect x="288" y="156" width="249" height="68" rx="20" fill="#f2c9de" stroke="none"/>
+<text x="298" y="174" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="start">Nøkkelbegreper</text>
+<text x="298" y="192" fill="#673958" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Slå opp norske og latinske navn</text>
+<rect x="28" y="235" width="249" height="68" rx="20" fill="#f2c9de" stroke="none"/>
+<text x="38" y="253" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="start">Flashcards</text>
+<text x="38" y="271" fill="#673958" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Øv på å huske svaret</text>
+<rect x="288" y="235" width="249" height="68" rx="20" fill="#f2c9de" stroke="none"/>
+<text x="298" y="253" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="start">Quiz</text>
+<text x="298" y="271" fill="#673958" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Test deg selv med fasit</text>
+<text x="28" y="377" fill="#762852" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Avslutt økten</text>
+</g></g>
+<g id="konsept-4-skjerm-4" transform="translate(1772 86)"><title>Øvingsplan – Sammendrag</title>
+<text x="0" y="19" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Sammendrag</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="20" fill="#fff8fa" stroke="#673958"/>
+<rect x="1" y="1" width="566" height="39" rx="20" fill="#72224f" stroke="none"/>
+<text x="14" y="25" fill="#fae5ec" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#fae5ec" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<rect x="22" y="49" width="98" height="23" rx="11" fill="#f2c9de" stroke="none"/>
+<text x="71" y="65" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Økt</text>
+<rect x="128" y="49" width="98" height="23" rx="11" fill="#72224f" stroke="none"/>
+<text x="177" y="65" fill="#fae5ec" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Les</text>
+<rect x="234" y="49" width="98" height="23" rx="11" fill="#f2c9de" stroke="none"/>
+<text x="283" y="65" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Begreper</text>
+<rect x="340" y="49" width="98" height="23" rx="11" fill="#f2c9de" stroke="none"/>
+<text x="389" y="65" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Kort</text>
+<rect x="446" y="49" width="98" height="23" rx="11" fill="#f2c9de" stroke="none"/>
+<text x="495" y="65" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Quiz</text>
+<text x="28" y="110" fill="#38172c" font-family="Trebuchet MS" font-size="29" font-weight="700" text-anchor="start">Overarmens muskler</text>
+<rect x="332" y="132" width="217" height="260" rx="20" fill="#f2c9de" stroke="none"/>
+<text x="344" y="157" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">PDF · Side 2 av 3</text>
+<rect x="342" y="173" width="197" height="203" rx="2" fill="#fffdf8" stroke="none"/>
+<text x="351" y="197" fill="#293447" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="start">Overarmens muskler</text>
+<path d="M352 219H524V219" fill="none" stroke="#818c9c"/>
+<path d="M352 232H510V232" fill="none" stroke="#818c9c"/>
+<path d="M352 245H496V245" fill="none" stroke="#818c9c"/>
+<rect x="348" y="251" width="185" height="14" rx="2" fill="#f3dd88" stroke="none"/>
+<path d="M352 258H524V258" fill="none" stroke="#818c9c"/>
+<path d="M352 271H510V271" fill="none" stroke="#818c9c"/>
+<path d="M352 284H496V284" fill="none" stroke="#818c9c"/>
+<path d="M352 297H524V297" fill="none" stroke="#818c9c"/>
+<path d="M352 310H510V310" fill="none" stroke="#818c9c"/>
+<text x="352" y="357" fill="#293447" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start">2</text>
+<text x="28" y="158" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Albuefleksjon</text>
+<text x="28" y="184" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="400" text-anchor="start">Biceps og brachialis bidrar</text>
+<text x="28" y="207" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="400" text-anchor="start">til å bøye albuen.</text>
+<rect x="28" y="226" width="294" height="79" rx="20" fill="#f2c9de" stroke="none"/>
+<text x="38" y="245" fill="#762852" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="start">Kildeutdrag bekreftet</text>
+<text x="38" y="266" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start">«… flekterer albueleddet …»</text>
+<text x="38" y="288" fill="#762852" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Åpne side 2</text>
+<text x="28" y="336" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="700" text-anchor="start">Rotasjon av underarmen</text>
+<text x="28" y="360" fill="#673958" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">Biceps bidrar ved supinasjon.</text>
+</g></g>
+<g id="konsept-4-skjerm-5" transform="translate(2356 86)"><title>Øvingsplan – Nøkkelbegreper</title>
+<text x="0" y="19" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Nøkkelbegreper</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="20" fill="#fff8fa" stroke="#673958"/>
+<rect x="1" y="1" width="566" height="39" rx="20" fill="#72224f" stroke="none"/>
+<text x="14" y="25" fill="#fae5ec" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#fae5ec" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<rect x="22" y="49" width="98" height="23" rx="11" fill="#f2c9de" stroke="none"/>
+<text x="71" y="65" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Økt</text>
+<rect x="128" y="49" width="98" height="23" rx="11" fill="#f2c9de" stroke="none"/>
+<text x="177" y="65" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Les</text>
+<rect x="234" y="49" width="98" height="23" rx="11" fill="#72224f" stroke="none"/>
+<text x="283" y="65" fill="#fae5ec" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Begreper</text>
+<rect x="340" y="49" width="98" height="23" rx="11" fill="#f2c9de" stroke="none"/>
+<text x="389" y="65" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Kort</text>
+<rect x="446" y="49" width="98" height="23" rx="11" fill="#f2c9de" stroke="none"/>
+<text x="495" y="65" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Quiz</text>
+<text x="28" y="110" fill="#38172c" font-family="Trebuchet MS" font-size="29" font-weight="700" text-anchor="start">Nøkkelbegreper</text>
+<rect x="332" y="132" width="217" height="260" rx="20" fill="#f2c9de" stroke="none"/>
+<text x="344" y="157" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">PDF · Side 2 av 3</text>
+<rect x="342" y="173" width="197" height="203" rx="2" fill="#fffdf8" stroke="none"/>
+<text x="351" y="197" fill="#293447" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="start">Overarmens muskler</text>
+<path d="M352 219H524V219" fill="none" stroke="#818c9c"/>
+<path d="M352 232H510V232" fill="none" stroke="#818c9c"/>
+<path d="M352 245H496V245" fill="none" stroke="#818c9c"/>
+<rect x="348" y="251" width="185" height="14" rx="2" fill="#f3dd88" stroke="none"/>
+<path d="M352 258H524V258" fill="none" stroke="#818c9c"/>
+<path d="M352 271H510V271" fill="none" stroke="#818c9c"/>
+<path d="M352 284H496V284" fill="none" stroke="#818c9c"/>
+<path d="M352 297H524V297" fill="none" stroke="#818c9c"/>
+<path d="M352 310H510V310" fill="none" stroke="#818c9c"/>
+<text x="352" y="357" fill="#293447" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start">2</text>
+<text x="28" y="156" fill="#38172c" font-family="Trebuchet MS" font-size="17" font-weight="700" text-anchor="start">Biceps brachii</text>
+<text x="28" y="180" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">Tohodet overarmsmuskel.</text>
+<text x="28" y="203" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">Bidrar ved albuefleksjon.</text>
+<rect x="28" y="219" width="294" height="79" rx="20" fill="#f2c9de" stroke="none"/>
+<text x="38" y="238" fill="#762852" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="start">Ubekreftet</text>
+<text x="38" y="259" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start">Utdraget finnes ikke på siden.</text>
+<text x="38" y="281" fill="#762852" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Åpne side 2</text>
+<text x="28" y="330" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="700" text-anchor="start">M. brachialis</text>
+<text x="28" y="354" fill="#673958" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">Bøyer albuen.</text>
+</g></g>
+<g id="konsept-4-skjerm-6" transform="translate(20 552)"><title>Øvingsplan – Flashcards</title>
+<text x="0" y="19" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Flashcards</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="20" fill="#fff8fa" stroke="#673958"/>
+<rect x="1" y="1" width="566" height="39" rx="20" fill="#72224f" stroke="none"/>
+<text x="14" y="25" fill="#fae5ec" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#fae5ec" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<rect x="22" y="49" width="98" height="23" rx="11" fill="#f2c9de" stroke="none"/>
+<text x="71" y="65" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Økt</text>
+<rect x="128" y="49" width="98" height="23" rx="11" fill="#f2c9de" stroke="none"/>
+<text x="177" y="65" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Les</text>
+<rect x="234" y="49" width="98" height="23" rx="11" fill="#f2c9de" stroke="none"/>
+<text x="283" y="65" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Begreper</text>
+<rect x="340" y="49" width="98" height="23" rx="11" fill="#72224f" stroke="none"/>
+<text x="389" y="65" fill="#fae5ec" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Kort</text>
+<rect x="446" y="49" width="98" height="23" rx="11" fill="#f2c9de" stroke="none"/>
+<text x="495" y="65" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Quiz</text>
+<text x="28" y="110" fill="#38172c" font-family="Trebuchet MS" font-size="29" font-weight="700" text-anchor="start">Flashcards</text>
+<rect x="28" y="140" width="270" height="132" rx="20" fill="#f2c9de" stroke="none"/>
+<text x="43" y="164" fill="#673958" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="start">Kort 2 av 8</text>
+<text x="43" y="193" fill="#38172c" font-family="Trebuchet MS" font-size="19" font-weight="700" text-anchor="start">Hva gjør m. brachialis?</text>
+<text x="43" y="225" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="400" text-anchor="start">Bøyer albuen.</text>
+<text x="43" y="250" fill="#762852" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="start">Skjul svar</text>
+<rect x="308" y="140" width="232" height="132" rx="20" fill="#fae5ec" stroke="#673958"/>
+<text x="321" y="172" fill="#673958" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Neste kort</text>
+<text x="321" y="202" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="400" text-anchor="start">Hvilken muskel</text>
+<text x="321" y="225" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="400" text-anchor="start">strekker albuen?</text>
+<text x="321" y="257" fill="#762852" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Vis svaret</text>
+<rect x="28" y="282" width="270" height="79" rx="20" fill="#f2c9de" stroke="none"/>
+<text x="38" y="301" fill="#762852" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="start">Kildeutdrag bekreftet</text>
+<text x="38" y="322" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start">«… flekterer albueleddet …»</text>
+<text x="38" y="344" fill="#762852" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Åpne side 2</text>
+<rect x="28" y="371" width="82" height="34" rx="20" fill="#fff8fa" stroke="#72224f"/>
+<text x="41" y="393" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Forrige</text>
+<rect x="130" y="371" width="106" height="34" rx="20" fill="#72224f" stroke="#72224f"/>
+<text x="143" y="393" fill="#fae5ec" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Neste kort</text>
+</g></g>
+<g id="konsept-4-skjerm-7" transform="translate(604 552)"><title>Øvingsplan – Quiz</title>
+<text x="0" y="19" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Quiz</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="20" fill="#fff8fa" stroke="#673958"/>
+<rect x="1" y="1" width="566" height="39" rx="20" fill="#72224f" stroke="none"/>
+<text x="14" y="25" fill="#fae5ec" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#fae5ec" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<rect x="22" y="49" width="98" height="23" rx="11" fill="#f2c9de" stroke="none"/>
+<text x="71" y="65" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Økt</text>
+<rect x="128" y="49" width="98" height="23" rx="11" fill="#f2c9de" stroke="none"/>
+<text x="177" y="65" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Les</text>
+<rect x="234" y="49" width="98" height="23" rx="11" fill="#f2c9de" stroke="none"/>
+<text x="283" y="65" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Begreper</text>
+<rect x="340" y="49" width="98" height="23" rx="11" fill="#f2c9de" stroke="none"/>
+<text x="389" y="65" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Kort</text>
+<rect x="446" y="49" width="98" height="23" rx="11" fill="#72224f" stroke="none"/>
+<text x="495" y="65" fill="#fae5ec" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Quiz</text>
+<text x="28" y="110" fill="#38172c" font-family="Trebuchet MS" font-size="29" font-weight="700" text-anchor="start">Quiz om albuen</text>
+<text x="28" y="138" fill="#673958" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Spørsmål 2 av 5</text>
+<rect x="28" y="148" width="512" height="4" rx="2" fill="#f2c9de" stroke="none"/>
+<rect x="28" y="148" width="204.8" height="4" rx="2" fill="#72224f" stroke="none"/>
+<text x="28" y="179" fill="#38172c" font-family="Trebuchet MS" font-size="18" font-weight="700" text-anchor="start">Hvilken muskel bøyer albuen?</text>
+<rect x="28" y="196" width="512" height="32" rx="20" fill="#fae5ec" stroke="none"/>
+<circle cx="43" cy="212" r="5" fill="#fff8fa" stroke="#762852"/>
+<text x="58" y="217" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">M. triceps brachii</text>
+<rect x="28" y="234" width="512" height="32" rx="20" fill="#f2c9de" stroke="#72224f"/>
+<circle cx="43" cy="250" r="5" fill="#72224f" stroke="#762852"/>
+<text x="58" y="255" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">M. brachialis</text>
+<rect x="28" y="272" width="512" height="32" rx="20" fill="#fae5ec" stroke="none"/>
+<circle cx="43" cy="288" r="5" fill="#fff8fa" stroke="#762852"/>
+<text x="58" y="293" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">M. deltoideus</text>
+<rect x="28" y="320" width="138" height="34" rx="20" fill="#72224f" stroke="#72224f"/>
+<text x="41" y="342" fill="#fae5ec" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Neste spørsmål</text>
+</g></g>
+<g id="konsept-4-skjerm-8" transform="translate(1188 552)"><title>Øvingsplan – Quizresultat</title>
+<text x="0" y="19" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Quizresultat</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="20" fill="#fff8fa" stroke="#673958"/>
+<rect x="1" y="1" width="566" height="39" rx="20" fill="#72224f" stroke="none"/>
+<text x="14" y="25" fill="#fae5ec" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#fae5ec" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<rect x="22" y="49" width="98" height="23" rx="11" fill="#f2c9de" stroke="none"/>
+<text x="71" y="65" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Økt</text>
+<rect x="128" y="49" width="98" height="23" rx="11" fill="#f2c9de" stroke="none"/>
+<text x="177" y="65" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Les</text>
+<rect x="234" y="49" width="98" height="23" rx="11" fill="#f2c9de" stroke="none"/>
+<text x="283" y="65" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Begreper</text>
+<rect x="340" y="49" width="98" height="23" rx="11" fill="#f2c9de" stroke="none"/>
+<text x="389" y="65" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Kort</text>
+<rect x="446" y="49" width="98" height="23" rx="11" fill="#72224f" stroke="none"/>
+<text x="495" y="65" fill="#fae5ec" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Quiz</text>
+<text x="28" y="110" fill="#38172c" font-family="Trebuchet MS" font-size="29" font-weight="700" text-anchor="start">Resultatet ditt</text>
+<text x="28" y="152" fill="#38172c" font-family="Trebuchet MS" font-size="25" font-weight="700" text-anchor="start">4 av 5 riktige</text>
+<text x="28" y="187" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">Spørsmål 2 · Riktig</text>
+<text x="28" y="212" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">M. brachialis bøyer albuen.</text>
+<text x="28" y="235" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">Du svarte: M. brachialis.</text>
+<rect x="28" y="255" width="270" height="79" rx="20" fill="#f2c9de" stroke="none"/>
+<text x="38" y="274" fill="#762852" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="start">Kildeutdrag bekreftet</text>
+<text x="38" y="295" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start">«… flekterer albueleddet …»</text>
+<text x="38" y="317" fill="#762852" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Åpne side 2</text>
+<rect x="28" y="348" width="106" height="34" rx="20" fill="#72224f" stroke="#72224f"/>
+<text x="41" y="370" fill="#fae5ec" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Prøv igjen</text>
+<rect x="141" y="348" width="162" height="34" rx="20" fill="#fff8fa" stroke="#72224f"/>
+<text x="154" y="370" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Tilbake til økten</text>
+</g></g>
+<g id="konsept-4-skjerm-9" transform="translate(1772 552)"><title>Øvingsplan – Genereringsfeil</title>
+<text x="0" y="19" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Genereringsfeil</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="20" fill="#fff8fa" stroke="#673958"/>
+<rect x="1" y="1" width="566" height="39" rx="20" fill="#72224f" stroke="none"/>
+<text x="14" y="25" fill="#fae5ec" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#fae5ec" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<text x="28" y="96" fill="#38172c" font-family="Trebuchet MS" font-size="29" font-weight="700" text-anchor="start">Kunne ikke lage kort</text>
+<rect x="28" y="125" width="512" height="91" rx="20" fill="#f2c9de" stroke="none"/>
+<text x="40" y="150" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">Tjenesten svarte ikke i tide.</text>
+<text x="40" y="173" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">Du har 3 forespørsler igjen.</text>
+<rect x="28" y="233" width="106" height="34" rx="20" fill="#72224f" stroke="#72224f"/>
+<text x="41" y="255" fill="#fae5ec" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Prøv igjen</text>
+<text x="28" y="302" fill="#673958" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Allerede i økten</text>
+<rect x="28" y="317" width="146" height="34" rx="20" fill="#fff8fa" stroke="#72224f"/>
+<text x="41" y="339" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Åpne sammendrag</text>
+<text x="28" y="378" fill="#673958" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start">Under generering: «Lager flashcards …»</text>
+</g></g>
+<g id="konsept-4-skjerm-10" transform="translate(2356 552)"><title>Øvingsplan – Avslutt økten</title>
+<text x="0" y="19" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Avslutt økten</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="20" fill="#fff8fa" stroke="#673958"/>
+<rect x="1" y="1" width="566" height="39" rx="20" fill="#72224f" stroke="none"/>
+<text x="14" y="25" fill="#fae5ec" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#fae5ec" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<text x="28" y="96" fill="#38172c" font-family="Trebuchet MS" font-size="29" font-weight="700" text-anchor="start">Avslutte studieøkten?</text>
+<text x="28" y="137" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="400" text-anchor="start">PDF-en og ressursene i denne økten</text>
+<text x="28" y="160" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="400" text-anchor="start">fjernes når du avslutter.</text>
+<rect x="28" y="208" width="138" height="34" rx="20" fill="#72224f" stroke="#72224f"/>
+<text x="41" y="230" fill="#fae5ec" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Fortsett økten</text>
+<rect x="178" y="208" width="130" height="34" rx="20" fill="#fff8fa" stroke="#72224f"/>
+<text x="191" y="230" fill="#38172c" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Avslutt økten</text>
+<path d="M28 276H540V276" fill="none" stroke="#f2c9de"/>
+<text x="28" y="307" fill="#673958" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="start">Etter avslutning</text>
+<text x="28" y="335" fill="#38172c" font-family="Trebuchet MS" font-size="19" font-weight="700" text-anchor="start">Start en ny økt</text>
+<text x="28" y="363" fill="#673958" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">Gå tilbake til opplasting eller prøv demoen.</text>
+</g></g>
+</g>
+<g id="konsept-5" transform="translate(24 4400)">
+<rect x="0" y="0" width="2944" height="1038" rx="14" fill="#e5ebfa" stroke="none"/>
+<text x="20" y="57" fill="#192954" font-family="Avenir Next" font-size="39" font-weight="700" text-anchor="start">Kildespor</text>
+<text x="260" y="55" fill="#415274" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="400" text-anchor="start">Tospaltet arbeidsflate · studieinnhold og PDF har lik plass</text>
+<g id="konsept-5-skjerm-1" transform="translate(20 86)"><title>Kildespor – Opplasting</title>
+<text x="0" y="19" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Opplasting</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="0" fill="#f7faff" stroke="#415274"/>
+<rect x="1" y="1" width="566" height="39" rx="0" fill="#d6e2ff" stroke="none"/>
+<text x="14" y="25" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Demo tilgjengelig</text>
+<text x="20" y="96" fill="#192954" font-family="Avenir Next" font-size="29" font-weight="700" text-anchor="start">Last opp en PDF</text>
+<text x="20" y="127" fill="#415274" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">Én tekstbasert PDF · maks 20 MB og 50 sider</text>
+<rect x="20" y="150" width="293" height="123" rx="0" fill="#d6e2ff" stroke="#2146a2"/>
+<path d="M39 186v-19h12l7 7v12z m12-19v7h7" fill="none" stroke="#20439c" stroke-width="1.5"/>
+<text x="68" y="182" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="700" text-anchor="start">Dra PDF-en hit</text>
+<rect x="38" y="211" width="90" height="34" rx="0" fill="#2146a2" stroke="#2146a2"/>
+<text x="51" y="233" fill="#e5ebfa" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Velg PDF</text>
+<text x="334" y="179" fill="#415274" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">Ingen PDF?</text>
+<text x="334" y="202" fill="#415274" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">Prøv eksempeløkten.</text>
+<rect x="20" y="294" width="98" height="34" rx="0" fill="#f7faff" stroke="#2146a2"/>
+<text x="33" y="316" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Prøv demo</text>
+</g></g>
+<g id="konsept-5-skjerm-2" transform="translate(604 86)"><title>Kildespor – Tekstsjekk</title>
+<text x="0" y="19" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Tekstsjekk</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="0" fill="#f7faff" stroke="#415274"/>
+<rect x="1" y="1" width="566" height="39" rx="0" fill="#d6e2ff" stroke="none"/>
+<text x="14" y="25" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<text x="20" y="96" fill="#192954" font-family="Avenir Next" font-size="29" font-weight="700" text-anchor="start">Sjekk sidene</text>
+<text x="20" y="129" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="start">Anatomi.pdf · 3 sider</text>
+<rect x="20" y="161" width="520" height="31" rx="0" fill="#e5ebfa" stroke="none"/>
+<text x="30" y="182" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Side 1</text>
+<text x="120" y="182" fill="#415274" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">Klar</text>
+<rect x="20" y="200" width="520" height="31" rx="0" fill="#e5ebfa" stroke="none"/>
+<text x="30" y="221" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Side 2</text>
+<text x="120" y="221" fill="#415274" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">Klar</text>
+<rect x="20" y="239" width="520" height="31" rx="0" fill="#d6e2ff" stroke="none"/>
+<text x="30" y="260" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Side 3</text>
+<text x="120" y="260" fill="#20439c" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">Lite uttrekkbar tekst</text>
+<rect x="20" y="289" width="186" height="34" rx="0" fill="#2146a2" stroke="#2146a2"/>
+<text x="33" y="311" fill="#e5ebfa" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Fortsett med 2 sider</text>
+<text x="20" y="349" fill="#20439c" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Velg en annen PDF</text>
+</g></g>
+<g id="konsept-5-skjerm-3" transform="translate(1188 86)"><title>Kildespor – Studieøkt</title>
+<text x="0" y="19" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Studieøkt</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="0" fill="#f7faff" stroke="#415274"/>
+<rect x="1" y="1" width="566" height="39" rx="0" fill="#d6e2ff" stroke="none"/>
+<text x="14" y="25" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<text x="20" y="96" fill="#192954" font-family="Avenir Next" font-size="29" font-weight="700" text-anchor="start">Velg studieressurs</text>
+<text x="20" y="121" fill="#415274" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">2 sider klare · 4 forespørsler igjen</text>
+<rect x="20" y="142" width="520" height="42" rx="0" fill="#d6e2ff" stroke="none"/>
+<text x="30" y="160" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="start">Sammendrag</text>
+<text x="30" y="178" fill="#415274" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Les hovedpunktene</text>
+<rect x="20" y="190" width="520" height="42" rx="0" fill="#e5ebfa" stroke="none"/>
+<text x="30" y="208" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="start">Nøkkelbegreper</text>
+<text x="30" y="226" fill="#415274" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Slå opp norske og latinske navn</text>
+<rect x="20" y="238" width="520" height="42" rx="0" fill="#e5ebfa" stroke="none"/>
+<text x="30" y="256" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="start">Flashcards</text>
+<text x="30" y="274" fill="#415274" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Øv på å huske svaret</text>
+<rect x="20" y="286" width="520" height="42" rx="0" fill="#e5ebfa" stroke="none"/>
+<text x="30" y="304" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" text-anchor="start">Quiz</text>
+<text x="30" y="322" fill="#415274" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start">Test deg selv med fasit</text>
+<text x="20" y="377" fill="#20439c" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Avslutt økten</text>
+</g></g>
+<g id="konsept-5-skjerm-4" transform="translate(1772 86)"><title>Kildespor – Sammendrag</title>
+<text x="0" y="19" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Sammendrag</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="0" fill="#f7faff" stroke="#415274"/>
+<rect x="1" y="1" width="566" height="39" rx="0" fill="#d6e2ff" stroke="none"/>
+<text x="14" y="25" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<text x="20" y="96" fill="#192954" font-family="Avenir Next" font-size="29" font-weight="700" text-anchor="start">Overarmens muskler</text>
+<rect x="274" y="118" width="275" height="260" rx="0" fill="#d6e2ff" stroke="none"/>
+<text x="286" y="143" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">PDF · Side 2 av 3</text>
+<rect x="284" y="159" width="255" height="203" rx="2" fill="#fffdf8" stroke="none"/>
+<text x="293" y="183" fill="#293447" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="start">Overarmens muskler</text>
+<path d="M294 205H524V205" fill="none" stroke="#818c9c"/>
+<path d="M294 218H510V218" fill="none" stroke="#818c9c"/>
+<path d="M294 231H496V231" fill="none" stroke="#818c9c"/>
+<rect x="290" y="237" width="243" height="14" rx="2" fill="#f3dd88" stroke="none"/>
+<path d="M294 244H524V244" fill="none" stroke="#818c9c"/>
+<path d="M294 257H510V257" fill="none" stroke="#818c9c"/>
+<path d="M294 270H496V270" fill="none" stroke="#818c9c"/>
+<path d="M294 283H524V283" fill="none" stroke="#818c9c"/>
+<path d="M294 296H510V296" fill="none" stroke="#818c9c"/>
+<text x="294" y="343" fill="#293447" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start">2</text>
+<text x="20" y="144" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Albuefleksjon</text>
+<text x="20" y="170" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="400" text-anchor="start">Biceps og brachialis bidrar</text>
+<text x="20" y="193" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="400" text-anchor="start">til å bøye albuen.</text>
+<rect x="20" y="212" width="244" height="79" rx="0" fill="#d6e2ff" stroke="none"/>
+<text x="30" y="231" fill="#20439c" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="start">Kildeutdrag bekreftet</text>
+<text x="30" y="252" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start">«… flekterer albueleddet …»</text>
+<text x="30" y="274" fill="#20439c" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Åpne side 2</text>
+<text x="20" y="322" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="700" text-anchor="start">Rotasjon av underarmen</text>
+<text x="20" y="346" fill="#415274" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">Biceps bidrar ved supinasjon.</text>
+</g></g>
+<g id="konsept-5-skjerm-5" transform="translate(2356 86)"><title>Kildespor – Nøkkelbegreper</title>
+<text x="0" y="19" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Nøkkelbegreper</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="0" fill="#f7faff" stroke="#415274"/>
+<rect x="1" y="1" width="566" height="39" rx="0" fill="#d6e2ff" stroke="none"/>
+<text x="14" y="25" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<text x="20" y="96" fill="#192954" font-family="Avenir Next" font-size="29" font-weight="700" text-anchor="start">Nøkkelbegreper</text>
+<rect x="274" y="118" width="275" height="260" rx="0" fill="#d6e2ff" stroke="none"/>
+<text x="286" y="143" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">PDF · Side 2 av 3</text>
+<rect x="284" y="159" width="255" height="203" rx="2" fill="#fffdf8" stroke="none"/>
+<text x="293" y="183" fill="#293447" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="start">Overarmens muskler</text>
+<path d="M294 205H524V205" fill="none" stroke="#818c9c"/>
+<path d="M294 218H510V218" fill="none" stroke="#818c9c"/>
+<path d="M294 231H496V231" fill="none" stroke="#818c9c"/>
+<rect x="290" y="237" width="243" height="14" rx="2" fill="#f3dd88" stroke="none"/>
+<path d="M294 244H524V244" fill="none" stroke="#818c9c"/>
+<path d="M294 257H510V257" fill="none" stroke="#818c9c"/>
+<path d="M294 270H496V270" fill="none" stroke="#818c9c"/>
+<path d="M294 283H524V283" fill="none" stroke="#818c9c"/>
+<path d="M294 296H510V296" fill="none" stroke="#818c9c"/>
+<text x="294" y="343" fill="#293447" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start">2</text>
+<text x="20" y="142" fill="#192954" font-family="Avenir Next" font-size="17" font-weight="700" text-anchor="start">Biceps brachii</text>
+<text x="20" y="166" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">Tohodet overarmsmuskel.</text>
+<text x="20" y="189" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">Bidrar ved albuefleksjon.</text>
+<rect x="20" y="205" width="244" height="79" rx="0" fill="#d6e2ff" stroke="none"/>
+<text x="30" y="224" fill="#20439c" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="start">Ubekreftet</text>
+<text x="30" y="245" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start">Utdraget finnes ikke på siden.</text>
+<text x="30" y="267" fill="#20439c" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Åpne side 2</text>
+<text x="20" y="316" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="700" text-anchor="start">M. brachialis</text>
+<text x="20" y="340" fill="#415274" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">Bøyer albuen.</text>
+</g></g>
+<g id="konsept-5-skjerm-6" transform="translate(20 552)"><title>Kildespor – Flashcards</title>
+<text x="0" y="19" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Flashcards</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="0" fill="#f7faff" stroke="#415274"/>
+<rect x="1" y="1" width="566" height="39" rx="0" fill="#d6e2ff" stroke="none"/>
+<text x="14" y="25" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<text x="20" y="96" fill="#192954" font-family="Avenir Next" font-size="29" font-weight="700" text-anchor="start">Flashcards</text>
+<rect x="20" y="126" width="270" height="132" rx="0" fill="#d6e2ff" stroke="none"/>
+<text x="35" y="150" fill="#415274" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="start">Kort 2 av 8</text>
+<text x="35" y="179" fill="#192954" font-family="Avenir Next" font-size="19" font-weight="700" text-anchor="start">Hva gjør m. brachialis?</text>
+<text x="35" y="211" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="400" text-anchor="start">Bøyer albuen.</text>
+<text x="35" y="236" fill="#20439c" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="start">Skjul svar</text>
+<rect x="300" y="119" width="244" height="260" rx="0" fill="#d6e2ff" stroke="none"/>
+<text x="312" y="144" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">PDF · Side 2 av 3</text>
+<rect x="310" y="160" width="224" height="203" rx="2" fill="#fffdf8" stroke="none"/>
+<text x="319" y="184" fill="#293447" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="start">Overarmens muskler</text>
+<path d="M320 206H519V206" fill="none" stroke="#818c9c"/>
+<path d="M320 219H505V219" fill="none" stroke="#818c9c"/>
+<path d="M320 232H491V232" fill="none" stroke="#818c9c"/>
+<rect x="316" y="238" width="212" height="14" rx="2" fill="#f3dd88" stroke="none"/>
+<path d="M320 245H519V245" fill="none" stroke="#818c9c"/>
+<path d="M320 258H505V258" fill="none" stroke="#818c9c"/>
+<path d="M320 271H491V271" fill="none" stroke="#818c9c"/>
+<path d="M320 284H519V284" fill="none" stroke="#818c9c"/>
+<path d="M320 297H505V297" fill="none" stroke="#818c9c"/>
+<text x="320" y="344" fill="#293447" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start">2</text>
+<rect x="20" y="268" width="270" height="79" rx="0" fill="#d6e2ff" stroke="none"/>
+<text x="30" y="287" fill="#20439c" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="start">Kildeutdrag bekreftet</text>
+<text x="30" y="308" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start">«… flekterer albueleddet …»</text>
+<text x="30" y="330" fill="#20439c" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Åpne side 2</text>
+<rect x="20" y="357" width="82" height="34" rx="0" fill="#f7faff" stroke="#2146a2"/>
+<text x="33" y="379" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Forrige</text>
+<rect x="122" y="357" width="106" height="34" rx="0" fill="#2146a2" stroke="#2146a2"/>
+<text x="135" y="379" fill="#e5ebfa" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Neste kort</text>
+</g></g>
+<g id="konsept-5-skjerm-7" transform="translate(604 552)"><title>Kildespor – Quiz</title>
+<text x="0" y="19" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Quiz</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="0" fill="#f7faff" stroke="#415274"/>
+<rect x="1" y="1" width="566" height="39" rx="0" fill="#d6e2ff" stroke="none"/>
+<text x="14" y="25" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<text x="20" y="96" fill="#192954" font-family="Avenir Next" font-size="29" font-weight="700" text-anchor="start">Quiz om albuen</text>
+<rect x="384" y="129" width="156" height="148" rx="0" fill="#d6e2ff" stroke="none"/>
+<text x="396" y="153" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="start">Spørsmål i quizen</text>
+<rect x="395" y="165" width="23" height="24" rx="0" fill="#f7faff" stroke="none"/>
+<text x="406" y="181" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">1</text>
+<rect x="422" y="165" width="23" height="24" rx="0" fill="#2146a2" stroke="none"/>
+<text x="433" y="181" fill="#e5ebfa" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">2</text>
+<rect x="449" y="165" width="23" height="24" rx="0" fill="#f7faff" stroke="none"/>
+<text x="460" y="181" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">3</text>
+<rect x="476" y="165" width="23" height="24" rx="0" fill="#f7faff" stroke="none"/>
+<text x="487" y="181" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">4</text>
+<rect x="503" y="165" width="23" height="24" rx="0" fill="#f7faff" stroke="none"/>
+<text x="514" y="181" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">5</text>
+<text x="396" y="220" fill="#415274" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start">1 av 5 besvart</text>
+<text x="20" y="124" fill="#415274" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Spørsmål 2 av 5</text>
+<rect x="20" y="134" width="348" height="4" rx="2" fill="#d6e2ff" stroke="none"/>
+<rect x="20" y="134" width="139.20000000000002" height="4" rx="2" fill="#2146a2" stroke="none"/>
+<text x="20" y="165" fill="#192954" font-family="Avenir Next" font-size="18" font-weight="700" text-anchor="start">Hvilken muskel bøyer albuen?</text>
+<rect x="20" y="182" width="348" height="32" rx="0" fill="#e5ebfa" stroke="none"/>
+<circle cx="35" cy="198" r="5" fill="#f7faff" stroke="#20439c"/>
+<text x="50" y="203" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">M. triceps brachii</text>
+<rect x="20" y="220" width="348" height="32" rx="0" fill="#d6e2ff" stroke="#2146a2"/>
+<circle cx="35" cy="236" r="5" fill="#2146a2" stroke="#20439c"/>
+<text x="50" y="241" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">M. brachialis</text>
+<rect x="20" y="258" width="348" height="32" rx="0" fill="#e5ebfa" stroke="none"/>
+<circle cx="35" cy="274" r="5" fill="#f7faff" stroke="#20439c"/>
+<text x="50" y="279" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">M. deltoideus</text>
+<rect x="20" y="306" width="138" height="34" rx="0" fill="#2146a2" stroke="#2146a2"/>
+<text x="33" y="328" fill="#e5ebfa" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Neste spørsmål</text>
+</g></g>
+<g id="konsept-5-skjerm-8" transform="translate(1188 552)"><title>Kildespor – Quizresultat</title>
+<text x="0" y="19" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Quizresultat</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="0" fill="#f7faff" stroke="#415274"/>
+<rect x="1" y="1" width="566" height="39" rx="0" fill="#d6e2ff" stroke="none"/>
+<text x="14" y="25" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<text x="20" y="96" fill="#192954" font-family="Avenir Next" font-size="29" font-weight="700" text-anchor="start">Resultatet ditt</text>
+<text x="20" y="138" fill="#192954" font-family="Avenir Next" font-size="25" font-weight="700" text-anchor="start">4 av 5 riktige</text>
+<text x="20" y="173" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">Spørsmål 2 · Riktig</text>
+<text x="20" y="198" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">M. brachialis bøyer albuen.</text>
+<text x="20" y="221" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">Du svarte: M. brachialis.</text>
+<rect x="20" y="241" width="270" height="79" rx="0" fill="#d6e2ff" stroke="none"/>
+<text x="30" y="260" fill="#20439c" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="start">Kildeutdrag bekreftet</text>
+<text x="30" y="281" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start">«… flekterer albueleddet …»</text>
+<text x="30" y="303" fill="#20439c" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Åpne side 2</text>
+<rect x="302" y="118" width="242" height="260" rx="0" fill="#d6e2ff" stroke="none"/>
+<text x="314" y="143" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">PDF · Side 2 av 3</text>
+<rect x="312" y="159" width="222" height="203" rx="2" fill="#fffdf8" stroke="none"/>
+<text x="321" y="183" fill="#293447" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" text-anchor="start">Overarmens muskler</text>
+<path d="M322 205H519V205" fill="none" stroke="#818c9c"/>
+<path d="M322 218H505V218" fill="none" stroke="#818c9c"/>
+<path d="M322 231H491V231" fill="none" stroke="#818c9c"/>
+<rect x="318" y="237" width="210" height="14" rx="2" fill="#f3dd88" stroke="none"/>
+<path d="M322 244H519V244" fill="none" stroke="#818c9c"/>
+<path d="M322 257H505V257" fill="none" stroke="#818c9c"/>
+<path d="M322 270H491V270" fill="none" stroke="#818c9c"/>
+<path d="M322 283H519V283" fill="none" stroke="#818c9c"/>
+<path d="M322 296H505V296" fill="none" stroke="#818c9c"/>
+<text x="322" y="343" fill="#293447" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start">2</text>
+<rect x="20" y="334" width="106" height="34" rx="0" fill="#2146a2" stroke="#2146a2"/>
+<text x="33" y="356" fill="#e5ebfa" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Prøv igjen</text>
+<rect x="133" y="334" width="162" height="34" rx="0" fill="#f7faff" stroke="#2146a2"/>
+<text x="146" y="356" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Tilbake til økten</text>
+</g></g>
+<g id="konsept-5-skjerm-9" transform="translate(1772 552)"><title>Kildespor – Genereringsfeil</title>
+<text x="0" y="19" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Genereringsfeil</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="0" fill="#f7faff" stroke="#415274"/>
+<rect x="1" y="1" width="566" height="39" rx="0" fill="#d6e2ff" stroke="none"/>
+<text x="14" y="25" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<text x="20" y="96" fill="#192954" font-family="Avenir Next" font-size="29" font-weight="700" text-anchor="start">Kunne ikke lage kort</text>
+<rect x="20" y="125" width="520" height="91" rx="0" fill="#d6e2ff" stroke="none"/>
+<text x="32" y="150" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">Tjenesten svarte ikke i tide.</text>
+<text x="32" y="173" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">Du har 3 forespørsler igjen.</text>
+<rect x="20" y="233" width="106" height="34" rx="0" fill="#2146a2" stroke="#2146a2"/>
+<text x="33" y="255" fill="#e5ebfa" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Prøv igjen</text>
+<text x="20" y="302" fill="#415274" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Allerede i økten</text>
+<rect x="20" y="317" width="146" height="34" rx="0" fill="#f7faff" stroke="#2146a2"/>
+<text x="33" y="339" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Åpne sammendrag</text>
+<text x="20" y="378" fill="#415274" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start">Under generering: «Lager flashcards …»</text>
+</g></g>
+<g id="konsept-5-skjerm-10" transform="translate(2356 552)"><title>Kildespor – Avslutt økten</title>
+<text x="0" y="19" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="start">Avslutt økten</text>
+<g transform="translate(0 31)">
+<rect x="0" y="0" width="568" height="407" rx="0" fill="#f7faff" stroke="#415274"/>
+<rect x="1" y="1" width="566" height="39" rx="0" fill="#d6e2ff" stroke="none"/>
+<text x="14" y="25" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="start">AI Study Buddy</text>
+<text x="553" y="25" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" text-anchor="end">Anatomi.pdf · Økt</text>
+<text x="20" y="96" fill="#192954" font-family="Avenir Next" font-size="29" font-weight="700" text-anchor="start">Avslutte studieøkten?</text>
+<text x="20" y="137" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="400" text-anchor="start">PDF-en og ressursene i denne økten</text>
+<text x="20" y="160" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="400" text-anchor="start">fjernes når du avslutter.</text>
+<rect x="20" y="208" width="138" height="34" rx="0" fill="#2146a2" stroke="#2146a2"/>
+<text x="33" y="230" fill="#e5ebfa" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Fortsett økten</text>
+<rect x="170" y="208" width="130" height="34" rx="0" fill="#f7faff" stroke="#2146a2"/>
+<text x="183" y="230" fill="#192954" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="start">Avslutt økten</text>
+<path d="M20 276H540V276" fill="none" stroke="#d6e2ff"/>
+<text x="20" y="307" fill="#415274" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="start">Etter avslutning</text>
+<text x="20" y="335" fill="#192954" font-family="Avenir Next" font-size="19" font-weight="700" text-anchor="start">Start en ny økt</text>
+<text x="20" y="363" fill="#415274" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">Gå tilbake til opplasting eller prøv demoen.</text>
+</g></g>
+</g>
+</svg>
