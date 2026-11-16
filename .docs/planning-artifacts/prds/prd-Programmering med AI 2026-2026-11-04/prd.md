@@ -179,7 +179,7 @@ The app can be started in a documented demo mode without an AI provider API key.
 - In demo mode, the sample PDF can be processed and stored responses for summaries, key concepts, flashcards, and quiz questions can be reviewed.
 - Demo mode makes no AI provider requests and incurs no provider usage charges.
 
-## 5. General Requirements
+## 5. General and Non-functional Requirements
 
 - Details about source information and viewing cited PDF pages, generation failures, demo mode, generation limits, PDF upload requirements, and study-session behavior are specified in FR-1–FR-14.
 - **Uploaded data:** During architecture, review how the selected provider processes and retains uploaded PDFs and generated content. The app's session-only behavior does not by itself guarantee immediate deletion by the provider.

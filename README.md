@@ -20,5 +20,9 @@ Repoet inneholder gruppens applikasjon og dokumentasjon av utvikling, testing og
 - [Research og teknisk utprøving](.docs/planning-artifacts/forarbeid/research.md)
 - [Kravspesifikasjon (PRD)](.docs/planning-artifacts/prds/prd-Programmering%20med%20AI%202026-2026-11-04/prd.md)
 - [Utviklingsiterasjoner](.docs/planning-artifacts/forarbeid/iterasjoner.md)
+- [Design og UX](.docs/planning-artifacts/ux/design-og-ux.md)
+- [Arkitektur for AI Study Buddy](.docs/planning-artifacts/architecture/ai-study-buddy.md)
+- [Epics og brukerhistorier](.docs/planning-artifacts/epics-og-brukerhistorier.md)
+- [Sprintplanlegging og leveranserekkefølge](.docs/planning-artifacts/sprintplanlegging.md)
 
 Appkoden og demo-PDF-en ligger i `app/`. Planleggingsdokumenter ligger i `.docs/planning-artifacts/`, og prosesslogger ligger i `.logs/`.
