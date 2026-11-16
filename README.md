@@ -8,12 +8,17 @@ Repoet inneholder gruppens applikasjon og dokumentasjon av utvikling, testing og
 
 - Sara K. Magnussen
 
-## AI Study Buddy
+## Kjør AI Study Buddy
 
-Se [oppstart og testflyt](app/README.md) for den kjørbare macOS-versjonen.
+- [Oppstart og demo på macOS](app/README.md)
+- [Innleveringstest](app/TESTLOGG.md)
 
-## Forarbeid
+## Planlegging og prosess
 
+- [Product brief](product-brief.md)
 - [Tidlig idégrunnlag og MVP-avgrensning](.docs/planning-artifacts/forarbeid/brainstorming.md)
 - [Research og teknisk utprøving](.docs/planning-artifacts/forarbeid/research.md)
+- [Kravspesifikasjon (PRD)](.docs/planning-artifacts/prds/prd-Programmering%20med%20AI%202026-2026-11-04/prd.md)
 - [Utviklingsiterasjoner](.docs/planning-artifacts/forarbeid/iterasjoner.md)
+
+Appkoden og demo-PDF-en ligger i `app/`. Planleggingsdokumenter ligger i `.docs/planning-artifacts/`, og prosesslogger ligger i `.logs/`.
