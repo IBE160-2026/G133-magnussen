@@ -22,6 +22,7 @@ Repoet inneholder gruppens applikasjon og dokumentasjon av utvikling, testing og
 - [Design og UX](.docs/planning-artifacts/ux-designs/ux-AI-Study-Buddy-2026-11-14/README.md)
 - [Architecture](.docs/planning-artifacts/architecture/technology.md)
 - [Epics and user stories](.docs/planning-artifacts/epics.md)
+- [Sprint planning](.docs/planning-artifacts/sprint-plan.md) and [BMAD sprint status](.docs/planning-artifacts/sprint-status.yaml)
 - [Utviklingsiterasjoner](.docs/planning-artifacts/forarbeid/iterasjoner.md)
 
 Appkoden og demo-PDF-en ligger i `app/`. Planleggingsdokumenter ligger i `.docs/planning-artifacts/`, og prosesslogger ligger i `.logs/`.
