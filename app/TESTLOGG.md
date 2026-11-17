@@ -63,3 +63,16 @@ Every concept, flashcard and quiz question includes an excerpt checked
 against the extracted text of its cited demo page. The demo PDF itself is
 unchanged. Question options and answer indices passed structural checks;
 the Vercel build passed. Browser testing of the expanded rounds remains pending.
+
+## Published demo checks and user feedback, 17 November 2026
+
+After the browser-module fix, the production HTML at
+https://g133-magnussen.vercel.app/ included the PDF.js adapter import and
+activation. The user confirmed the demo worked, then requested more study
+resources. Following the expansion, a production API request returned six
+summary sections, ten concepts, ten flashcards and twenty quiz questions.
+The user reported that this version worked better.
+
+These observations cover the published API counts and user-reported demo
+behaviour. Detailed browser verification of both quiz rounds, Redis integration
+and live generation remain pending.
