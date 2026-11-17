@@ -20,106 +20,713 @@
       "pages": [
         3
       ]
+    },
+    {
+      "title": "Brachialis og samarbeid mellom muskler",
+      "text": "Brachialis ligger dypere enn biceps brachii og bidrar med kraft i albuefleksjonen. Muskler som hjelper til, kalles synergister.",
+      "pages": [
+        1
+      ]
+    },
+    {
+      "title": "Agonistens rolle",
+      "text": "Muskelen som først og fremst skaper bevegelsen, kalles agonist eller prime mover.",
+      "pages": [
+        1
+      ]
+    },
+    {
+      "title": "Biceps brachii krysser to ledd",
+      "text": "Biceps brachii har to hoder og krysser både skulderleddet og albueleddet.",
+      "pages": [
+        2
+      ]
     }
   ],
   "concepts": [
     {
       "title": "Albuefleksjon",
-      "text": "Bevegelsen som gjør vinkelen i albueleddet mindre.",
+      "text": "Albuefleksjon betyr at vinkelen i albueleddet blir mindre.",
       "pages": [
         1
+      ],
+      "sources": [
+        {
+          "page": 1,
+          "excerpt": "Albuefleksjon betyr at vinkelen i albueleddet blir mindre.",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "title": "Albuefleksorer",
+      "text": "Biceps brachii, brachialis og brachioradialis bidrar til å bøye underarmen.",
+      "pages": [
+        1
+      ],
+      "sources": [
+        {
+          "page": 1,
+          "excerpt": "Biceps brachii, brachialis og brachioradialis bidrar til å bøye underarmen.",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "title": "Brachialis",
+      "text": "Brachialis ligger dypere enn biceps brachii og bidrar med kraft i albuefleksjonen.",
+      "pages": [
+        1
+      ],
+      "sources": [
+        {
+          "page": 1,
+          "excerpt": "Brachialis ligger dypere enn biceps brachii og bidrar med kraft i albuefleksjonen.",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "title": "Agonist",
+      "text": "Muskelen som først og fremst skaper bevegelsen, kalles agonist eller prime mover.",
+      "pages": [
+        1
+      ],
+      "sources": [
+        {
+          "page": 1,
+          "excerpt": "Muskelen som først og fremst skaper bevegelsen, kalles agonist eller prime mover.",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "title": "Synergist",
+      "text": "Muskler som hjelper til, kalles synergister.",
+      "pages": [
+        1
+      ],
+      "sources": [
+        {
+          "page": 1,
+          "excerpt": "Muskler som hjelper til, kalles synergister.",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "title": "Biceps brachii",
+      "text": "Biceps brachii har to hoder og krysser både skulderleddet og albueleddet.",
+      "pages": [
+        2
+      ],
+      "sources": [
+        {
+          "page": 2,
+          "excerpt": "Biceps brachii har to hoder og krysser både skulderleddet og albueleddet.",
+          "verified": true
+        }
       ]
     },
     {
       "title": "Supinasjon",
-      "text": "Rotasjon av underarmen slik at håndflaten vender fremover i anatomisk utgangsstilling.",
+      "text": "Supinasjon dreier underarmen slik at håndflaten vender fremover i anatomisk utgangsstilling.",
       "pages": [
         2
+      ],
+      "sources": [
+        {
+          "page": 2,
+          "excerpt": "Supinasjon dreier underarmen slik at håndflaten vender fremover i anatomisk utgangsstilling.",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "title": "Albueekstensjon",
+      "text": "Triceps brachii ligger i overarmens bakre kompartment og strekker underarmen i albueleddet.",
+      "pages": [
+        3
+      ],
+      "sources": [
+        {
+          "page": 3,
+          "excerpt": "Triceps brachii ligger i overarmens bakre kompartment og strekker underarmen i albueleddet.",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "title": "Ekstensjon",
+      "text": "Ekstensjon: bevegelse som gjør vinkelen i et ledd større.",
+      "pages": [
+        3
+      ],
+      "sources": [
+        {
+          "page": 3,
+          "excerpt": "Ekstensjon: bevegelse som gjør vinkelen i et ledd større.",
+          "verified": true
+        }
       ]
     },
     {
       "title": "Antagonist",
-      "text": "En muskel som virker motsatt av agonisten i den aktuelle bevegelsen.",
+      "text": "Antagonist: muskel som virker motsatt av agonisten i den aktuelle bevegelsen.",
       "pages": [
         3
+      ],
+      "sources": [
+        {
+          "page": 3,
+          "excerpt": "Antagonist: muskel som virker motsatt av agonisten i den aktuelle bevegelsen.",
+          "verified": true
+        }
       ]
     }
   ],
   "flashcards": [
     {
-      "title": "Hva skjer med vinkelen i albueleddet ved fleksjon?",
+      "title": "Hva skjer med albuevinkelen ved fleksjon?",
       "text": "Vinkelen blir mindre.",
       "pages": [
         1
+      ],
+      "sources": [
+        {
+          "page": 1,
+          "excerpt": "Albuefleksjon betyr at vinkelen i albueleddet blir mindre.",
+          "verified": true
+        }
       ]
     },
     {
-      "title": "Hva heter rotasjonen som vender håndflaten fremover i anatomisk utgangsstilling?",
-      "text": "Supinasjon.",
+      "title": "Hvilke tre muskler bidrar til å bøye underarmen?",
+      "text": "Biceps brachii, brachialis og brachioradialis.",
+      "pages": [
+        1
+      ],
+      "sources": [
+        {
+          "page": 1,
+          "excerpt": "Biceps brachii, brachialis og brachioradialis bidrar til å bøye underarmen.",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "title": "Hvor ligger brachialis i forhold til biceps brachii?",
+      "text": "Brachialis ligger dypere enn biceps brachii.",
+      "pages": [
+        1
+      ],
+      "sources": [
+        {
+          "page": 1,
+          "excerpt": "Brachialis ligger dypere enn biceps brachii og bidrar med kraft i albuefleksjonen.",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "title": "Hva kalles muskelen som først og fremst skaper en bevegelse?",
+      "text": "Agonist, også kalt prime mover.",
+      "pages": [
+        1
+      ],
+      "sources": [
+        {
+          "page": 1,
+          "excerpt": "Muskelen som først og fremst skaper bevegelsen, kalles agonist eller prime mover.",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "title": "Hva kalles muskler som hjelper til med en bevegelse?",
+      "text": "Synergister.",
+      "pages": [
+        1
+      ],
+      "sources": [
+        {
+          "page": 1,
+          "excerpt": "Muskler som hjelper til, kalles synergister.",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "title": "Hvilke to ledd krysser biceps brachii?",
+      "text": "Skulderleddet og albueleddet.",
       "pages": [
         2
+      ],
+      "sources": [
+        {
+          "page": 2,
+          "excerpt": "Biceps brachii har to hoder og krysser både skulderleddet og albueleddet.",
+          "verified": true
+        }
       ]
     },
     {
-      "title": "Hvilken muskel strekker albuen?",
+      "title": "Hva skjer med håndflaten ved supinasjon i anatomisk utgangsstilling?",
+      "text": "Håndflaten dreies fremover.",
+      "pages": [
+        2
+      ],
+      "sources": [
+        {
+          "page": 2,
+          "excerpt": "Supinasjon dreier underarmen slik at håndflaten vender fremover i anatomisk utgangsstilling.",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "title": "Hvilken muskel strekker underarmen i albueleddet?",
       "text": "Triceps brachii.",
       "pages": [
         3
+      ],
+      "sources": [
+        {
+          "page": 3,
+          "excerpt": "Triceps brachii ligger i overarmens bakre kompartment og strekker underarmen i albueleddet.",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "title": "Hva skjer med vinkelen i et ledd ved ekstensjon?",
+      "text": "Vinkelen blir større.",
+      "pages": [
+        3
+      ],
+      "sources": [
+        {
+          "page": 3,
+          "excerpt": "Ekstensjon: bevegelse som gjør vinkelen i et ledd større.",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "title": "Hva beskriver betegnelsen antagonist?",
+      "text": "En muskel som virker motsatt av agonisten i den aktuelle bevegelsen.",
+      "pages": [
+        3
+      ],
+      "sources": [
+        {
+          "page": 3,
+          "excerpt": "Antagonist: muskel som virker motsatt av agonisten i den aktuelle bevegelsen.",
+          "verified": true
+        }
       ]
     }
   ],
   "quiz": [
     {
-      "title": "Hvilken muskel bidrar til albuefleksjon?",
-      "text": "Brachialis bøyer albueleddet.",
+      "title": "Hva skjer med vinkelen i albuen ved fleksjon?",
+      "text": "Albuefleksjon betyr at vinkelen i albueleddet blir mindre.",
       "pages": [
         1
       ],
+      "sources": [
+        {
+          "page": 1,
+          "excerpt": "Albuefleksjon betyr at vinkelen i albueleddet blir mindre.",
+          "verified": true
+        }
+      ],
       "options": [
-        "Brachialis",
-        "Soleus",
-        "Gluteus maximus"
+        "Den blir mindre.",
+        "Den blir større.",
+        "Den er alltid uendret."
       ],
       "answer": 0
     },
     {
-      "title": "Hva heter bevegelsen som dreier håndflaten fremover i anatomisk utgangsstilling?",
-      "text": "Ved supinasjon dreies underarmen slik at håndflaten vender fremover.",
+      "title": "Hvilken gruppe bidrar til albuefleksjon?",
+      "text": "Biceps brachii, brachialis og brachioradialis bidrar til å bøye underarmen.",
       "pages": [
-        2
+        1
+      ],
+      "sources": [
+        {
+          "page": 1,
+          "excerpt": "Biceps brachii, brachialis og brachioradialis bidrar til å bøye underarmen.",
+          "verified": true
+        }
       ],
       "options": [
-        "Pronasjon",
-        "Supinasjon",
-        "Ekstensjon"
+        "Biceps brachii og triceps brachii er de eneste.",
+        "Biceps brachii, brachialis og brachioradialis.",
+        "Bare triceps brachii."
       ],
       "answer": 1
     },
     {
-      "title": "Hvilken muskel strekker albuen?",
-      "text": "Triceps brachii ligger på baksiden av overarmen og strekker albueleddet.",
+      "title": "Hvor ligger brachialis i forhold til biceps brachii?",
+      "text": "Brachialis ligger dypere enn biceps brachii og bidrar med kraft i albuefleksjonen.",
       "pages": [
-        3
+        1
+      ],
+      "sources": [
+        {
+          "page": 1,
+          "excerpt": "Brachialis ligger dypere enn biceps brachii og bidrar med kraft i albuefleksjonen.",
+          "verified": true
+        }
       ],
       "options": [
-        "Brachioradialis",
-        "Brachialis",
-        "Triceps brachii"
+        "Mer overflatisk.",
+        "I underarmens håndledd.",
+        "Dypere."
       ],
       "answer": 2
     },
     {
-      "title": "Hva kalles en muskel som virker motsatt av hovedbevegeren?",
-      "text": "Antagonisten har motsatt virkning av agonisten i den aktuelle bevegelsen.",
+      "title": "Hva betyr prime mover?",
+      "text": "Muskelen som først og fremst skaper bevegelsen, kalles agonist eller prime mover.",
+      "pages": [
+        1
+      ],
+      "sources": [
+        {
+          "page": 1,
+          "excerpt": "Muskelen som først og fremst skaper bevegelsen, kalles agonist eller prime mover.",
+          "verified": true
+        }
+      ],
+      "options": [
+        "Agonist.",
+        "Antagonist.",
+        "Et ledd."
+      ],
+      "answer": 0
+    },
+    {
+      "title": "Hva kalles en muskel som hjelper hovedbevegeren?",
+      "text": "Muskler som hjelper til, kalles synergister.",
+      "pages": [
+        1
+      ],
+      "sources": [
+        {
+          "page": 1,
+          "excerpt": "Muskler som hjelper til, kalles synergister.",
+          "verified": true
+        }
+      ],
+      "options": [
+        "Et leddbånd.",
+        "Synergist.",
+        "Antagonist."
+      ],
+      "answer": 1
+    },
+    {
+      "title": "Hvilke ledd krysser biceps brachii?",
+      "text": "Biceps brachii har to hoder og krysser både skulderleddet og albueleddet.",
+      "pages": [
+        2
+      ],
+      "sources": [
+        {
+          "page": 2,
+          "excerpt": "Biceps brachii har to hoder og krysser både skulderleddet og albueleddet.",
+          "verified": true
+        }
+      ],
+      "options": [
+        "Bare håndleddet.",
+        "Bare albueleddet.",
+        "Skulderleddet og albueleddet."
+      ],
+      "answer": 2
+    },
+    {
+      "title": "Hvordan vender håndflaten etter supinasjon i anatomisk utgangsstilling?",
+      "text": "Supinasjon dreier underarmen slik at håndflaten vender fremover i anatomisk utgangsstilling.",
+      "pages": [
+        2
+      ],
+      "sources": [
+        {
+          "page": 2,
+          "excerpt": "Supinasjon dreier underarmen slik at håndflaten vender fremover i anatomisk utgangsstilling.",
+          "verified": true
+        }
+      ],
+      "options": [
+        "Fremover.",
+        "Bakover.",
+        "Alltid nedover."
+      ],
+      "answer": 0
+    },
+    {
+      "title": "Hvilken muskel strekker albuen?",
+      "text": "Triceps brachii ligger i overarmens bakre kompartment og strekker underarmen i albueleddet.",
       "pages": [
         3
       ],
+      "sources": [
+        {
+          "page": 3,
+          "excerpt": "Triceps brachii ligger i overarmens bakre kompartment og strekker underarmen i albueleddet.",
+          "verified": true
+        }
+      ],
       "options": [
-        "Antagonist",
-        "Synergist",
-        "Agonist"
+        "Brachioradialis.",
+        "Triceps brachii.",
+        "Brachialis."
+      ],
+      "answer": 1
+    },
+    {
+      "title": "Hva skjer med leddvinkelen ved ekstensjon?",
+      "text": "Ekstensjon: bevegelse som gjør vinkelen i et ledd større.",
+      "pages": [
+        3
+      ],
+      "sources": [
+        {
+          "page": 3,
+          "excerpt": "Ekstensjon: bevegelse som gjør vinkelen i et ledd større.",
+          "verified": true
+        }
+      ],
+      "options": [
+        "Den blir mindre.",
+        "Den forsvinner.",
+        "Den blir større."
+      ],
+      "answer": 2
+    },
+    {
+      "title": "Hva gjør antagonisten i forhold til agonisten?",
+      "text": "Antagonist: muskel som virker motsatt av agonisten i den aktuelle bevegelsen.",
+      "pages": [
+        3
+      ],
+      "sources": [
+        {
+          "page": 3,
+          "excerpt": "Antagonist: muskel som virker motsatt av agonisten i den aktuelle bevegelsen.",
+          "verified": true
+        }
+      ],
+      "options": [
+        "Virker motsatt i den aktuelle bevegelsen.",
+        "Har alltid samme virkning.",
+        "Har alltid samme navn."
       ],
       "answer": 0
+    },
+    {
+      "title": "Hvilken bevegelse beskrives når albuevinkelen blir mindre?",
+      "text": "Albuefleksjon betyr at vinkelen i albueleddet blir mindre.",
+      "pages": [
+        1
+      ],
+      "sources": [
+        {
+          "page": 1,
+          "excerpt": "Albuefleksjon betyr at vinkelen i albueleddet blir mindre.",
+          "verified": true
+        }
+      ],
+      "options": [
+        "Supinasjon.",
+        "Albuefleksjon.",
+        "Albueekstensjon."
+      ],
+      "answer": 1
+    },
+    {
+      "title": "Hvilken muskel er nevnt som en av albuefleksorene?",
+      "text": "Biceps brachii, brachialis og brachioradialis bidrar til å bøye underarmen.",
+      "pages": [
+        1
+      ],
+      "sources": [
+        {
+          "page": 1,
+          "excerpt": "Biceps brachii, brachialis og brachioradialis bidrar til å bøye underarmen.",
+          "verified": true
+        }
+      ],
+      "options": [
+        "Triceps brachii.",
+        "Ingen muskler bidrar.",
+        "Brachioradialis."
+      ],
+      "answer": 2
+    },
+    {
+      "title": "Hvilken bevegelse bidrar brachialis med kraft til?",
+      "text": "Brachialis ligger dypere enn biceps brachii og bidrar med kraft i albuefleksjonen.",
+      "pages": [
+        1
+      ],
+      "sources": [
+        {
+          "page": 1,
+          "excerpt": "Brachialis ligger dypere enn biceps brachii og bidrar med kraft i albuefleksjonen.",
+          "verified": true
+        }
+      ],
+      "options": [
+        "Albuefleksjon.",
+        "Albueekstensjon.",
+        "Fleksjon av fingrene."
+      ],
+      "answer": 0
+    },
+    {
+      "title": "Hva bestemmer om en muskel omtales som agonist?",
+      "text": "Muskelen som først og fremst skaper bevegelsen, kalles agonist eller prime mover.",
+      "pages": [
+        1
+      ],
+      "sources": [
+        {
+          "page": 1,
+          "excerpt": "Muskelen som først og fremst skaper bevegelsen, kalles agonist eller prime mover.",
+          "verified": true
+        }
+      ],
+      "options": [
+        "At den alltid har to hoder.",
+        "At den hovedsakelig skaper den aktuelle bevegelsen.",
+        "At den alltid ligger dypest."
+      ],
+      "answer": 1
+    },
+    {
+      "title": "Hvilket utsagn beskriver en synergist?",
+      "text": "Muskler som hjelper til, kalles synergister.",
+      "pages": [
+        1
+      ],
+      "sources": [
+        {
+          "page": 1,
+          "excerpt": "Muskler som hjelper til, kalles synergister.",
+          "verified": true
+        }
+      ],
+      "options": [
+        "Den er navnet på et ledd.",
+        "Den må alltid være hovedbevegeren.",
+        "Den hjelper til med bevegelsen."
+      ],
+      "answer": 2
+    },
+    {
+      "title": "Hvor mange hoder har biceps brachii?",
+      "text": "Biceps brachii har to hoder og krysser både skulderleddet og albueleddet.",
+      "pages": [
+        2
+      ],
+      "sources": [
+        {
+          "page": 2,
+          "excerpt": "Biceps brachii har to hoder og krysser både skulderleddet og albueleddet.",
+          "verified": true
+        }
+      ],
+      "options": [
+        "To.",
+        "Ett.",
+        "Tre."
+      ],
+      "answer": 0
+    },
+    {
+      "title": "Hvilken bevegelse dreier underarmen slik at håndflaten vender fremover?",
+      "text": "Supinasjon dreier underarmen slik at håndflaten vender fremover i anatomisk utgangsstilling.",
+      "pages": [
+        2
+      ],
+      "sources": [
+        {
+          "page": 2,
+          "excerpt": "Supinasjon dreier underarmen slik at håndflaten vender fremover i anatomisk utgangsstilling.",
+          "verified": true
+        }
+      ],
+      "options": [
+        "Albuefleksjon.",
+        "Supinasjon.",
+        "Albueekstensjon."
+      ],
+      "answer": 1
+    },
+    {
+      "title": "Hvor ligger triceps brachii ifølge kilden?",
+      "text": "Triceps brachii ligger i overarmens bakre kompartment og strekker underarmen i albueleddet.",
+      "pages": [
+        3
+      ],
+      "sources": [
+        {
+          "page": 3,
+          "excerpt": "Triceps brachii ligger i overarmens bakre kompartment og strekker underarmen i albueleddet.",
+          "verified": true
+        }
+      ],
+      "options": [
+        "Dypere enn biceps i fremre kompartment.",
+        "I håndflaten.",
+        "I overarmens bakre kompartment."
+      ],
+      "answer": 2
+    },
+    {
+      "title": "Hvilken bevegelse gjør vinkelen i et ledd større?",
+      "text": "Ekstensjon: bevegelse som gjør vinkelen i et ledd større.",
+      "pages": [
+        3
+      ],
+      "sources": [
+        {
+          "page": 3,
+          "excerpt": "Ekstensjon: bevegelse som gjør vinkelen i et ledd større.",
+          "verified": true
+        }
+      ],
+      "options": [
+        "Ekstensjon.",
+        "Fleksjon.",
+        "Begrepet synergist."
+      ],
+      "answer": 0
+    },
+    {
+      "title": "Hvilken påstand om antagonistrollen er riktig?",
+      "text": "Antagonist: muskel som virker motsatt av agonisten i den aktuelle bevegelsen.",
+      "pages": [
+        3
+      ],
+      "sources": [
+        {
+          "page": 3,
+          "excerpt": "Antagonist: muskel som virker motsatt av agonisten i den aktuelle bevegelsen.",
+          "verified": true
+        }
+      ],
+      "options": [
+        "Den betyr at muskelen har to hoder.",
+        "Den beskriver en rolle i den aktuelle bevegelsen.",
+        "Den er alltid knyttet til samme muskel uansett bevegelse."
+      ],
+      "answer": 1
     }
   ]
 }
