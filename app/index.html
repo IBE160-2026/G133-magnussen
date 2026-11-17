@@ -409,6 +409,9 @@
       } else {
         response = await fetch('/pdf', { method:'POST', body:file, headers: useAi ? { 'x-study-summary': 'gemini', 'x-study-session': studySession } : {}, signal:request.signal });
       }
+      if (!response.headers.get('content-type')?.includes('application/json')) {
+        throw Error('Appserveren kunne ikke behandle forespørselen. Last inn siden på nytt og prøv igjen.');
+      }
       const result = await response.json();
       if (request !== pending) return;
       if (!response.ok) throw Error(result.error);
