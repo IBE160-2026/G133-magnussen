@@ -54,3 +54,12 @@ persistent reservations. The Vercel Redis path still requires integration
 testing with the configured service. A Vercel deployment, browser PDF
 rendering, representative PDF generation and model-cost verification remain
 pending.
+
+## Expanded demo resources, 17 November 2026
+
+The three-page demo now has six summary sections, ten key concepts, ten
+flashcards and twenty quiz questions, presented as two rounds of ten.
+Every concept, flashcard and quiz question includes an excerpt checked
+against the extracted text of its cited demo page. The demo PDF itself is
+unchanged. Question options and answer indices passed structural checks;
+the Vercel build passed. Browser testing of the expanded rounds remains pending.
