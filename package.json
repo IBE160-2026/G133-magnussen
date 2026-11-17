@@ -1,0 +1,8 @@
+{
+  "name": "ai-study-buddy",
+  "private": true,
+  "type": "module",
+  "engines": { "node": "24.x" },
+  "scripts": { "build": "node scripts/build-web.mjs" },
+  "dependencies": { "pdfjs-dist": "6.5.438" }
+}
