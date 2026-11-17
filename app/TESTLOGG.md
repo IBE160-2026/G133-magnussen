@@ -32,3 +32,9 @@ Run from a clean checkout of `261dffe` on macOS with Node.js 24.21.0 and no Gemi
 | `POST /pdf` with the demo PDF padded beyond 20 MB | HTTP 400 with “PDF-en kan være maks 20 MB.” |
 
 These checks exercised the local server. Browser interaction and live Gemini generation were outside this run.
+
+## Clean checkout check, 17 November 2026
+
+Started the server from a fresh checkout of `dc29303` on macOS with Node.js 24.21.0 using `node app/server.mjs`. The local homepage returned HTTP 200. Submitting the bundled demo PDF with the local origin and Gemini disabled returned three summary items, three key concepts, three flashcards and four quiz questions. The page 3 endpoint returned a PNG measuring 1131 × 1599 pixels.
+
+This run covered the local HTTP flow. The manual browser test above records the interface behaviour.

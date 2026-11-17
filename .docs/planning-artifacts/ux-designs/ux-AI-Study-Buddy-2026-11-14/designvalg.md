@@ -1,40 +1,40 @@
-# Designvalg for AI Study Buddy
+# AI Study Buddy design decision
 
-Vi valgte **Side ved side**, en av de fire lyseblå variantene i den senere Kildespor-runden. Studenten kan lese en studieressurs og åpne den siterte PDF-siden i samme arbeidsflate. Det gjør det lettere å kontrollere kildeutdrag og sammenligne informasjon som er fordelt på flere kolonner i originalen.
+We chose **Side by Side** (*Side ved side*), one of the four light blue variants in the later Kildespor round. Students can read a study resource and open the cited PDF page in the same view. This makes it easier to check excerpts and compare information spread across multiple columns in the original.
 
-[Se «Side ved side» i den blå konseptrunden](concepts/kildespor-fire-bla-varianter.svg#konsept-2). De fire [tidlige konseptene](concepts/README.md) viser utforskingen som kom før denne runden. [UX-beskrivelsen](EXPERIENCE.md), [skjermskissen](screen-sketch.md) og [designbeskrivelsen](DESIGN.md) dokumenterer arbeidet med den tidlige prototypen. Designbeskrivelsens teal-palett tilhører den fasen. Den kjørbare appen bruker den senere lyseblå retningen.
+The [blue concept round](concepts/kildespor-fire-bla-varianter.svg#konsept-2) shows the selected design. The [four early concepts](concepts/README.md) show the exploration that preceded it. The [UX description](EXPERIENCE.md), [screen sketch](screen-sketch.md), and [design description](DESIGN.md) document the early prototype, which used a teal palette. The runnable application uses the later light blue direction.
 
-## Fra design til app
+## From design to implementation
 
-| Behov | Løsning i den kjørbare appen |
+| Student need | Behaviour in the runnable application |
 | --- | --- |
-| Sjekke et faglig poeng mot PDF-en | En kildeknapp åpner et bilde av den valgte siden i kildepanelet. Hele dokumentet kan åpnes i en egen fane. |
-| Lese på ulike skjermstørrelser | Appen viser studieressurs og kilde ved siden av hverandre på bred skjerm, og plasserer kildepanelet under ressursene på smal skjerm. |
-| Øve på fagstoffet | Flashcards viser svaret og kilden etter **Vis svar**. Quiz viser fasit og kilder etter levering. |
-| Forstå quizresultatet | Fasiten bruker både tekst og farge for å vise riktige, feil og ubesvarte spørsmål. Omforsøk stokker spørsmålene. Full pott i første runde åpner et nytt sett. |
+| Check a claim against the PDF | A source button opens an image of the selected page in the source panel. The full document can be opened in a separate tab. |
+| Read at different window widths | The application displays the study resource and source side by side in wide windows. In narrow windows, the source panel appears below the study resources. |
+| Practise the material | Flashcards display the answer and source after **Vis svar** is selected. Quizzes display the answers and sources after submission. |
+| Understand quiz results | Results use text and colour to distinguish correct, incorrect, and unanswered questions. Retries shuffle the questions. A perfect score in the first round unlocks a new set. |
 
-Ved innleveringstesten åpnet nettleseren først hele PDF-en fra en sidelenke. Etter rettelsen bekreftet brukeren at kildepanelet viste bare side 3. Testloggen for commit `b870e9f` dekker også flashcards og quiz. Oppsettet for smale skjermer er implementert i CSS. Den avgrensede testen av smal visning og tastatur er dokumentert nedenfor.
+During the submission test, a source link initially opened the whole PDF. After the fix, the user confirmed that the panel displayed only page 3. The test log for commit `b870e9f` also covers flashcards and quizzes. CSS handles the narrow layout. The narrower scope of the keyboard test is recorded below.
 
-## Skjermbredde og tastatur
+## Window width and keyboard interaction
 
-Kodegjennomgangen bekrefter to kolonner som standard og én kolonne ved vindusbredde opptil 48 rem. Kildeknappene er vanlige HTML-knapper med synlig fokusmarkering. På smal skjerm flyttes fokus til overskriften «PDF-visning» når kilden åpnes.
+The code uses two columns by default and one column up to a window width of 48 rem. Source buttons are standard HTML buttons with visible focus indicators. In narrow windows, focus moves to the **PDF-visning** heading when the source opens.
 
-For å dokumentere nettlesertesten med den medfølgende demo-PDF-en:
+To record the browser test with the included demo PDF:
 
-1. Åpne **Sammendrag → Åpne kilde · Side 1** i et bredt vindu. Ta et skjermbilde med sammendraget og PDF-siden synlige samtidig.
-2. Gjenta i et smalt vindu, for eksempel 390 piksler bredt. Sjekk at PDF-panelet ligger under studieressursene, og ta et skjermbilde som viser rekkefølgen.
-3. Bruk `Tab` til en kildeknapp. Sjekk at fokusmarkeringen er synlig, trykk `Enter` og kontroller at riktig PDF-side åpnes.
+1. Open **Sammendrag → Åpne kilde · Side 1** in a wide window. Capture the summary and PDF page in the same screenshot.
+2. Repeat in a narrow window, for example at 390 pixels wide. Check that the PDF panel sits below the study resources and capture that layout.
+3. Use `Tab` to reach a source button. Check the focus indicator, press `Enter`, and confirm that the correct PDF page opens.
 
-**Bred visning, 16. november 2026:** Brukerens skjermbilde viser «Albuefleksjon» i sammendraget til venstre og side 1 fra demo-PDF-en til høyre. Begge var synlige samtidig.
+**Wide layout, 16 November 2026.** The user's screenshot shows the summary about elbow flexion on the left and page 1 of the demo PDF on the right, both visible at the same time.
 
-![Sammendrag om albuefleksjon til venstre og side 1 fra demo-PDF-en til høyre](skjermbilder/sammendrag-bred.png)
+![Elbow flexion summary on the left and page 1 of the demo PDF on the right](skjermbilder/sammendrag-bred.png)
 
-**Smal visning:** Brukerens skjermbilde viser PDF-panelet under sammendraget og en synlig fokusramme rundt «PDF-visning». Appen meldte at side 2 ikke kunne vises. Ved oppfølging svarte ikke den lokale serveren. Etter omstart returnerte serveren et bilde av side 2. Etter omstart bekreftet brukeren at side 2 åpnet seg med tastaturet i smal visning.
+**Narrow layout.** The user's screenshot shows the PDF panel below the summary and a visible focus outline around **PDF-visning**. Initially, the application reported that it could not display page 2. The local server did not respond during follow-up. After a restart, the server returned an image of page 2, and the user confirmed that it opened with the keyboard in the narrow layout.
 
-Skjermbildene er tatt i samme smale vindu. Det første viser sammendraget med kildeknappen. Det andre viser side 2 åpen i PDF-panelet lenger ned på samme side.
+The screenshots were taken in the same narrow window. The first shows the summary and its source button. The second shows page 2 open lower down on the same page.
 
-![Smal visning av sammendraget med kildeknapp](skjermbilder/sammendrag-smal-1.png)
+![Summary with a source button in the narrow layout](skjermbilder/sammendrag-smal-1.png)
 
-![Side 2 i PDF-panelet i smal visning](skjermbilder/sammendrag-smal-2.png)
+![Page 2 in the PDF panel in the narrow layout](skjermbilder/sammendrag-smal-2.png)
 
-[Appkode](../../../../app/index.html) · [Testlogg](../../../../app/TESTLOGG.md) · [Rettelse av kildevisningen](https://github.com/IBE160-2026/G133-magnussen/pull/2)
+[Application code](../../../../app/index.html) · [Test log](../../../../app/TESTLOGG.md) · [Source-viewing fix](https://github.com/IBE160-2026/G133-magnussen/pull/2)
