@@ -1,35 +1,35 @@
-# AI Study Buddy — første skjermskisse
+# AI Study Buddy — Initial screen sketch
 
-**Status:** UX-konsepter til gjennomgang
-**Forankring:** PRD FR-1–FR-14
-**Formål:** Avklare skjermrekkefølge, innhold og viktige tilstander før implementering.
+**Status:** Early UX concepts for review
+**Requirements:** PRD FR-1–FR-14
+**Purpose:** Define screen order, content, and key states before implementation. The mockups retain the proposed Norwegian interface copy.
 
-**Klikkbar prototype:** [prototype.html](prototype.html). Den bruker lokale eksempeldata og simulerte provider-svar; den leser eller sender ikke PDF-filer.
+**Interactive prototype:** [prototype.html](prototype.html) uses local example data and simulated provider responses.
 
-**UX-dokumenter:** [DESIGN.md](DESIGN.md) beskriver den visuelle retningen; [EXPERIENCE.md](EXPERIENCE.md) beskriver oppførsel, tilstander og tilgjengelighet. Begge er utkast til gjennomgang.
+**UX documents:** [DESIGN.md](DESIGN.md) describes the visual direction, and [EXPERIENCE.md](EXPERIENCE.md) covers behaviour, states, and accessibility. Both documents were drafts for review.
 
-Skissen beskriver oppførsel og hierarki. Den tidligere klikkbare prototypen bruker et første, rolig og moderne visuelt utkast og er kun arbeidsmateriale. De fire retningene i [concepts/](concepts/README.md) utforsker bredere uttrykk. På tidspunktet for denne skissen var ingen retning valgt eller godkjent. Paletten og komponentstilen i DESIGN.md er fortsatt et utkast. Test-mocks brukes i utvikling for å simulere vellykkede og ugyldige KI-svar; studenten ser vanlige resultater eller norske feilmeldinger. Demo-modus bruker lagrede eksempelresultater uten API-nøkkel.
+The sketch describes behaviour and hierarchy. The early interactive prototype was a working draft with a calm, modern look. [Four initial concepts](concepts/README.md) explored a broader range of styles. The palette and components in DESIGN.md were still provisional. No direction had been selected at the time of this sketch. Development mocks simulate successful and invalid AI responses so students see either results or Norwegian error messages. Demo mode uses stored examples without an API key. See the later [design decision](designvalg.md).
 
-## Brukerflyt
+## User flow
 
 ```mermaid
 flowchart TD
-  A[1. Last opp PDF] --> B{PDF behandlet?}
-  B -- Feil eller ingen lesbar tekst --> E[Feiltilstand]
-  B -- Noen sider under 20 tegn --> C[2. Se sider med lite tekst]
-  B -- Alle sider brukbare --> D[3. Velg ressurs]
-  C -- Fortsett --> D
-  C -- Avbryt --> A
-  D --> F[4. Genererer]
-  F -- Gyldig svar --> G[5. Se ressurs og kilde]
-  F -- Feil, tidsavbrudd eller ugyldig svar --> E
-  G -- Velg sidetall --> H[PDF-side åpnes ved siden av ressursen]
-  G -- Velg ny ressurstype --> D
-  E -- Prøv igjen / velg ressurs --> D
-  D --> I[Avslutt studieøkt]
+  A[1. Upload a PDF] --> B{PDF processed?}
+  B -- Error or no usable text --> E[Error]
+  B -- Some pages below 20 characters --> C[2. Review pages with insufficient text]
+  B -- All pages usable --> D[3. Choose a resource]
+  C -- Continue --> D
+  C -- Cancel --> A
+  D --> F[4. Generate]
+  F -- Valid response --> G[5. Review the resource and source]
+  F -- Error, timeout, or invalid response --> E
+  G -- Select a page number --> H[PDF page opens alongside the resource]
+  G -- Choose another resource type --> D
+  E -- Retry or choose a resource --> D
+  D --> I[End study session]
 ```
 
-## Skjerm 1 — Last opp PDF
+## Screen 1 — Upload a PDF
 
 ```text
 ┌──────────────────────────────────────────────────────────────┐
@@ -48,13 +48,13 @@ flowchart TD
 └──────────────────────────────────────────────────────────────┘
 ```
 
-- Filgrensefeil forklarer om filen er for stor eller har for mange sider. Filen behandles ikke.
-- Under behandling vises en enkel ventetilstand. Generering er ikke tilgjengelig før PDF-en er behandlet.
-- Demo-knappen starter den dokumenterte keyless demoen med eksempel-PDF og lagrede svar.
+- File limit errors explain whether the PDF exceeds the size or page limit. Processing stops.
+- A loading state is shown during processing. Generation becomes available after the PDF is processed.
+- The demo button starts the documented keyless demo with a sample PDF and stored responses.
 
-## Skjerm 2 — Sider med lite uttrekkbar tekst
+## Screen 2 — Pages with insufficient extractable text
 
-Vises bare når én eller flere sider har færre enn 20 ikke-whitespace-tegn. Sidetall følger PDF-viseren, fra side 1.
+This screen appears when at least one page has fewer than 20 non-whitespace characters. Page numbers follow the PDF viewer, starting at 1.
 
 ```text
 ┌──────────────────────────────────────────────────────────────┐
@@ -69,11 +69,11 @@ Vises bare når én eller flere sider har færre enn 20 ikke-whitespace-tegn. Si
 └──────────────────────────────────────────────────────────────┘
 ```
 
-- Brukeren får vite hvilke sider som utelates før KI-generering starter.
-- «Fortsett» bruker bare sider som består uttrekksterskelen. «Avbryt» starter ingen generering.
-- Hvis alle sider er brukbare, går appen direkte til ressursvalg. Hvis ingen sider er brukbare, vises en feil med forklaring og mulighet til å velge en annen PDF.
+- Before AI generation begins, students see which pages will be excluded.
+- **Fortsett** uses pages that meet the extraction threshold. **Avbryt** cancels the operation.
+- If every page is usable, the application goes directly to resource selection. If none are usable, it explains the error and lets the student select a different PDF.
 
-## Skjerm 3 — Velg ressurs
+## Screen 3 — Choose a resource
 
 ```text
 ┌──────────────────────────────────────────────────────────────┐
@@ -92,12 +92,12 @@ Vises bare når én eller flere sider har færre enn 20 ikke-whitespace-tegn. Si
 └──────────────────────────────────────────────────────────────┘
 ```
 
-- Etter at en ressurs er laget, vises den i listen og kan åpnes igjen i samme studieøkt.
-- Telleren gjelder live-modus. Forespørsler telles når de startes, også når de feiler. Demo-modus bruker ikke leverandørforespørsler.
-- Ved null forespørsler igjen forklarer appen at grensen er nådd, og starter ikke en ny leverandørforespørsel.
-- Ett PDF-dokument brukes gjennom hele studieøkten. For å bytte PDF avslutter studenten økten og starter en ny.
+- Generated resources appear in the list and can be reopened during the same session.
+- The counter applies to live mode. Requests count when they start, including failed requests. Demo mode uses stored responses.
+- At zero remaining requests, the application explains the limit and blocks further provider calls.
+- The study session uses one PDF. To switch PDFs, the student ends the session and starts another.
 
-## Skjerm 4 — Generering og feil
+## Screen 4 — Generation and errors
 
 ```text
 ┌──────────────────────────────────────────────────────────────┐
@@ -107,7 +107,7 @@ Vises bare når én eller flere sider har færre enn 20 ikke-whitespace-tegn. Si
 └──────────────────────────────────────────────────────────────┘
 ```
 
-Ved leverandørfeil, tidsavbrudd eller svar som ikke kan tolkes:
+When the provider fails, times out, or returns an invalid response:
 
 ```text
 ┌──────────────────────────────────────────────────────────────┐
@@ -121,11 +121,11 @@ Ved leverandørfeil, tidsavbrudd eller svar som ikke kan tolkes:
 └──────────────────────────────────────────────────────────────┘
 ```
 
-Feilteksten er et forslag til mikrocopy. Telleren går ned fordi forsøket telles når det startes. Ressurser som ble laget tidligere, forblir tilgjengelige i studieøkten.
+The error message is proposed interface copy. The counter decreases because a request counts when it starts. Earlier resources remain available during the session.
 
-## Skjerm 5 — Ressurs med kilde og PDF-viser
+## Screen 5 — Study resource with source and PDF viewer
 
-På bred skjerm står ressursen og PDF-viseren ved siden av hverandre. På smal skjerm stables de, og valgt PDF-side åpnes under ressursen.
+Wide windows show the resource and PDF viewer side by side. Narrow windows stack them, with the selected page below the resource.
 
 ```text
 ┌───────────────────────────────────────┬──────────────────────┐
@@ -139,24 +139,24 @@ På bred skjerm står ressursen og PDF-viseren ved siden av hverandre. På smal 
 └───────────────────────────────────────┴──────────────────────┘
 ```
 
-- Hvert punkt viser et kort kildeutdrag med sidetall. Når studenten velger sidetallet, åpnes riktig PDF-side uten at ressursen forsvinner.
-- Hvis utdraget mangler, ikke finnes på den oppgitte siden, eller ikke kan kontrolleres, merkes ressursen «Ubekreftet».
-- «Ubekreftet» betyr at kildehenvisningen ikke ble bekreftet. Det er ikke en garanti for at innhold uten denne merkingen er faglig korrekt.
-- Sammendrag og nøkkelbegreper vises gruppert etter tema. Flashcards viser spørsmål først og avslører svar ved valg. Quiz viser tre svaralternativer per spørsmål; svar og forklaringer vises etter at hele quizen er levert. Retake bruker de samme spørsmålene i en ny rekkefølge.
+- Each item displays a short source excerpt and page number. Selecting the page number opens the corresponding PDF page while keeping the student in the resource view.
+- The resource is marked **Ubekreftet** if the excerpt is missing, absent from the cited page, or cannot be checked.
+- **Ubekreftet** means the source reference could not be verified. Even a verified reference gives no guarantee of academic accuracy.
+- Summaries and key concepts are grouped by topic. Flashcards show the question first and reveal the answer on request. Quizzes offer three options per question and show answers and explanations after submission. Retries use the same questions in a new order.
 
-## Viktige tomme og stoppede tilstander
+## Key empty and blocked states
 
-- **Ingen PDF ennå:** ressursvalg er skjult til PDF-en er behandlet.
-- **PDF kan ikke leses:** vis norsk forklaring; ikke gå videre til ressursvalg.
-- **For stor eller for lang PDF:** forklar overskredet grense; ikke behandle filen.
-- **Alle sider under tekstgrensen:** forklar at ingen sider kan brukes; ikke start generering.
-- **Ubekreftet kilde:** behold ressursen, vis tydelig merking og la studenten åpne den oppgitte PDF-siden hvis den er tilgjengelig.
-- **Studieøkt avsluttet eller nettleserfane lukket:** PDF og ressurser gjenopprettes ikke ved ny økt.
+- **No PDF yet.** Hide resource selection until the PDF has been processed.
+- **Unreadable PDF.** Show an explanation in Norwegian and keep resource selection unavailable.
+- **PDF exceeds a limit.** Explain which limit was exceeded and stop processing.
+- **All pages below the text threshold.** Explain why no pages can be used and block generation.
+- **Unverified source.** Keep the resource, show a clear label, and let the student open the cited page when available.
+- **Session ended or tab closed.** Start the next session without restoring the PDF or its resources.
 
-## Avklaringer før visuell utforming
+## Questions open before visual design
 
-- Om første versjon skal optimaliseres primært for laptop, eller om mobil skal få like mye prioritet. PRD-en beskriver en webapp, men fastsetter ikke hovedflate.
-- Endelig visuell stil, farger og typografi.
-- Endelig tekst for feil, venting og demo-modus etter en kort brukertest.
+- Whether the initial release should prioritise laptops or give mobile equal weight. The PRD specifies a web application and leaves device priority open.
+- Final style, colours, and typography.
+- Final copy for errors, loading, and demo mode after a brief user test.
 
-Disse avklaringene blokkerer ikke denne lavoppløste flytskissen. Skissen bruker bare atferd og innhold som allerede er beskrevet i PRD-en, pluss tydelig merkede forslag til mikrotekst.
+These questions left the low-fidelity flow usable for review. The sketch draws on the PRD and includes draft interface copy.

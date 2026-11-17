@@ -1,33 +1,33 @@
-# AI Study Buddy PRD til GitHub
+# AI Study Buddy PRD on GitHub
 
-## 2026-11-04 kl. 14:40 — sarakmag
+## 2026-11-04 14:40 — sarakmag
 
-### Oppgave
-Brukeren ba om å sende den oppdaterte AI Study Buddy PRD-en til GitHub og presiserte at arbeidet må følge BMAD.
-
-### Plan
-- Følg BMAD PRD-oppsettet og før de siste avklaringene i PRD-ens memlog.
-- Commit PRD-en med memloggen og push til GitHub.
-
-### Resultat
-PRD-en og BMAD-memloggen ble lagt til i commit `f2baefa` og pushet til `origin/main`. PRD-statusen står fortsatt som `draft`.
-
-### Åpne punkter
-- Bekreft i arkitekturarbeidet at valgt språkmodell kan håndtere PDF-er på opptil 50 sider og 20 MB. Juster grensene før implementering hvis den ikke kan det.
-- Undersøk hvor lenge valgt språkmodell-leverandør lagrer opplastede PDF-er og generert innhold.
-
-## 2026-11-09 kl. 10:57 — sarakmag
-
-### Oppgave
-Brukeren bekreftet at PRD-innholdet er ferdig. Fullfør BMAD-finaliseringen.
+### Task
+The user asked to push the updated AI Study Buddy PRD to GitHub and specified that the work should follow BMAD.
 
 ### Plan
-- Avstem PRD-en mot produktbriefen og BMAD-malen.
-- Sett PRD-status til `final`, oppdater datoen og loggfør finaliseringen i BMAD-memloggen.
+- Follow the BMAD PRD format and record the latest decisions in the PRD memory log.
+- Commit the PRD and memory log and push them to GitHub.
 
-### Resultat
-PRD-statusen ble endret fra `draft` til `final`, og `updated` satt til 2026-11-09. Avstemmingen fant at kildehenvisninger på alle fire ressurstypene er en tilsiktet videreutvikling av briefen. Endringen ble committet i `61ab6be`.
+### Result
+The PRD and BMAD memory log were added in commit `f2baefa` and pushed to `origin/main`. The PRD status remained `draft`.
 
-### Åpne punkter
-- Bekreft i arkitekturarbeidet at valgt språkmodell kan håndtere PDF-er på opptil 50 sider og 20 MB. Juster grensene før implementering hvis den ikke kan det.
-- Undersøk hvor lenge valgt språkmodell-leverandør lagrer opplastede PDF-er og generert innhold.
+### Open items
+- During architecture work, verify that the selected language model can handle PDFs up to 50 pages and 20 MB. Adjust the limits before implementation if needed.
+- Check how long the selected language model provider retains uploaded PDFs and generated content.
+
+## 2026-11-09 10:57 — sarakmag
+
+### Task
+The user confirmed that the PRD content was complete. Finish the BMAD finalisation.
+
+### Plan
+- Review the PRD against the product brief and the BMAD template.
+- Set the PRD status to `final`, update the date, and record the finalisation in the BMAD memory log.
+
+### Result
+The PRD moved from `draft` to `final`, with `updated` set to 2026-11-09. The review found that requiring source references for all four resource types was an intentional extension of the brief. The change was recorded in commit `61ab6be`.
+
+### Open items
+- During architecture work, verify that the selected language model can handle PDFs up to 50 pages and 20 MB. Adjust the limits before implementation if needed.
+- Check how long the selected language model provider retains uploaded PDFs and generated content.

@@ -1,18 +1,18 @@
-# Tidlig idégrunnlag for AI Study Buddy
+# Early ideas for AI Study Buddy
 
-Rekonstruksjon skrevet 16. november 2026 fra product briefen. Den oppsummerer ideene og avgrensningene som er dokumentert før implementeringen. Det opprinnelige referatet fra en eventuell idéøkt er ikke tilgjengelig i repoet.
+Reconstructed from the product brief on 16 November 2026. This document summarises the ideas and scope decisions recorded before implementation. The repository has no original minutes from a brainstorming session.
 
-## Problem og målgruppe
+## Problem and audience
 
-En fysioterapistudent som øver til anatomieksamen, må lære norske og latinske navn, plassering og funksjon. Å lage øvingsmateriell av egne forelesnings-PDF-er tar tid. Studenter trenger også en enkel måte å sjekke at et generert svar bygger på kursmaterialet.
+A physiotherapy student preparing for an anatomy exam needs to learn Norwegian and Latin names, locations, and functions. Turning lecture PDFs into revision materials takes time. Students also need a straightforward way to check whether a generated answer is grounded in their course material.
 
-## Ideer og avgrensninger
+## Ideas and scope decisions
 
-| Idé | Beslutning og begrunnelse |
+| Idea | Decision and rationale |
 | --- | --- |
-| Sammendrag og nøkkelbegreper | Med i MVP. Sammendraget gir oversikt over hovedideene, og nøkkelbegreper fremhever sentrale faguttrykk. |
-| Flashcards og quiz | Med i MVP. Kortene lar studenten øve på å huske stoffet, og quizspørsmål tester forståelsen. |
-| Kildelenker og kildeutdrag | Med i MVP. Studenten skal kunne sjekke svar på flashcards og quiz mot den aktuelle PDF-siden. |
-| Flere PDF-er, skannede dokumenter og samarbeid | Utsatt. Én tekstbasert PDF og én student per økt gir et avgrenset omfang å implementere og teste. |
+| Summaries and key concepts | Included in the MVP. Summaries explain the main ideas, and key concepts highlight essential terminology. |
+| Flashcards and quizzes | Included in the MVP. Flashcards support recall practice, and quiz questions test comprehension. |
+| Source links and excerpts | Included in the MVP. Students can check flashcard and quiz answers against the relevant PDF page. |
+| Multiple PDFs, scanned documents, and collaboration | Deferred. One text-based PDF and one student per session give the MVP a scope that can be implemented and tested. |
 
-Grunnlag: [Product brief](../../../product-brief.md).
+Source material is available in the [product brief](../../../product-brief.md).

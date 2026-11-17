@@ -1,39 +1,39 @@
 # AI Study Buddy
 
-En lokal studieapp som bruker én PDF til sammendrag, nøkkelbegreper, flashcards og quiz med kildelenker. Denne versjonen krever macOS med PDFKit og Node.js 24. Den har ingen npm-avhengigheter.
+A local study application that uses one PDF to provide summaries, key concepts, flashcards, and quizzes with source links. This version requires macOS with PDFKit and Node.js 24. It has no npm dependencies. The interface is in Norwegian.
 
-## Start og prøv uten API-nøkkel
+## Run the demo without an API key
 
-Kjør fra roten av repoet:
+Run this command from the repository root:
 
 ```sh
 node app/server.mjs
 ```
 
-Åpne http://127.0.0.1:4173. Velg `app/demo-anatomi-ai-study-buddy.pdf` med **Velg PDF**, la Gemini-valget stå av og trykk **Les PDF**. Den medfølgende PDF-en inneholder kilde- og lisensopplysninger. Den har ferdige studieressurser for å gjøre demoen kjørbar uten nett.
+Open http://127.0.0.1:4173. Use **Velg PDF** to select `app/demo-anatomi-ai-study-buddy.pdf`, leave Gemini disabled, and select **Les PDF**. The bundled PDF includes source and licensing information. Its study resources are provided so the demo can run offline.
 
-1. Bytt mellom **Sammendrag** og **Nøkkelbegreper**, og åpne en kilde.
-2. Velg **Flashcards**, vis svaret og åpne kilden.
-3. Velg **Quiz**. Lever med minst ett feil eller ubesvart spørsmål for å se fasiten. Prøv på nytt og kontroller at de samme spørsmålene har en annen rekkefølge. Ved full pott åpner **Start neste quiz** en runde med andre spørsmål.
+1. Switch between **Sammendrag** and **Nøkkelbegreper**, then open a source.
+2. Select **Flashcards**, reveal the answer, and open the source.
+3. Select **Quiz**. Submit with at least one incorrect or unanswered question to see the results. Retry and check that the same questions appear in a different order. If all answers are correct, **Start neste quiz** opens a round with different questions.
 
-Du kan velge en annen port med `PORT=4175 node app/server.mjs`.
+To use a different port, run `PORT=4175 node app/server.mjs`.
 
-## Generer med Gemini
+## Generate resources with Gemini
 
-Kopier `app/.env.example` til `app/.env.local` og fyll inn din egen `GEMINI_API_KEY` lokalt. Start deretter med:
+Copy `app/.env.example` to `app/.env.local` and enter your own `GEMINI_API_KEY` locally. Start the application with:
 
 ```sh
 node --env-file=app/.env.local app/server.mjs
 ```
 
-Kryss av for **Lag studieressurser med Gemini** før du trykker **Les PDF**. PDF-filen behandles lokalt. Uttrekkbar tekst sendes til Gemini bare når valget er på. API-nøkkelen brukes på serveren. `GEMINI_MODEL` kan overstyre Gemini 3.5 Flash.
+Enable **Lag studieressurser med Gemini** before selecting **Les PDF**. The application processes the PDF locally. It sends extractable text to Gemini only when the option is enabled. The server uses the API key. Set `GEMINI_MODEL` to override the default Gemini 3.5 Flash model.
 
-## Omfang og testgrunnlag
+## Scope and test evidence
 
-- Appen godtar én ulåst PDF på maksimalt 20 MB og 50 sider. Den oppgir hvilke sider som har lite uttrekkbar tekst.
-- Kildelenker peker til fysisk PDF-side. Gemini-utdrag appen ikke finner på den siterte siden, vises som «Ubekreftet».
-- Med den opprinnelige, lokale `Muskler.pdf` ble 13 av 15 sider brukt. Sidene 7 og 15 manglet uttrekkbar tekst. Side 13 beholdt de mobiliserende og stabiliserende musklene i separate grupper. Forelesnings-PDF-en følger ikke med repoet.
-- Etter utprøving ble råtekst flyttet bak et eget valg og sammendraget satt først. Flashcards og quiz fikk selvstendige fagspørsmål. Quizfasiten viser riktig, feil og ubesvart med tekst og farge.
-- Denne versjonen bruker en lokal Node-server og macOS PDFKit. Det avviker fra den planlagte Next.js/PDF.js-arkitekturen og begrenser kjøring til macOS.
+- The application accepts one unlocked PDF up to 20 MB and 50 pages. It lists pages with little extractable text.
+- Source links point to physical PDF pages. Gemini excerpts that the application cannot find on the cited page are labelled **Ubekreftet** (Unverified).
+- With the original local `Muskler.pdf`, the application used 13 of 15 pages. Pages 7 and 15 lacked extractable text. On page 13, the application kept the mobilising and stabilising muscles in separate groups. The lecture PDF is outside this repository.
+- After testing, raw text was moved behind a separate control and the summary was shown first. Flashcards and quizzes were revised to ask standalone subject questions. Quiz results distinguish correct, incorrect, and unanswered questions using text and colour.
+- This release uses a local Node server and macOS PDFKit. The earlier plan specified Next.js and PDF.js. The delivered version runs on macOS.
 
-Se [testloggen](TESTLOGG.md) for den manuelle testen av den sammenslåtte versjonen.
+See the [submission test log](TESTLOGG.md) for the manual test of the merged version.

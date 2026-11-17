@@ -1,10 +1,10 @@
-# 3. Design og UX
+# 3. Design and UX
 
-Start med [designvalget «Side ved side»](designvalg.md). Der står hvorfor den rolige blå retningen ble valgt, hva som ble bygget i appen, og hva som ble bekreftet i testen.
+Start with the [Side by Side design decision](designvalg.md). It explains why the team chose the calm blue direction, how it was implemented, and what the test confirmed.
 
-| Del av designarbeidet | Materiale |
+| Design work | Material |
 | --- | --- |
-| Brukerflyt og skjermtilstander | [UX-beskrivelse](EXPERIENCE.md) og [skjermskisse](screen-sketch.md) |
-| Visuell utforsking | [Fire tidlige SVG-konsepter](concepts/README.md), [fem konsepter med bredere variasjon](concepts/fem-designkonsepter.svg) og [fire lyseblå varianter](concepts/kildespor-fire-bla-varianter.svg) |
-| Visuell retning og prototype | [Tidlig designbeskrivelse](DESIGN.md), [tidlig HTML-prototype](prototype.html) og [valgt retning](designvalg.md) |
-| Implementering og test | [Bred visning](skjermbilder/sammendrag-bred.png), [smal visning med sammendrag](skjermbilder/sammendrag-smal-1.png) og [smal visning med PDF-kilde](skjermbilder/sammendrag-smal-2.png), [appens grensesnitt](../../../../app/index.html), [testlogg](../../../../app/TESTLOGG.md) og [utviklingsiterasjoner](../../forarbeid/iterasjoner.md) |
+| User flow and screen states | [UX description](EXPERIENCE.md) and [screen sketch](screen-sketch.md) |
+| Visual exploration | [Four early SVG concepts](concepts/README.md), [five concepts with broader variation](concepts/fem-designkonsepter.svg), and [four light blue variants](concepts/kildespor-fire-bla-varianter.svg) |
+| Visual direction and prototype | [Early design description](DESIGN.md), [early HTML prototype](prototype.html), and [selected direction](designvalg.md) |
+| Implementation and testing | [Wide layout](skjermbilder/sammendrag-bred.png), [summary in a narrow layout](skjermbilder/sammendrag-smal-1.png), [PDF source in a narrow layout](skjermbilder/sammendrag-smal-2.png), [application interface](../../../../app/index.html), [test log](../../../../app/TESTLOGG.md), and [development iterations](../../forarbeid/iterasjoner.md) |
