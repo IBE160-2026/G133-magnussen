@@ -10,7 +10,9 @@ Run this command from the repository root:
 node app/server.mjs
 ```
 
-Open http://127.0.0.1:4173. Use **Velg PDF** to select `app/demo-anatomi-ai-study-buddy.pdf`, leave Gemini disabled, and select **Les PDF**. The bundled PDF includes source and licensing information. Its study resources are provided so the demo can run offline.
+Keep Terminal open while you use the app. When it prints `Åpne http://127.0.0.1:4173`, open `http://127.0.0.1:4173` in Safari or Chrome on the same Mac. This address only works while your local server is running.
+
+Use **Velg PDF** to select `app/demo-anatomi-ai-study-buddy.pdf`, leave Gemini disabled, and select **Les PDF**. The bundled PDF includes source and licensing information. Its study resources are provided so the demo can run offline.
 
 1. Switch between **Sammendrag** and **Nøkkelbegreper**, then open a source.
 2. Select **Flashcards**, reveal the answer, and open the source.
@@ -37,3 +39,39 @@ Enable **Lag studieressurser med Gemini** before selecting **Les PDF**. The appl
 - This release uses a local Node server and macOS PDFKit. The earlier plan specified Next.js and PDF.js. The delivered version runs on macOS.
 
 See the [submission test log](TESTLOGG.md) for the manual test of the merged version.
+
+## Publish through the course Vercel project
+
+The repository root contains `vercel.json`. Vercel installs the locked npm
+dependencies, runs `npm run build`, and serves `dist` with the
+`api/study.mjs` function. Use the repository root as the Vercel project root.
+
+In the web version, PDF.js reads the selected PDF and renders cited pages in
+the browser. The PDF remains in the active tab. The server receives extracted
+text, page numbers and a hash for identifying the bundled demo. The 20 MB and
+50-page file limits apply in the browser. The generation endpoint accepts up
+to 500,000 text characters. The bundled demo works without a Gemini key.
+Download the bundled PDF from `/demo-anatomi-ai-study-buddy.pdf` on the
+published site to try it.
+
+Live generation requires these Vercel environment variables:
+
+- `GEMINI_API_KEY` and optionally `GEMINI_MODEL`.
+- `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` for durable usage counters.
+- `GEMINI_BUDGET_ID`, a fixed identifier for this project's budget.
+- `GEMINI_BUDGET_MICRO_USD`, the total ceiling in whole micro-US dollars.
+- `GEMINI_MAX_REQUEST_MICRO_USD`, a verified upper bound for one request.
+
+Redis atomically reserves one request and its maximum configured cost before
+calling Gemini. Failed calls keep their reservations. Each study session
+allows eight requests. Budget reservations survive function restarts.
+Keep the budget identifier and settings stable throughout that budget.
+Verify the per-request bound against the configured model's maximum billable
+input and output. Generation caps output at 8,192 tokens. When configuration
+is missing or the ceiling is exhausted, the app explains this in Norwegian.
+
+`APP_ORIGIN` can pin the accepted HTTPS origin. When omitted, the function
+uses the incoming host, allowing Vercel preview domains.
+
+The local macOS server remains available using the command above. The Vercel
+build adds PDF.js as an npm dependency.

@@ -40,6 +40,7 @@
     </form>
     <p>Én PDF, opptil 20 MB og 50 sider. Filen behandles på denne maskinen.</p>
     <p id="status" role="status"></p>
+    <p id="generation-count" hidden>KI-forespørsler igjen i økten: 8</p>
     <button id="reset" hidden>Avslutt økten</button>
   </section>
   <div class="layout" id="result" hidden>
@@ -65,6 +66,7 @@
   let revealed = false;
   function reset() {
     pending?.abort();
+    window.webPdf?.releasePdf();
     pending = null;
     if (pdfUrl) URL.revokeObjectURL(pdfUrl);
     pdfUrl = null;
@@ -104,9 +106,14 @@
     $('selected').textContent = 'Henter side ' + number + ' …';
     if (matchMedia('(max-width:48rem)').matches) $('viewer-title').focus();
     try {
-      const response = await fetch('/pdf-page/' + number, {method: 'POST', body: pdfFile, signal: request.signal});
-      if (!response.ok) throw Error('Siden kunne ikke vises.');
-      const image = await response.blob();
+      let image;
+      if (window.webPdf) {
+        image = await window.webPdf.renderPdfPage(pdfFile, number, request.signal);
+      } else {
+        const response = await fetch('/pdf-page/' + number, {method: 'POST', body: pdfFile, signal: request.signal});
+        if (!response.ok) throw Error('Siden kunne ikke vises.');
+        image = await response.blob();
+      }
       if (request !== pageRequest) return;
       pageUrl = URL.createObjectURL(image);
       $('pdf').src = pageUrl;
@@ -358,7 +365,18 @@
     else if (concepts) showResource(concepts, 'Nøkkelbegreper');
     else $('counts').scrollIntoView({block:'nearest'});
   }
-  $('reset').addEventListener('click', () => { reset(); $('file').value = ''; $('file').focus(); });
+  let studySession = crypto.randomUUID();
+  const generationCount = $('generation-count');
+  $('ai-summary').addEventListener('change', () => {
+    generationCount.hidden = !$('ai-summary').checked;
+  });
+  $('reset').addEventListener('click', () => {
+    reset();
+    studySession = crypto.randomUUID();
+    generationCount.textContent = 'KI-forespørsler igjen i økten: 8';
+    $('file').value = '';
+    $('file').focus();
+  });
   $('upload').addEventListener('submit', async event => {
     event.preventDefault();
     const file = $('file').files[0];
@@ -377,10 +395,26 @@
     $('status').textContent = useAi ? 'Leser PDF-en og forbereder sammendrag …' : 'Leser PDF-en …';
     $('reset').hidden = false;
     try {
-      const response = await fetch('/pdf', { method:'POST', body:file, headers: useAi ? { 'x-study-summary': 'gemini' } : {}, signal:request.signal });
+      let response;
+      if (window.webPdf) {
+        const pages = await window.webPdf.readPdf(file, request.signal);
+        const digest = await crypto.subtle.digest('SHA-256', await file.arrayBuffer());
+        const hash = Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2, '0')).join('');
+        response = await fetch('/api/study', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ pages, hash, useAi, session: studySession }),
+          signal: request.signal,
+        });
+      } else {
+        response = await fetch('/pdf', { method:'POST', body:file, headers: useAi ? { 'x-study-summary': 'gemini', 'x-study-session': studySession } : {}, signal:request.signal });
+      }
       const result = await response.json();
       if (request !== pending) return;
       if (!response.ok) throw Error(result.error);
+      if (Number.isInteger(result.remainingRequests)) {
+        generationCount.textContent = 'KI-forespørsler igjen i økten: ' + result.remainingRequests;
+      }
       pdfFile = file;
       pdfUrl = URL.createObjectURL(file);
       showPages(result.pages, result.summary, result.concepts, result.flashcards, result.quiz, result.summaryStatus);
