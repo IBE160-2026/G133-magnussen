@@ -1,0 +1,30 @@
+generated: "11-17-2026"
+last_updated: "11-17-2026"
+project: AI Study Buddy
+project_key: G133
+tracking_system: file-system
+story_location: ".docs/planning-artifacts/epics.md"
+
+# Status reflects the acceptance criteria in epics.md. Stories with outstanding
+# implementation or validation remain open even when the demo exercises part of the flow.
+development_status:
+  epic-1: in-progress
+  1-1-open-a-supported-pdf: in-progress
+  1-2-end-a-study-session: review
+  epic-1-retrospective: optional
+
+  epic-2: in-progress
+  2-1-review-summaries-and-key-concepts: review
+  2-2-practise-with-flashcards-and-quizzes: done
+  epic-2-retrospective: optional
+
+  epic-3: in-progress
+  3-1-identify-unverified-excerpts: in-progress
+  3-2-open-a-cited-pdf-page: done
+  epic-3-retrospective: optional
+
+  epic-4: in-progress
+  4-1-respect-live-generation-and-spending-limits: backlog
+  4-2-recover-from-a-generation-failure: in-progress
+  4-3-run-the-demo-without-a-key: done
+  epic-4-retrospective: optional
