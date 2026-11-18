@@ -130,3 +130,37 @@ and allowlisted error category. Simulated malformed JSON and a timeout also
 verify fail-closed behavior, status fallback, and redacted logging. The provider
 response body, API key, and PDF text are not logged. No real Gemini request was
 made.
+
+## Live demo retest after token-count fix, 18 November 2026
+
+Evidence is the user's screenshot of the production app after PR #23 was
+merged. The selected file was `demo-anatomi-ai-study-buddy.pdf`, with
+Gemini enabled. The Google project had previously been confirmed by the
+user as Free Tier.
+
+Before this retest, Redis showed 4,000,000 micro-US dollars in the budget
+reservation counter. The user archived this value under
+`study:budget:ai-study-buddy-2026-11:archive-2026-11-18` and reset the active
+counter to zero. Both commands returned OK according to the user. This was
+an accounting correction for the earlier fixed reservations, not a
+measurement of actual provider charges. The configured ceiling remained
+4,000,000 micro-US dollars.
+
+| Check | Observation |
+| --- | --- |
+| PDF extraction | All three demo pages had sufficient extractable text. |
+| Session allowance | The app displayed seven requests remaining. |
+| Live generation | The app displayed “Tjenesten er midlertidig utilgjengelig. Prøv igjen senere. Du kan fortsatt åpne PDF-sidene.” |
+| Result controls | The screenshot showed PDF page buttons and no Quiz button. No generated study resources were shown. |
+
+The production handler uses this specific message when generation throws
+an error with status 503. Code inspection places token counting and the
+atomic budget reservation before the generation call. Together with the
+displayed remaining-request count, this supports that preparation and
+reservation completed and the provider generation returned 503.
+This retest did not independently inspect Google's response body, measure
+the reserved amount, or verify the contents of rendered source pages.
+
+Live generation remains unverified as a successful end-to-end workflow.
+A later test must check all four resource types and their cited pages.
+The stored-resource demo remains available with Gemini disabled.

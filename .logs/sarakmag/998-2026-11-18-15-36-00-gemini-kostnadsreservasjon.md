@@ -26,6 +26,28 @@ Fullførte tokenbasert Gemini-kostnadsreservasjon i en separat worktree fra oppd
 
 Ingen.
 
+## 2026-11-18 kl. 19:33 — sarakmag
+
+### Oppgave
+
+Brukte brukerens patch på en egen worktree basert på oppdatert `origin/main` for å dokumentere retest av demoen etter token-tellerrettelsen og det observerte Gemini 503-resultatet.
+
+### Plan
+
+- Hentet `origin/main` og opprettet `docs/gemini-503-retest` fra commit `3c74f1a28c6c8023b9269a040e811246afea9425`.
+- Kontrollerte at patchen kunne brukes rent, gjennomgikk begge dokumentasjonsendringene, og pushet grenen.
+
+### Resultat
+
+- Patchen oppdaterte `iterasjoner.md` og `app/TESTLOGG.md` med retestobservasjonene og eksplisitte begrensninger i hva observasjonene beviser.
+- `git diff --check` bestått. Endringene er dokumentasjon-only; ingen provider-kall ble gjort.
+- Commit `4cf321a` ble pushet til `docs/gemini-503-retest`.
+- GitHub-nettleseren viste innloggingsside, og tilgjengelig GitHub-verktøy støtter ikke opprettelse av PR. Sammenligningslenke kan brukes til å åpne PR manuelt.
+
+### Åpne punkter
+
+- Verifiser en vellykket live Gemini-generering med alle fire ressurskategorier og kontrollerte kildehenvisninger.
+
 ## 2026-11-18 kl. 19:19 — sarakmag
 
 ### Oppgave

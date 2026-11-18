@@ -63,3 +63,22 @@ This user test exposed provider availability and reservation-accounting
 issues. Successful live generation and source checking remain open. The
 keyless demo is still available. See the dated evidence and remaining checks
 in the [test log](../../../app/TESTLOGG.md).
+
+## Token counting fixed; live demo still blocked — 18 November 2026
+
+PR #23 added the required model field to the token-count request. After
+deployment, the user retried the three-page demo with Gemini enabled.
+The app reported usable text on all three pages and seven session requests
+remaining. It then displayed the specific Norwegian service-unavailable
+message that the handler associates with a 503 generation response.
+No generated study resources or empty Quiz button were visible.
+
+The earlier fixed budget reservations were archived and the active counter
+was corrected before the retest. The total configured ceiling stayed at
+4 USD. These are application accounting values; the test did not establish
+actual Google charges.
+
+This retest supports that token counting and reservation progressed past
+the earlier preparation error. Successful live generation still needs
+verification. See the [dated test log](../../../app/TESTLOGG.md) for the
+observations, code-based inference and evidence limits.
