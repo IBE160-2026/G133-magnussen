@@ -119,17 +119,16 @@ prepared payload. They cover supported aliases, unsupported model fail-close
 behaviour, invalid and failed count responses, Redis budget contention,
 eight-request handling, HTTP 503 handling, and safe logging.
 
-## Simulated countTokens request schema check, 18 November 2026
+## Simulated Gemini failure logging, 18 November 2026
 
 Google's v1beta REST discovery document confirms that `countTokens` accepts a
 `generateContentRequest` and that its `model` field is required in the
-`models/{model}` resource-name format. A simulated HTTP 500 test verifies that
-the count request includes this model, the system instruction, contents, and
-response schema; it also checks that failure logs contain only the HTTP status
-and allowlisted error category. Simulated malformed JSON and a timeout also
-verify fail-closed behavior, status fallback, and redacted logging. The provider
-response body, API key, and PDF text are not logged. No real Gemini request was
-made.
+`models/{model}` resource-name format. Simulated provider failures verify that
+both `countTokens` and `generateContent` logs include only the model identifier,
+operation, HTTP status, numeric Google error code when available, and an
+allowlisted error category. Tests also cover malformed JSON, timeouts, safe
+fallback values, and suppression of provider messages, response bodies, API
+keys, PDF text, and generated answers. No real Gemini request was made.
 
 ## Live demo retest after token-count fix, 18 November 2026
 

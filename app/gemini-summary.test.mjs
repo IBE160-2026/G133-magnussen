@@ -69,11 +69,20 @@ test('does not expose provider error response bodies', async () => {
     generateSummary(
       [{ number: 1, text: 'The hamstring supports movement.', usable: true }],
       'test-api-key',
-      async () => new Response('private provider details', { status: 429 }),
+      async () => new Response(JSON.stringify({
+        error: {
+          code: 429,
+          message: 'secret-test-api-key private PDF text generated response',
+        },
+      }), { status: 429 }),
     ),
     error => {
       assert.equal(error.message, 'Gemini kunne ikke lage sammendraget. Prøv igjen senere.');
-      assert.equal(error.message.includes('private provider details'), false);
+      assert.equal(error.operation, 'generateContent');
+      assert.equal(error.model, 'gemini-3.5-flash');
+      assert.equal(error.status, 429);
+      assert.equal(error.googleErrorCode, 429);
+      assert.equal(error.message.includes('private PDF text'), false);
       return true;
     },
   );

@@ -80,7 +80,12 @@ test('counts the complete payload, reserves first, and handles simulated 503 saf
       if (address.includes(':generateContent')) {
         events.push('generate');
         generationBody = JSON.parse(options.body);
-        return new Response('private provider response', { status: 503 });
+        return new Response(JSON.stringify({
+          error: {
+            code: 503,
+            message: `secret-test-api-key ${pdfText} generated answer must not be logged`,
+          },
+        }), { status: 503 });
       }
       throw new Error('Unexpected network request');
     };
@@ -101,8 +106,13 @@ test('counts the complete payload, reserves first, and handles simulated 503 saf
     assert.equal(redisBody[5], '62940');
     assert.match(res.body.summaryStatus, /midlertidig utilgjengelig/i);
     assert.match(res.body.summaryStatus, /fortsatt åpne PDF-sidene/i);
+    assert.deepEqual(logs, [
+      'Gemini request failed: model=gemini-3.6-flash operation=generateContent ' +
+      'httpStatus=503 googleErrorCode=503 category=Error',
+    ]);
     assert.equal(logs.join(' ').includes('secret-test-api-key'), false);
     assert.equal(logs.join(' ').includes(pdfText), false);
+    assert.equal(logs.join(' ').includes('generated answer'), false);
   });
 });
 
@@ -143,7 +153,10 @@ test('invalid count fails closed before Redis or generation', async () => {
     assert.equal(redisCalled, false);
     assert.equal(generationCalled, false);
     assert.match(res.body.summaryStatus, /Ingen kostnad er blitt reservert/i);
-    assert.deepEqual(logs, ['Gemini countTokens failed: HTTP status 200; category Error']);
+    assert.deepEqual(logs, [
+      'Gemini request failed: model=gemini-3.6-flash operation=countTokens ' +
+      'httpStatus=200 googleErrorCode=none category=Error',
+    ]);
     assert.equal(logs.join(' ').includes('secret-test-api-key'), false);
     assert.equal(logs.join(' ').includes(pdfText), false);
   });
@@ -155,7 +168,14 @@ test('count endpoint failure fails closed and is explicit', async () => {
     const logs = [];
     console.error = (...values) => logs.push(values.join(' '));
     globalThis.fetch = async url => {
-      if (String(url).includes(':countTokens')) return new Response('private', { status: 500 });
+      if (String(url).includes(':countTokens')) {
+        return new Response(JSON.stringify({
+          error: {
+            code: 429,
+            message: `secret-test-api-key ${pdfText} generated answer`,
+          },
+        }), { status: 500 });
+      }
       redisCalled = true;
       throw new Error('unexpected network call');
     };
@@ -163,10 +183,13 @@ test('count endpoint failure fails closed and is explicit', async () => {
     await handler(requestFor(), res);
     assert.equal(redisCalled, false);
     assert.match(res.body.summaryStatus, /kunne ikke forberedes/i);
-    assert.deepEqual(logs, ['Gemini countTokens failed: HTTP status 500; category Error']);
+    assert.deepEqual(logs, [
+      'Gemini request failed: model=gemini-3.6-flash operation=countTokens ' +
+      'httpStatus=500 googleErrorCode=429 category=Error',
+    ]);
     assert.equal(logs.join(' ').includes('secret-test-api-key'), false);
     assert.equal(logs.join(' ').includes(pdfText), false);
-    assert.equal(logs.join(' ').includes('private'), false);
+    assert.equal(logs.join(' ').includes('generated answer'), false);
   });
 });
 
@@ -186,7 +209,10 @@ test('malformed token count JSON fails closed and logs only status and category'
     await handler(requestFor(), res);
     assert.equal(redisOrGenerationCalled, false);
     assert.match(res.body.summaryStatus, /ingen kostnad er blitt reservert/i);
-    assert.deepEqual(logs, ['Gemini countTokens failed: HTTP status 200; category Error']);
+    assert.deepEqual(logs, [
+      'Gemini request failed: model=gemini-3.6-flash operation=countTokens ' +
+      'httpStatus=200 googleErrorCode=none category=Error',
+    ]);
     assert.equal(logs.join(' ').includes('secret-test-api-key'), false);
     assert.equal(logs.join(' ').includes(pdfText), false);
     assert.equal(logs.join(' ').includes('private provider response'), false);
@@ -209,7 +235,10 @@ test('count token network failure logs an allowlisted category without an HTTP s
     await handler(requestFor(), res);
     assert.equal(redisOrGenerationCalled, false);
     assert.match(res.body.summaryStatus, /ingen kostnad er blitt reservert/i);
-    assert.deepEqual(logs, ['Gemini countTokens failed: HTTP status none; category TimeoutError']);
+    assert.deepEqual(logs, [
+      'Gemini request failed: model=gemini-3.6-flash operation=countTokens ' +
+      'httpStatus=none googleErrorCode=none category=TimeoutError',
+    ]);
     assert.equal(logs.join(' ').includes('secret-test-api-key'), false);
     assert.equal(logs.join(' ').includes(pdfText), false);
     assert.equal(logs.join(' ').includes('private provider response'), false);
@@ -265,7 +294,7 @@ test('eight-request limit prevents generation', async () => {
   });
 });
 
-test('logs only a safe category when generation throws', async () => {
+test('logs safe Gemini context when generation throws', async () => {
   await withMockedEnvironment(async () => {
     const logs = [];
     console.error = (...values) => logs.push(values.join(' '));
@@ -283,6 +312,9 @@ test('logs only a safe category when generation throws', async () => {
     const res = responseRecorder();
     await handler(requestFor(), res);
     assert.match(res.body.summaryStatus, /mislyktes/i);
-    assert.deepEqual(logs, ['Study generation failed: TimeoutError']);
+    assert.deepEqual(logs, [
+      'Gemini request failed: model=gemini-3.6-flash operation=generateContent ' +
+      'httpStatus=none googleErrorCode=none category=TimeoutError',
+    ]);
   });
 });
