@@ -104,7 +104,13 @@ export default async function handler(req, res) {
       let inputTokens;
       try {
         inputTokens = await countSummaryTokens(prepared, key);
-      } catch {
+      } catch (error) {
+        const status = Number.isInteger(error?.status) && error.status >= 100 && error.status <= 599
+          ? error.status : 'none';
+        console.error(
+          'Gemini countTokens failed:',
+          `HTTP status ${status}; category ${safeErrorCategory(error)}`,
+        );
         return res.status(200).json({
           pages,
           summaryStatus: 'KI-forespørselen kunne ikke forberedes. Ingen kostnad er blitt reservert.',

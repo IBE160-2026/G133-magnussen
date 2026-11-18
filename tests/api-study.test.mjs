@@ -90,7 +90,10 @@ test('counts the complete payload, reserves first, and handles simulated 503 saf
     await handler(requestFor(), res);
 
     assert.deepEqual(events, ['count', 'redis', 'generate']);
-    assert.deepEqual(countBody.generateContentRequest, generationBody);
+    assert.deepEqual(countBody.generateContentRequest, {
+      ...generationBody,
+      model: 'models/gemini-3.6-flash',
+    });
     assert.ok(generationBody.systemInstruction);
     assert.ok(generationBody.contents);
     assert.ok(generationBody.generationConfig.responseSchema);
@@ -122,6 +125,8 @@ test('invalid count fails closed before Redis or generation', async () => {
   await withMockedEnvironment(async () => {
     let redisCalled = false;
     let generationCalled = false;
+    const logs = [];
+    console.error = (...values) => logs.push(values.join(' '));
     globalThis.fetch = async (url, options = {}) => {
       const address = String(url);
       if (address === 'https://redis.example.test') {
@@ -138,12 +143,17 @@ test('invalid count fails closed before Redis or generation', async () => {
     assert.equal(redisCalled, false);
     assert.equal(generationCalled, false);
     assert.match(res.body.summaryStatus, /Ingen kostnad er blitt reservert/i);
+    assert.deepEqual(logs, ['Gemini countTokens failed: HTTP status 200; category Error']);
+    assert.equal(logs.join(' ').includes('secret-test-api-key'), false);
+    assert.equal(logs.join(' ').includes(pdfText), false);
   });
 });
 
 test('count endpoint failure fails closed and is explicit', async () => {
   await withMockedEnvironment(async () => {
     let redisCalled = false;
+    const logs = [];
+    console.error = (...values) => logs.push(values.join(' '));
     globalThis.fetch = async url => {
       if (String(url).includes(':countTokens')) return new Response('private', { status: 500 });
       redisCalled = true;
@@ -153,6 +163,56 @@ test('count endpoint failure fails closed and is explicit', async () => {
     await handler(requestFor(), res);
     assert.equal(redisCalled, false);
     assert.match(res.body.summaryStatus, /kunne ikke forberedes/i);
+    assert.deepEqual(logs, ['Gemini countTokens failed: HTTP status 500; category Error']);
+    assert.equal(logs.join(' ').includes('secret-test-api-key'), false);
+    assert.equal(logs.join(' ').includes(pdfText), false);
+    assert.equal(logs.join(' ').includes('private'), false);
+  });
+});
+
+test('malformed token count JSON fails closed and logs only status and category', async () => {
+  await withMockedEnvironment(async () => {
+    let redisOrGenerationCalled = false;
+    const logs = [];
+    console.error = (...values) => logs.push(values.join(' '));
+    globalThis.fetch = async url => {
+      if (String(url).includes(':countTokens')) {
+        return new Response('private provider response', { status: 200 });
+      }
+      redisOrGenerationCalled = true;
+      throw new Error('unexpected network call');
+    };
+    const res = responseRecorder();
+    await handler(requestFor(), res);
+    assert.equal(redisOrGenerationCalled, false);
+    assert.match(res.body.summaryStatus, /ingen kostnad er blitt reservert/i);
+    assert.deepEqual(logs, ['Gemini countTokens failed: HTTP status 200; category Error']);
+    assert.equal(logs.join(' ').includes('secret-test-api-key'), false);
+    assert.equal(logs.join(' ').includes(pdfText), false);
+    assert.equal(logs.join(' ').includes('private provider response'), false);
+  });
+});
+
+test('count token network failure logs an allowlisted category without an HTTP status', async () => {
+  await withMockedEnvironment(async () => {
+    let redisOrGenerationCalled = false;
+    const logs = [];
+    console.error = (...values) => logs.push(values.join(' '));
+    globalThis.fetch = async url => {
+      if (String(url).includes(':countTokens')) {
+        throw Object.assign(new Error('private provider response'), { name: 'TimeoutError' });
+      }
+      redisOrGenerationCalled = true;
+      throw new Error('unexpected network call');
+    };
+    const res = responseRecorder();
+    await handler(requestFor(), res);
+    assert.equal(redisOrGenerationCalled, false);
+    assert.match(res.body.summaryStatus, /ingen kostnad er blitt reservert/i);
+    assert.deepEqual(logs, ['Gemini countTokens failed: HTTP status none; category TimeoutError']);
+    assert.equal(logs.join(' ').includes('secret-test-api-key'), false);
+    assert.equal(logs.join(' ').includes(pdfText), false);
+    assert.equal(logs.join(' ').includes('private provider response'), false);
   });
 });
 

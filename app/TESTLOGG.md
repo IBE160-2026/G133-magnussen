@@ -118,3 +118,15 @@ atomic reservation call before generation, and generation reuses the same
 prepared payload. They cover supported aliases, unsupported model fail-close
 behaviour, invalid and failed count responses, Redis budget contention,
 eight-request handling, HTTP 503 handling, and safe logging.
+
+## Simulated countTokens request schema check, 18 November 2026
+
+Google's v1beta REST discovery document confirms that `countTokens` accepts a
+`generateContentRequest` and that its `model` field is required in the
+`models/{model}` resource-name format. A simulated HTTP 500 test verifies that
+the count request includes this model, the system instruction, contents, and
+response schema; it also checks that failure logs contain only the HTTP status
+and allowlisted error category. Simulated malformed JSON and a timeout also
+verify fail-closed behavior, status fallback, and redacted logging. The provider
+response body, API key, and PDF text are not logged. No real Gemini request was
+made.
