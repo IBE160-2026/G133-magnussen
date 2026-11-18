@@ -1,5 +1,24 @@
 const normalize = value => value.replace(/\s+/gu, ' ').trim().toLowerCase();
 
+function geminiError(message, model, operation, { status = null, googleErrorCode = null, cause } = {}) {
+  const error = new Error(message, { cause });
+  Object.assign(error, { model, operation, status, googleErrorCode });
+  return error;
+}
+
+function safeGoogleErrorCode(value) {
+  return Number.isInteger(value) && value >= 100 && value <= 599 ? value : null;
+}
+
+async function responseErrorCode(response) {
+  try {
+    const body = await response.json();
+    return safeGoogleErrorCode(body?.error?.code);
+  } catch {
+    return null;
+  }
+}
+
 export function prepareSummaryRequest(pages, model = process.env.GEMINI_MODEL || 'gemini-3.5-flash') {
   const readable = pages.filter(page => page.usable);
   const inputs = readable.map(page => ({
@@ -59,68 +78,99 @@ export function prepareSummaryRequest(pages, model = process.env.GEMINI_MODEL ||
 }
 
 export async function countSummaryTokens(prepared, apiKey, request = fetch) {
-  const response = await request(
-    'https://generativelanguage.googleapis.com/v1beta/models/' + encodeURIComponent(prepared.model) + ':countTokens',
-    {
-      method: 'POST',
-      headers: { 'x-goog-api-key': apiKey, 'Content-Type': 'application/json' },
-      signal: AbortSignal.timeout(5_000),
-      body: JSON.stringify({
-        generateContentRequest: {
-          ...prepared.payload,
-          model: 'models/' + prepared.model,
-        },
-      }),
-    },
-  );
+  const operation = 'countTokens';
+  let response;
+  try {
+    response = await request(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + encodeURIComponent(prepared.model) + ':countTokens',
+      {
+        method: 'POST',
+        headers: { 'x-goog-api-key': apiKey, 'Content-Type': 'application/json' },
+        signal: AbortSignal.timeout(5_000),
+        body: JSON.stringify({
+          generateContentRequest: {
+            ...prepared.payload,
+            model: 'models/' + prepared.model,
+          },
+        }),
+      },
+    );
+  } catch (cause) {
+    throw geminiError('Gemini token count request failed', prepared.model, operation, { cause });
+  }
   if (!response.ok) {
-    const error = new Error('Gemini token count failed');
-    error.status = response.status;
-    throw error;
+    throw geminiError('Gemini token count failed', prepared.model, operation, {
+      status: response.status,
+      googleErrorCode: await responseErrorCode(response),
+    });
   }
   let data;
   try { data = await response.json(); } catch {
-    const error = new Error('Invalid Gemini token count');
-    error.status = response.status;
-    throw error;
+    throw geminiError('Invalid Gemini token count', prepared.model, operation, { status: response.status });
   }
   if (!Number.isSafeInteger(data?.totalTokens) || data.totalTokens <= 0) {
-    const error = new Error('Invalid Gemini token count');
-    error.status = response.status;
-    throw error;
+    throw geminiError('Invalid Gemini token count', prepared.model, operation, { status: response.status });
   }
   return data.totalTokens;
 }
 
 export async function generateSummary(pages, apiKey, request = fetch, prepared = prepareSummaryRequest(pages)) {
   const readable = pages.filter(page => page.usable);
-  const response = await request(
-    'https://generativelanguage.googleapis.com/v1beta/models/' + encodeURIComponent(prepared.model) + ':generateContent',
-    {
-      method: 'POST',
-      headers: { 'x-goog-api-key': apiKey, 'Content-Type': 'application/json' },
-      signal: AbortSignal.timeout(100_000),
-      body: JSON.stringify(prepared.payload),
-    },
-  );
-  if (response.status === 503) {
-    const error = new Error('Gemini service temporarily unavailable');
-    error.status = 503;
-    throw error;
+  const operation = 'generateContent';
+  let response;
+  try {
+    response = await request(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + encodeURIComponent(prepared.model) + ':generateContent',
+      {
+        method: 'POST',
+        headers: { 'x-goog-api-key': apiKey, 'Content-Type': 'application/json' },
+        signal: AbortSignal.timeout(100_000),
+        body: JSON.stringify(prepared.payload),
+      },
+    );
+  } catch (cause) {
+    throw geminiError('Gemini generation request failed', prepared.model, operation, { cause });
   }
-  if (!response.ok) throw Error('Gemini kunne ikke lage sammendraget. Prøv igjen senere.');
-  const payload = await response.json();
+  if (!response.ok) {
+    const message = response.status === 503
+      ? 'Gemini service temporarily unavailable'
+      : 'Gemini kunne ikke lage sammendraget. Prøv igjen senere.';
+    throw geminiError(message, prepared.model, operation, {
+      status: response.status,
+      googleErrorCode: await responseErrorCode(response),
+    });
+  }
+  let payload;
+  try { payload = await response.json(); } catch (cause) {
+    throw geminiError('Gemini returnerte et ugyldig sammendrag.', prepared.model, operation, {
+      status: response.status,
+      cause,
+    });
+  }
   const body = payload.candidates?.[0]?.content?.parts?.filter(part => !part.thought).map(part => part.text).join('');
   let items;
-  try { items = JSON.parse(body); } catch { throw Error('Gemini returnerte et ugyldig sammendrag.'); }
+  try { items = JSON.parse(body); } catch (cause) {
+    throw geminiError('Gemini returnerte et ugyldig sammendrag.', prepared.model, operation, {
+      status: response.status,
+      cause,
+    });
+  }
   const byPage = new Map(readable.map(page => [page.number, normalize(page.text)]));
   function validate(resources) {
-    if (!Array.isArray(resources) || !resources.length || resources.length > 20) throw Error('Gemini returnerte ugyldige studieressurser.');
+    if (!Array.isArray(resources) || !resources.length || resources.length > 20) {
+      throw geminiError('Gemini returnerte ugyldige studieressurser.', prepared.model, operation, {
+        status: response.status,
+      });
+    }
     return resources.map(item => {
       if (typeof item?.title !== 'string' || !item.title.trim() || typeof item.text !== 'string' ||
           !item.text.trim() || !Array.isArray(item.sources) || !item.sources.length ||
           item.sources.some(source => !byPage.has(source?.page) || typeof source.excerpt !== 'string' ||
-            normalize(source.excerpt).length < 8)) throw Error('Sammendraget mangler gyldige kilder.');
+            normalize(source.excerpt).length < 8)) {
+        throw geminiError('Sammendraget mangler gyldige kilder.', prepared.model, operation, {
+          status: response.status,
+        });
+      }
       return {
         title: item.title,
         text: item.text,

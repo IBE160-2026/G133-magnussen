@@ -84,11 +84,14 @@ throughout that budget.
 
 Unsupported models, missing or invalid token counts, and count failures are
 blocked before reservation or generation. Budget contention and the eight-request
-limit prevent a provider call. When Gemini returns HTTP 503, the user gets a
+limit prevent a provider call. When Gemini `generateContent` returns HTTP 503, the user gets a
 Norwegian temporary-unavailability message and can still open PDF pages.
 Generation caps output at 8,192 tokens. Gemini requests time out after 100
 seconds; the Vercel function limit is 120 seconds. Failure logs contain only an
-allowlisted error category, never the API key, request body, or PDF text.
+allowlisted model identifier and operation, HTTP status, Google's numeric error
+code when available, and an allowlisted error category. They never contain API
+keys, request or response bodies, PDF text, provider messages, or generated
+answers.
 
 `APP_ORIGIN` can pin the accepted HTTPS origin. When omitted, the function
 uses the incoming host, allowing Vercel preview domains.
