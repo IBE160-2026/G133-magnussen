@@ -73,6 +73,10 @@ Keep the budget identifier and settings stable throughout that budget.
 Verify the per-request bound against the configured model's maximum billable
 input and output. Generation caps output at 8,192 tokens. When configuration
 is missing or the ceiling is exhausted, the app explains this in Norwegian.
+Gemini requests time out after 100 seconds; the Vercel function limit is 120
+seconds. Failure logs contain only an allowlisted error category, never the API
+key, request body, or PDF text. The Quiz navigation button is hidden when a
+generation response contains no quiz questions.
 
 `APP_ORIGIN` can pin the accepted HTTPS origin. When omitted, the function
 uses the incoming host, allowing Vercel preview domains.

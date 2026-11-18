@@ -1,5 +1,6 @@
 import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
+import { safeErrorCategory } from '../app/safe-error-category.mjs';
 import { generateSummary } from '../app/gemini-summary.mjs';
 
 const demo = JSON.parse(await readFile(new URL('../app/demo-ressurser.json', import.meta.url), 'utf8'));
@@ -97,7 +98,8 @@ export default async function handler(req, res) {
       if (reservation.summaryStatus) return res.status(200).json({ pages, ...reservation });
       const resources = await generateSummary(pages, key);
       return res.status(200).json({ pages, ...reservation, ...resources });
-    } catch {
+    } catch (error) {
+      console.error('Study generation failed:', safeErrorCategory(error));
       return res.status(200).json({
         pages, ...reservation,
         summaryStatus: 'KI-generering mislyktes. Prøv igjen senere. Du kan fortsatt åpne PDF-sidene.',
