@@ -126,10 +126,32 @@ test('prepares and counts the complete generation payload', async () => {
     assert.equal(timeout, 5_000);
     assert.equal(prepared.model, 'gemini-3.8-flash');
     assert.equal(prepared.payload.generationConfig.maxOutputTokens, 8192);
-    assert.deepEqual(countBody, { generateContentRequest: prepared.payload });
+    assert.deepEqual(countBody, {
+      generateContentRequest: {
+        ...prepared.payload,
+        model: 'models/gemini-3.8-flash',
+      },
+    });
   } finally {
     AbortSignal.timeout = originalTimeout;
   }
+});
+
+test('preserves HTTP status when the simulated token count request fails', async () => {
+  const prepared = prepareSummaryRequest(
+    [{ number: 1, text: 'The hamstring supports movement.', usable: true }],
+    'gemini-3.8-flash',
+  );
+  await assert.rejects(
+    countSummaryTokens(prepared, 'test-api-key', async () =>
+      new Response('private provider details', { status: 400 })),
+    error => {
+      assert.equal(error.status, 400);
+      assert.equal(error.message, 'Gemini token count failed');
+      assert.equal(error.message.includes('private provider details'), false);
+      return true;
+    },
+  );
 });
 
 test('uses conservative scheduled Flash pricing and safe integer rounding', () => {

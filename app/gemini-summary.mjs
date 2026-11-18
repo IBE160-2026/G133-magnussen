@@ -65,14 +65,29 @@ export async function countSummaryTokens(prepared, apiKey, request = fetch) {
       method: 'POST',
       headers: { 'x-goog-api-key': apiKey, 'Content-Type': 'application/json' },
       signal: AbortSignal.timeout(5_000),
-      body: JSON.stringify({ generateContentRequest: prepared.payload }),
+      body: JSON.stringify({
+        generateContentRequest: {
+          ...prepared.payload,
+          model: 'models/' + prepared.model,
+        },
+      }),
     },
   );
-  if (!response.ok) throw new Error('Gemini token count failed');
+  if (!response.ok) {
+    const error = new Error('Gemini token count failed');
+    error.status = response.status;
+    throw error;
+  }
   let data;
-  try { data = await response.json(); } catch { throw new Error('Invalid Gemini token count'); }
+  try { data = await response.json(); } catch {
+    const error = new Error('Invalid Gemini token count');
+    error.status = response.status;
+    throw error;
+  }
   if (!Number.isSafeInteger(data?.totalTokens) || data.totalTokens <= 0) {
-    throw new Error('Invalid Gemini token count');
+    const error = new Error('Invalid Gemini token count');
+    error.status = response.status;
+    throw error;
   }
   return data.totalTokens;
 }
