@@ -163,3 +163,29 @@ the reserved amount, or verify the contents of rendered source pages.
 Live generation remains unverified as a successful end-to-end workflow.
 A later test must check all four resource types and their cited pages.
 The stored-resource demo remains available with Gemini disabled.
+
+## Successful live demo test, 18 November 2026
+
+Tested by the project owner at https://g133-magnussen.vercel.app/ using
+`demo-anatomi-ai-study-buddy.pdf` with “Lag studieressurser med Gemini”
+enabled. The latest main revision at the time of recording was `3603b47`
+(PR #25). The configured production model was Gemini 3.6 Flash, following
+the model change and redeployment confirmed by the user. The Google
+project was reported as Free Tier.
+
+The supplied screenshot shows three of three pages with sufficient text,
+seven session requests remaining, a populated Norwegian summary with a
+source excerpt and page button, and controls for summary, concepts,
+flashcards and quiz. This records a successful live-generation result
+after the earlier 503 failures.
+
+The user was asked to open the cited page, inspect concepts and a flashcard
+source excerpt, and submit a quiz answer to inspect feedback. The user then
+confirmed that it worked. This follow-up is user-reported verification;
+screenshots of each individual interaction, item counts and a complete
+source-by-source review were not supplied.
+
+The result establishes a working live demo for this attempt. It does not
+establish that earlier provider availability problems are permanently
+resolved. A successful live run with the user's own PDF, representative
+maximum-size input and complete source checks remain to be recorded.

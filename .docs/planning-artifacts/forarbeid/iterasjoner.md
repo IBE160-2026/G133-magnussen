@@ -82,3 +82,22 @@ This retest supports that token counting and reservation progressed past
 the earlier preparation error. Successful live generation still needs
 verification. See the [dated test log](../../../app/TESTLOGG.md) for the
 observations, code-based inference and evidence limits.
+
+## Successful live demo after diagnostics — 18 November 2026
+
+Following the token-count correction, token-based budget reservations,
+model configuration and improved failure logging, the user ran the
+three-page demo with Gemini enabled. Production had been configured for
+Gemini 3.6 Flash. A screenshot shows generated Norwegian summary content,
+source controls, all four resource-type controls and seven session
+requests remaining.
+
+After being asked to check source viewing, concepts, flashcards and quiz
+feedback, the user confirmed that the workflow worked. The
+[test log](../../../app/TESTLOGG.md) identifies the screenshot evidence,
+the user-reported follow-up and the remaining checks.
+
+The first successful live demo follows several failed attempts. The
+available evidence does not isolate a single change as the cause of
+success. Live testing with the user's own PDF and representative supported
+input sizes remains open.
