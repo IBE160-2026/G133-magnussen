@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { generateSummary } from './gemini-summary.mjs';
+import { prepareSummaryRequest, countSummaryTokens, generateSummary } from './gemini-summary.mjs';
+import { calculateMaximumCostMicroUsd, isSupportedFlashModel } from './gemini-cost.mjs';
 
 const resource = title => ({
   title,
@@ -102,4 +103,64 @@ test('rejects malformed or incomplete simulated Gemini responses', async () => {
       message,
     );
   }
+});
+
+test('prepares and counts the complete generation payload', async () => {
+  const originalTimeout = AbortSignal.timeout;
+  let timeout;
+  AbortSignal.timeout = milliseconds => {
+    timeout = milliseconds;
+    return new AbortController().signal;
+  };
+  try {
+    const prepared = prepareSummaryRequest(
+      [{ number: 1, text: 'The hamstring supports movement.', usable: true, groups: [['movement']] }],
+      'gemini-3.8-flash',
+    );
+    let countBody;
+    const totalTokens = await countSummaryTokens(prepared, 'test-api-key', async (_url, options) => {
+      countBody = JSON.parse(options.body);
+      return new Response(JSON.stringify({ totalTokens: 123 }), { status: 200 });
+    });
+    assert.equal(totalTokens, 123);
+    assert.equal(timeout, 5_000);
+    assert.equal(prepared.model, 'gemini-3.8-flash');
+    assert.equal(prepared.payload.generationConfig.maxOutputTokens, 8192);
+    assert.deepEqual(countBody, { generateContentRequest: prepared.payload });
+  } finally {
+    AbortSignal.timeout = originalTimeout;
+  }
+});
+
+test('uses conservative scheduled Flash pricing and safe integer rounding', () => {
+  assert.equal(isSupportedFlashModel('gemini-3.5-flash'), true);
+  assert.equal(isSupportedFlashModel('gemini-3.6-flash'), true);
+  assert.equal(isSupportedFlashModel('gemini-3.8-flash'), true);
+  assert.equal(isSupportedFlashModel('gemini-other'), false);
+  assert.equal(calculateMaximumCostMicroUsd('gemini-3.5-flash', 1), 61442);
+  assert.equal(calculateMaximumCostMicroUsd('gemini-3.6-flash', 1000), 62940);
+  assert.equal(calculateMaximumCostMicroUsd('gemini-3.8-flash', 3), 61445);
+  assert.throws(() => calculateMaximumCostMicroUsd('gemini-other', 100), /Unsupported/);
+  assert.throws(() => calculateMaximumCostMicroUsd('gemini-3.8-flash', -1), /Invalid token count/);
+});
+
+test('reuses the prepared payload for generation and identifies simulated 503', async () => {
+  const prepared = prepareSummaryRequest(
+    [{ number: 1, text: 'The hamstring supports movement.', usable: true }],
+    'gemini-3.6-flash',
+  );
+  let generationBody;
+  await assert.rejects(
+    generateSummary(
+      [{ number: 1, text: 'The hamstring supports movement.', usable: true }],
+      'test-api-key',
+      async (_url, options) => {
+        generationBody = JSON.parse(options.body);
+        return new Response('private provider details', { status: 503 });
+      },
+      prepared,
+    ),
+    error => error.status === 503,
+  );
+  assert.deepEqual(generationBody, prepared.payload);
 });

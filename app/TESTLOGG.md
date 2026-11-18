@@ -107,3 +107,14 @@ Free Tier, checking current model availability and quotas, and retesting live
 generation and source references. The request limit and overall spending
 ceiling must remain enforced. The stored-resource demo remains available with
 Gemini disabled.
+
+## Simulated token reservation checks, 18 November 2026
+
+The automated suite uses mocked provider and Redis responses only. No real
+Gemini or paid provider endpoint was contacted. The tests verify that the exact
+generation payload is sent to a mocked count-tokens endpoint, the calculated
+micro-USD ceiling is passed to the existing Redis reservation keys in an
+atomic reservation call before generation, and generation reuses the same
+prepared payload. They cover supported aliases, unsupported model fail-close
+behaviour, invalid and failed count responses, Redis budget contention,
+eight-request handling, HTTP 503 handling, and safe logging.
