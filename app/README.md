@@ -58,6 +58,10 @@ Live generation requires these Vercel environment variables:
 
 - `GEMINI_API_KEY` and optionally `GEMINI_MODEL`.
 - `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` for durable usage counters.
+  Vercel KV deployments can instead use the complete pair `KV_REST_API_URL` and
+  `KV_REST_API_TOKEN`. The Upstash pair takes precedence when both pairs are set;
+  a partial Upstash pair falls back to a complete Vercel KV pair. Do not mix
+  variables from the two pairs. Redeploy after changing environment variables.
 - `GEMINI_BUDGET_ID`, a fixed identifier for this project's budget.
 - `GEMINI_BUDGET_MICRO_USD`, the total ceiling in whole micro-US dollars.
 - `GEMINI_MAX_REQUEST_MICRO_USD`, a verified upper bound for one request.
