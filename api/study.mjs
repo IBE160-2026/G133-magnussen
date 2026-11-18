@@ -1,7 +1,8 @@
 import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import { safeErrorCategory } from '../app/safe-error-category.mjs';
-import { generateSummary } from '../app/gemini-summary.mjs';
+import { prepareSummaryRequest, countSummaryTokens, generateSummary } from '../app/gemini-summary.mjs';
+import { calculateMaximumCostMicroUsd, isSupportedFlashModel } from '../app/gemini-cost.mjs';
 
 const demo = JSON.parse(await readFile(new URL('../app/demo-ressurser.json', import.meta.url), 'utf8'));
 const demoHash = createHash('sha256')
@@ -19,7 +20,7 @@ redis.call('INCRBY', KEYS[2], ARGV[1])
 return {1, 7-used}
 `;
 
-async function reserve(session) {
+async function reserve(session, cost) {
   let url = process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL;
   let token = process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN;
   if (Boolean(process.env.UPSTASH_REDIS_REST_URL) !== Boolean(process.env.UPSTASH_REDIS_REST_TOKEN)) {
@@ -32,7 +33,6 @@ async function reserve(session) {
   }
   const budgetId = process.env.GEMINI_BUDGET_ID;
   const budget = Number(process.env.GEMINI_BUDGET_MICRO_USD);
-  const cost = Number(process.env.GEMINI_MAX_REQUEST_MICRO_USD);
   if (!url || !token || !budgetId || !Number.isSafeInteger(budget) || budget <= 0
     || !Number.isSafeInteger(cost) || cost <= 0) {
     return { summaryStatus: 'KI-generering er ikke konfigurert. Prøv demo-PDF-en uten Gemini.' };
@@ -94,12 +94,43 @@ export default async function handler(req, res) {
     }
     let reservation;
     try {
-      reservation = await reserve(input.session);
+      const prepared = prepareSummaryRequest(pages);
+      if (!isSupportedFlashModel(prepared.model)) {
+        return res.status(200).json({
+          pages,
+          summaryStatus: 'KI-modellen er ikke støttet av denne tjenesten. Ingen kostnad er blitt reservert.',
+        });
+      }
+      let inputTokens;
+      try {
+        inputTokens = await countSummaryTokens(prepared, key);
+      } catch {
+        return res.status(200).json({
+          pages,
+          summaryStatus: 'KI-forespørselen kunne ikke forberedes. Ingen kostnad er blitt reservert.',
+        });
+      }
+      let cost;
+      try {
+        cost = calculateMaximumCostMicroUsd(prepared.model, inputTokens);
+      } catch {
+        return res.status(200).json({
+          pages,
+          summaryStatus: 'KI-kostnaden kunne ikke beregnes trygt. Ingen kostnad er blitt reservert.',
+        });
+      }
+      reservation = await reserve(input.session, cost);
       if (reservation.summaryStatus) return res.status(200).json({ pages, ...reservation });
-      const resources = await generateSummary(pages, key);
+      const resources = await generateSummary(pages, key, fetch, prepared);
       return res.status(200).json({ pages, ...reservation, ...resources });
     } catch (error) {
       console.error('Study generation failed:', safeErrorCategory(error));
+      if (error?.status === 503) {
+        return res.status(200).json({
+          pages, ...reservation,
+          summaryStatus: 'Tjenesten er midlertidig utilgjengelig. Prøv igjen senere. Du kan fortsatt åpne PDF-sidene.',
+        });
+      }
       return res.status(200).json({
         pages, ...reservation,
         summaryStatus: 'KI-generering mislyktes. Prøv igjen senere. Du kan fortsatt åpne PDF-sidene.',

@@ -30,6 +30,13 @@ node --env-file=app/.env.local app/server.mjs
 
 Enable **Lag studieressurser med Gemini** before selecting **Les PDF**. The application processes the PDF locally. It sends extractable text to Gemini only when the option is enabled. The server uses the API key. Set `GEMINI_MODEL` to override the default Gemini 3.5 Flash model.
 
+Only `gemini-3.5-flash`, `gemini-3.6-flash`, and `gemini-3.8-flash` are
+accepted for live generation. The 3.5 alias is routed to 3.6 Flash. Other
+model overrides fail closed. The 3.5 alias and 3.6/3.8 model IDs use the
+conservative published scheduled Flash rates: $1.50 per million input tokens
+and $7.50 per million output tokens, because the higher 2027 schedule is used
+as the reservation ceiling through 2026-12-31.
+
 ## Scope and test evidence
 
 - The application accepts one unlocked PDF up to 20 MB and 50 pages. It lists pages with little extractable text.
@@ -64,19 +71,24 @@ Live generation requires these Vercel environment variables:
   variables from the two pairs. Redeploy after changing environment variables.
 - `GEMINI_BUDGET_ID`, a fixed identifier for this project's budget.
 - `GEMINI_BUDGET_MICRO_USD`, the total ceiling in whole micro-US dollars.
-- `GEMINI_MAX_REQUEST_MICRO_USD`, a verified upper bound for one request.
 
-Redis atomically reserves one request and its maximum configured cost before
-calling Gemini. Failed calls keep their reservations. Each study session
-allows eight requests. Budget reservations survive function restarts.
-Keep the budget identifier and settings stable throughout that budget.
-Verify the per-request bound against the configured model's maximum billable
-input and output. Generation caps output at 8,192 tokens. When configuration
-is missing or the ceiling is exhausted, the app explains this in Norwegian.
-Gemini requests time out after 100 seconds; the Vercel function limit is 120
-seconds. Failure logs contain only an allowlisted error category, never the API
-key, request body, or PDF text. The Quiz navigation button is hidden when a
-generation response contains no quiz questions.
+Before generation, the application counts the exact system instructions,
+contents, and JSON response schema using Gemini's count-tokens endpoint. It
+rounds each pricing component upward to whole micro-US dollars, reserves
+`input tokens × $1.50/million + 8,192 output tokens × $7.50/million`, and
+passes that amount to the existing atomic Redis Lua script. Redis keeps the
+existing session and historical budget keys unchanged. Failed calls keep their
+reservations. Each study session allows eight requests. Budget reservations
+survive function restarts. Keep the budget identifier and settings stable
+throughout that budget.
+
+Unsupported models, missing or invalid token counts, and count failures are
+blocked before reservation or generation. Budget contention and the eight-request
+limit prevent a provider call. When Gemini returns HTTP 503, the user gets a
+Norwegian temporary-unavailability message and can still open PDF pages.
+Generation caps output at 8,192 tokens. Gemini requests time out after 100
+seconds; the Vercel function limit is 120 seconds. Failure logs contain only an
+allowlisted error category, never the API key, request body, or PDF text.
 
 `APP_ORIGIN` can pin the accepted HTTPS origin. When omitted, the function
 uses the incoming host, allowing Vercel preview domains.
