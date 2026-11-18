@@ -164,26 +164,28 @@ Live generation remains unverified as a successful end-to-end workflow.
 A later test must check all four resource types and their cited pages.
 The stored-resource demo remains available with Gemini disabled.
 
-## Successful live Gemini demo, 18 November 2026
+## Successful live demo test, 18 November 2026
 
-Evidence is the user's screenshot of the production app after the live
-Gemini retest. The screenshot and the user-reported browser check are distinct
-sources: the screenshot establishes what was visible, while the user's checks
-establish interactions and source-page behaviour that are not reproducible
-from the image alone.
+Tested by the project owner at https://g133-magnussen.vercel.app/ using
+`demo-anatomi-ai-study-buddy.pdf` with “Lag studieressurser med Gemini”
+enabled. The latest main revision at the time of recording was `3603b47`
+(PR #25). The configured production model was Gemini 3.6 Flash, following
+the model change and redeployment confirmed by the user. The Google
+project was reported as Free Tier.
 
-| Check | Observation and evidence |
-| --- | --- |
-| PDF setup | The user selected the three-page demo PDF with Gemini enabled. |
-| Live generation screenshot | The production app showed generated study resources rather than the earlier 503 service-unavailable message. |
-| Resource categories | The user reported that summaries, key concepts, flashcards and quiz questions were available. This is user-reported evidence, not a separate automated check. |
-| Source links | The user reported that the generated resources' cited PDF pages could be opened. The repository does not contain screenshots that independently verify every cited page. |
-| Redis and provider accounting | The active Redis reservation counter had previously been reset to zero by the user. Reserved amounts and provider charges were not independently measured. |
+The supplied screenshot shows three of three pages with sufficient text,
+seven session requests remaining, a populated Norwegian summary with a
+source excerpt and page button, and controls for summary, concepts,
+flashcards and quiz. This records a successful live-generation result
+after the earlier 503 failures.
 
-This test establishes that the deployed app completed a live Gemini
-generation and displayed four resource types in at least one successful
-browser run. It does not establish that every source reference is correct,
-that every provider response was free of later or hidden errors, or that
-actual Gemini charges match the application reservation. Provider availability
-is not permanently resolved, and the keyless stored-resource demo remains
-available if live generation is unavailable.
+The user was asked to open the cited page, inspect concepts and a flashcard
+source excerpt, and submit a quiz answer to inspect feedback. The user then
+confirmed that it worked. This follow-up is user-reported verification;
+screenshots of each individual interaction, item counts and a complete
+source-by-source review were not supplied.
+
+The result establishes a working live demo for this attempt. It does not
+establish that earlier provider availability problems are permanently
+resolved. A successful live run with the user's own PDF, representative
+maximum-size input and complete source checks remain to be recorded.
