@@ -41,7 +41,7 @@ context:
 **Acceptance Criteria:**
 - Given the updated `origin/main` baseline, when the patch is applied, then exactly these two documentation files contain the supplied changes.
 - Given the recorded live-demo result, when readers review the test log, then unverified checks and the limits of the evidence remain explicit.
-- Given the requested publication, when verification passes, then push a dedicated branch and open a PR without including unrelated worktree changes.
+- Given the requested publication, when verification passes, then push a dedicated branch and open a PR if authenticated GitHub tooling is available; otherwise provide the compare link without including unrelated worktree changes.
 
 ## Implementation Notes
 
@@ -50,6 +50,8 @@ The change has no application runtime, build, or test impact. Verify the final d
 The supplied patch now matches the two document additions exactly. `git apply --reverse --check` confirms the patch is present, and `git diff --check` passes. No application tests or build are required for this documentation-only change.
 
 The first implementation used alternate wording; it was corrected to the supplied patch and verified with `git apply --reverse --check`. All three delegated review layers could not access the temp diff path, so the final document diff was reviewed directly; no further content or verification issues were found.
+
+GitHub showed no existing PR, but the available browser session was signed out and the GitHub tools exposed no PR creation action. The dedicated branch is pushed and its compare link is available.
 
 ## Review Triage Log
 
