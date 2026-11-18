@@ -82,3 +82,24 @@ This retest supports that token counting and reservation progressed past
 the earlier preparation error. Successful live generation still needs
 verification. See the [dated test log](../../../app/TESTLOGG.md) for the
 observations, code-based inference and evidence limits.
+
+## Successful live Gemini demo — 18 November 2026
+
+The user reran the three-page demo with Gemini enabled after the Redis
+reservation counter had been reset to zero. The production app generated and
+displayed study resources in the browser. The user reported that the demo
+worked end to end and checked the source links for the generated summaries,
+concepts, flashcards and quiz items.
+
+This result is stronger than the earlier 503 test: the browser view showed
+that live generation completed and that all four resource types were available.
+The available screenshots establish the generated browser state, while the
+source-page and end-to-end observations beyond the screenshot state come from
+the user's report. The test did not independently verify every provider
+response, the exact Redis reservation, or actual Gemini charges.
+
+The successful run does not make provider availability permanent. Redis
+budget limits and request allowances remain enforced, and future live
+generation should continue to be tested after configuration or provider
+changes. See the [dated test log](../../../app/TESTLOGG.md) for the evidence
+scope and remaining verification limits.

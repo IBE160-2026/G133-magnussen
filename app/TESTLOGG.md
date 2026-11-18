@@ -163,3 +163,27 @@ the reserved amount, or verify the contents of rendered source pages.
 Live generation remains unverified as a successful end-to-end workflow.
 A later test must check all four resource types and their cited pages.
 The stored-resource demo remains available with Gemini disabled.
+
+## Successful live Gemini demo, 18 November 2026
+
+Evidence is the user's screenshot of the production app after the live
+Gemini retest. The screenshot and the user-reported browser check are distinct
+sources: the screenshot establishes what was visible, while the user's checks
+establish interactions and source-page behaviour that are not reproducible
+from the image alone.
+
+| Check | Observation and evidence |
+| --- | --- |
+| PDF setup | The user selected the three-page demo PDF with Gemini enabled. |
+| Live generation screenshot | The production app showed generated study resources rather than the earlier 503 service-unavailable message. |
+| Resource categories | The user reported that summaries, key concepts, flashcards and quiz questions were available. This is user-reported evidence, not a separate automated check. |
+| Source links | The user reported that the generated resources' cited PDF pages could be opened. The repository does not contain screenshots that independently verify every cited page. |
+| Redis and provider accounting | The active Redis reservation counter had previously been reset to zero by the user. Reserved amounts and provider charges were not independently measured. |
+
+This test establishes that the deployed app completed a live Gemini
+generation and displayed four resource types in at least one successful
+browser run. It does not establish that every source reference is correct,
+that every provider response was free of later or hidden errors, or that
+actual Gemini charges match the application reservation. Provider availability
+is not permanently resolved, and the keyless stored-resource demo remains
+available if live generation is unavailable.
