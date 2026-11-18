@@ -19,8 +19,16 @@ return {1, 7-used}
 `;
 
 async function reserve(session) {
-  const url = process.env.UPSTASH_REDIS_REST_URL;
-  const token = process.env.UPSTASH_REDIS_REST_TOKEN;
+  let url = process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL;
+  let token = process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN;
+  if (Boolean(process.env.UPSTASH_REDIS_REST_URL) !== Boolean(process.env.UPSTASH_REDIS_REST_TOKEN)) {
+    if (process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN) {
+      url = process.env.KV_REST_API_URL;
+      token = process.env.KV_REST_API_TOKEN;
+    } else {
+      return { summaryStatus: 'KI-generering er ikke konfigurert. Prøv demo-PDF-en uten Gemini.' };
+    }
+  }
   const budgetId = process.env.GEMINI_BUDGET_ID;
   const budget = Number(process.env.GEMINI_BUDGET_MICRO_USD);
   const cost = Number(process.env.GEMINI_MAX_REQUEST_MICRO_USD);
