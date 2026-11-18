@@ -39,3 +39,27 @@ extracted text to the API and requires Gemini and durable Redis usage counters.
 The published keyless demo uses stored resources. Gemini configuration,
 Redis integration tests and verification of the per-request cost bound remain
 open.
+
+## Live generation feedback — 18 November 2026
+
+The deployed app extracted text from the user's 15-page PDF, but live
+generation failed. Vercel recorded a 60.3-second response and external calls
+to both Upstash and Gemini. Google AI Studio subsequently showed two
+`503 ServiceUnavailable` errors, and the user confirmed use of the Free Tier.
+The available screenshots do not map each Google error to an individual
+Vercel invocation.
+
+Commit `ef6390f` raised the Gemini request timeout from 60 to 100 seconds
+within Vercel's 120-second function limit and hid Quiz navigation when no
+questions were returned.
+Simulated tests and the build passed according to the implementation report.
+A later attempt with the three-page demo was blocked by the application's
+cost reservation ceiling. The configured 2 USD reservation per attempt
+exhausted the internal 4 USD allowance before the retry. The available
+screenshots do not show the exact prior Redis reservation history. These
+reservations do not establish actual provider charges.
+
+This user test exposed provider availability and reservation-accounting
+issues. Successful live generation and source checking remain open. The
+keyless demo is still available. See the dated evidence and remaining checks
+in the [test log](../../../app/TESTLOGG.md).
