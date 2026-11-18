@@ -3,6 +3,9 @@
   "private": true,
   "type": "module",
   "engines": { "node": "24.x" },
-  "scripts": { "build": "node scripts/build-web.mjs" },
+  "scripts": {
+    "build": "node scripts/build-web.mjs",
+    "test": "node --test tests/api-study.test.mjs app/gemini-summary.test.mjs app/safe-error-category.test.mjs"
+  },
   "dependencies": { "pdfjs-dist": "6.5.438" }
 }

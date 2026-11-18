@@ -1,4 +1,5 @@
 import { generateSummary } from './gemini-summary.mjs';
+import { safeErrorCategory } from './safe-error-category.mjs';
 import { createHash } from 'node:crypto';
 import { createServer } from 'node:http';
 import { execFile } from 'node:child_process';
@@ -62,7 +63,7 @@ async function extract(request) {
     try {
       return { pages, ...await generateSummary(pages, apiKey) };
     } catch (error) {
-      console.error('Sammendrag feilet:', error.cause?.code || error.name);
+      console.error('Sammendrag feilet:', safeErrorCategory(error));
       return { pages, summaryStatus: 'KI-sammendraget kunne ikke lages. Du kan fortsatt åpne PDF-sidene eller prøve på nytt.' };
     }
   });

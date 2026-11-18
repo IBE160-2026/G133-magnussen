@@ -315,7 +315,7 @@
       ? [questions.slice(0, roundSize), questions.slice(roundSize)]
       : questions.length ? [questions] : [];
     quizRound = 0;
-    $('show-quiz').hidden = false;
+    $('show-quiz').hidden = !quizRounds.length;
     $('resources').hidden = false;
     $('show-flashcards').hidden = !flashcards;
     $('show-summary').hidden = !summary;
