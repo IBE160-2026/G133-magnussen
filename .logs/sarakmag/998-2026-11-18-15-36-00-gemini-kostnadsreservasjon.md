@@ -25,3 +25,28 @@ Fullførte tokenbasert Gemini-kostnadsreservasjon i en separat worktree fra oppd
 ### Åpne punkter
 
 Ingen.
+
+## 2026-11-18 kl. 19:19 — sarakmag
+
+### Oppgave
+
+Undersøkte feilen i Gemini `countTokens`-forespørselen, la inn det påkrevde modellnavnet i den innebygde genereringsforespørselen og la til trygg diagnostikk og simulert testdekning. Ingen ekte Gemini-kall ble gjort.
+
+### Plan
+
+- Verifisere `CountTokensRequest` og `GenerateContentRequest` mot Googles offisielle v1beta REST Discovery-schema.
+- Beholde systeminstruksjon, innhold og svarskjema i tellingen; logge bare status og allowlistet feilkategori.
+- Teste request-struktur og feilbaner med simulerte svar, bygge og pushe en separat gren.
+- Spesifikasjon: [Gemini countTokens-modell](../../.docs/implementation-artifacts/spec-gemini-count-tokens-model.md).
+
+### Resultat
+
+- Discovery-schemaet bekrefter at `generateContentRequest.model` er påkrevd og har formatet `models/{model}`; den innpakkede forespørselen teller også systeminstruksjoner.
+- `countSummaryTokens` sender nå `model: "models/" + prepared.model`, beholder øvrige payload-felter og bevarer HTTP-status på feil.
+- Count-feil logger kun HTTP-status eller `none` og en allowlistet feilkategori. Tester dekker eksakt request-struktur, HTTP 500, ugyldig JSON, ugyldig telling, timeout, fail-closed og at sensitive data ikke havner i loggene.
+- `npm test`: 18 bestått. Bygg, syntakskontroller og `git diff --check` bestått. Ingen ekte Gemini-kall ble gjort.
+- Commit `85fbb99` ble pushet til `fix/gemini-count-tokens-model`.
+
+### Åpne punkter
+
+Ingen.
