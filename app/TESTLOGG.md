@@ -203,3 +203,15 @@ the eight-request and total-budget gates, insufficient Vercel execution time,
 repeated 503 responses, and Norwegian user-facing status. Each generation
 attempt uses the same prepared request and a separate cost reservation. All
 Gemini and Redis responses were simulated.
+
+## User-reported test with `Muskler i kroppen.pdf` after PR #27, 19 November 2026
+
+After PR #27 was merged, the project owner tested the application with
+`Muskler i kroppen.pdf`. The owner reported that 13 of 15 pages had usable
+extracted text; pages 7 and 15 contained little text. The application
+reported that Gemini was still unavailable after one automatic retry and
+that six session requests remained.
+
+This records the user's test and the application's displayed status only.
+Successful live generation of study resources from this PDF remains
+unverified. No new Gemini request was made while recording this result.

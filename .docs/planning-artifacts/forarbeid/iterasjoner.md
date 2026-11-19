@@ -115,3 +115,16 @@ limit or the Vercel execution budget prevents it. Automated verification
 uses simulated Gemini and Redis responses only; this implementation did
 not make a live provider request. See the [test log](../../../app/TESTLOGG.md)
 for the test scope and evidence limits.
+
+## User-reported `Muskler i kroppen.pdf` test after PR #27 — 19 November 2026
+
+After PR #27 was merged, the project owner tested the application with
+`Muskler i kroppen.pdf`. The owner reported 13 of 15 pages with usable
+extracted text and little text on pages 7 and 15. The application showed
+that Gemini remained unavailable after one automatic retry and that six
+session requests remained.
+
+This is a user-reported application test, not evidence of successful live
+generation. Generation of study resources from this PDF remains
+unverified. No new Gemini request was made during this documentation update;
+see the [test log](../../../app/TESTLOGG.md).
