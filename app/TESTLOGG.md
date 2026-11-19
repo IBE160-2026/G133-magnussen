@@ -215,3 +215,20 @@ that six session requests remained.
 This records the user's test and the application's displayed status only.
 Successful live generation of study resources from this PDF remains
 unverified. No new Gemini request was made while recording this result.
+
+## User-reported minimal Gemini API control request, 19 November 2026
+
+The project owner reported one minimal `generateContent` control request
+from a local Terminal using model `gemini-3.8-flash`. The request contained
+only the text `Svar med OK`, with no PDF, system instruction, response
+schema, or retry. It returned HTTP 503 with Google's error code `503` and
+status `UNAVAILABLE`.
+
+The owner reported using the same API key as Vercel, but equivalence of the
+authentication used by both environments was not independently verified.
+The same model had previously responded in AI Studio; whether that test
+used the same authentication is also unverified. This control request shows
+that a 503 was observed without the application code or a PDF in this
+request, but does not establish the root cause. The root cause remains
+unknown. No new API request was made while recording this report; no key or
+raw provider error message is recorded here.
