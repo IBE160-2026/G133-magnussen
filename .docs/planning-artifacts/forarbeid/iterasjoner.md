@@ -101,3 +101,17 @@ The first successful live demo follows several failed attempts. The
 available evidence does not isolate a single change as the cause of
 success. Live testing with the user's own PDF and representative supported
 input sizes remains open.
+
+## Reported Gemini 3.6 Flash HTTP 503 — 19 November 2026
+
+The project owner reported another HTTP 503 from Gemini 3.6 Flash. The
+operation and provider response details were not independently captured.
+This report motivated bounded retry handling in the Vercel study API.
+
+The API now allows one retry per request after a one-second delay. Every
+generation attempt first obtains a separate atomic cost reservation and
+consumes one of the eight session requests. The retry stops when either
+limit or the Vercel execution budget prevents it. Automated verification
+uses simulated Gemini and Redis responses only; this implementation did
+not make a live provider request. See the [test log](../../../app/TESTLOGG.md)
+for the test scope and evidence limits.

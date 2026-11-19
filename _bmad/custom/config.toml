@@ -3,5 +3,8 @@
 # Tables deep-merge over base config; keyed entries merge by key.
 # Example: override an agent descriptor, or add a new agent.
 #
+[core]
+communication_language = "Norwegian"
+
 # [agents.bmad-agent-pm]
 # description = "Prefers short, bulleted PRDs over narrative drafts."

@@ -189,3 +189,17 @@ The result establishes a working live demo for this attempt. It does not
 establish that earlier provider availability problems are permanently
 resolved. A successful live run with the user's own PDF, representative
 maximum-size input and complete source checks remain to be recorded.
+
+## Reported Gemini 3.6 Flash HTTP 503 and simulated retry checks, 19 November 2026
+
+The project owner reported another HTTP 503 from Gemini 3.6 Flash on this
+date. This is a user-provided observation; the exact operation, request ID
+and provider response body were not independently recorded. No live Gemini
+request was made during the retry implementation.
+
+Simulated tests cover one retry at most across token counting and generation,
+the one-second delay, a second atomic reservation before retry generation,
+the eight-request and total-budget gates, insufficient Vercel execution time,
+repeated 503 responses, and Norwegian user-facing status. Each generation
+attempt uses the same prepared request and a separate cost reservation. All
+Gemini and Redis responses were simulated.

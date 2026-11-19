@@ -59,18 +59,27 @@ async function withMockedEnvironment(run) {
   }
 }
 
-test('counts the complete payload, reserves first, and handles simulated 503 safely', async () => {
+test('counts the complete payload and atomically reserves before the 503 retry', async () => {
   await withMockedEnvironment(async () => {
+    let now = 0;
+    const timeoutsBySignal = new WeakMap();
+    AbortSignal.timeout = milliseconds => {
+      const signal = new AbortController().signal;
+      timeoutsBySignal.set(signal, milliseconds);
+      return signal;
+    };
     const events = [];
     let countBody;
-    let generationBody;
-    let redisBody;
+    const generationBodies = [];
+    const generationTimeouts = [];
+    const redisBodies = [];
     globalThis.fetch = async (url, options = {}) => {
       const address = String(url);
       if (address === 'https://redis.example.test') {
         events.push('redis');
-        redisBody = JSON.parse(options.body);
-        return new Response(JSON.stringify({ result: [1, 7] }), { status: 200 });
+        redisBodies.push(JSON.parse(options.body));
+        const remaining = redisBodies.length === 1 ? 7 : 6;
+        return new Response(JSON.stringify({ result: [1, remaining] }), { status: 200 });
       }
       if (address.includes(':countTokens')) {
         events.push('count');
@@ -79,33 +88,63 @@ test('counts the complete payload, reserves first, and handles simulated 503 saf
       }
       if (address.includes(':generateContent')) {
         events.push('generate');
-        generationBody = JSON.parse(options.body);
+        generationTimeouts.push(timeoutsBySignal.get(options.signal));
+        generationBodies.push(JSON.parse(options.body));
+        if (generationBodies.length === 1) {
+          now = 80_000;
+          return new Response(JSON.stringify({
+            error: {
+              code: 503,
+              message: `secret-test-api-key ${pdfText} generated answer must not be logged`,
+            },
+          }), { status: 503 });
+        }
+        const item = { title: 'Study item', text: 'Short explanation.', sources: [{ page: 1, excerpt: 'hamstring supports movement' }] };
         return new Response(JSON.stringify({
-          error: {
-            code: 503,
-            message: `secret-test-api-key ${pdfText} generated answer must not be logged`,
-          },
-        }), { status: 503 });
+          candidates: [{ content: { parts: [{ text: JSON.stringify({
+            summary: [item],
+            concepts: [item],
+            flashcards: [item],
+            quiz: [],
+          }) }] } }],
+        }), { status: 200 });
       }
       throw new Error('Unexpected network request');
     };
     const logs = [];
     console.error = (...values) => logs.push(values.join(' '));
     const res = responseRecorder();
-    await handler(requestFor(), res);
+    await handler(requestFor(), res, {
+      now: () => now,
+      sleep: async milliseconds => {
+        events.push('wait');
+        assert.equal(milliseconds, 1_000);
+        now += milliseconds;
+      },
+    });
 
-    assert.deepEqual(events, ['count', 'redis', 'generate']);
+    assert.deepEqual(events, ['count', 'redis', 'generate', 'wait', 'redis', 'generate']);
     assert.deepEqual(countBody.generateContentRequest, {
-      ...generationBody,
+      ...generationBodies[0],
       model: 'models/gemini-3.6-flash',
     });
-    assert.ok(generationBody.systemInstruction);
-    assert.ok(generationBody.contents);
-    assert.ok(generationBody.generationConfig.responseSchema);
-    assert.equal(generationBody.generationConfig.maxOutputTokens, 8192);
-    assert.equal(redisBody[5], '62940');
-    assert.match(res.body.summaryStatus, /midlertidig utilgjengelig/i);
-    assert.match(res.body.summaryStatus, /fortsatt åpne PDF-sidene/i);
+    assert.deepEqual(generationBodies[1], generationBodies[0]);
+    assert.deepEqual(generationTimeouts, [100_000, 29_000]);
+    assert.ok(generationBodies[0].systemInstruction);
+    assert.ok(generationBodies[0].contents);
+    assert.ok(generationBodies[0].generationConfig.responseSchema);
+    assert.equal(generationBodies[0].generationConfig.maxOutputTokens, 8192);
+    assert.equal(redisBodies.length, 2);
+    for (const redisBody of redisBodies) {
+      assert.equal(redisBody[5], '62940');
+      assert.equal(redisBody[2], 2);
+      assert.deepEqual(redisBody.slice(3, 5), [
+        'study:session:test-budget:' + session,
+        'study:budget:test-budget',
+      ]);
+    }
+    assert.equal(res.body.remainingRequests, 6);
+    assert.match(res.body.summaryStatus, /omforsøket lyktes/i);
     assert.deepEqual(logs, [
       'Gemini request failed: model=gemini-3.6-flash operation=generateContent ' +
       'httpStatus=503 googleErrorCode=503 category=Error',
@@ -113,6 +152,336 @@ test('counts the complete payload, reserves first, and handles simulated 503 saf
     assert.equal(logs.join(' ').includes('secret-test-api-key'), false);
     assert.equal(logs.join(' ').includes(pdfText), false);
     assert.equal(logs.join(' ').includes('generated answer'), false);
+  });
+});
+
+test('retries one simulated countTokens 503 and reports recovery to the user', async () => {
+  await withMockedEnvironment(async () => {
+    let now = 0;
+    const events = [];
+    let countCalls = 0;
+    globalThis.fetch = async url => {
+      const address = String(url);
+      if (address.includes(':countTokens')) {
+        countCalls += 1;
+        events.push('count');
+        if (countCalls === 1) return new Response(JSON.stringify({ error: { code: 503 } }), { status: 503 });
+        return new Response(JSON.stringify({ totalTokens: 100 }), { status: 200 });
+      }
+      if (address === 'https://redis.example.test') {
+        events.push('redis');
+        return new Response(JSON.stringify({ result: [1, 7] }), { status: 200 });
+      }
+      if (address.includes(':generateContent')) {
+        events.push('generate');
+        const item = { title: 'Study item', text: 'Short explanation.', sources: [{ page: 1, excerpt: 'hamstring supports movement' }] };
+        return new Response(JSON.stringify({
+          candidates: [{ content: { parts: [{ text: JSON.stringify({
+            summary: [item], concepts: [item], flashcards: [item], quiz: [],
+          }) }] } }],
+        }), { status: 200 });
+      }
+      throw new Error('Unexpected network request');
+    };
+    const logs = [];
+    console.error = (...values) => logs.push(values.join(' '));
+    const res = responseRecorder();
+    await handler(requestFor(), res, {
+      now: () => now,
+      sleep: async milliseconds => {
+        events.push('wait');
+        now += milliseconds;
+      },
+    });
+
+    assert.deepEqual(events, ['count', 'wait', 'count', 'redis', 'generate']);
+    assert.equal(res.body.summaryStatus, 'Gemini var midlertidig utilgjengelig under forberedelsen, men omforsøket lyktes.');
+    assert.deepEqual(logs, [
+      'Gemini request failed: model=gemini-3.6-flash operation=countTokens ' +
+      'httpStatus=503 googleErrorCode=503 category=Error',
+    ]);
+  });
+});
+
+test('stops after the single countTokens retry also returns 503', async () => {
+  await withMockedEnvironment(async () => {
+    let now = 0;
+    let countCalls = 0;
+    let redisOrGenerationCalled = false;
+    const logs = [];
+    console.error = (...values) => logs.push(values.join(' '));
+    globalThis.fetch = async url => {
+      if (String(url).includes(':countTokens')) {
+        countCalls += 1;
+        return new Response(JSON.stringify({ error: { code: 503 } }), { status: 503 });
+      }
+      redisOrGenerationCalled = true;
+      throw new Error('unexpected network call');
+    };
+    const res = responseRecorder();
+    await handler(requestFor(), res, {
+      now: () => now,
+      sleep: async milliseconds => { now += milliseconds; },
+    });
+
+    assert.equal(countCalls, 2);
+    assert.equal(redisOrGenerationCalled, false);
+    assert.match(res.body.summaryStatus, /fortsatt midlertidig utilgjengelig etter ett omforsøk/i);
+    assert.equal(res.body.summaryStatus.includes('Ingen kostnad er reservert'), true);
+    assert.equal(logs.length, 2);
+    assert.equal(logs.every(line => line.includes('operation=countTokens') && line.includes('httpStatus=503')), true);
+  });
+});
+
+test('skips the countTokens retry when execution time is insufficient', async () => {
+  await withMockedEnvironment(async () => {
+    let now = 0;
+    let countCalls = 0;
+    let redisOrGenerationCalled = false;
+    let waited = false;
+    globalThis.fetch = async url => {
+      if (String(url).includes(':countTokens')) {
+        countCalls += 1;
+        now = 104_001;
+        return new Response(JSON.stringify({ error: { code: 503 } }), { status: 503 });
+      }
+      redisOrGenerationCalled = true;
+      throw new Error('unexpected network call');
+    };
+    const res = responseRecorder();
+    await handler(requestFor(), res, {
+      now: () => now,
+      sleep: async () => { waited = true; },
+    });
+
+    assert.equal(countCalls, 1);
+    assert.equal(waited, false);
+    assert.equal(redisOrGenerationCalled, false);
+    assert.match(res.body.summaryStatus, /tidsgrensen/i);
+  });
+});
+
+test('uses the single retry for countTokens and does not retry a later generation 503', async () => {
+  await withMockedEnvironment(async () => {
+    let now = 0;
+    let countCalls = 0;
+    let generationCalls = 0;
+    let reservationCalls = 0;
+    globalThis.fetch = async url => {
+      const address = String(url);
+      if (address.includes(':countTokens')) {
+        countCalls += 1;
+        if (countCalls === 1) return new Response(JSON.stringify({ error: { code: 503 } }), { status: 503 });
+        return new Response(JSON.stringify({ totalTokens: 100 }), { status: 200 });
+      }
+      if (address === 'https://redis.example.test') {
+        reservationCalls += 1;
+        return new Response(JSON.stringify({ result: [1, 7] }), { status: 200 });
+      }
+      if (address.includes(':generateContent')) {
+        generationCalls += 1;
+        return new Response(JSON.stringify({ error: { code: 503 } }), { status: 503 });
+      }
+      throw new Error('Unexpected network request');
+    };
+    const res = responseRecorder();
+    await handler(requestFor(), res, {
+      now: () => now,
+      sleep: async milliseconds => { now += milliseconds; },
+    });
+
+    assert.equal(countCalls, 2);
+    assert.equal(reservationCalls, 1);
+    assert.equal(generationCalls, 1);
+    assert.match(res.body.summaryStatus, /allerede brukt/i);
+  });
+});
+
+test('stops after one generation retry when Gemini returns a second simulated 503', async () => {
+  await withMockedEnvironment(async () => {
+    let generationCalls = 0;
+    let reservationCalls = 0;
+    globalThis.fetch = async url => {
+      const address = String(url);
+      if (address.includes(':countTokens')) return new Response(JSON.stringify({ totalTokens: 100 }), { status: 200 });
+      if (address === 'https://redis.example.test') {
+        reservationCalls += 1;
+        return new Response(JSON.stringify({ result: [1, 8 - reservationCalls] }), { status: 200 });
+      }
+      if (address.includes(':generateContent')) {
+        generationCalls += 1;
+        return new Response(JSON.stringify({ error: { code: 503 } }), { status: 503 });
+      }
+      throw new Error('Unexpected network request');
+    };
+    const res = responseRecorder();
+    await handler(requestFor(), res, { sleep: async () => {} });
+
+    assert.equal(generationCalls, 2);
+    assert.equal(reservationCalls, 2);
+    assert.match(res.body.summaryStatus, /etter ett omforsøk/i);
+  });
+});
+
+test('does not send a generation retry when its atomic reservation is blocked', async t => {
+  for (const [name, redisResult, expected] of [
+    ['request limit', [0, 0], /åtte KI-forespørslene/i],
+    ['budget', [-1, 6], /kostnadstak/i],
+  ]) {
+    await t.test(name, async () => {
+      await withMockedEnvironment(async () => {
+        let generationCalls = 0;
+        let reservationCalls = 0;
+        globalThis.fetch = async url => {
+          const address = String(url);
+          if (address.includes(':countTokens')) return new Response(JSON.stringify({ totalTokens: 100 }), { status: 200 });
+          if (address === 'https://redis.example.test') {
+            reservationCalls += 1;
+            const result = reservationCalls === 1 ? [1, 7] : redisResult;
+            return new Response(JSON.stringify({ result }), { status: 200 });
+          }
+          if (address.includes(':generateContent')) {
+            generationCalls += 1;
+            return new Response(JSON.stringify({ error: { code: 503 } }), { status: 503 });
+          }
+          throw new Error('Unexpected network request');
+        };
+        const res = responseRecorder();
+        await handler(requestFor(), res, { sleep: async () => {} });
+
+        assert.equal(reservationCalls, 2);
+        assert.equal(generationCalls, 1);
+        assert.match(res.body.summaryStatus, expected);
+        assert.match(res.body.summaryStatus, /omforsøket ble stoppet/i);
+      });
+    });
+  }
+});
+
+test('does not send a generation retry when its second reservation fails', async () => {
+  await withMockedEnvironment(async () => {
+    let generationCalls = 0;
+    let reservationCalls = 0;
+    const logs = [];
+    console.error = (...values) => logs.push(values.join(' '));
+    globalThis.fetch = async url => {
+      const address = String(url);
+      if (address.includes(':countTokens')) return new Response(JSON.stringify({ totalTokens: 100 }), { status: 200 });
+      if (address === 'https://redis.example.test') {
+        reservationCalls += 1;
+        if (reservationCalls === 2) return new Response('unavailable', { status: 503 });
+        return new Response(JSON.stringify({ result: [1, 7] }), { status: 200 });
+      }
+      if (address.includes(':generateContent')) {
+        generationCalls += 1;
+        return new Response(JSON.stringify({ error: { code: 503 } }), { status: 503 });
+      }
+      throw new Error('Unexpected network request');
+    };
+    const res = responseRecorder();
+    await handler(requestFor(), res, { sleep: async () => {} });
+
+    assert.equal(reservationCalls, 2);
+    assert.equal(generationCalls, 1);
+    assert.match(res.body.summaryStatus, /omforsøket kunne ikke reserveres trygt/i);
+    assert.deepEqual(logs, [
+      'Gemini request failed: model=gemini-3.6-flash operation=generateContent ' +
+      'httpStatus=503 googleErrorCode=503 category=Error',
+      'Study retry reservation failed: Error',
+    ]);
+  });
+});
+
+test('does not send initial generation when reservation leaves insufficient execution time', async () => {
+  await withMockedEnvironment(async () => {
+    let now = 0;
+    let generationCalls = 0;
+    let reservationCalls = 0;
+    globalThis.fetch = async url => {
+      const address = String(url);
+      if (address.includes(':countTokens')) return new Response(JSON.stringify({ totalTokens: 100 }), { status: 200 });
+      if (address === 'https://redis.example.test') {
+        reservationCalls += 1;
+        now = 106_000;
+        return new Response(JSON.stringify({ result: [1, 7] }), { status: 200 });
+      }
+      if (address.includes(':generateContent')) {
+        generationCalls += 1;
+        throw new Error('Generation must not be sent');
+      }
+      throw new Error('Unexpected network request');
+    };
+    const res = responseRecorder();
+    await handler(requestFor(), res, { now: () => now });
+
+    assert.equal(reservationCalls, 1);
+    assert.equal(generationCalls, 0);
+    assert.match(res.body.summaryStatus, /kostnaden er reservert.*Vercels tidsgrense/i);
+  });
+});
+
+test('does not send retry generation when its reservation leaves insufficient execution time', async () => {
+  await withMockedEnvironment(async () => {
+    let now = 0;
+    let generationCalls = 0;
+    let reservationCalls = 0;
+    globalThis.fetch = async url => {
+      const address = String(url);
+      if (address.includes(':countTokens')) return new Response(JSON.stringify({ totalTokens: 100 }), { status: 200 });
+      if (address === 'https://redis.example.test') {
+        reservationCalls += 1;
+        if (reservationCalls === 2) now = 105_001;
+        return new Response(JSON.stringify({ result: [1, 8 - reservationCalls] }), { status: 200 });
+      }
+      if (address.includes(':generateContent')) {
+        generationCalls += 1;
+        now = 80_000;
+        return new Response(JSON.stringify({ error: { code: 503 } }), { status: 503 });
+      }
+      throw new Error('Unexpected network request');
+    };
+    const res = responseRecorder();
+    await handler(requestFor(), res, {
+      now: () => now,
+      sleep: async milliseconds => { now += milliseconds; },
+    });
+
+    assert.equal(reservationCalls, 2);
+    assert.equal(generationCalls, 1);
+    assert.match(res.body.summaryStatus, /omforsøket er reservert, men Vercels tidsgrense hindret/i);
+  });
+});
+
+test('skips the generation retry when Vercel execution time is insufficient', async () => {
+  await withMockedEnvironment(async () => {
+    let now = 0;
+    let generationCalls = 0;
+    let reservationCalls = 0;
+    globalThis.fetch = async url => {
+      const address = String(url);
+      if (address.includes(':countTokens')) return new Response(JSON.stringify({ totalTokens: 100 }), { status: 200 });
+      if (address === 'https://redis.example.test') {
+        reservationCalls += 1;
+        return new Response(JSON.stringify({ result: [1, 7] }), { status: 200 });
+      }
+      if (address.includes(':generateContent')) {
+        generationCalls += 1;
+        now = 95_000;
+        return new Response(JSON.stringify({ error: { code: 503 } }), { status: 503 });
+      }
+      throw new Error('Unexpected network request');
+    };
+    let waited = false;
+    const res = responseRecorder();
+    await handler(requestFor(), res, {
+      now: () => now,
+      sleep: async () => { waited = true; },
+    });
+
+    assert.equal(waited, false);
+    assert.equal(reservationCalls, 1);
+    assert.equal(generationCalls, 1);
+    assert.match(res.body.summaryStatus, /Vercels tidsgrense/i);
   });
 });
 
@@ -297,12 +666,18 @@ test('eight-request limit prevents generation', async () => {
 test('logs safe Gemini context when generation throws', async () => {
   await withMockedEnvironment(async () => {
     const logs = [];
+    let generationCalls = 0;
+    let reservationCalls = 0;
     console.error = (...values) => logs.push(values.join(' '));
     globalThis.fetch = async (url) => {
       const address = String(url);
       if (address.includes(':countTokens')) return new Response(JSON.stringify({ totalTokens: 100 }), { status: 200 });
-      if (address === 'https://redis.example.test') return new Response(JSON.stringify({ result: [1, 7] }), { status: 200 });
+      if (address === 'https://redis.example.test') {
+        reservationCalls += 1;
+        return new Response(JSON.stringify({ result: [1, 7] }), { status: 200 });
+      }
       if (address.includes(':generateContent')) {
+        generationCalls += 1;
         const error = new Error('secret-test-api-key confidential extracted PDF page text');
         error.name = 'TimeoutError';
         throw error;
@@ -311,6 +686,8 @@ test('logs safe Gemini context when generation throws', async () => {
     };
     const res = responseRecorder();
     await handler(requestFor(), res);
+    assert.equal(generationCalls, 1);
+    assert.equal(reservationCalls, 1);
     assert.match(res.body.summaryStatus, /mislyktes/i);
     assert.deepEqual(logs, [
       'Gemini request failed: model=gemini-3.6-flash operation=generateContent ' +

@@ -77,7 +77,10 @@ export function prepareSummaryRequest(pages, model = process.env.GEMINI_MODEL ||
   };
 }
 
-export async function countSummaryTokens(prepared, apiKey, request = fetch) {
+export async function countSummaryTokens(prepared, apiKey, request = fetch, timeoutMs = 5_000) {
+  if (!Number.isSafeInteger(timeoutMs) || timeoutMs < 1 || timeoutMs > 5_000) {
+    throw new RangeError('Invalid Gemini token count timeout');
+  }
   const operation = 'countTokens';
   let response;
   try {
@@ -86,7 +89,7 @@ export async function countSummaryTokens(prepared, apiKey, request = fetch) {
       {
         method: 'POST',
         headers: { 'x-goog-api-key': apiKey, 'Content-Type': 'application/json' },
-        signal: AbortSignal.timeout(5_000),
+        signal: AbortSignal.timeout(timeoutMs),
         body: JSON.stringify({
           generateContentRequest: {
             ...prepared.payload,
@@ -114,7 +117,16 @@ export async function countSummaryTokens(prepared, apiKey, request = fetch) {
   return data.totalTokens;
 }
 
-export async function generateSummary(pages, apiKey, request = fetch, prepared = prepareSummaryRequest(pages)) {
+export async function generateSummary(
+  pages,
+  apiKey,
+  request = fetch,
+  prepared = prepareSummaryRequest(pages),
+  timeoutMs = 100_000,
+) {
+  if (!Number.isSafeInteger(timeoutMs) || timeoutMs < 1 || timeoutMs > 100_000) {
+    throw new RangeError('Invalid Gemini generation timeout');
+  }
   const readable = pages.filter(page => page.usable);
   const operation = 'generateContent';
   let response;
@@ -124,7 +136,7 @@ export async function generateSummary(pages, apiKey, request = fetch, prepared =
       {
         method: 'POST',
         headers: { 'x-goog-api-key': apiKey, 'Content-Type': 'application/json' },
-        signal: AbortSignal.timeout(100_000),
+        signal: AbortSignal.timeout(timeoutMs),
         body: JSON.stringify(prepared.payload),
       },
     );

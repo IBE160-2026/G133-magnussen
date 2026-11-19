@@ -7,6 +7,13 @@ import { calculateMaximumCostMicroUsd, isSupportedFlashModel } from '../app/gemi
 const demo = JSON.parse(await readFile(new URL('../app/demo-ressurser.json', import.meta.url), 'utf8'));
 const demoHash = createHash('sha256')
   .update(await readFile(new URL('../app/demo-anatomi-ai-study-buddy.pdf', import.meta.url))).digest('hex');
+const FUNCTION_TIMEOUT_MS = 120_000;
+const FUNCTION_SAFETY_MARGIN_MS = 10_000;
+const RESERVATION_TIMEOUT_MS = 10_000;
+const COUNT_TIMEOUT_MS = 5_000;
+const GENERATION_TIMEOUT_MS = 100_000;
+const MIN_GENERATION_TIMEOUT_MS = 5_000;
+const RETRY_DELAY_MS = 1_000;
 
 // Redis executes both reservations atomically across concurrent function instances.
 const reserveScript = `
@@ -19,6 +26,10 @@ if used == 0 then redis.call('EXPIRE', KEYS[1], 86400) end
 redis.call('INCRBY', KEYS[2], ARGV[1])
 return {1, 7-used}
 `;
+
+function wait(milliseconds) {
+  return new Promise(resolve => setTimeout(resolve, milliseconds));
+}
 
 async function reserve(session, cost) {
   let url = process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL;
@@ -43,7 +54,7 @@ async function reserve(session, cost) {
     body: JSON.stringify(['EVAL', reserveScript, 2,
       'study:session:' + budgetId + ':' + session, 'study:budget:' + budgetId,
       String(cost), String(budget)]),
-    signal: AbortSignal.timeout(10_000),
+    signal: AbortSignal.timeout(RESERVATION_TIMEOUT_MS),
   });
   if (!response.ok) throw Error('Usage reservation failed');
   const data = await response.json();
@@ -57,7 +68,12 @@ async function reserve(session, cost) {
   return { remainingRequests };
 }
 
-export default async function handler(req, res) {
+export default async function handler(req, res, dependencies = {}) {
+  const now = dependencies.now || (() => performance.now());
+  const sleep = dependencies.sleep || wait;
+  const startedAt = now();
+  const remainingExecutionMs = () =>
+    Math.floor(FUNCTION_TIMEOUT_MS - FUNCTION_SAFETY_MARGIN_MS - (now() - startedAt));
   res.setHeader('Cache-Control', 'no-store');
   if (req.method !== 'POST') return res.status(405).json({ error: 'Bruk POST.' });
   const expectedOrigin = process.env.APP_ORIGIN || 'https://' + req.headers.host;
@@ -94,6 +110,8 @@ export default async function handler(req, res) {
     }
     let reservation;
     try {
+      let retryUsed = false;
+      let retrySucceeded = false;
       const prepared = prepareSummaryRequest(pages);
       if (!isSupportedFlashModel(prepared.model)) {
         return res.status(200).json({
@@ -106,10 +124,39 @@ export default async function handler(req, res) {
         inputTokens = await countSummaryTokens(prepared, key);
       } catch (error) {
         logGeminiFailure(error);
-        return res.status(200).json({
-          pages,
-          summaryStatus: 'KI-forespørselen kunne ikke forberedes. Ingen kostnad er blitt reservert.',
-        });
+        if (error?.status !== 503) {
+          return res.status(200).json({
+            pages,
+            summaryStatus: 'KI-forespørselen kunne ikke forberedes. Ingen kostnad er blitt reservert.',
+          });
+        }
+        if (remainingExecutionMs() < RETRY_DELAY_MS + COUNT_TIMEOUT_MS) {
+          return res.status(200).json({
+            pages,
+            summaryStatus: 'Gemini var midlertidig utilgjengelig. Omforsøket ble stoppet for å holde seg innenfor tidsgrensen. Ingen kostnad er reservert.',
+          });
+        }
+        retryUsed = true;
+        await sleep(RETRY_DELAY_MS);
+        const retryCountTimeoutMs = Math.min(COUNT_TIMEOUT_MS, remainingExecutionMs());
+        if (retryCountTimeoutMs < COUNT_TIMEOUT_MS) {
+          return res.status(200).json({
+            pages,
+            summaryStatus: 'Gemini var midlertidig utilgjengelig. Omforsøket ble stoppet for å holde seg innenfor tidsgrensen. Ingen kostnad er reservert.',
+          });
+        }
+        try {
+          inputTokens = await countSummaryTokens(prepared, key, fetch, retryCountTimeoutMs);
+          retrySucceeded = true;
+        } catch (retryError) {
+          logGeminiFailure(retryError);
+          return res.status(200).json({
+            pages,
+            summaryStatus: retryError?.status === 503
+              ? 'Gemini er fortsatt midlertidig utilgjengelig etter ett omforsøk. Ingen kostnad er reservert. Du kan fortsatt åpne PDF-sidene.'
+              : 'KI-forespørselen kunne ikke forberedes etter ett omforsøk. Ingen kostnad er reservert.',
+          });
+        }
       }
       let cost;
       try {
@@ -120,10 +167,99 @@ export default async function handler(req, res) {
           summaryStatus: 'KI-kostnaden kunne ikke beregnes trygt. Ingen kostnad er blitt reservert.',
         });
       }
+      if (remainingExecutionMs() < RESERVATION_TIMEOUT_MS + MIN_GENERATION_TIMEOUT_MS) {
+        return res.status(200).json({
+          pages,
+          summaryStatus: 'KI-genereringen ble stoppet for å holde seg innenfor Vercels tidsgrense. Ingen kostnad er reservert.',
+        });
+      }
       reservation = await reserve(input.session, cost);
       if (reservation.summaryStatus) return res.status(200).json({ pages, ...reservation });
-      const resources = await generateSummary(pages, key, fetch, prepared);
-      return res.status(200).json({ pages, ...reservation, ...resources });
+      const generationTimeoutMs = Math.min(GENERATION_TIMEOUT_MS, remainingExecutionMs());
+      if (generationTimeoutMs < MIN_GENERATION_TIMEOUT_MS) {
+        return res.status(200).json({
+          pages, ...reservation,
+          summaryStatus: 'Kostnaden er reservert, men KI-genereringen ble stoppet for å holde seg innenfor Vercels tidsgrense. Du kan fortsatt åpne PDF-sidene.',
+        });
+      }
+      let resources;
+      try {
+        resources = await generateSummary(pages, key, fetch, prepared, generationTimeoutMs);
+      } catch (error) {
+        logGeminiFailure(error);
+        if (error?.status !== 503) {
+          return res.status(200).json({
+            pages, ...reservation,
+            summaryStatus: 'KI-generering mislyktes. Prøv igjen senere. Du kan fortsatt åpne PDF-sidene.',
+          });
+        }
+        if (retryUsed) {
+          return res.status(200).json({
+            pages, ...reservation,
+            summaryStatus: 'Gemini svarte midlertidig med 503. Det automatiske omforsøket er allerede brukt. Du kan fortsatt åpne PDF-sidene.',
+          });
+        }
+        const retryWindowMs = RETRY_DELAY_MS + RESERVATION_TIMEOUT_MS + MIN_GENERATION_TIMEOUT_MS;
+        if (remainingExecutionMs() < retryWindowMs) {
+          return res.status(200).json({
+            pages, ...reservation,
+            summaryStatus: 'Gemini svarte midlertidig med 503. Omforsøket ble stoppet for å holde seg innenfor Vercels tidsgrense. Du kan fortsatt åpne PDF-sidene.',
+          });
+        }
+        retryUsed = true;
+        await sleep(RETRY_DELAY_MS);
+        if (remainingExecutionMs() < RESERVATION_TIMEOUT_MS + MIN_GENERATION_TIMEOUT_MS) {
+          return res.status(200).json({
+            pages, ...reservation,
+            summaryStatus: 'Gemini svarte midlertidig med 503. Omforsøket ble stoppet for å holde seg innenfor Vercels tidsgrense. Du kan fortsatt åpne PDF-sidene.',
+          });
+        }
+        let retryReservation;
+        try {
+          retryReservation = await reserve(input.session, cost);
+        } catch (reservationError) {
+          console.error('Study retry reservation failed:', safeErrorCategory(reservationError));
+          return res.status(200).json({
+            pages, ...reservation,
+            summaryStatus: 'Gemini svarte midlertidig med 503, men omforsøket kunne ikke reserveres trygt. Du kan fortsatt åpne PDF-sidene.',
+          });
+        }
+        if (retryReservation.summaryStatus) {
+          return res.status(200).json({
+            pages, ...retryReservation,
+            summaryStatus: `Gemini svarte midlertidig med 503, men omforsøket ble stoppet. ${retryReservation.summaryStatus} Du kan fortsatt åpne PDF-sidene.`,
+          });
+        }
+        reservation = retryReservation;
+        const retryTimeoutMs = Math.min(GENERATION_TIMEOUT_MS, remainingExecutionMs());
+        if (retryTimeoutMs < MIN_GENERATION_TIMEOUT_MS) {
+          return res.status(200).json({
+            pages, ...reservation,
+            summaryStatus: 'Gemini svarte midlertidig med 503. Kostnaden for omforsøket er reservert, men Vercels tidsgrense hindret at det ble sendt. Du kan fortsatt åpne PDF-sidene.',
+          });
+        }
+        try {
+          resources = await generateSummary(pages, key, fetch, prepared, retryTimeoutMs);
+        } catch (retryError) {
+          logGeminiFailure(retryError);
+          return res.status(200).json({
+            pages, ...reservation,
+            summaryStatus: retryError?.status === 503
+              ? 'Gemini er fortsatt midlertidig utilgjengelig etter ett omforsøk. Du kan fortsatt åpne PDF-sidene.'
+              : 'Det automatiske KI-omforsøket mislyktes. Du kan fortsatt åpne PDF-sidene.',
+          });
+        }
+        return res.status(200).json({
+          pages, ...reservation, ...resources,
+          summaryStatus: 'Gemini var midlertidig utilgjengelig, men det automatiske omforsøket lyktes.',
+        });
+      }
+      return res.status(200).json({
+        pages, ...reservation, ...resources,
+        ...(retrySucceeded ? {
+          summaryStatus: 'Gemini var midlertidig utilgjengelig under forberedelsen, men omforsøket lyktes.',
+        } : {}),
+      });
     } catch (error) {
       if (error?.operation) logGeminiFailure(error);
       else console.error('Study generation failed:', safeErrorCategory(error));
