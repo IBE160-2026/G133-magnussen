@@ -82,12 +82,20 @@ reservations. Each study session allows eight requests. Budget reservations
 survive function restarts. Keep the budget identifier and settings stable
 throughout that budget.
 
-Unsupported models, missing or invalid token counts, and count failures are
-blocked before reservation or generation. Budget contention and the eight-request
-limit prevent a provider call. When Gemini `generateContent` returns HTTP 503, the user gets a
-Norwegian temporary-unavailability message and can still open PDF pages.
-Generation caps output at 8,192 tokens. Gemini requests time out after 100
-seconds; the Vercel function limit is 120 seconds. Failure logs contain only an
+Unsupported models and missing or invalid token counts are blocked before
+reservation or generation. A token-count failure other than a retryable 503
+fails closed. Budget contention and the eight-request limit prevent a provider
+call. A Gemini HTTP 503 during token counting or
+generation allows at most one automatic retry per study request, after a
+one-second delay. A token-count retry does not consume a generation request.
+Every `generateContent` attempt, including a retry, receives its own atomic
+reservation for the calculated maximum cost and consumes one of the eight
+session requests. The retry is skipped if the budget, request limit, or
+remaining execution time prevents it. The Vercel handler keeps a ten-second
+safety margin within its 120-second limit and shortens the generation timeout
+when necessary; no generation attempt exceeds 100 seconds. The user sees a
+Norwegian status when the retry succeeds or is stopped.
+Generation caps output at 8,192 tokens. Failure logs contain only an
 allowlisted model identifier and operation, HTTP status, Google's numeric error
 code when available, and an allowlisted error category. They never contain API
 keys, request or response bodies, PDF text, provider messages, or generated

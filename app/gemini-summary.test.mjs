@@ -47,6 +47,36 @@ test('uses a 100-second timeout and parses a simulated Gemini response', async (
   }
 });
 
+test('allows a bounded per-attempt generation timeout', async () => {
+  const originalTimeout = AbortSignal.timeout;
+  let timeout;
+  AbortSignal.timeout = milliseconds => {
+    timeout = milliseconds;
+    return new AbortController().signal;
+  };
+  try {
+    const pages = [{ number: 1, text: 'The hamstring supports movement.', usable: true }];
+    const prepared = prepareSummaryRequest(pages);
+    await assert.rejects(
+      generateSummary(
+        pages,
+        'test-api-key',
+        async () => new Response('private provider details', { status: 503 }),
+        prepared,
+        42_000,
+      ),
+      error => error.status === 503,
+    );
+    assert.equal(timeout, 42_000);
+    await assert.rejects(
+      generateSummary(pages, 'test-api-key', async () => {}, prepared, 100_001),
+      /Invalid Gemini generation timeout/,
+    );
+  } finally {
+    AbortSignal.timeout = originalTimeout;
+  }
+});
+
 test('returns an empty quiz when the simulated provider response has no questions', async () => {
   const responseData = {
     summary: [resource('Summary')],
