@@ -253,3 +253,29 @@ retry after a one-second delay. The user's PDF generation still encountered
 503 after that retry. No further retry behavior or successful live
 generation was verified, and no new API calls were made while recording
 this update.
+
+## PDF page confirmation checked in production, 20 November 2026
+
+The project owner previously reported that production showed study results
+without asking whether to continue with the usable pages or cancel. Those
+earlier tests were run in the ChatGPT app's built-in browser on macOS and in
+Chrome; exact browser versions were not recorded. The reported discrepancy
+remains unresolved.
+
+In a separate browser test on 20 November, the same local
+`Muskler i kroppen.pdf` was selected on `https://g133-magnussen.vercel.app/`
+with Gemini disabled. Production returned HTTP 200 for `/`. The page showed
+the confirmation for 2 of 15 pages, listing pages 7 and 15; study results
+remained hidden. The browser recorded no network requests during PDF
+extraction and no JavaScript errors. `/api/study` was intercepted locally as
+a safeguard, so no PDF-derived data was submitted to the endpoint.
+
+The production page's inline client script contained the page-review UI,
+`showPageReview`, and the `window.webPdf.readPdf` path. Its SHA-256 matched
+the locally built inline script exactly:
+`6ce648dad03be15b87e5577ab53ab5f42838a40bfb4f156f6bd4ef2985e508aa`.
+The same PDF on the local production build showed the same confirmation and
+made no network requests before a choice. This test confirms that the
+confirmation worked in this production session; it does not explain the
+owner's earlier results-first behavior. No cause has been established, and
+no application code was changed.
