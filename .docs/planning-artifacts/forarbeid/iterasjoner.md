@@ -144,3 +144,23 @@ outside the application's request path and without PDF input, but it does
 not identify the root cause. The cause remains unknown. No new API call was
 made for this documentation update, and no secret or raw error message is
 recorded. See the [test log](../../../app/TESTLOGG.md).
+
+## User-confirmed demo and PDF checks; Google forum response — 19–20 November 2026
+
+On 19 November, the project owner confirmed that the demo works without
+Gemini: summary, key concepts, flashcards and quiz were available and
+working. In the owner’s test with `Muskler i kroppen.pdf`, the displayed PDF
+pages were correct and 13 of 15 pages had extracted text. Viewing the
+extracted raw text was not confirmed. Live resource generation from the
+owner’s PDF remained blocked by HTTP 503.
+
+On 20 November, a Google forum responder said 503 errors result from
+services being temporarily overloaded and pointed to the
+[Gemini API 503 guidance](https://discuss.ai.google.dev/t/handling-429-503-errors-from-the-gemini-api/124640#p-234342-h-503-errors-4)
+for backoff/retry suggestions. See the
+[response in the Gemini 3.8 Flash thread](https://discuss.ai.google.dev/t/gemini-3-8-flash-returns-503-unavailable-even-for-a-minimal-rest-request/202644/2).
+This is a general explanation and does not independently confirm the cause
+of the owner’s specific request. The app already allows one automatic retry
+after a one-second delay; the PDF generation still encountered 503 after
+that retry. No new API calls were made for this documentation update.
+Further live generation remains unverified.
