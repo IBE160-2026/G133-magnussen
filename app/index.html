@@ -14,6 +14,8 @@
   :focus-visible{outline:3px solid #2759a8;outline-offset:3px}
   .layout{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:1rem;align-items:start}
   .sidevalg{display:flex;flex-wrap:wrap;gap:.4rem;margin:.75rem 0 1rem}
+  #page-review-pages{margin:.5rem 0 1rem}
+  #page-review button{min-height:44px}
   #summary{margin:1rem 0;padding:1rem}
   .page{border-top:1px solid #cad9ed;padding:.65rem 0}
   .quiz-option{display:flex;align-items:baseline;gap:.55rem;padding:.5rem .7rem;border:1px solid transparent;border-radius:.4rem;font-weight:500}
@@ -38,6 +40,13 @@
     <p>Når valget er på, sendes uttrekkbar tekst fra nye PDF-er til Gemini. Selve PDF-filen behandles lokalt.</p>
     <button type="submit">Les PDF</button>
     </form>
+    <section id="page-review" aria-labelledby="page-review-title" hidden>
+      <h2 id="page-review-title" tabindex="-1">Sider med lite uttrekkbar tekst</h2>
+      <p id="page-review-message" role="status"></p>
+      <ul id="page-review-pages"></ul>
+      <button type="button" id="continue-pages">Fortsett med brukbare sider</button>
+      <button type="button" id="cancel-pages">Avbryt og velg en annen PDF</button>
+    </section>
     <p>Én PDF, opptil 20 MB og 50 sider. Filen behandles på denne maskinen.</p>
     <p id="status" role="status"></p>
     <p id="generation-count" hidden>KI-forespørsler igjen i økten: 8</p>
@@ -55,6 +64,7 @@
   let pageRequest;
   let pageUrl;
   let pending;
+  let pendingStudy;
   let currentSummary = null;
   let currentConcepts = null;
   let currentFlashcards = null;
@@ -68,12 +78,16 @@
     pending?.abort();
     window.webPdf?.releasePdf();
     pending = null;
+    pendingStudy = null;
     if (pdfUrl) URL.revokeObjectURL(pdfUrl);
     pdfUrl = null;
     pdfFile = null;
     clearPage();
     $('pdf').removeAttribute('src');
     $('pdf').hidden = $('open').hidden = $('result').hidden = $('reset').hidden = true;
+    $('upload').hidden = false;
+    $('page-review').hidden = true;
+    $('page-review-pages').replaceChildren();
     $('selected').textContent = 'Velg en side.';
     $('status').textContent = '';
     $('pages').replaceChildren();
@@ -365,6 +379,92 @@
     else if (concepts) showResource(concepts, 'Nøkkelbegreper');
     else $('counts').scrollIntoView({block:'nearest'});
   }
+  function showPageReview(pages, file, request, proceed) {
+    const unusablePages = pages.filter(page => !page.usable).map(page => page.number);
+    if (!unusablePages.length) return false;
+    if (!pages.some(page => page.usable)) {
+      throw Error('PDF-en har ingen sider med nok uttrekkbar tekst. Velg en PDF med minst én brukbar side.');
+    }
+    const pageList = $('page-review-pages');
+    pageList.replaceChildren();
+    for (const number of unusablePages) {
+      const item = document.createElement('li');
+      item.textContent = 'Side ' + number;
+      pageList.append(item);
+    }
+    $('page-review-message').textContent = unusablePages.length + ' av ' + pages.length +
+      ' sider har færre enn 20 tegn med uttrekkbar tekst. De tas ikke med hvis du fortsetter.';
+    pendingStudy = { file, pages, request, proceed };
+    $('upload').hidden = true;
+    $('page-review').hidden = false;
+    $('page-review-title').focus();
+    return true;
+  }
+  async function readJsonResponse(response) {
+    if (!response.headers.get('content-type')?.includes('application/json')) {
+      throw Error('Appserveren kunne ikke behandle forespørselen. Last inn siden på nytt og prøv igjen.');
+    }
+    const result = await response.json();
+    if (!response.ok) throw Error(result.error || 'PDF-en kunne ikke behandles.');
+    return result;
+  }
+  async function finishStudy(response, file, request, proceed) {
+    const result = await readJsonResponse(response);
+    if (request !== pending) return;
+    if (!Array.isArray(result.pages) || !result.pages.some(page => page.usable)) {
+      throw Error(result.summaryStatus || 'PDF-en har ingen sider med nok uttrekkbar tekst. Velg en PDF med minst én brukbar side.');
+    }
+    if (result.confirmationRequired) {
+      if (!showPageReview(result.pages, file, request, proceed)) {
+        throw Error('PDF-en må gjennomgås på nytt før du fortsetter.');
+      }
+      $('status').textContent = '';
+      return;
+    }
+    if (Number.isInteger(result.remainingRequests)) {
+      generationCount.textContent = 'KI-forespørsler igjen i økten: ' + result.remainingRequests;
+    }
+    pdfFile = file;
+    pdfUrl = URL.createObjectURL(file);
+    showPages(result.pages, result.summary, result.concepts, result.flashcards, result.quiz, result.summaryStatus);
+    pending = null;
+    $('upload').hidden = false;
+    $('status').textContent = file.name + ' er klar.';
+  }
+  function showRequestFailure(error, request) {
+    if (request !== pending) return;
+    pending = null;
+    $('status').textContent = error instanceof TypeError
+      ? 'Fikk ikke kontakt med den lokale appen. Last inn siden på nytt og prøv igjen.'
+      : error.message;
+    $('reset').hidden = true;
+    $('upload').hidden = false;
+    $('page-review').hidden = true;
+  }
+  $('continue-pages').addEventListener('click', async () => {
+    const study = pendingStudy;
+    if (!study || study.request !== pending) return;
+    pendingStudy = null;
+    const confirmedSkippedPages = study.pages.filter(page => !page.usable).map(page => page.number);
+    $('page-review').hidden = true;
+    $('status').textContent = 'Fortsetter med sidene som har nok tekst …';
+    try {
+      await finishStudy(
+        await study.proceed(confirmedSkippedPages),
+        study.file,
+        study.request,
+        study.proceed,
+      );
+    } catch (error) {
+      showRequestFailure(error, study.request);
+    }
+  });
+  $('cancel-pages').addEventListener('click', () => {
+    reset();
+    $('file').value = '';
+    $('status').textContent = 'Behandlingen ble avbrutt. Velg en PDF for å starte på nytt.';
+    $('file').focus();
+  });
   let studySession = crypto.randomUUID();
   const generationCount = $('generation-count');
   $('ai-summary').addEventListener('change', () => {
@@ -398,35 +498,47 @@
       let response;
       if (window.webPdf) {
         const pages = await window.webPdf.readPdf(file, request.signal);
-        const digest = await crypto.subtle.digest('SHA-256', await file.arrayBuffer());
-        const hash = Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2, '0')).join('');
-        response = await fetch('/api/study', {
+        if (!pages.some(page => page.usable)) {
+          throw Error('PDF-en har ingen sider med nok uttrekkbar tekst. Velg en PDF med minst én brukbar side.');
+        }
+        const proceed = async confirmedSkippedPages => {
+          const digest = await crypto.subtle.digest('SHA-256', await file.arrayBuffer());
+          const hash = Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2, '0')).join('');
+          return fetch('/api/study', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ pages, hash, useAi, session: studySession, confirmedSkippedPages }),
+            signal: request.signal,
+          });
+        };
+        if (showPageReview(pages, file, request, proceed)) {
+          $('status').textContent = '';
+          return;
+        }
+        response = await proceed([]);
+        await finishStudy(response, file, request, proceed);
+      } else {
+        const headers = useAi
+          ? { 'x-study-summary': 'gemini', 'x-study-session': studySession }
+          : {};
+        const proceed = confirmedSkippedPages => fetch('/pdf', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ pages, hash, useAi, session: studySession }),
+          body: file,
+          headers: confirmedSkippedPages.length
+            ? { ...headers, 'x-study-confirmed-skipped-pages': confirmedSkippedPages.join(',') }
+            : headers,
           signal: request.signal,
         });
-      } else {
-        response = await fetch('/pdf', { method:'POST', body:file, headers: useAi ? { 'x-study-summary': 'gemini', 'x-study-session': studySession } : {}, signal:request.signal });
+        response = await fetch('/pdf', {
+          method: 'POST',
+          body: file,
+          headers,
+          signal: request.signal,
+        });
+        await finishStudy(response, file, request, proceed);
       }
-      if (!response.headers.get('content-type')?.includes('application/json')) {
-        throw Error('Appserveren kunne ikke behandle forespørselen. Last inn siden på nytt og prøv igjen.');
-      }
-      const result = await response.json();
-      if (request !== pending) return;
-      if (!response.ok) throw Error(result.error);
-      if (Number.isInteger(result.remainingRequests)) {
-        generationCount.textContent = 'KI-forespørsler igjen i økten: ' + result.remainingRequests;
-      }
-      pdfFile = file;
-      pdfUrl = URL.createObjectURL(file);
-      showPages(result.pages, result.summary, result.concepts, result.flashcards, result.quiz, result.summaryStatus);
-      $('status').textContent = file.name + ' er klar.';
     } catch (error) {
-      if (request === pending) {
-        $('status').textContent = error instanceof TypeError ? 'Fikk ikke kontakt med den lokale appen. Last inn siden på nytt og prøv igjen.' : error.message;
-        $('reset').hidden = true;
-      }
+      showRequestFailure(error, request);
     }
   });
 </script>

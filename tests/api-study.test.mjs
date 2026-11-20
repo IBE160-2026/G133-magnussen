@@ -1,9 +1,14 @@
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
+import { readFile } from 'node:fs/promises';
 import test from 'node:test';
 import handler from '../api/study.mjs';
 
 const session = '00000000-0000-0000-0000-000000000001';
 const pdfText = 'confidential extracted PDF page text hamstring supports movement';
+const bundledDemoHash = createHash('sha256')
+  .update(await readFile(new URL('../app/demo-anatomi-ai-study-buddy.pdf', import.meta.url)))
+  .digest('hex');
 
 function baseEnv() {
   return {
@@ -693,5 +698,58 @@ test('logs safe Gemini context when generation throws', async () => {
       'Gemini request failed: model=gemini-3.6-flash operation=generateContent ' +
       'httpStatus=none googleErrorCode=none category=TimeoutError',
     ]);
+  });
+});
+
+test('requires confirmation of the exact skipped pages before processing mixed PDFs', async () => {
+  await withMockedEnvironment(async () => {
+    let networkCalls = 0;
+    globalThis.fetch = async () => {
+      networkCalls += 1;
+      throw Error('Unexpected network request before confirmation');
+    };
+    const pages = [
+      { number: 1, text: pdfText },
+      { number: 2, text: 'too short' },
+    ];
+
+    for (const confirmedSkippedPages of [undefined, [1]]) {
+      const res = responseRecorder();
+      await handler(requestFor({
+        pages,
+        ...(confirmedSkippedPages ? { confirmedSkippedPages } : {}),
+      }), res);
+      assert.equal(res.statusCode, 200);
+      assert.equal(res.body.confirmationRequired, true);
+      assert.equal(res.body.summary, undefined);
+    }
+
+    const approved = responseRecorder();
+    await handler(requestFor({ pages, useAi: false, confirmedSkippedPages: [2] }), approved);
+    assert.equal(approved.statusCode, 200);
+    assert.equal(approved.body.confirmationRequired, undefined);
+    assert.match(approved.body.summaryStatus, /Velg Gemini/i);
+    assert.equal(networkCalls, 0);
+  });
+});
+
+test('blocks a keyless demo response when no page has usable text', async () => {
+  await withMockedEnvironment(async () => {
+    let networkCalls = 0;
+    globalThis.fetch = async () => {
+      networkCalls += 1;
+      throw Error('Unexpected network request');
+    };
+    const res = responseRecorder();
+    await handler(requestFor({
+      pages: [{ number: 1, text: '   ' }],
+      useAi: false,
+      hash: bundledDemoHash,
+    }), res);
+
+    assert.equal(res.statusCode, 200);
+    assert.match(res.body.summaryStatus, /ingen sider med nok uttrekkbar tekst/i);
+    assert.equal(res.body.summary, undefined);
+    assert.equal(networkCalls, 0);
   });
 });

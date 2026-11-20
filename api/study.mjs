@@ -1,5 +1,6 @@
 import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
+import { pageProcessingDecision } from '../app/page-review.mjs';
 import { logGeminiFailure, safeErrorCategory } from '../app/safe-error-category.mjs';
 import { prepareSummaryRequest, countSummaryTokens, generateSummary } from '../app/gemini-summary.mjs';
 import { calculateMaximumCostMicroUsd, isSupportedFlashModel } from '../app/gemini-cost.mjs';
@@ -97,10 +98,14 @@ export default async function handler(req, res, dependencies = {}) {
       }
       pages.push({ number: page.number, text: page.text, usable: page.text.replace(/\s/gu, '').length >= 20 });
     }
-    if (!input.useAi && input.hash === demoHash) return res.status(200).json({ pages, ...demo });
-    if (!pages.some(page => page.usable)) {
+    const pageDecision = pageProcessingDecision(pages, input.confirmedSkippedPages);
+    if (pageDecision.status === 'no-usable-pages') {
       return res.status(200).json({ pages, summaryStatus: 'PDF-en har ingen sider med nok uttrekkbar tekst.' });
     }
+    if (pageDecision.status === 'confirmation-required') {
+      return res.status(200).json({ pages, confirmationRequired: true });
+    }
+    if (!input.useAi && input.hash === demoHash) return res.status(200).json({ pages, ...demo });
     if (!input.useAi) {
       return res.status(200).json({ pages, summaryStatus: 'Velg Gemini for å lage studieressurser fra din egen PDF.' });
     }

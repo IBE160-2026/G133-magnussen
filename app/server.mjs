@@ -1,4 +1,5 @@
 import { generateSummary } from './gemini-summary.mjs';
+import { pageProcessingDecision } from './page-review.mjs';
 import { logGeminiFailure, safeErrorCategory } from './safe-error-category.mjs';
 import { createHash } from 'node:crypto';
 import { createServer } from 'node:http';
@@ -49,6 +50,17 @@ async function extract(request) {
   return withLocalPdf(request, async (path, pdf) => {
     const { stdout } = await run('osascript', ['-l', 'JavaScript', script('./les-pdf.js'), path], options);
     const pages = JSON.parse(stdout);
+    const confirmedSkippedHeader = request.headers['x-study-confirmed-skipped-pages'];
+    const confirmedSkippedPages = typeof confirmedSkippedHeader === 'string'
+      ? confirmedSkippedHeader.split(',').map(Number)
+      : undefined;
+    const pageDecision = pageProcessingDecision(pages, confirmedSkippedPages);
+    if (pageDecision.status === 'no-usable-pages') {
+      return { pages, summaryStatus: 'PDF-en har ingen sider med nok uttrekkbar tekst.' };
+    }
+    if (pageDecision.status === 'confirmation-required') {
+      return { pages, confirmationRequired: true };
+    }
     if (pages[12]?.text.includes('Muskelkarakteristika I') && pages[13]?.text.includes('Muskelkarakteristika II')) {
       const { stdout: groups } = await run('osascript', ['-l', 'JavaScript', script('./grupper.js'), path], options);
       pages[12].groups = JSON.parse(groups)[0].groups;
@@ -56,7 +68,6 @@ async function extract(request) {
     const hash = createHash('sha256').update(pdf).digest('hex');
     if (hash === demoHash && request.headers['x-study-summary'] !== 'gemini') return { pages, ...demoResources };
     if (hash === musklerHash) return { pages, summary: musklerSummary, concepts: musklerConcepts, flashcards: musklerFlashcards, quiz: musklerQuiz };
-    if (!pages.some(page => page.usable)) return { pages, summaryStatus: 'PDF-en har ingen sider med nok uttrekkbar tekst.' };
     if (request.headers['x-study-summary'] !== 'gemini') return { pages, summaryStatus: 'Velg KI-sammendrag før du leser PDF-en på nytt.' };
     const apiKey = process.env.GEMINI_API_KEY?.trim();
     if (!apiKey) return { pages, summaryStatus: 'KI-sammendrag krever at GEMINI_API_KEY er satt på den lokale serveren.' };

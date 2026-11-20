@@ -39,7 +39,9 @@ as the reservation ceiling through 2026-12-31.
 
 ## Scope and test evidence
 
-- The application accepts one unlocked PDF up to 20 MB and 50 pages. It lists pages with little extractable text.
+- The application accepts one unlocked PDF up to 20 MB and 50 pages. If any page has fewer than 20 non-whitespace
+  extracted characters, it lists those pages and waits for the student to continue with usable pages or cancel. No
+  study resources are requested before the student continues; a PDF with no usable pages is not processed.
 - Source links point to physical PDF pages. Gemini excerpts that the application cannot find on the cited page are labelled **Ubekreftet** (Unverified).
 - With the original local `Muskler.pdf`, the application used 13 of 15 pages. Pages 7 and 15 lacked extractable text. On page 13, the application kept the mobilising and stabilising muscles in separate groups. The lecture PDF is outside this repository.
 - After testing, raw text was moved behind a separate control and the summary was shown first. Flashcards and quizzes were revised to ask standalone subject questions. Quiz results distinguish correct, incorrect, and unanswered questions using text and colour.
