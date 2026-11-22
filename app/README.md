@@ -12,7 +12,7 @@ node app/server.mjs
 
 Keep Terminal open while you use the app. When it prints `Åpne http://127.0.0.1:4173`, open `http://127.0.0.1:4173` in Safari or Chrome on the same Mac. This address only works while your local server is running.
 
-Use **Velg PDF** to select `app/demo-anatomi-ai-study-buddy.pdf`, leave Gemini disabled, and select **Les PDF**. The bundled PDF includes source and licensing information. Its study resources are provided so the demo can run offline.
+Use **Velg PDF** to select `app/demo-anatomi-ai-study-buddy.pdf`, leave AI generation disabled, and select **Les PDF**. The bundled PDF includes source and licensing information. Its study resources are provided so the demo can run offline.
 
 1. Switch between **Sammendrag** and **Nøkkelbegreper**, then open a source.
 2. Select **Flashcards**, reveal the answer, and open the source.
@@ -28,7 +28,7 @@ Copy `app/.env.example` to `app/.env.local` and enter your own `GEMINI_API_KEY` 
 node --env-file=app/.env.local app/server.mjs
 ```
 
-Enable **Lag studieressurser med Gemini** before selecting **Les PDF**. The application processes the PDF locally. It sends extractable text to Gemini only when the option is enabled. The server uses the API key. Set `GEMINI_MODEL` to override the default Gemini 3.5 Flash model.
+ Enable **Lag studieressurser med KI-tjenesten** before selecting **Les PDF**. The application processes the PDF locally. It sends extractable text to the selected AI provider only when the option is enabled. The server uses the API key. Set `GEMINI_MODEL` to override the default Gemini 3.5 Flash model.
 
 Only `gemini-3.5-flash`, `gemini-3.6-flash`, and `gemini-3.8-flash` are
 accepted for live generation. The 3.5 alias is routed to 3.6 Flash. Other
@@ -36,6 +36,34 @@ model overrides fail closed. The 3.5 alias and 3.6/3.8 model IDs use the
 conservative published scheduled Flash rates: $1.50 per million input tokens
 and $7.50 per million output tokens, because the higher 2027 schedule is used
 as the reservation ceiling through 2026-12-31.
+
+## Generate resources with Groq Free tier
+
+To use Groq locally, copy `app/.env.example` to `app/.env.local` and add:
+
+```env
+AI_PROVIDER=groq
+GROQ_API_KEY=your_own_groq_api_key
+```
+
+Start the application from the repository root with:
+
+```sh
+node --env-file=app/.env.local app/server.mjs
+```
+
+Gemini remains the default when `AI_PROVIDER` is unset.
+
+The fixed Groq model is
+`openai/gpt-oss-120b`. The application sends only extracted usable-page text,
+caps each request at 30,000 input characters and 4,096 output tokens, and uses
+mocked provider responses in automated tests.
+
+Groq Free tier is limited by the application to eight requests per 24 hours
+and eight requests per study session. Redis is required for the Vercel route
+to reserve both limits atomically. Missing configuration, quota exhaustion,
+timeouts, HTTP 429 responses, malformed JSON, and invalid sources fail closed
+without partial resources. The demo remains available without a provider key.
 
 ## Scope and test evidence
 
@@ -66,6 +94,8 @@ published site to try it.
 Live generation requires these Vercel environment variables:
 
 - `GEMINI_API_KEY` and optionally `GEMINI_MODEL`.
+- `AI_PROVIDER=groq` and `GROQ_API_KEY` for Groq; omit `AI_PROVIDER` or use
+  `gemini` for the default Gemini provider.
 - `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` for durable usage counters.
   Vercel KV deployments can instead use the complete pair `KV_REST_API_URL` and
   `KV_REST_API_TOKEN`. The Upstash pair takes precedence when both pairs are set;

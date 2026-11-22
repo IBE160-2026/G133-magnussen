@@ -753,3 +753,166 @@ test('blocks a keyless demo response when no page has usable text', async () => 
     assert.equal(networkCalls, 0);
   });
 });
+
+test('Groq missing key fails closed and never calls the provider or Redis', async () => {
+  await withMockedEnvironment(async () => {
+    process.env.AI_PROVIDER = 'groq';
+    delete process.env.GROQ_API_KEY;
+    let networkCalls = 0;
+    globalThis.fetch = async () => {
+      networkCalls += 1;
+      throw Error('unexpected network call');
+    };
+    const res = responseRecorder();
+    await handler(requestFor(), res);
+    assert.equal(networkCalls, 0);
+    assert.match(res.body.summaryStatus, /Groq er ikke konfigurert/i);
+  });
+});
+
+test('Groq normalizes valid mocked output and reserves aggregate and session atomically', async () => {
+  await withMockedEnvironment(async () => {
+    process.env.AI_PROVIDER = 'groq';
+    process.env.GROQ_API_KEY = 'groq-secret-test-key';
+    let groqCall = 0;
+    let redisBody;
+    globalThis.fetch = async (url, options = {}) => {
+      if (String(url) === 'https://redis.example.test') {
+        redisBody = JSON.parse(options.body);
+        return new Response(JSON.stringify({ result: [1, 7, 1] }), { status: 200 });
+      }
+      if (String(url).includes('api.groq.com')) {
+        groqCall += 1;
+        const item = { title: 'Study item', text: 'Short explanation.', sources: [{ page: 1, excerpt: 'hamstring supports movement' }] };
+        return new Response(JSON.stringify({
+          choices: [{ message: { content: JSON.stringify({
+            summary: [item],
+            keyConcepts: [item],
+            flashcards: [item],
+            quiz: [],
+          }) } }],
+        }), { status: 200 });
+      }
+      throw Error('unexpected network call');
+    };
+    const res = responseRecorder();
+    await handler(requestFor(), res);
+    assert.equal(groqCall, 1);
+    assert.equal(redisBody[0], 'EVAL');
+    assert.equal(redisBody[2], 2);
+    assert.equal(res.body.remainingRequests, 7);
+    assert.equal(res.body.summary[0].sources[0].verified, true);
+    assert.equal(res.body.concepts[0].title, 'Study item');
+  });
+});
+
+test('Groq blocks session and 24-hour aggregate limits before provider calls', async t => {
+  for (const [name, result, expected] of [
+    ['session', [0, 0, 3], /åtte KI-forespørslene/i],
+    ['aggregate', [-1, 8, 8], /åtte forespørsler per 24 timer/i],
+  ]) {
+    await t.test(name, async () => {
+      await withMockedEnvironment(async () => {
+        process.env.AI_PROVIDER = 'groq';
+        process.env.GROQ_API_KEY = 'groq-secret-test-key';
+        let groqCalled = false;
+        globalThis.fetch = async (url) => {
+          if (String(url) === 'https://redis.example.test') {
+            return new Response(JSON.stringify({ result }), { status: 200 });
+          }
+          if (String(url).includes('api.groq.com')) groqCalled = true;
+          throw Error('unexpected network call');
+        };
+        const res = responseRecorder();
+        await handler(requestFor(), res);
+        assert.equal(groqCalled, false);
+        assert.match(res.body.summaryStatus, expected);
+      });
+    });
+  }
+});
+
+test('Groq HTTP 429 returns no resources and logs only allowlisted fields', async () => {
+  await withMockedEnvironment(async () => {
+    process.env.AI_PROVIDER = 'groq';
+    process.env.GROQ_API_KEY = 'groq-secret-test-key';
+    const logs = [];
+    console.error = (...values) => logs.push(values.join(' '));
+    globalThis.fetch = async (url) => {
+      if (String(url) === 'https://redis.example.test') {
+        return new Response(JSON.stringify({ result: [1, 7, 1] }), { status: 200 });
+      }
+      if (String(url).includes('api.groq.com')) {
+        return new Response(JSON.stringify({ error: { message: 'groq-secret-test-key private PDF text' } }), { status: 429 });
+      }
+      throw Error('unexpected network call');
+    };
+    const res = responseRecorder();
+    await handler(requestFor(), res);
+    assert.equal(res.body.summary, undefined);
+    assert.match(res.body.summaryStatus, /begrenset bruk/i);
+    assert.equal(logs.length, 1);
+    assert.match(logs[0], /provider=groq.*httpStatus=429.*category=Error/);
+    assert.equal(logs.join(' ').includes('groq-secret-test-key'), false);
+    assert.equal(logs.join(' ').includes(pdfText), false);
+  });
+});
+
+test('bundled demo priority remains before Groq provider configuration', async () => {
+  await withMockedEnvironment(async () => {
+    process.env.AI_PROVIDER = 'groq';
+    delete process.env.GROQ_API_KEY;
+    let networkCalls = 0;
+    globalThis.fetch = async () => {
+      networkCalls += 1;
+      throw Error('unexpected network call');
+    };
+    const res = responseRecorder();
+    await handler(requestFor({ useAi: false, hash: bundledDemoHash }), res);
+    assert.equal(networkCalls, 0);
+    assert.ok(res.body.summary);
+  });
+});
+
+test('Groq HTTP 200 with an unverified source reports only a safe validation reason', async () => {
+  await withMockedEnvironment(async () => {
+    process.env.AI_PROVIDER = 'groq';
+    process.env.GROQ_API_KEY = 'groq-secret-test-key';
+    const logs = [];
+    console.error = (...values) => logs.push(values.join(' '));
+    globalThis.fetch = async (url) => {
+      if (String(url) === 'https://redis.example.test') {
+        return new Response(JSON.stringify({ result: [1, 7, 1] }), { status: 200 });
+      }
+      if (String(url).includes('api.groq.com')) {
+        const invalidItem = {
+          title: 'Study item',
+          text: 'Short explanation.',
+          sources: [{ page: 1, excerpt: pdfText + ' unrelated words' }],
+        };
+        return new Response(JSON.stringify({
+          choices: [{ message: { content: JSON.stringify({
+            summary: [invalidItem],
+            keyConcepts: [invalidItem],
+            flashcards: [invalidItem],
+            quiz: [],
+          }) } }],
+        }), { status: 200 });
+      }
+      throw Error('unexpected network call');
+    };
+
+    const res = responseRecorder();
+    await handler(requestFor(), res);
+
+    assert.equal(res.body.summary, undefined);
+    assert.equal(res.body.concepts, undefined);
+    assert.equal(res.body.flashcards, undefined);
+    assert.match(res.body.summaryStatus, /ingen delvise studieressurser/i);
+    assert.equal(logs.length, 1);
+    assert.match(logs[0], /httpStatus=200 category=Error validation=source-unverified/);
+    assert.equal(logs.join(' ').includes('groq-secret-test-key'), false);
+    assert.equal(logs.join(' ').includes(pdfText), false);
+    assert.equal(logs.join(' ').includes('unrelated words'), false);
+  });
+});

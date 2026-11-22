@@ -36,8 +36,8 @@
     <form id="upload">
     <label for="file">Velg PDF</label>
     <input id="file" type="file" accept=".pdf,application/pdf">
-    <label><input id="ai-summary" type="checkbox"> Lag studieressurser med Gemini</label>
-    <p>Når valget er på, sendes uttrekkbar tekst fra nye PDF-er til Gemini. Selve PDF-filen behandles lokalt.</p>
+    <label><input id="ai-summary" type="checkbox"> Lag studieressurser med KI-tjenesten</label>
+    <p>Når valget er på, sendes uttrekkbar tekst fra nye PDF-er til serverens valgte KI-tjeneste. Selve PDF-filen behandles lokalt.</p>
     <button type="submit">Les PDF</button>
     </form>
     <section id="page-review" aria-labelledby="page-review-title" hidden>
@@ -213,7 +213,7 @@
     const container = $('summary-items');
     if (!currentQuiz?.length) {
       const notice = document.createElement('p');
-      notice.textContent = 'Ingen quizspørsmål ble laget for denne økten. For en ny PDF, huk av Gemini og trykk Les PDF igjen for å prøve på nytt.';
+      notice.textContent = 'Ingen quizspørsmål ble laget for denne økten. For en ny PDF, huk av KI-tjenesten og trykk Les PDF igjen for å prøve på nytt.';
       container.replaceChildren(notice);
       $('summary-title').focus();
       return;
@@ -519,7 +519,7 @@
         await finishStudy(response, file, request, proceed);
       } else {
         const headers = useAi
-          ? { 'x-study-summary': 'gemini', 'x-study-session': studySession }
+          ? { 'x-study-summary': 'ai', 'x-study-session': studySession }
           : {};
         const proceed = confirmedSkippedPages => fetch('/pdf', {
           method: 'POST',
