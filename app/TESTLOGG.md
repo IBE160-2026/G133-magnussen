@@ -309,3 +309,24 @@ The following functionality was confirmed:
 - PDF source references for the generated study resources.
 
 The Groq integration was also tested successfully in Vercel Preview. No Production deployment was required for the project submission.
+
+### Manuell kontroll av kildehenvisninger – 22. november 2026
+
+**Testmiljø:** Vercel Production med Groq som AI-leverandør.
+
+**Testfil:** `Muskler i kroppen.pdf` (15 sider).
+
+**Gjennomføring:**
+- Lastet opp PDF-en og genererte studieressurser med Groq.
+- Appen hentet tilstrekkelig tekst fra 13 av 15 sider.
+- Kontrollerte det genererte sammendraget mot original-PDF-en.
+- Sammenlignet kildehenvisningen «Side 1» med innholdet i dokumentet.
+
+**Resultater:**
+- PDF-opplasting og AI-generering fungerte.
+- Henvisningen til side 1 var korrekt for informasjon om skjelettmuskler, sener, myofibriller, aktin, myosin og sarkomerer.
+- Sammendraget inneholdt også informasjon fra side 2 (bindevev), side 3 (muskelkraft), side 6 (muskelfibertyper) og side 9 (musklenes roller), uten egne henvisninger til disse sidene.
+
+**Konklusjon:** Delvis bestått. Kildehenvisningen var korrekt for deler av sammendraget, men dekket ikke alle påstandene. Fullstendig kildeverifisering gjenstår.
+
+**Videre arbeid:** Forbedre kildehenvisninger slik at informasjon fra flere PDF-sider får tilhørende referanser.
