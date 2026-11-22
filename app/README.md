@@ -65,6 +65,17 @@ to reserve both limits atomically. Missing configuration, quota exhaustion,
 timeouts, HTTP 429 responses, malformed JSON, and invalid sources fail closed
 without partial resources. The demo remains available without a provider key.
 
+## Run automated tests
+
+Run the automated test suite from the repository root:
+
+```sh
+npm test
+```
+The test suite contains 48 tests, all passing as of 22 November 2026. Automated tests use mocked AI provider responses and do not require an API key.
+
+See the [submission test log](TESTLOGG.md) for detailed test results and manual testing evidence.
+
 ## Scope and test evidence
 
 - The application accepts one unlocked PDF up to 20 MB and 50 pages. If any page has fewer than 20 non-whitespace
