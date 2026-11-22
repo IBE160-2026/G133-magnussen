@@ -279,3 +279,33 @@ made no network requests before a choice. This test confirms that the
 confirmation worked in this production session; it does not explain the
 owner's earlier results-first behavior. No cause has been established, and
 no application code was changed.
+
+## Groq provider testing — 21–22 November 2026
+
+### Automated tests
+
+On 22 November 2026, the automated test suite was run from the repository root using:
+
+```sh
+npm test
+```
+
+**Results:**
+- Tests: 48
+- Passed: 48
+- Failed: 0
+- Skipped: 0
+
+The automated tests use mocked AI provider responses, so no live Groq or Gemini API calls were required.
+
+### Manual Groq testing
+
+The application was tested locally with Groq using the `openai/gpt-oss-120b` model and a PDF document.
+
+The following functionality was confirmed:
+- AI-generated summaries and key concepts.
+- Flashcards with complete Norwegian questions and answers.
+- Multiple-choice quizzes with source references.
+- PDF source references for the generated study resources.
+
+The Groq integration was also tested successfully in Vercel Preview. No Production deployment was required for the project submission.
