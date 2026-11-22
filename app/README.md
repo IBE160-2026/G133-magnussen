@@ -37,6 +37,20 @@ conservative published scheduled Flash rates: $1.50 per million input tokens
 and $7.50 per million output tokens, because the higher 2027 schedule is used
 as the reservation ceiling through 2026-12-31.
 
+## Generate resources with Groq Free tier
+
+Set `AI_PROVIDER=groq` and `GROQ_API_KEY` on the server to select Groq explicitly.
+Gemini remains the default when `AI_PROVIDER` is unset. The fixed Groq model is
+`openai/gpt-oss-120b`. The application sends only extracted usable-page text,
+caps each request at 30,000 input characters and 4,096 output tokens, and uses
+mocked provider responses in automated tests.
+
+Groq Free tier is limited by the application to eight requests per 24 hours
+and eight requests per study session. Redis is required for the Vercel route
+to reserve both limits atomically. Missing configuration, quota exhaustion,
+timeouts, HTTP 429 responses, malformed JSON, and invalid sources fail closed
+without partial resources. The demo remains available without a provider key.
+
 ## Scope and test evidence
 
 - The application accepts one unlocked PDF up to 20 MB and 50 pages. If any page has fewer than 20 non-whitespace
@@ -66,6 +80,8 @@ published site to try it.
 Live generation requires these Vercel environment variables:
 
 - `GEMINI_API_KEY` and optionally `GEMINI_MODEL`.
+- `AI_PROVIDER=groq` and `GROQ_API_KEY` for Groq; omit `AI_PROVIDER` or use
+  `gemini` for the default Gemini provider.
 - `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` for durable usage counters.
   Vercel KV deployments can instead use the complete pair `KV_REST_API_URL` and
   `KV_REST_API_TOKEN`. The Upstash pair takes precedence when both pairs are set;

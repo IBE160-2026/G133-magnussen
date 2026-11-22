@@ -1,8 +1,51 @@
-const normalize = value => value.replace(/\s+/gu, ' ').trim().toLowerCase();
+export const normalize = value => value.replace(/\s+/gu, ' ').trim().toLowerCase();
 
-function geminiError(message, model, operation, { status = null, googleErrorCode = null, cause } = {}) {
+export function validateStudyResources(
+  resources,
+  readable,
+  model,
+  operation,
+  status = null,
+  invalidMessage = 'Studieressursene har et ugyldig format.',
+  sourceMessage = 'Studieressursene mangler gyldige kilder.',
+  rejectUnverified = false,
+) {
+  const byPage = new Map(readable.map(page => [page.number, normalize(page.text)]));
+  if (!Array.isArray(resources) || !resources.length || resources.length > 20) {
+    throw geminiError(invalidMessage, model, operation, { status, validationFailure: 'resource-format' });
+  }
+  return resources.map(item => {
+    if (typeof item?.title !== 'string' || !item.title.trim() || typeof item.text !== 'string' ||
+        !item.text.trim() || !Array.isArray(item.sources) || !item.sources.length) {
+      throw geminiError(sourceMessage, model, operation, { status, validationFailure: 'resource-format' });
+    }
+    if (item.sources.some(source => !byPage.has(source?.page) || typeof source.excerpt !== 'string' ||
+        normalize(source.excerpt).length < 8)) {
+      throw geminiError(sourceMessage, model, operation, { status, validationFailure: 'source-format' });
+    }
+    const sources = item.sources.map(({ page, excerpt }) => {
+      const verified = byPage.get(page).includes(normalize(excerpt));
+      if (rejectUnverified && !verified) {
+        throw geminiError(sourceMessage, model, operation, { status, validationFailure: 'source-unverified' });
+      }
+      return { page, excerpt, verified };
+    });
+    return {
+      title: item.title,
+      text: item.text,
+      sources,
+    };
+  });
+}
+
+function geminiError(
+  message,
+  model,
+  operation,
+  { status = null, googleErrorCode = null, cause, validationFailure = null } = {},
+) {
   const error = new Error(message, { cause });
-  Object.assign(error, { model, operation, status, googleErrorCode });
+  Object.assign(error, { model, operation, status, googleErrorCode, validationFailure });
   return error;
 }
 
@@ -167,31 +210,15 @@ export async function generateSummary(
       cause,
     });
   }
-  const byPage = new Map(readable.map(page => [page.number, normalize(page.text)]));
-  function validate(resources) {
-    if (!Array.isArray(resources) || !resources.length || resources.length > 20) {
-      throw geminiError('Gemini returnerte ugyldige studieressurser.', prepared.model, operation, {
-        status: response.status,
-      });
-    }
-    return resources.map(item => {
-      if (typeof item?.title !== 'string' || !item.title.trim() || typeof item.text !== 'string' ||
-          !item.text.trim() || !Array.isArray(item.sources) || !item.sources.length ||
-          item.sources.some(source => !byPage.has(source?.page) || typeof source.excerpt !== 'string' ||
-            normalize(source.excerpt).length < 8)) {
-        throw geminiError('Sammendraget mangler gyldige kilder.', prepared.model, operation, {
-          status: response.status,
-        });
-      }
-      return {
-        title: item.title,
-        text: item.text,
-        sources: item.sources.map(({ page, excerpt }) => ({
-          page, excerpt, verified: byPage.get(page).includes(normalize(excerpt)),
-        })),
-      };
-    });
-  }
+  const validate = resources => validateStudyResources(
+    resources,
+    readable,
+    prepared.model,
+    operation,
+    response.status,
+    'Gemini returnerte ugyldige studieressurser.',
+    'Sammendraget mangler gyldige kilder.',
+  );
   const result = {
     summary: validate(items?.summary),
     concepts: validate(items?.concepts),

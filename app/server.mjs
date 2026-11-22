@@ -1,6 +1,7 @@
 import { generateSummary } from './gemini-summary.mjs';
+import { generateGroqSummary, prepareGroqRequest } from './groq-summary.mjs';
 import { pageProcessingDecision } from './page-review.mjs';
-import { logGeminiFailure, safeErrorCategory } from './safe-error-category.mjs';
+import { logGeminiFailure, logGroqFailure, safeErrorCategory } from './safe-error-category.mjs';
 import { createHash } from 'node:crypto';
 import { createServer } from 'node:http';
 import { execFile } from 'node:child_process';
@@ -22,6 +23,25 @@ const demoPdf = await readFile(new URL('./demo-anatomi-ai-study-buddy.pdf', impo
 const demoHash = createHash('sha256').update(demoPdf).digest('hex');
 const maxBytes = 20_000_000;
 const port = Number(process.env.PORT || 4173);
+const groqSessionUsage = new Map();
+let groqAggregateUsage = { count: 0, resetAt: 0 };
+
+function reserveLocalGroq(session) {
+  const now = Date.now();
+  if (!groqAggregateUsage.resetAt || now >= groqAggregateUsage.resetAt) {
+    groqAggregateUsage = { count: 0, resetAt: now + 86_400_000 };
+  }
+  for (const [key, usage] of groqSessionUsage) {
+    if (now >= usage.resetAt) groqSessionUsage.delete(key);
+  }
+  const usage = groqSessionUsage.get(session) || { count: 0, resetAt: now + 86_400_000 };
+  if (usage.count >= 8) return { summaryStatus: 'Du har brukt alle åtte KI-forespørslene i denne studieøkten.' };
+  if (groqAggregateUsage.count >= 8) return { summaryStatus: 'Groq-kvoten på åtte forespørsler per 24 timer er nådd.' };
+  usage.count += 1;
+  groqSessionUsage.set(session, usage);
+  groqAggregateUsage.count += 1;
+  return {};
+}
 
 async function withLocalPdf(request, operation) {
   const chunks = [];
@@ -66,9 +86,39 @@ async function extract(request) {
       pages[12].groups = JSON.parse(groups)[0].groups;
     }
     const hash = createHash('sha256').update(pdf).digest('hex');
-    if (hash === demoHash && request.headers['x-study-summary'] !== 'gemini') return { pages, ...demoResources };
+    const wantsAi = request.headers['x-study-summary'] === 'ai'
+      || request.headers['x-study-summary'] === 'gemini';
+    if (hash === demoHash && !wantsAi) return { pages, ...demoResources };
     if (hash === musklerHash) return { pages, summary: musklerSummary, concepts: musklerConcepts, flashcards: musklerFlashcards, quiz: musklerQuiz };
-    if (request.headers['x-study-summary'] !== 'gemini') return { pages, summaryStatus: 'Velg KI-sammendrag før du leser PDF-en på nytt.' };
+    if (!wantsAi) return { pages, summaryStatus: 'Velg KI-sammendrag før du leser PDF-en på nytt.' };
+    const provider = process.env.AI_PROVIDER?.trim().toLowerCase() || 'gemini';
+    if (provider === 'groq') {
+      const groqKey = process.env.GROQ_API_KEY?.trim();
+      if (!groqKey) return { pages, summaryStatus: 'Groq er ikke konfigurert. Prøv demo-PDF-en uten AI-tjeneste.' };
+      let prepared;
+      try {
+        prepared = prepareGroqRequest(pages);
+      } catch {
+        return { pages, summaryStatus: 'Tekstmengden er for stor for én Groq-generering.' };
+      }
+      const session = typeof request.headers['x-study-session'] === 'string'
+        ? request.headers['x-study-session']
+        : 'local-session';
+      const reservation = reserveLocalGroq(session);
+      if (reservation.summaryStatus) return { pages, ...reservation };
+      try {
+        return { pages, ...await generateGroqSummary(pages, groqKey, fetch, prepared, 100_000) };
+      } catch (error) {
+        logGroqFailure(error);
+        return {
+          pages,
+          summaryStatus: error?.status === 429
+            ? 'Groq har begrenset bruk midlertidig. Du kan fortsatt åpne PDF-sidene.'
+            : 'Groq-generering mislyktes. Ingen delvise studieressurser ble returnert. Du kan fortsatt åpne PDF-sidene.',
+        };
+      }
+    }
+    if (provider !== 'gemini') return { pages, summaryStatus: 'KI-tjenesten er ikke konfigurert. Prøv demo-PDF-en.' };
     const apiKey = process.env.GEMINI_API_KEY?.trim();
     if (!apiKey) return { pages, summaryStatus: 'KI-sammendrag krever at GEMINI_API_KEY er satt på den lokale serveren.' };
     try {

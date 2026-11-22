@@ -3,7 +3,9 @@ import { readFile } from 'node:fs/promises';
 import { pageProcessingDecision } from '../app/page-review.mjs';
 import { logGeminiFailure, safeErrorCategory } from '../app/safe-error-category.mjs';
 import { prepareSummaryRequest, countSummaryTokens, generateSummary } from '../app/gemini-summary.mjs';
+import { prepareGroqRequest, generateGroqSummary } from '../app/groq-summary.mjs';
 import { calculateMaximumCostMicroUsd, isSupportedFlashModel } from '../app/gemini-cost.mjs';
+import { logGroqFailure } from '../app/safe-error-category.mjs';
 
 const demo = JSON.parse(await readFile(new URL('../app/demo-ressurser.json', import.meta.url), 'utf8'));
 const demoHash = createHash('sha256')
@@ -26,6 +28,18 @@ redis.call('INCR', KEYS[1])
 if used == 0 then redis.call('EXPIRE', KEYS[1], 86400) end
 redis.call('INCRBY', KEYS[2], ARGV[1])
 return {1, 7-used}
+`;
+
+const groqReserveScript = `
+local sessionUsed = tonumber(redis.call('GET', KEYS[1]) or '0')
+local aggregateUsed = tonumber(redis.call('GET', KEYS[2]) or '0')
+if sessionUsed >= 8 then return {0, 0, aggregateUsed} end
+if aggregateUsed >= 8 then return {-1, 8-sessionUsed, aggregateUsed} end
+redis.call('INCR', KEYS[1])
+if sessionUsed == 0 then redis.call('EXPIRE', KEYS[1], 86400) end
+redis.call('INCR', KEYS[2])
+redis.call('EXPIRE', KEYS[2], 86400)
+return {1, 7-sessionUsed, aggregateUsed+1}
 `;
 
 function wait(milliseconds) {
@@ -69,6 +83,46 @@ async function reserve(session, cost) {
   return { remainingRequests };
 }
 
+async function reserveGroq(session) {
+  let url = process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL;
+  let token = process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN;
+  if (Boolean(process.env.UPSTASH_REDIS_REST_URL) !== Boolean(process.env.UPSTASH_REDIS_REST_TOKEN)) {
+    if (process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN) {
+      url = process.env.KV_REST_API_URL;
+      token = process.env.KV_REST_API_TOKEN;
+    } else {
+      return { summaryStatus: 'KI-generering er ikke konfigurert. Prøv demo-PDF-en uten AI-tjeneste.' };
+    }
+  }
+  if (!url || !token) {
+    return { summaryStatus: 'KI-generering er ikke konfigurert. Prøv demo-PDF-en uten AI-tjeneste.' };
+  }
+  let response;
+  try {
+    response = await fetch(url, {
+      method: 'POST',
+      headers: { Authorization: 'Bearer ' + token, 'Content-Type': 'application/json' },
+      body: JSON.stringify(['EVAL', groqReserveScript, 2,
+        'study:session:groq:' + session,
+        'study:groq:aggregate:24h']),
+      signal: AbortSignal.timeout(RESERVATION_TIMEOUT_MS),
+    });
+  } catch (error) {
+    console.error('Groq reservation failed:', safeErrorCategory(error));
+    throw error;
+  }
+  if (!response.ok) throw Error('Groq usage reservation failed');
+  const data = await response.json();
+  if (data.error || !Array.isArray(data.result) || data.result.length !== 3) {
+    throw Error('Invalid Groq usage reservation');
+  }
+  const [status, remainingRequests] = data.result;
+  if (status === 0) return { remainingRequests: 0, summaryStatus: 'Du har brukt alle åtte KI-forespørslene i denne studieøkten.' };
+  if (status === -1) return { remainingRequests, summaryStatus: 'Groq-kvoten på åtte forespørsler per 24 timer er nådd.' };
+  if (status !== 1) throw Error('Invalid Groq usage status');
+  return { remainingRequests };
+}
+
 export default async function handler(req, res, dependencies = {}) {
   const now = dependencies.now || (() => performance.now());
   const sleep = dependencies.sleep || wait;
@@ -108,6 +162,49 @@ export default async function handler(req, res, dependencies = {}) {
     if (!input.useAi && input.hash === demoHash) return res.status(200).json({ pages, ...demo });
     if (!input.useAi) {
       return res.status(200).json({ pages, summaryStatus: 'Velg Gemini for å lage studieressurser fra din egen PDF.' });
+    }
+    const provider = process.env.AI_PROVIDER?.trim().toLowerCase() || 'gemini';
+    if (provider !== 'gemini' && provider !== 'groq') {
+      return res.status(200).json({ pages, summaryStatus: 'KI-tjenesten er ikke konfigurert. Prøv demo-PDF-en.' });
+    }
+    if (provider === 'groq') {
+      const groqKey = process.env.GROQ_API_KEY?.trim();
+      if (!groqKey) {
+        return res.status(200).json({ pages, summaryStatus: 'Groq er ikke konfigurert. Prøv demo-PDF-en uten AI-tjeneste.' });
+      }
+      let prepared;
+      try {
+        prepared = prepareGroqRequest(pages);
+      } catch (error) {
+        return res.status(200).json({ pages, summaryStatus: 'Tekstmengden er for stor for én Groq-generering.' });
+      }
+      let groqReservation;
+      try {
+        groqReservation = await reserveGroq(input.session);
+      } catch (error) {
+        console.error('Groq reservation failed:', safeErrorCategory(error));
+        return res.status(200).json({ pages, summaryStatus: 'Groq-kvoten kunne ikke kontrolleres trygt. Ingen studieressurser ble laget.' });
+      }
+      if (groqReservation.summaryStatus) {
+        return res.status(200).json({ pages, ...groqReservation });
+      }
+      try {
+        const generationTimeoutMs = Math.min(GENERATION_TIMEOUT_MS, remainingExecutionMs());
+        if (generationTimeoutMs < MIN_GENERATION_TIMEOUT_MS) {
+          return res.status(200).json({
+            pages, ...groqReservation,
+            summaryStatus: 'Groq-kvoten er reservert, men genereringen ble stoppet for å holde seg innenfor Vercels tidsgrense.',
+          });
+        }
+        const resources = await generateGroqSummary(pages, groqKey, fetch, prepared, generationTimeoutMs);
+        return res.status(200).json({ pages, ...groqReservation, ...resources });
+      } catch (error) {
+        logGroqFailure(error);
+        const summaryStatus = error?.status === 429
+          ? 'Groq har begrenset bruk midlertidig. Du kan fortsatt åpne PDF-sidene.'
+          : 'Groq-generering mislyktes. Ingen delvise studieressurser ble returnert. Du kan fortsatt åpne PDF-sidene.';
+        return res.status(200).json({ pages, ...groqReservation, summaryStatus });
+      }
     }
     const key = process.env.GEMINI_API_KEY?.trim();
     if (!key) {
