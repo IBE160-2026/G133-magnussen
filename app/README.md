@@ -12,7 +12,7 @@ node app/server.mjs
 
 Keep Terminal open while you use the app. When it prints `Åpne http://127.0.0.1:4173`, open `http://127.0.0.1:4173` in Safari or Chrome on the same Mac. This address only works while your local server is running.
 
-Use **Velg PDF** to select `app/demo-anatomi-ai-study-buddy.pdf`, leave Gemini disabled, and select **Les PDF**. The bundled PDF includes source and licensing information. Its study resources are provided so the demo can run offline.
+Use **Velg PDF** to select `app/demo-anatomi-ai-study-buddy.pdf`, leave AI generation disabled, and select **Les PDF**. The bundled PDF includes source and licensing information. Its study resources are provided so the demo can run offline.
 
 1. Switch between **Sammendrag** and **Nøkkelbegreper**, then open a source.
 2. Select **Flashcards**, reveal the answer, and open the source.
@@ -28,7 +28,7 @@ Copy `app/.env.example` to `app/.env.local` and enter your own `GEMINI_API_KEY` 
 node --env-file=app/.env.local app/server.mjs
 ```
 
-Enable **Lag studieressurser med Gemini** before selecting **Les PDF**. The application processes the PDF locally. It sends extractable text to Gemini only when the option is enabled. The server uses the API key. Set `GEMINI_MODEL` to override the default Gemini 3.5 Flash model.
+ Enable **Lag studieressurser med KI-tjenesten** before selecting **Les PDF**. The application processes the PDF locally. It sends extractable text to the selected AI provider only when the option is enabled. The server uses the API key. Set `GEMINI_MODEL` to override the default Gemini 3.5 Flash model.
 
 Only `gemini-3.5-flash`, `gemini-3.6-flash`, and `gemini-3.8-flash` are
 accepted for live generation. The 3.5 alias is routed to 3.6 Flash. Other
@@ -39,8 +39,22 @@ as the reservation ceiling through 2026-12-31.
 
 ## Generate resources with Groq Free tier
 
-Set `AI_PROVIDER=groq` and `GROQ_API_KEY` on the server to select Groq explicitly.
-Gemini remains the default when `AI_PROVIDER` is unset. The fixed Groq model is
+To use Groq locally, copy `app/.env.example` to `app/.env.local` and add:
+
+```env
+AI_PROVIDER=groq
+GROQ_API_KEY=your_own_groq_api_key
+```
+
+Start the application from the repository root with:
+
+```sh
+node --env-file=app/.env.local app/server.mjs
+```
+
+Gemini remains the default when `AI_PROVIDER` is unset.
+
+The fixed Groq model is
 `openai/gpt-oss-120b`. The application sends only extracted usable-page text,
 caps each request at 30,000 input characters and 4,096 output tokens, and uses
 mocked provider responses in automated tests.
